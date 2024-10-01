@@ -1,0 +1,22 @@
+# # ClientBookingDetail
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**reference** | **string** |  | [optional]
+**hash** | **string** |  | [optional]
+**contact** | **object** |  | [optional]
+**organisation** | **object** |  | [optional]
+**status** | **string** |  |
+**totalCost** | **string** |  | [optional]
+**netCost** | **string** |  | [optional]
+**createdAt** | **\DateTime** |  | [optional]
+**centre** | **object** |  | [optional]
+**arrivalDate** | **\DateTime** |  | [optional]
+**departureDate** | **\DateTime** |  | [optional]
+**origin** | **string** |  | [optional]
+**group** | **object** |  | [optional]
+**bookingTags** | [**\SynergiTech\Cinolla\Model\BookingType[]**](BookingType.md) |  |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
