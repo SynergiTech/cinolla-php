@@ -1,0 +1,9 @@
+additionalProperties:
+  artifactVersion: 2024.09.03
+  composerPackageName: synergitech/cinolla-php
+  developerOrganization: "Synergi Tech"
+  developerOrganizationUrl: https://synergi.tech
+  invokerPackage: SynergiTech\Cinolla
+  licenseName: MIT
+  packageName: Cinolla-PHP
+  variableNamingConvention: camelCase

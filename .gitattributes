@@ -1,0 +1,12 @@
+/.openapi-generate/ export-ignore
+/docs/ export-ignore
+/tests/ export-ignore
+/.gitignore export-ignore
+/.openapi-generator-ignore export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/.phplint.yml export-ignore
+/.travis.yml export-ignore
+/GENERATE.md export-ignore
+/git_push.sh export-ignore
+/phpunit.xml.dist export-ignore
+/swagger-3.0.0.json export-ignore
