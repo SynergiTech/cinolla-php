@@ -1,1171 +1,2886 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Cinolla Client API",
-        "description": "Welcome to Cinolla Client API documentation for version 3. Please see below for the available API endpoints and their required parameters and responses.\nIf you have any questions, please contact [support@cinolla.com](mailto:support@cinolla.com).",
-        "version": "3.0.0"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cinolla Client API",
+    "description": "Welcome to Cinolla Client API documentation for version 3. Please see below for the available API endpoints and their required parameters and responses.\nIf you have any questions, please contact [support@cinolla.com](mailto:support@cinolla.com).",
+    "version": "3.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.prod.cinolla.com",
+      "description": "Production API"
     },
-    "servers": [
-        {
-            "url": "https://api.prod.cinolla.com",
-            "description": "Production API"
-        },
-        {
-            "url": "https://api.staging.cinolla.com",
-            "description": "Staging API"
-        }
-    ],
-    "paths": {
-        "/v3/client/bookings": {
-            "get": {
-                "tags": [
-                    "Bookings"
-                ],
-                "summary": "Get a collection of Bookings",
-                "operationId": "getBookings",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/startDateRange"
-                    },
-                    {
-                        "$ref": "#/components/parameters/endDateRange"
-                    },
-                    {
-                        "name": "dateRangeFilter",
-                        "in": "query",
-                        "description": "Used in conjunction with startDate and endDate to filter bookings.",
-                        "schema": {
-                            "type": "string",
-                            "default": "arrivalDate",
-                            "enum": [
-                                "arrivalDate",
-                                "departureDate"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "futureOnly",
-                        "in": "query",
-                        "description": "Filter bookings by future only, based on arrival date being greater than now.",
-                        "schema": {
-                            "type": "boolean",
-                            "default": false
-                        }
-                    },
-                    {
-                        "name": "tags",
-                        "in": "query",
-                        "description": "Filter bookings by tag name. See tagsOperator.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    {
-                        "name": "tagIds",
-                        "in": "query",
-                        "description": "Filter bookings by tag ID. See tagsOperator.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        }
-                    },
-                    {
-                        "name": "tagsOperator",
-                        "in": "query",
-                        "description": "Operator for use with tags or tagIds params. If all, bookings must have all given tags. If oneOf, bookings must contain one of the given tags.",
-                        "schema": {
-                            "type": "string",
-                            "default": "all",
-                            "enum": [
-                                "all",
-                                "oneOf"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "reference",
-                        "in": "query",
-                        "description": "Fuzzy match on booking reference, e.g. B-001 will match B-00100, B-00101, B-00102 etc.",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A collection of Bookings",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ClientBookingCollection"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+    {
+      "url": "https://api.staging.cinolla.com",
+      "description": "Staging API"
+    }
+  ],
+  "paths": {
+    "/v3/client/bookings": {
+      "get": {
+        "tags": [
+          "Bookings"
+        ],
+        "summary": "Get a collection of Bookings",
+        "operationId": "getBookings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/startDateRange"
+          },
+          {
+            "$ref": "#/components/parameters/endDateRange"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
             }
-        },
-        "/v3/client/bookings/{bookingHash}": {
-            "get": {
-                "tags": [
-                    "Bookings"
-                ],
-                "summary": "Get detail for a single Booking",
-                "operationId": "getBooking",
-                "parameters": [
-                    {
-                        "name": "bookingHash",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "The detail of a single booking",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ClientBookingDetail"
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
             }
-        },
-        "/v3/client/courses": {
-            "get": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "Returns a collection of Courses",
-                "operationId": "getCourses",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "name": "sellOnPortal",
-                        "in": "query",
-                        "description": "Filter items to only those marked for sale on the Booking Portal.",
-                        "schema": {
-                            "type": "boolean",
-                            "default": null
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Returns a collection of Courses (line items of type course).",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LineItem"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "dateRangeFilter",
+            "in": "query",
+            "description": "Used in conjunction with startDate and endDate to filter bookings.",
+            "schema": {
+              "type": "string",
+              "default": "arrivalDate",
+              "enum": [
+                "arrivalDate",
+                "departureDate"
+              ]
             }
-        },
-        "/v3/client/courses/{id}/course-runs": {
-            "get": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "Returns a collection of Course Runs for a given course",
-                "operationId": "getCourseRuns",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/startDateRange"
-                    },
-                    {
-                        "$ref": "#/components/parameters/endDateRange"
-                    },
-                    {
-                        "name": "sellOnPortal",
-                        "in": "query",
-                        "description": "Filter items to only those marked for sale on the Booking Portal.",
-                        "schema": {
-                            "type": "boolean",
-                            "default": null
-                        }
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Returns a collection of Course Runs for a given course",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/CourseRun"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "futureOnly",
+            "in": "query",
+            "description": "Filter bookings by future only, based on arrival date being greater than now.",
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
-        },
-        "/v3/client/custom-forms": {
-            "get": {
-                "tags": [
-                    "Custom Forms"
-                ],
-                "summary": "Get a collection of Custom Forms",
-                "operationId": "getCustomForms",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A collection of Custom Forms",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/CustomForm"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Filter bookings by tag name. See tagsOperator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
-        },
-        "/v3/client/custom-forms/{customFormHash}/submissions": {
-            "get": {
-                "tags": [
-                    "Custom Forms"
-                ],
-                "summary": "Get a collection of Custom Form Submissions",
-                "operationId": "getCustomFormSubmissions",
-                "parameters": [
-                    {
-                        "name": "customFormHash",
-                        "in": "path",
-                        "description": "The hash of a Custom Form",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "name": "bookingHash",
-                        "in": "query",
-                        "description": "Filter results by a single booking",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A collection of Custom Form Submissions",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/CustomFormSubmissions"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "tagIds",
+            "in": "query",
+            "description": "Filter bookings by tag ID. See tagsOperator.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             }
-        },
-        "/v3/client/invoices": {
-            "get": {
-                "tags": [
-                    "Invoices"
-                ],
-                "summary": "Get a collection of Invoices",
-                "operationId": "getInvoices",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/startDateRange"
-                    },
-                    {
-                        "$ref": "#/components/parameters/endDateRange"
-                    },
-                    {
-                        "name": "bookingId",
-                        "in": "query",
-                        "description": "Filter invoices based on a specific Booking ID.",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "dateRangeFilter",
-                        "in": "query",
-                        "description": "Used in conjunction with startDate and endDate to filter Invoices.",
-                        "schema": {
-                            "type": "string",
-                            "default": "invoiceDate",
-                            "enum": [
-                                "invoiceDate",
-                                "invoiceDue"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A collection of Invoices",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/InvoicedBooking"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "tagsOperator",
+            "in": "query",
+            "description": "Operator for use with tags or tagIds params. If all, bookings must have all given tags. If oneOf, bookings must contain one of the given tags.",
+            "schema": {
+              "type": "string",
+              "default": "all",
+              "enum": [
+                "all",
+                "oneOf"
+              ]
             }
-        },
-        "/v3/client/lineitems": {
-            "get": {
-                "tags": [
-                    "Line Items (Including Courses)"
-                ],
-                "summary": "Returns a collection of Line Items (including courses)",
-                "operationId": "getLineItems",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "description": "Filter by the type of the line item, e.g. course",
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "course",
-                                "course_extra",
-                                "line_item",
-                                "membership",
-                                "voucher"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "sellOnPortal",
-                        "in": "query",
-                        "description": "Filter items to only those marked for sale on the Booking Portal.",
-                        "schema": {
-                            "type": "boolean",
-                            "default": null
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Returns a collection of Line Items (including courses)",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/LineItem"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          {
+            "name": "reference",
+            "in": "query",
+            "description": "Fuzzy match on booking reference, e.g. B-001 will match B-00100, B-00101, B-00102 etc.",
+            "schema": {
+              "type": "string"
             }
-        },
-        "/v3/client/payments": {
-            "get": {
-                "tags": [
-                    "Payments"
-                ],
-                "summary": "Fetch a collection of Payments.",
-                "operationId": "getPayments",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/offset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/startDateRange"
-                    },
-                    {
-                        "$ref": "#/components/parameters/endDateRange"
-                    },
-                    {
-                        "name": "dateRangeFilter",
-                        "in": "query",
-                        "description": "Used in conjunction with startDate and endDate to filter Invoices.",
-                        "schema": {
-                            "type": "string",
-                            "default": "datePaid",
-                            "enum": [
-                                "datePaid",
-                                "createdAt"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "includeRemoved",
-                        "in": "query",
-                        "description": "Whether or not to include entities flagged as removed",
-                        "schema": {
-                            "type": "boolean",
-                            "default": false
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Returns the newly created Payment.",
-                        "headers": {
-                            "x-applied-offset": {
-                                "$ref": "#/components/headers/xAppliedOffset"
-                            },
-                            "x-applied-limit": {
-                                "$ref": "#/components/headers/xAppliedLimit"
-                            },
-                            "x-total-count": {
-                                "$ref": "#/components/headers/xTotalCount"
-                            }
-                        },
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Payment"
-                                }
-                            }
-                        }
-                    }
-                }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of Bookings",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
             },
-            "post": {
-                "tags": [
-                    "Payments"
-                ],
-                "summary": "Create a new Payment.",
-                "operationId": "createPayment",
-                "requestBody": {
-                    "description": "The JSON Payload.",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Payment2"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Returns the newly created Payment.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Payment"
-                                }
-                            }
-                        }
-                    }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClientBookingCollection"
+                  }
                 }
+              }
             }
+          }
         }
+      }
     },
-    "components": {
-        "schemas": {
-            "ClientBookingDetail": {
-                "required": [
-                    "status",
-                    "bookingTags"
-                ],
-                "properties": {
-                    "reference": {
-                        "title": "Set the value of reference",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "hash": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "contact": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "organisation": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [
-                            "quote",
-                            "draft",
-                            "confirmed"
-                        ]
-                    },
-                    "totalCost": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "netCost": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "centre": {
-                        "type": "object"
-                    },
-                    "arrivalDate": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "departureDate": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "origin": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "group": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "bookingTags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BookingType"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "ClientBookingCollection": {
-                "required": [
-                    "status",
-                    "bookingTags"
-                ],
-                "properties": {
-                    "reference": {
-                        "title": "Set the value of reference",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "hash": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "contact": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "organisation": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [
-                            "quote",
-                            "draft",
-                            "confirmed"
-                        ]
-                    },
-                    "totalCost": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "netCost": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "centre": {
-                        "type": "object"
-                    },
-                    "arrivalDate": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "departureDate": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "origin": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "bookingTags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BookingType2"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "LineItem": {
-                "required": [
-                    "id"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "type": {
-                        "type": "string",
-                        "default": "line_item",
-                        "nullable": true
-                    },
-                    "name": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "shortCode": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "units": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "course": {
-                        "type": "object",
-                        "nullable": true
-                    },
-                    "capacity": {
-                        "type": "integer",
-                        "nullable": true
-                    },
-                    "description": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "tease": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "sellOnPortal": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "portalSlug": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "CourseRun": {
-                "required": [
-                    "startDate",
-                    "courseRunDates"
-                ],
-                "properties": {
-                    "hash": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "courseCode": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "numPlaces": {
-                        "type": "integer",
-                        "default": "6"
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "label": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "reference": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "showOnPortal": {
-                        "type": "integer",
-                        "nullable": true
-                    },
-                    "courseRunDates": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CourseRunDate"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CustomForm": {
-                "required": [
-                    "createdAt"
-                ],
-                "properties": {
-                    "hash": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "name": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "speciality": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "active": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "centre": {
-                        "type": "object"
-                    }
-                },
-                "type": "object"
-            },
-            "CustomFormSubmissions": {
-                "required": [
-                    "createdAt",
-                    "customFieldsData"
-                ],
-                "properties": {
-                    "customForm": {
-                        "type": "object"
-                    },
-                    "booking": {
-                        "type": "object"
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "customFieldsData": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CustomFieldsData"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "InvoicedBooking": {
-                "required": [
-                    "id",
-                    "invoiceType",
-                    "booking",
-                    "totalGross",
-                    "createdAt",
-                    "updatedAt",
-                    "invoiceDate",
-                    "invoiceDue"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "invoiceNumber": {
-                        "type": "integer",
-                        "nullable": true
-                    },
-                    "invoiceType": {
-                        "type": "string",
-                        "enum": [
-                            "standard",
-                            "deposit"
-                        ]
-                    },
-                    "status": {
-                        "type": "string",
-                        "default": "draft",
-                        "nullable": true
-                    },
-                    "booking": {
-                        "type": "object"
-                    },
-                    "totalNet": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "totalGross": {
-                        "type": "string",
-                        "minimum": 0,
-                        "nullable": true
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "invoiceDate": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "invoiceDue": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "type": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "Payment": {
-                "required": [
-                    "id",
-                    "createdAt"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "amount": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "datePaid": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "paymentMethod": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                },
-                "type": "object"
-            },
-            "Payment2": {
-                "properties": {
-                    "amount": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "datePaid": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                    },
-                    "paymentMethod": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "CourseRunDate": {
-                "required": [
-                    "id",
-                    "startDate",
-                    "endDate"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "endDate": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                },
-                "type": "object"
-            },
-            "CustomFieldsData": {
-                "properties": {
-                    "value": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "customField": {
-                        "type": "object"
-                    }
-                },
-                "type": "object"
-            },
-            "BookingType": {
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "colour": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "BookingType2": {
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "colour": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
+    "/v3/client/bookings/{bookingHash}": {
+      "get": {
+        "tags": [
+          "Bookings"
+        ],
+        "summary": "Get detail for a single Booking",
+        "operationId": "getBooking",
+        "parameters": [
+          {
+            "name": "bookingHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-        },
-        "parameters": {
-            "offset": {
-                "name": "offset",
-                "in": "query",
-                "description": "An offset used to return a paginated list of results",
-                "schema": {
-                    "type": "integer",
-                    "default": 0
-                }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The detail of a single booking",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
             },
-            "limit": {
-                "name": "limit",
-                "in": "query",
-                "description": "A limit/max on the number of results returned",
+            "content": {
+              "application/json": {
                 "schema": {
-                    "type": "integer",
-                    "default": 100
+                  "$ref": "#/components/schemas/ClientBookingDetail"
                 }
-            },
-            "startDateRange": {
-                "name": "startDate",
-                "in": "query",
-                "description": "Start date of a date range. Used in conjunction with endDate to create a date range to filter by.",
-                "schema": {
-                    "type": "string",
-                    "format": "date"
-                }
-            },
-            "endDateRange": {
-                "name": "endDateRange",
-                "in": "query",
-                "description": "End date of a date range. Used in conjunction with startDate to create a date range to filter by.",
-                "schema": {
-                    "type": "string",
-                    "format": "date"
-                }
+              }
             }
-        },
-        "headers": {
-            "xAppliedOffset": {
-                "description": "The offset applied to this request.",
-                "schema": {
-                    "type": "integer"
-                }
-            },
-            "xAppliedLimit": {
-                "description": "The limit on the number of results that was applied to this request.",
-                "schema": {
-                    "type": "integer"
-                }
-            },
-            "xTotalCount": {
-                "description": "The total number of items for this query, taking into account any filters that may be applied.",
-                "schema": {
-                    "type": "integer"
-                }
-            }
-        },
-        "securitySchemes": {
-            "BearerAuth": {
-                "type": "http",
-                "bearerFormat": "JWT",
-                "scheme": "bearer"
-            },
-            "ApiKeyAuth": {
-                "type": "apiKey",
-                "name": "x-api-key",
-                "in": "header"
-            }
+          }
         }
+      }
     },
-    "security": [
-        {
-            "ApiKeyAuth": []
+    "/v3/client/contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Returns a collection of Contacts",
+        "operationId": "getContacts",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a collection of Contacts",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contact"
+                  }
+                }
+              }
+            }
+          }
         }
-    ]
+      }
+    },
+    "/v3/client/contacts/{contactHash}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get detail for a single Contact",
+        "operationId": "getContact",
+        "parameters": [
+          {
+            "name": "contactHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The detail of a single Contact",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Returns a collection of Courses",
+        "operationId": "getCourses",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "sellOnPortal",
+            "in": "query",
+            "description": "Filter items to only those marked for sale on the Booking Portal.",
+            "schema": {
+              "type": "boolean",
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a collection of Courses (line items of type course).",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LineItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/courses/{id}/course-runs": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Returns a collection of Course Runs for a given course",
+        "operationId": "getCourseRuns",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/startDateRange"
+          },
+          {
+            "$ref": "#/components/parameters/endDateRange"
+          },
+          {
+            "name": "sellOnPortal",
+            "in": "query",
+            "description": "Filter items to only those marked for sale on the Booking Portal.",
+            "schema": {
+              "type": "boolean",
+              "default": null
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a collection of Course Runs for a given course",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourseRun"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/custom-forms": {
+      "get": {
+        "tags": [
+          "Custom Forms"
+        ],
+        "summary": "Get a collection of Custom Forms",
+        "operationId": "getCustomForms",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of Custom Forms",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomForm"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/custom-forms/{customFormHash}/submissions": {
+      "get": {
+        "tags": [
+          "Custom Forms"
+        ],
+        "summary": "Get a collection of Custom Form Submissions",
+        "operationId": "getCustomFormSubmissions",
+        "parameters": [
+          {
+            "name": "customFormHash",
+            "in": "path",
+            "description": "The hash of a Custom Form",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "bookingHash",
+            "in": "query",
+            "description": "Filter results by a single booking",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of Custom Form Submissions",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFormSubmissions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/invoices": {
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Get a collection of Invoices",
+        "operationId": "getInvoices",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/startDateRange"
+          },
+          {
+            "$ref": "#/components/parameters/endDateRange"
+          },
+          {
+            "name": "bookingId",
+            "in": "query",
+            "description": "Filter invoices based on a specific Booking ID.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "dateRangeFilter",
+            "in": "query",
+            "description": "Used in conjunction with startDate and endDate to filter Invoices.",
+            "schema": {
+              "type": "string",
+              "default": "invoiceDate",
+              "enum": [
+                "invoiceDate",
+                "invoiceDue",
+                "updatedAt"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of Invoices",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvoicedBooking"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/invoices/{id}": {
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Get detail for a single Invoice",
+        "operationId": "getInvoice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The detail of a single Invoice",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoicedBooking2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/lineitems": {
+      "get": {
+        "tags": [
+          "Line Items"
+        ],
+        "summary": "Returns a collection of Line Items.",
+        "operationId": "getLineItems",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter by the type of the line item, e.g. course",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "course",
+                "course_extra",
+                "line_item",
+                "membership",
+                "voucher"
+              ]
+            }
+          },
+          {
+            "name": "sellOnPortal",
+            "in": "query",
+            "description": "Filter items to only those marked for sale on the Booking Portal.",
+            "schema": {
+              "type": "boolean",
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a collection of Line Items.",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LineItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/payments": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Fetch a collection of Payments.",
+        "operationId": "getPayments",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/startDateRange"
+          },
+          {
+            "$ref": "#/components/parameters/endDateRange"
+          },
+          {
+            "name": "dateRangeFilter",
+            "in": "query",
+            "description": "Used in conjunction with startDate and endDate to filter Invoices.",
+            "schema": {
+              "type": "string",
+              "default": "datePaid",
+              "enum": [
+                "datePaid",
+                "createdAt"
+              ]
+            }
+          },
+          {
+            "name": "includeRemoved",
+            "in": "query",
+            "description": "Whether or not to include entities flagged as removed",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a collection of Payments.",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Payment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Create a new Payment.",
+        "operationId": "createPayment",
+        "requestBody": {
+          "description": "The JSON Payload.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Payment2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns the newly created Payment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClientBookingDetail": {
+        "required": [
+          "status",
+          "centre",
+          "bookingTags"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact4"
+              }
+            ]
+          },
+          "organisation": {
+            "type": "object",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "centre": {
+            "type": "object"
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          },
+          "group": {
+            "type": "object",
+            "nullable": true
+          },
+          "bookingTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType2"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "ClientBookingCollection": {
+        "required": [
+          "status",
+          "centre",
+          "bookingTags"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact3"
+              }
+            ]
+          },
+          "organisation": {
+            "type": "object",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "centre": {
+            "type": "object"
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookingTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "Contact": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "defaultBillingAddress": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "defaultDeliveryAddress": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "Contact2": {
+        "required": [
+          "addresses"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "removed": {
+            "type": "boolean",
+            "default": false
+          },
+          "removedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "removedBy": {
+            "type": "integer",
+            "nullable": true
+          },
+          "defaultBillingAddress": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "defaultDeliveryAddress": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "archivedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "archived": {
+            "type": "integer",
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "LineItem": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "default": "line_item",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "units": {
+            "type": "string",
+            "nullable": true
+          },
+          "course": {
+            "title": "|null",
+            "type": "object",
+            "nullable": true
+          },
+          "capacity": {
+            "type": "integer",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "tease": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellOnPortal": {
+            "type": "boolean",
+            "default": false
+          },
+          "portalSlug": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CourseRun": {
+        "required": [
+          "startDate",
+          "courseRunDates"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "courseCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "numPlaces": {
+            "type": "integer",
+            "default": "6"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "showOnPortal": {
+            "type": "integer",
+            "nullable": true
+          },
+          "courseRunDates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CourseRunDate"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "CustomForm": {
+        "required": [
+          "createdAt",
+          "centre"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "speciality": {
+            "type": "string",
+            "default": ""
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "centre": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "CustomFormSubmissions": {
+        "required": [
+          "customForm",
+          "booking",
+          "createdAt",
+          "customFieldsData"
+        ],
+        "properties": {
+          "customForm": {
+            "type": "object"
+          },
+          "booking": {
+            "type": "object"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "customFieldsData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFieldsData"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking": {
+        "required": [
+          "id",
+          "invoiceType",
+          "booking",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue",
+          "invoicedBookingLineItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "booking": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Booking"
+              }
+            ]
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoicedBookingLineItems": {
+            "title": "Get $invoicedBookingLineItems",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoicedBookingLineItem"
+            }
+          },
+          "invoicedBookingDeposit": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingDeposit"
+              }
+            ]
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking2": {
+        "required": [
+          "id",
+          "invoiceType",
+          "booking",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue",
+          "invoicedBookingLineItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "booking": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Booking2"
+              }
+            ]
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoicedBookingLineItems": {
+            "title": "Get $invoicedBookingLineItems",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoicedBookingLineItem2"
+            }
+          },
+          "invoicedBookingDeposit": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingDeposit2"
+              }
+            ]
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Payment": {
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "paymentAllocations"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "datePaid": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentAllocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentAllocation"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "Payment2": {
+        "required": [
+          "amount",
+          "datePaid",
+          "paymentMethod"
+        ],
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "datePaid": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentMethod": {
+            "type": "string"
+          },
+          "invoiceId": {
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact3": {
+        "required": [
+          "id",
+          "fullName"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "alert": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BookingType": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "colour": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact4": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "removed": {
+            "type": "boolean",
+            "default": false
+          },
+          "removedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "removedBy": {
+            "type": "integer",
+            "nullable": true
+          },
+          "archivedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "archived": {
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "BookingType2": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "colour": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Address": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "address1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "address3": {
+            "type": "string",
+            "nullable": true
+          },
+          "town": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "postCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CourseRunDate": {
+        "required": [
+          "id",
+          "startDate",
+          "endDate"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "type": "object"
+      },
+      "CustomFieldsData": {
+        "required": [
+          "customField"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "default": ""
+          },
+          "subFormSubmission": {
+            "type": "boolean",
+            "default": false
+          },
+          "customField": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "Booking": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact5"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingLineItem": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "qty": {
+            "type": "integer",
+            "default": "0"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPriceWithTax": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "incomeAllocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeCode"
+            },
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingDeposit": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Booking2": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact6"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingLineItem2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "qty": {
+            "type": "integer",
+            "default": "0"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPriceWithTax": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "incomeAllocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IncomeCode2"
+            },
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingDeposit2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "PaymentAllocation": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoicedBooking": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBooking3"
+              }
+            ]
+          },
+          "refund": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Refund"
+              }
+            ]
+          },
+          "allocatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "allocatedAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionGroupId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "actionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "IncomeCode": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "default": "999"
+          },
+          "accountNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "percentage": {
+            "title": "\n\nNon-DB value, calculated and set at the time of api response",
+            "type": "string",
+            "default": "100.00000"
+          }
+        },
+        "type": "object"
+      },
+      "Contact6": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "IncomeCode2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "default": "999"
+          },
+          "accountNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "percentage": {
+            "title": "\n\nNon-DB value, calculated and set at the time of api response",
+            "type": "string",
+            "default": "100.00000"
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking3": {
+        "required": [
+          "id",
+          "invoiceType",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Refund": {
+        "type": "object"
+      }
+    },
+    "parameters": {
+      "offset": {
+        "name": "offset",
+        "in": "query",
+        "description": "An offset used to return a paginated list of results",
+        "schema": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "description": "A limit/max on the number of results returned",
+        "schema": {
+          "type": "integer",
+          "default": 100
+        }
+      },
+      "startDateRange": {
+        "name": "startDate",
+        "in": "query",
+        "description": "Start date of a date range. Used in conjunction with endDate to create a date range to filter by.",
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "endDateRange": {
+        "name": "endDate",
+        "in": "query",
+        "description": "End date of a date range. Used in conjunction with startDate to create a date range to filter by.",
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "headers": {
+      "xAppliedOffset": {
+        "description": "The offset applied to this request.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "xAppliedLimit": {
+        "description": "The limit on the number of results that was applied to this request.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "xTotalCount": {
+        "description": "The total number of items for this query, taking into account any filters that may be applied.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "xRateLimitLimit": {
+        "description": "The rate limit applicable to the current request.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "xRateLimitRemaining": {
+        "description": "The number of requests left for the current rate-limit time window.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "xRateLimitReset": {
+        "description": "The time (UTC epoch time in seconds) at which the rate limit resets.",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "bearerFormat": "JWT",
+        "scheme": "bearer"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Bookings"
+    },
+    {
+      "name": "Contacts"
+    },
+    {
+      "name": "Courses"
+    },
+    {
+      "name": "Custom Forms"
+    },
+    {
+      "name": "Invoices"
+    },
+    {
+      "name": "Line Items"
+    },
+    {
+      "name": "Payments"
+    }
+  ]
 }
