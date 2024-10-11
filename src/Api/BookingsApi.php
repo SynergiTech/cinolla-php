@@ -457,10 +457,10 @@ class BookingsApi
      *
      * Get a collection of Bookings
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
      * @param  bool|null $futureOnly Filter bookings by future only, based on arrival date being greater than now. (optional, default to false)
      * @param  string[]|null $tags Filter bookings by tag name. See tagsOperator. (optional)
@@ -474,10 +474,10 @@ class BookingsApi
      * @return \SynergiTech\Cinolla\Model\ClientBookingCollection[]
      */
     public function getBookings(
-        ?int $offset = 0,
-        ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDateRange = null,
+        ?int $offset = 0,
+        ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
         ?bool $futureOnly = false,
         ?array $tags = null,
@@ -487,7 +487,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): array
     {
-        list($response) = $this->getBookingsWithHttpInfo($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        list($response) = $this->getBookingsWithHttpInfo($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
         return $response;
     }
 
@@ -496,10 +496,10 @@ class BookingsApi
      *
      * Get a collection of Bookings
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
      * @param  bool|null $futureOnly Filter bookings by future only, based on arrival date being greater than now. (optional, default to false)
      * @param  string[]|null $tags Filter bookings by tag name. See tagsOperator. (optional)
@@ -513,10 +513,10 @@ class BookingsApi
      * @return array of \SynergiTech\Cinolla\Model\ClientBookingCollection[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getBookingsWithHttpInfo(
-        ?int $offset = 0,
-        ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDateRange = null,
+        ?int $offset = 0,
+        ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
         ?bool $futureOnly = false,
         ?array $tags = null,
@@ -526,7 +526,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): array
     {
-        $request = $this->getBookingsRequest($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        $request = $this->getBookingsRequest($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -641,10 +641,10 @@ class BookingsApi
      *
      * Get a collection of Bookings
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
      * @param  bool|null $futureOnly Filter bookings by future only, based on arrival date being greater than now. (optional, default to false)
      * @param  string[]|null $tags Filter bookings by tag name. See tagsOperator. (optional)
@@ -657,10 +657,10 @@ class BookingsApi
      * @return PromiseInterface
      */
     public function getBookingsAsync(
-        ?int $offset = 0,
-        ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDateRange = null,
+        ?int $offset = 0,
+        ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
         ?bool $futureOnly = false,
         ?array $tags = null,
@@ -670,7 +670,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): PromiseInterface
     {
-        return $this->getBookingsAsyncWithHttpInfo($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType)
+        return $this->getBookingsAsyncWithHttpInfo($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -683,10 +683,10 @@ class BookingsApi
      *
      * Get a collection of Bookings
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
      * @param  bool|null $futureOnly Filter bookings by future only, based on arrival date being greater than now. (optional, default to false)
      * @param  string[]|null $tags Filter bookings by tag name. See tagsOperator. (optional)
@@ -699,10 +699,10 @@ class BookingsApi
      * @return PromiseInterface
      */
     public function getBookingsAsyncWithHttpInfo(
-        $offset = 0,
-        $limit = 100,
         $startDate = null,
         $endDateRange = null,
+        $offset = 0,
+        $limit = 100,
         $dateRangeFilter = 'arrivalDate',
         $futureOnly = false,
         $tags = null,
@@ -713,7 +713,7 @@ class BookingsApi
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\ClientBookingCollection[]';
-        $request = $this->getBookingsRequest($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        $request = $this->getBookingsRequest($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -754,10 +754,10 @@ class BookingsApi
     /**
      * Create request for operation 'getBookings'
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
      * @param  bool|null $futureOnly Filter bookings by future only, based on arrival date being greater than now. (optional, default to false)
      * @param  string[]|null $tags Filter bookings by tag name. See tagsOperator. (optional)
@@ -770,10 +770,10 @@ class BookingsApi
      * @return \GuzzleHttp\Psr7\Request
      */
     public function getBookingsRequest(
-        $offset = 0,
-        $limit = 100,
         $startDate = null,
         $endDateRange = null,
+        $offset = 0,
+        $limit = 100,
         $dateRangeFilter = 'arrivalDate',
         $futureOnly = false,
         $tags = null,
@@ -804,24 +804,6 @@ class BookingsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $startDate,
             'startDate', // param base name
             'string', // openApiType
@@ -834,6 +816,24 @@ class BookingsApi
             $endDateRange,
             'endDateRange', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

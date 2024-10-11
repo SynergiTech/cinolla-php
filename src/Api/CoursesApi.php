@@ -131,8 +131,8 @@ class CoursesApi
      * Returns a collection of Course Runs for a given course
      *
      * @param  string $id id (required)
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
@@ -162,8 +162,8 @@ class CoursesApi
      * Returns a collection of Course Runs for a given course
      *
      * @param  string $id (required)
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
@@ -299,8 +299,8 @@ class CoursesApi
      * Returns a collection of Course Runs for a given course
      *
      * @param  string $id (required)
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
@@ -333,8 +333,8 @@ class CoursesApi
      * Returns a collection of Course Runs for a given course
      *
      * @param  string $id (required)
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
@@ -396,8 +396,8 @@ class CoursesApi
      * Create request for operation 'getCourseRuns'
      *
      * @param  string $id (required)
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
@@ -557,8 +557,8 @@ class CoursesApi
      *
      * Returns a collection of Courses
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourses'] to see the possible values for this operation
      *
@@ -582,8 +582,8 @@ class CoursesApi
      *
      * Returns a collection of Courses
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourses'] to see the possible values for this operation
      *
@@ -713,8 +713,8 @@ class CoursesApi
      *
      * Returns a collection of Courses
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourses'] to see the possible values for this operation
      *
@@ -741,8 +741,8 @@ class CoursesApi
      *
      * Returns a collection of Courses
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourses'] to see the possible values for this operation
      *
@@ -798,8 +798,8 @@ class CoursesApi
     /**
      * Create request for operation 'getCourses'
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourses'] to see the possible values for this operation
      *

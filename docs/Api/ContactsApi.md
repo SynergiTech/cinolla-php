@@ -1,20 +1,20 @@
-# SynergiTech\Cinolla\CustomFormsApi
+# SynergiTech\Cinolla\ContactsApi
 
 All URIs are relative to https://api.prod.cinolla.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getCustomFormSubmissions()**](CustomFormsApi.md#getCustomFormSubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions |
-| [**getCustomForms()**](CustomFormsApi.md#getCustomForms) | **GET** /v3/client/custom-forms | Get a collection of Custom Forms |
+| [**getContact()**](ContactsApi.md#getContact) | **GET** /v3/client/contacts/{contactHash} | Get detail for a single Contact |
+| [**getContacts()**](ContactsApi.md#getContacts) | **GET** /v3/client/contacts | Returns a collection of Contacts |
 
 
-## `getCustomFormSubmissions()`
+## `getContact()`
 
 ```php
-getCustomFormSubmissions($customFormHash, $offset, $limit, $bookingHash): \SynergiTech\Cinolla\Model\CustomFormSubmissions[]
+getContact($contactHash): \SynergiTech\Cinolla\Model\Contact2
 ```
 
-Get a collection of Custom Form Submissions
+Get detail for a single Contact
 
 ### Example
 
@@ -29,22 +29,19 @@ $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKe
 // $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new SynergiTech\Cinolla\Api\CustomFormsApi(
+$apiInstance = new SynergiTech\Cinolla\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$customFormHash = 'customFormHash_example'; // string | The hash of a Custom Form
-$offset = 0; // int | An offset to return a paginated list of results
-$limit = 100; // int | The limit on the number of results
-$bookingHash = 'bookingHash_example'; // string | Filter results by a single booking
+$contactHash = 'contactHash_example'; // string
 
 try {
-    $result = $apiInstance->getCustomFormSubmissions($customFormHash, $offset, $limit, $bookingHash);
+    $result = $apiInstance->getContact($contactHash);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CustomFormsApi->getCustomFormSubmissions: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContactsApi->getContact: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -52,14 +49,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customFormHash** | **string**| The hash of a Custom Form | |
-| **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
-| **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
-| **bookingHash** | **string**| Filter results by a single booking | [optional] |
+| **contactHash** | **string**|  | |
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\CustomFormSubmissions[]**](../Model/CustomFormSubmissions.md)
+[**\SynergiTech\Cinolla\Model\Contact2**](../Model/Contact2.md)
 
 ### Authorization
 
@@ -74,13 +68,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getCustomForms()`
+## `getContacts()`
 
 ```php
-getCustomForms($offset, $limit): \SynergiTech\Cinolla\Model\CustomForm[]
+getContacts($offset, $limit): \SynergiTech\Cinolla\Model\Contact[]
 ```
 
-Get a collection of Custom Forms
+Returns a collection of Contacts
 
 ### Example
 
@@ -95,7 +89,7 @@ $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKe
 // $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new SynergiTech\Cinolla\Api\CustomFormsApi(
+$apiInstance = new SynergiTech\Cinolla\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -105,10 +99,10 @@ $offset = 0; // int | An offset to return a paginated list of results
 $limit = 100; // int | The limit on the number of results
 
 try {
-    $result = $apiInstance->getCustomForms($offset, $limit);
+    $result = $apiInstance->getContacts($offset, $limit);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CustomFormsApi->getCustomForms: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContactsApi->getContacts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -121,7 +115,7 @@ try {
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\CustomForm[]**](../Model/CustomForm.md)
+[**\SynergiTech\Cinolla\Model\Contact[]**](../Model/Contact.md)
 
 ### Authorization
 

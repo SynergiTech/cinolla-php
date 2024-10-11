@@ -80,6 +80,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BookingsApi* | [**getBooking**](docs/Api/BookingsApi.md#getbooking) | **GET** /v3/client/bookings/{bookingHash} | Get detail for a single Booking
 *BookingsApi* | [**getBookings**](docs/Api/BookingsApi.md#getbookings) | **GET** /v3/client/bookings | Get a collection of Bookings
+*ContactsApi* | [**getContact**](docs/Api/ContactsApi.md#getcontact) | **GET** /v3/client/contacts/{contactHash} | Get detail for a single Contact
+*ContactsApi* | [**getContacts**](docs/Api/ContactsApi.md#getcontacts) | **GET** /v3/client/contacts | Returns a collection of Contacts
 *CoursesApi* | [**getCourseRuns**](docs/Api/CoursesApi.md#getcourseruns) | **GET** /v3/client/courses/{id}/course-runs | Returns a collection of Course Runs for a given course
 *CoursesApi* | [**getCourses**](docs/Api/CoursesApi.md#getcourses) | **GET** /v3/client/courses | Returns a collection of Courses
 *CustomFormsApi* | [**getCustomFormSubmissions**](docs/Api/CustomFormsApi.md#getcustomformsubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions
@@ -95,6 +97,8 @@ Class | Method | HTTP request | Description
 - [BookingType2](docs/Model/BookingType2.md)
 - [ClientBookingCollection](docs/Model/ClientBookingCollection.md)
 - [ClientBookingDetail](docs/Model/ClientBookingDetail.md)
+- [Contact](docs/Model/Contact.md)
+- [Contact2](docs/Model/Contact2.md)
 - [CourseRun](docs/Model/CourseRun.md)
 - [CourseRunDate](docs/Model/CourseRunDate.md)
 - [CustomFieldsData](docs/Model/CustomFieldsData.md)

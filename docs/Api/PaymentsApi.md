@@ -95,8 +95,8 @@ $apiInstance = new SynergiTech\Cinolla\Api\PaymentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 0; // int | An offset used to return a paginated list of results
-$limit = 100; // int | A limit/max on the number of results returned
+$offset = 0; // int | An offset to return a paginated list of results
+$limit = 100; // int | The limit on the number of results
 $startDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
 $endDateRange = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
 $dateRangeFilter = 'datePaid'; // string | Used in conjunction with startDate and endDate to filter Invoices.
@@ -114,8 +114,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **int**| An offset used to return a paginated list of results | [optional] [default to 0] |
-| **limit** | **int**| A limit/max on the number of results returned | [optional] [default to 100] |
+| **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
+| **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
 | **startDate** | **\DateTime**| Start date of a date range. Used in conjunction with endDate to create a date range to filter by. | [optional] |
 | **endDateRange** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
 | **dateRangeFilter** | **string**| Used in conjunction with startDate and endDate to filter Invoices. | [optional] [default to &#39;datePaid&#39;] |

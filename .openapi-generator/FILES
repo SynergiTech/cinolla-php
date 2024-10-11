@@ -5,6 +5,7 @@
 README.md
 composer.json
 docs/Api/BookingsApi.md
+docs/Api/ContactsApi.md
 docs/Api/CoursesApi.md
 docs/Api/CustomFormsApi.md
 docs/Api/InvoicesApi.md
@@ -14,6 +15,8 @@ docs/Model/BookingType.md
 docs/Model/BookingType2.md
 docs/Model/ClientBookingCollection.md
 docs/Model/ClientBookingDetail.md
+docs/Model/Contact.md
+docs/Model/Contact2.md
 docs/Model/CourseRun.md
 docs/Model/CourseRunDate.md
 docs/Model/CustomFieldsData.md
@@ -26,6 +29,7 @@ docs/Model/Payment2.md
 git_push.sh
 phpunit.xml.dist
 src/Api/BookingsApi.php
+src/Api/ContactsApi.php
 src/Api/CoursesApi.php
 src/Api/CustomFormsApi.php
 src/Api/InvoicesApi.php
@@ -38,6 +42,8 @@ src/Model/BookingType.php
 src/Model/BookingType2.php
 src/Model/ClientBookingCollection.php
 src/Model/ClientBookingDetail.php
+src/Model/Contact.php
+src/Model/Contact2.php
 src/Model/CourseRun.php
 src/Model/CourseRunDate.php
 src/Model/CustomFieldsData.php

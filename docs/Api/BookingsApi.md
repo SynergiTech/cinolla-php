@@ -71,7 +71,7 @@ try {
 ## `getBookings()`
 
 ```php
-getBookings($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\ClientBookingCollection[]
+getBookings($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\ClientBookingCollection[]
 ```
 
 Get a collection of Bookings
@@ -95,10 +95,10 @@ $apiInstance = new SynergiTech\Cinolla\Api\BookingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 0; // int | An offset used to return a paginated list of results
-$limit = 100; // int | A limit/max on the number of results returned
 $startDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
 $endDateRange = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
+$offset = 0; // int | An offset to return a paginated list of results
+$limit = 100; // int | The limit on the number of results
 $dateRangeFilter = 'arrivalDate'; // string | Used in conjunction with startDate and endDate to filter bookings.
 $futureOnly = false; // bool | Filter bookings by future only, based on arrival date being greater than now.
 $tags = array('tags_example'); // string[] | Filter bookings by tag name. See tagsOperator.
@@ -107,7 +107,7 @@ $tagsOperator = 'all'; // string | Operator for use with tags or tagIds params. 
 $reference = 'reference_example'; // string | Fuzzy match on booking reference, e.g. B-001 will match B-00100, B-00101, B-00102 etc.
 
 try {
-    $result = $apiInstance->getBookings($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference);
+    $result = $apiInstance->getBookings($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->getBookings: ', $e->getMessage(), PHP_EOL;
@@ -118,10 +118,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **int**| An offset used to return a paginated list of results | [optional] [default to 0] |
-| **limit** | **int**| A limit/max on the number of results returned | [optional] [default to 100] |
 | **startDate** | **\DateTime**| Start date of a date range. Used in conjunction with endDate to create a date range to filter by. | [optional] |
 | **endDateRange** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
+| **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
+| **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
 | **dateRangeFilter** | **string**| Used in conjunction with startDate and endDate to filter bookings. | [optional] [default to &#39;arrivalDate&#39;] |
 | **futureOnly** | **bool**| Filter bookings by future only, based on arrival date being greater than now. | [optional] [default to false] |
 | **tags** | [**string[]**](../Model/string.md)| Filter bookings by tag name. See tagsOperator. | [optional] |

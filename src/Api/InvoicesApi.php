@@ -127,8 +127,8 @@ class InvoicesApi
      *
      * Get a collection of Invoices
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
@@ -158,8 +158,8 @@ class InvoicesApi
      *
      * Get a collection of Invoices
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
@@ -295,8 +295,8 @@ class InvoicesApi
      *
      * Get a collection of Invoices
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
@@ -329,8 +329,8 @@ class InvoicesApi
      *
      * Get a collection of Invoices
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
@@ -392,8 +392,8 @@ class InvoicesApi
     /**
      * Create request for operation 'getInvoices'
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)

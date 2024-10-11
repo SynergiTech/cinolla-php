@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomFormsApi
+ * ContactsApi
  * PHP version 8.1
  *
  * @package  SynergiTech\Cinolla
@@ -41,13 +41,13 @@ use SynergiTech\Cinolla\HeaderSelector;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * CustomFormsApi Class Doc Comment
+ * ContactsApi Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CustomFormsApi
+class ContactsApi
 {
     /**
      * @var ClientInterface
@@ -71,10 +71,10 @@ class CustomFormsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getCustomFormSubmissions' => [
+        'getContact' => [
             'application/json',
         ],
-        'getCustomForms' => [
+        'getContacts' => [
             'application/json',
         ],
     ];
@@ -126,56 +126,44 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomFormSubmissions
+     * Operation getContact
      *
-     * Get a collection of Custom Form Submissions
+     * Get detail for a single Contact
      *
-     * @param  string $customFormHash The hash of a Custom Form (required)
-     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string|null $bookingHash Filter results by a single booking (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFormSubmissions'] to see the possible values for this operation
+     * @param  string $contactHash contactHash (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\CustomFormSubmissions[]
+     * @return \SynergiTech\Cinolla\Model\Contact2
      */
-    public function getCustomFormSubmissions(
-        string $customFormHash,
-        ?int $offset = 0,
-        ?int $limit = 100,
-        ?string $bookingHash = null,
-        string $contentType = self::contentTypes['getCustomFormSubmissions'][0]
-    ): array
+    public function getContact(
+        string $contactHash,
+        string $contentType = self::contentTypes['getContact'][0]
+    ): \SynergiTech\Cinolla\Model\Contact2
     {
-        list($response) = $this->getCustomFormSubmissionsWithHttpInfo($customFormHash, $offset, $limit, $bookingHash, $contentType);
+        list($response) = $this->getContactWithHttpInfo($contactHash, $contentType);
         return $response;
     }
 
     /**
-     * Operation getCustomFormSubmissionsWithHttpInfo
+     * Operation getContactWithHttpInfo
      *
-     * Get a collection of Custom Form Submissions
+     * Get detail for a single Contact
      *
-     * @param  string $customFormHash The hash of a Custom Form (required)
-     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string|null $bookingHash Filter results by a single booking (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFormSubmissions'] to see the possible values for this operation
+     * @param  string $contactHash (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\CustomFormSubmissions[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\Contact2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomFormSubmissionsWithHttpInfo(
-        string $customFormHash,
-        ?int $offset = 0,
-        ?int $limit = 100,
-        ?string $bookingHash = null,
-        string $contentType = self::contentTypes['getCustomFormSubmissions'][0]
+    public function getContactWithHttpInfo(
+        string $contactHash,
+        string $contentType = self::contentTypes['getContact'][0]
     ): array
     {
-        $request = $this->getCustomFormSubmissionsRequest($customFormHash, $offset, $limit, $bookingHash, $contentType);
+        $request = $this->getContactRequest($contactHash, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -214,11 +202,11 @@ class CustomFormsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SynergiTech\Cinolla\Model\CustomFormSubmissions[]' === '\SplFileObject') {
+                    if ('\SynergiTech\Cinolla\Model\Contact2' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\CustomFormSubmissions[]' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\Contact2' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -236,13 +224,13 @@ class CustomFormsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\CustomFormSubmissions[]', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Contact2', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\CustomFormSubmissions[]';
+            $returnType = '\SynergiTech\Cinolla\Model\Contact2';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -275,7 +263,7 @@ class CustomFormsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\CustomFormSubmissions[]',
+                        '\SynergiTech\Cinolla\Model\Contact2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,28 +274,22 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomFormSubmissionsAsync
+     * Operation getContactAsync
      *
-     * Get a collection of Custom Form Submissions
+     * Get detail for a single Contact
      *
-     * @param  string $customFormHash The hash of a Custom Form (required)
-     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string|null $bookingHash Filter results by a single booking (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFormSubmissions'] to see the possible values for this operation
+     * @param  string $contactHash (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getCustomFormSubmissionsAsync(
-        string $customFormHash,
-        ?int $offset = 0,
-        ?int $limit = 100,
-        ?string $bookingHash = null,
-        string $contentType = self::contentTypes['getCustomFormSubmissions'][0]
+    public function getContactAsync(
+        string $contactHash,
+        string $contentType = self::contentTypes['getContact'][0]
     ): PromiseInterface
     {
-        return $this->getCustomFormSubmissionsAsyncWithHttpInfo($customFormHash, $offset, $limit, $bookingHash, $contentType)
+        return $this->getContactAsyncWithHttpInfo($contactHash, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -316,29 +298,23 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomFormSubmissionsAsyncWithHttpInfo
+     * Operation getContactAsyncWithHttpInfo
      *
-     * Get a collection of Custom Form Submissions
+     * Get detail for a single Contact
      *
-     * @param  string $customFormHash The hash of a Custom Form (required)
-     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string|null $bookingHash Filter results by a single booking (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFormSubmissions'] to see the possible values for this operation
+     * @param  string $contactHash (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getCustomFormSubmissionsAsyncWithHttpInfo(
-        $customFormHash,
-        $offset = 0,
-        $limit = 100,
-        $bookingHash = null,
-        string $contentType = self::contentTypes['getCustomFormSubmissions'][0]
+    public function getContactAsyncWithHttpInfo(
+        $contactHash,
+        string $contentType = self::contentTypes['getContact'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\CustomFormSubmissions[]';
-        $request = $this->getCustomFormSubmissionsRequest($customFormHash, $offset, $limit, $bookingHash, $contentType);
+        $returnType = '\SynergiTech\Cinolla\Model\Contact2';
+        $request = $this->getContactRequest($contactHash, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -377,78 +353,42 @@ class CustomFormsApi
     }
 
     /**
-     * Create request for operation 'getCustomFormSubmissions'
+     * Create request for operation 'getContact'
      *
-     * @param  string $customFormHash The hash of a Custom Form (required)
-     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string|null $bookingHash Filter results by a single booking (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFormSubmissions'] to see the possible values for this operation
+     * @param  string $contactHash (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomFormSubmissionsRequest(
-        $customFormHash,
-        $offset = 0,
-        $limit = 100,
-        $bookingHash = null,
-        string $contentType = self::contentTypes['getCustomFormSubmissions'][0]
+    public function getContactRequest(
+        $contactHash,
+        string $contentType = self::contentTypes['getContact'][0]
     ): Request
     {
 
-        // verify the required parameter 'customFormHash' is set
-        if ($customFormHash === null || (is_array($customFormHash) && count($customFormHash) === 0)) {
+        // verify the required parameter 'contactHash' is set
+        if ($contactHash === null || (is_array($contactHash) && count($contactHash) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $customFormHash when calling getCustomFormSubmissions'
+                'Missing the required parameter $contactHash when calling getContact'
             );
         }
 
 
-
-
-
-        $resourcePath = '/v3/client/custom-forms/{customFormHash}/submissions';
+        $resourcePath = '/v3/client/contacts/{contactHash}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $bookingHash,
-            'bookingHash', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params
-        if ($customFormHash !== null) {
+        if ($contactHash !== null) {
             $resourcePath = str_replace(
-                '{' . 'customFormHash' . '}',
-                ObjectSerializer::toPathValue($customFormHash),
+                '{' . 'contactHash' . '}',
+                ObjectSerializer::toPathValue($contactHash),
                 $resourcePath
             );
         }
@@ -513,48 +453,48 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomForms
+     * Operation getContacts
      *
-     * Get a collection of Custom Forms
+     * Returns a collection of Contacts
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomForms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContacts'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\CustomForm[]
+     * @return \SynergiTech\Cinolla\Model\Contact[]
      */
-    public function getCustomForms(
+    public function getContacts(
         ?int $offset = 0,
         ?int $limit = 100,
-        string $contentType = self::contentTypes['getCustomForms'][0]
+        string $contentType = self::contentTypes['getContacts'][0]
     ): array
     {
-        list($response) = $this->getCustomFormsWithHttpInfo($offset, $limit, $contentType);
+        list($response) = $this->getContactsWithHttpInfo($offset, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation getCustomFormsWithHttpInfo
+     * Operation getContactsWithHttpInfo
      *
-     * Get a collection of Custom Forms
+     * Returns a collection of Contacts
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomForms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContacts'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\CustomForm[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\Contact[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomFormsWithHttpInfo(
+    public function getContactsWithHttpInfo(
         ?int $offset = 0,
         ?int $limit = 100,
-        string $contentType = self::contentTypes['getCustomForms'][0]
+        string $contentType = self::contentTypes['getContacts'][0]
     ): array
     {
-        $request = $this->getCustomFormsRequest($offset, $limit, $contentType);
+        $request = $this->getContactsRequest($offset, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -593,11 +533,11 @@ class CustomFormsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SynergiTech\Cinolla\Model\CustomForm[]' === '\SplFileObject') {
+                    if ('\SynergiTech\Cinolla\Model\Contact[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\CustomForm[]' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\Contact[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -615,13 +555,13 @@ class CustomFormsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\CustomForm[]', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Contact[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\CustomForm[]';
+            $returnType = '\SynergiTech\Cinolla\Model\Contact[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -654,7 +594,7 @@ class CustomFormsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\CustomForm[]',
+                        '\SynergiTech\Cinolla\Model\Contact[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -665,24 +605,24 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomFormsAsync
+     * Operation getContactsAsync
      *
-     * Get a collection of Custom Forms
+     * Returns a collection of Contacts
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomForms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContacts'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getCustomFormsAsync(
+    public function getContactsAsync(
         ?int $offset = 0,
         ?int $limit = 100,
-        string $contentType = self::contentTypes['getCustomForms'][0]
+        string $contentType = self::contentTypes['getContacts'][0]
     ): PromiseInterface
     {
-        return $this->getCustomFormsAsyncWithHttpInfo($offset, $limit, $contentType)
+        return $this->getContactsAsyncWithHttpInfo($offset, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -691,25 +631,25 @@ class CustomFormsApi
     }
 
     /**
-     * Operation getCustomFormsAsyncWithHttpInfo
+     * Operation getContactsAsyncWithHttpInfo
      *
-     * Get a collection of Custom Forms
+     * Returns a collection of Contacts
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomForms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContacts'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getCustomFormsAsyncWithHttpInfo(
+    public function getContactsAsyncWithHttpInfo(
         $offset = 0,
         $limit = 100,
-        string $contentType = self::contentTypes['getCustomForms'][0]
+        string $contentType = self::contentTypes['getContacts'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\CustomForm[]';
-        $request = $this->getCustomFormsRequest($offset, $limit, $contentType);
+        $returnType = '\SynergiTech\Cinolla\Model\Contact[]';
+        $request = $this->getContactsRequest($offset, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -748,26 +688,26 @@ class CustomFormsApi
     }
 
     /**
-     * Create request for operation 'getCustomForms'
+     * Create request for operation 'getContacts'
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomForms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContacts'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomFormsRequest(
+    public function getContactsRequest(
         $offset = 0,
         $limit = 100,
-        string $contentType = self::contentTypes['getCustomForms'][0]
+        string $contentType = self::contentTypes['getContacts'][0]
     ): Request
     {
 
 
 
 
-        $resourcePath = '/v3/client/custom-forms';
+        $resourcePath = '/v3/client/contacts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -127,8 +127,8 @@ class LineItemsIncludingCoursesApi
      *
      * Returns a collection of Line Items (including courses)
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $type Filter by the type of the line item, e.g. course (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItems'] to see the possible values for this operation
@@ -154,8 +154,8 @@ class LineItemsIncludingCoursesApi
      *
      * Returns a collection of Line Items (including courses)
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $type Filter by the type of the line item, e.g. course (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItems'] to see the possible values for this operation
@@ -287,8 +287,8 @@ class LineItemsIncludingCoursesApi
      *
      * Returns a collection of Line Items (including courses)
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $type Filter by the type of the line item, e.g. course (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItems'] to see the possible values for this operation
@@ -317,8 +317,8 @@ class LineItemsIncludingCoursesApi
      *
      * Returns a collection of Line Items (including courses)
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $type Filter by the type of the line item, e.g. course (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItems'] to see the possible values for this operation
@@ -376,8 +376,8 @@ class LineItemsIncludingCoursesApi
     /**
      * Create request for operation 'getLineItems'
      *
-     * @param  int|null $offset An offset used to return a paginated list of results (optional, default to 0)
-     * @param  int|null $limit A limit/max on the number of results returned (optional, default to 100)
+     * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
+     * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $type Filter by the type of the line item, e.g. course (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItems'] to see the possible values for this operation

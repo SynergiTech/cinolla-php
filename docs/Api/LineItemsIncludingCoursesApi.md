@@ -34,8 +34,8 @@ $apiInstance = new SynergiTech\Cinolla\Api\LineItemsIncludingCoursesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 0; // int | An offset used to return a paginated list of results
-$limit = 100; // int | A limit/max on the number of results returned
+$offset = 0; // int | An offset to return a paginated list of results
+$limit = 100; // int | The limit on the number of results
 $type = 'type_example'; // string | Filter by the type of the line item, e.g. course
 $sellOnPortal = True; // bool | Filter items to only those marked for sale on the Booking Portal.
 
@@ -51,8 +51,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **int**| An offset used to return a paginated list of results | [optional] [default to 0] |
-| **limit** | **int**| A limit/max on the number of results returned | [optional] [default to 100] |
+| **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
+| **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
 | **type** | **string**| Filter by the type of the line item, e.g. course | [optional] |
 | **sellOnPortal** | **bool**| Filter items to only those marked for sale on the Booking Portal. | [optional] |
 

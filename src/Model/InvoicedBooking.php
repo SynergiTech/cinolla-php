@@ -104,7 +104,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => true,
         'booking' => false,
         'totalNet' => true,
-        'totalGross' => true,
+        'totalGross' => false,
         'createdAt' => false,
         'updatedAt' => false,
         'invoiceDate' => false,
@@ -610,7 +610,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return string
      */
-    public function getTotalGross(): ?string
+    public function getTotalGross(): string
     {
         return $this->container['totalGross'];
     }
@@ -622,17 +622,10 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return $this
      */
-    public function setTotalGross(?string $totalGross): static
+    public function setTotalGross(string $totalGross): static
     {
         if (is_null($totalGross)) {
-            array_push($this->openAPINullablesSetToNull, 'totalGross');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('totalGross', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable totalGross cannot be null');
         }
 
 
