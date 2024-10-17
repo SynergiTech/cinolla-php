@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *CoursesApi* | [**getCourses**](docs/Api/CoursesApi.md#getcourses) | **GET** /v3/client/courses | Returns a collection of Courses
 *CustomFormsApi* | [**getCustomFormSubmissions**](docs/Api/CustomFormsApi.md#getcustomformsubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions
 *CustomFormsApi* | [**getCustomForms**](docs/Api/CustomFormsApi.md#getcustomforms) | **GET** /v3/client/custom-forms | Get a collection of Custom Forms
+*InvoicesApi* | [**getInvoice**](docs/Api/InvoicesApi.md#getinvoice) | **GET** /v3/client/invoices/{id} | Get detail for a single Invoice
 *InvoicesApi* | [**getInvoices**](docs/Api/InvoicesApi.md#getinvoices) | **GET** /v3/client/invoices | Get a collection of Invoices
 *LineItemsIncludingCoursesApi* | [**getLineItems**](docs/Api/LineItemsIncludingCoursesApi.md#getlineitems) | **GET** /v3/client/lineitems | Returns a collection of Line Items (including courses)
 *PaymentsApi* | [**createPayment**](docs/Api/PaymentsApi.md#createpayment) | **POST** /v3/client/payments | Create a new Payment.
