@@ -743,9 +743,9 @@
     "/v3/client/lineitems": {
       "get": {
         "tags": [
-          "Line Items (Including Courses)"
+          "Line Items"
         ],
-        "summary": "Returns a collection of Line Items (including courses)",
+        "summary": "Returns a collection of Line Items.",
         "operationId": "getLineItems",
         "parameters": [
           {
@@ -793,7 +793,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns a collection of Line Items (including courses)",
+            "description": "Returns a collection of Line Items.",
             "headers": {
               "x-applied-offset": {
                 "$ref": "#/components/headers/xAppliedOffset"
@@ -1471,18 +1471,24 @@
         "type": "object"
       },
       "Payment2": {
+        "required": [
+          "amount",
+          "datePaid",
+          "paymentMethod"
+        ],
         "properties": {
           "amount": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "datePaid": {
             "type": "string",
-            "format": "date-time",
-            "nullable": true
+            "format": "date-time"
           },
           "paymentMethod": {
-            "type": "string",
+            "type": "string"
+          },
+          "invoiceId": {
+            "type": "integer",
             "nullable": true
           }
         },
@@ -1659,7 +1665,7 @@
       "name": "Invoices"
     },
     {
-      "name": "Line Items (Including Courses)"
+      "name": "Line Items"
     },
     {
       "name": "Payments"

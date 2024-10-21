@@ -60,7 +60,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPITypes = [
         'amount' => 'string',
         'datePaid' => '\DateTime',
-        'paymentMethod' => 'string'
+        'paymentMethod' => 'string',
+        'invoiceId' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPIFormats = [
         'amount' => null,
         'datePaid' => 'date-time',
-        'paymentMethod' => null
+        'paymentMethod' => null,
+        'invoiceId' => null
     ];
 
     /**
@@ -80,9 +82,10 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'amount' => true,
-        'datePaid' => true,
-        'paymentMethod' => true
+        'amount' => false,
+        'datePaid' => false,
+        'paymentMethod' => false,
+        'invoiceId' => true
     ];
 
     /**
@@ -173,7 +176,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $attributeMap = [
         'amount' => 'amount',
         'datePaid' => 'datePaid',
-        'paymentMethod' => 'paymentMethod'
+        'paymentMethod' => 'paymentMethod',
+        'invoiceId' => 'invoiceId'
     ];
 
     /**
@@ -184,7 +188,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $setters = [
         'amount' => 'setAmount',
         'datePaid' => 'setDatePaid',
-        'paymentMethod' => 'setPaymentMethod'
+        'paymentMethod' => 'setPaymentMethod',
+        'invoiceId' => 'setInvoiceId'
     ];
 
     /**
@@ -195,7 +200,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $getters = [
         'amount' => 'getAmount',
         'datePaid' => 'getDatePaid',
-        'paymentMethod' => 'getPaymentMethod'
+        'paymentMethod' => 'getPaymentMethod',
+        'invoiceId' => 'getInvoiceId'
     ];
 
     /**
@@ -257,6 +263,7 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('datePaid', $data ?? [], null);
         $this->setIfExists('paymentMethod', $data ?? [], null);
+        $this->setIfExists('invoiceId', $data ?? [], null);
     }
 
     /**
@@ -286,6 +293,15 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['datePaid'] === null) {
+            $invalidProperties[] = "'datePaid' can't be null";
+        }
+        if ($this->container['paymentMethod'] === null) {
+            $invalidProperties[] = "'paymentMethod' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -304,9 +320,9 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets amount
      *
-     * @return string|null
+     * @return string
      */
-    public function getAmount(): ?string
+    public function getAmount(): string
     {
         return $this->container['amount'];
     }
@@ -314,21 +330,14 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets amount
      *
-     * @param string|null $amount amount
+     * @param string $amount amount
      *
      * @return $this
      */
-    public function setAmount(?string $amount): static
+    public function setAmount(string $amount): static
     {
         if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
 
@@ -338,9 +347,9 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets datePaid
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getDatePaid(): ?\DateTime
+    public function getDatePaid(): \DateTime
     {
         return $this->container['datePaid'];
     }
@@ -348,21 +357,14 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets datePaid
      *
-     * @param \DateTime|null $datePaid datePaid
+     * @param \DateTime $datePaid datePaid
      *
      * @return $this
      */
-    public function setDatePaid(?\DateTime $datePaid): static
+    public function setDatePaid(\DateTime $datePaid): static
     {
         if (is_null($datePaid)) {
-            array_push($this->openAPINullablesSetToNull, 'datePaid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('datePaid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable datePaid cannot be null');
         }
         $this->container['datePaid'] = $datePaid;
 
@@ -372,9 +374,9 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets paymentMethod
      *
-     * @return string|null
+     * @return string
      */
-    public function getPaymentMethod(): ?string
+    public function getPaymentMethod(): string
     {
         return $this->container['paymentMethod'];
     }
@@ -382,23 +384,50 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets paymentMethod
      *
-     * @param string|null $paymentMethod paymentMethod
+     * @param string $paymentMethod paymentMethod
      *
      * @return $this
      */
-    public function setPaymentMethod(?string $paymentMethod): static
+    public function setPaymentMethod(string $paymentMethod): static
     {
         if (is_null($paymentMethod)) {
-            array_push($this->openAPINullablesSetToNull, 'paymentMethod');
+            throw new InvalidArgumentException('non-nullable paymentMethod cannot be null');
+        }
+        $this->container['paymentMethod'] = $paymentMethod;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoiceId
+     *
+     * @return int|null
+     */
+    public function getInvoiceId(): ?int
+    {
+        return $this->container['invoiceId'];
+    }
+
+    /**
+     * Sets invoiceId
+     *
+     * @param int|null $invoiceId invoiceId
+     *
+     * @return $this
+     */
+    public function setInvoiceId(?int $invoiceId): static
+    {
+        if (is_null($invoiceId)) {
+            array_push($this->openAPINullablesSetToNull, 'invoiceId');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paymentMethod', $nullablesSetToNull);
+            $index = array_search('invoiceId', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paymentMethod'] = $paymentMethod;
+        $this->container['invoiceId'] = $invoiceId;
 
         return $this;
     }

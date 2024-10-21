@@ -9,7 +9,7 @@ docs/Api/ContactsApi.md
 docs/Api/CoursesApi.md
 docs/Api/CustomFormsApi.md
 docs/Api/InvoicesApi.md
-docs/Api/LineItemsIncludingCoursesApi.md
+docs/Api/LineItemsApi.md
 docs/Api/PaymentsApi.md
 docs/Model/BookingType.md
 docs/Model/BookingType2.md
@@ -33,7 +33,7 @@ src/Api/ContactsApi.php
 src/Api/CoursesApi.php
 src/Api/CustomFormsApi.php
 src/Api/InvoicesApi.php
-src/Api/LineItemsIncludingCoursesApi.php
+src/Api/LineItemsApi.php
 src/Api/PaymentsApi.php
 src/ApiException.php
 src/Configuration.php

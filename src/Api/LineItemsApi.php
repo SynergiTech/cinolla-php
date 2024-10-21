@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemsIncludingCoursesApi
+ * LineItemsApi
  * PHP version 8.1
  *
  * @package  SynergiTech\Cinolla
@@ -41,13 +41,13 @@ use SynergiTech\Cinolla\HeaderSelector;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * LineItemsIncludingCoursesApi Class Doc Comment
+ * LineItemsApi Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class LineItemsIncludingCoursesApi
+class LineItemsApi
 {
     /**
      * @var ClientInterface
@@ -125,7 +125,7 @@ class LineItemsIncludingCoursesApi
     /**
      * Operation getLineItems
      *
-     * Returns a collection of Line Items (including courses)
+     * Returns a collection of Line Items.
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
@@ -152,7 +152,7 @@ class LineItemsIncludingCoursesApi
     /**
      * Operation getLineItemsWithHttpInfo
      *
-     * Returns a collection of Line Items (including courses)
+     * Returns a collection of Line Items.
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
@@ -285,7 +285,7 @@ class LineItemsIncludingCoursesApi
     /**
      * Operation getLineItemsAsync
      *
-     * Returns a collection of Line Items (including courses)
+     * Returns a collection of Line Items.
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
@@ -315,7 +315,7 @@ class LineItemsIncludingCoursesApi
     /**
      * Operation getLineItemsAsyncWithHttpInfo
      *
-     * Returns a collection of Line Items (including courses)
+     * Returns a collection of Line Items.
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)

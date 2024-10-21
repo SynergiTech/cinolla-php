@@ -1,10 +1,10 @@
-# SynergiTech\Cinolla\LineItemsIncludingCoursesApi
+# SynergiTech\Cinolla\LineItemsApi
 
 All URIs are relative to https://api.prod.cinolla.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getLineItems()**](LineItemsIncludingCoursesApi.md#getLineItems) | **GET** /v3/client/lineitems | Returns a collection of Line Items (including courses) |
+| [**getLineItems()**](LineItemsApi.md#getLineItems) | **GET** /v3/client/lineitems | Returns a collection of Line Items. |
 
 
 ## `getLineItems()`
@@ -13,7 +13,7 @@ All URIs are relative to https://api.prod.cinolla.com, except if the operation d
 getLineItems($offset, $limit, $type, $sellOnPortal): \SynergiTech\Cinolla\Model\LineItem[]
 ```
 
-Returns a collection of Line Items (including courses)
+Returns a collection of Line Items.
 
 ### Example
 
@@ -28,7 +28,7 @@ $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKe
 // $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
 
-$apiInstance = new SynergiTech\Cinolla\Api\LineItemsIncludingCoursesApi(
+$apiInstance = new SynergiTech\Cinolla\Api\LineItemsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -43,7 +43,7 @@ try {
     $result = $apiInstance->getLineItems($offset, $limit, $type, $sellOnPortal);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LineItemsIncludingCoursesApi->getLineItems: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LineItemsApi->getLineItems: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
