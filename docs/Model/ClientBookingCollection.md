@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **string** |  | [optional]
 **hash** | **string** |  | [optional]
-**contact** | **object** |  | [optional]
+**contact** | [**\SynergiTech\Cinolla\Model\ClientBookingCollectionContact**](ClientBookingCollectionContact.md) |  | [optional]
 **organisation** | **object** |  | [optional]
 **status** | **string** |  |
 **totalCost** | **string** |  | [optional]

@@ -731,7 +731,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/InvoicedBooking"
+                    "$ref": "#/components/schemas/InvoicedBooking2"
                   }
                 }
               }
@@ -966,8 +966,12 @@
             "nullable": true
           },
           "contact": {
-            "type": "object",
-            "nullable": true
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact4"
+              }
+            ]
           },
           "organisation": {
             "type": "object",
@@ -1040,8 +1044,12 @@
             "nullable": true
           },
           "contact": {
-            "type": "object",
-            "nullable": true
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact3"
+              }
+            ]
           },
           "organisation": {
             "type": "object",
@@ -1404,7 +1412,80 @@
             "nullable": true
           },
           "booking": {
-            "type": "object"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Booking"
+              }
+            ]
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking2": {
+        "required": [
+          "id",
+          "invoiceType",
+          "booking",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "booking": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Booking2"
+              }
+            ]
           },
           "totalNet": {
             "type": "string",
@@ -1494,6 +1575,77 @@
         },
         "type": "object"
       },
+      "Contact3": {
+        "required": [
+          "id",
+          "fullName"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "alert": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "BookingType": {
         "properties": {
           "name": {
@@ -1502,6 +1654,80 @@
           },
           "colour": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact4": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "removed": {
+            "type": "boolean",
+            "default": false
+          },
+          "removedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "removedBy": {
+            "type": "integer",
+            "nullable": true
+          },
+          "archivedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "archived": {
+            "type": "integer",
             "nullable": true
           }
         },
@@ -1549,6 +1775,230 @@
           },
           "customField": {
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "Booking": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact5"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Booking2": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "reference": {
+            "title": "Set the value of reference",
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact6"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "quote",
+              "draft",
+              "confirmed"
+            ]
+          },
+          "totalCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "netCost": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Contact6": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "type": "object"

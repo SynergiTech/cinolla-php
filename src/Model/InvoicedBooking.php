@@ -62,7 +62,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => 'int',
         'invoiceType' => 'string',
         'status' => 'string',
-        'booking' => 'object',
+        'booking' => '\SynergiTech\Cinolla\Model\InvoicedBookingBooking',
         'totalNet' => 'string',
         'totalGross' => 'string',
         'createdAt' => '\DateTime',
@@ -547,9 +547,9 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets booking
      *
-     * @return object
+     * @return \SynergiTech\Cinolla\Model\InvoicedBookingBooking
      */
-    public function getBooking(): object
+    public function getBooking(): \SynergiTech\Cinolla\Model\InvoicedBookingBooking
     {
         return $this->container['booking'];
     }
@@ -557,11 +557,11 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets booking
      *
-     * @param object $booking booking
+     * @param \SynergiTech\Cinolla\Model\InvoicedBookingBooking $booking booking
      *
      * @return $this
      */
-    public function setBooking(object $booking): static
+    public function setBooking(\SynergiTech\Cinolla\Model\InvoicedBookingBooking $booking): static
     {
         if (is_null($booking)) {
             throw new InvalidArgumentException('non-nullable booking cannot be null');

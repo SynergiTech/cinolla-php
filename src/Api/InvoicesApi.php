@@ -135,7 +135,7 @@ class InvoicesApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\InvoicedBooking[]
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2[]
      */
     public function getInvoice(
         string $id,
@@ -156,7 +156,7 @@ class InvoicesApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\InvoicedBooking[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\InvoicedBooking2[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoiceWithHttpInfo(
         string $id,
@@ -202,11 +202,11 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SynergiTech\Cinolla\Model\InvoicedBooking[]' === '\SplFileObject') {
+                    if ('\SynergiTech\Cinolla\Model\InvoicedBooking2[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\InvoicedBooking[]' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\InvoicedBooking2[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -224,13 +224,13 @@ class InvoicesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\InvoicedBooking[]', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\InvoicedBooking2[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking[]';
+            $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking2[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -263,7 +263,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\InvoicedBooking[]',
+                        '\SynergiTech\Cinolla\Model\InvoicedBooking2[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -313,7 +313,7 @@ class InvoicesApi
         string $contentType = self::contentTypes['getInvoice'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking[]';
+        $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking2[]';
         $request = $this->getInvoiceRequest($id, $contentType);
 
         return $this->client

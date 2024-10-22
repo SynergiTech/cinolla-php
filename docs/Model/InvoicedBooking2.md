@@ -1,4 +1,4 @@
-# # InvoicedBooking
+# # InvoicedBooking2
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **invoiceNumber** | **int** |  | [optional]
 **invoiceType** | **string** |  |
 **status** | **string** |  | [optional] [default to 'draft']
-**booking** | [**\SynergiTech\Cinolla\Model\InvoicedBookingBooking**](InvoicedBookingBooking.md) |  |
+**booking** | [**\SynergiTech\Cinolla\Model\InvoicedBooking2Booking**](InvoicedBooking2Booking.md) |  |
 **totalNet** | **string** |  | [optional]
 **totalGross** | **string** |  |
 **createdAt** | **\DateTime** |  |

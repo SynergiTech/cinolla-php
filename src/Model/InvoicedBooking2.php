@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientBookingCollection
+ * InvoicedBooking2
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ClientBookingCollection Class Doc Comment
+ * InvoicedBooking2 Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerializable
+class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ClientBookingCollection';
+    protected static string $openAPIModelName = 'InvoicedBooking2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,19 +58,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'reference' => 'string',
-        'hash' => 'string',
-        'contact' => '\SynergiTech\Cinolla\Model\ClientBookingCollectionContact',
-        'organisation' => 'object',
+        'id' => 'int',
+        'invoiceNumber' => 'int',
+        'invoiceType' => 'string',
         'status' => 'string',
-        'totalCost' => 'string',
-        'netCost' => 'string',
+        'booking' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Booking',
+        'totalNet' => 'string',
+        'totalGross' => 'string',
         'createdAt' => '\DateTime',
-        'centre' => 'object',
-        'arrivalDate' => '\DateTime',
-        'departureDate' => '\DateTime',
-        'origin' => 'string',
-        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType[]'
+        'updatedAt' => '\DateTime',
+        'invoiceDate' => '\DateTime',
+        'invoiceDue' => '\DateTime',
+        'type' => 'string'
     ];
 
     /**
@@ -79,19 +78,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'reference' => null,
-        'hash' => null,
-        'contact' => null,
-        'organisation' => null,
+        'id' => null,
+        'invoiceNumber' => null,
+        'invoiceType' => null,
         'status' => null,
-        'totalCost' => null,
-        'netCost' => null,
+        'booking' => null,
+        'totalNet' => null,
+        'totalGross' => null,
         'createdAt' => 'date-time',
-        'centre' => null,
-        'arrivalDate' => 'date-time',
-        'departureDate' => 'date-time',
-        'origin' => null,
-        'bookingTags' => null
+        'updatedAt' => 'date-time',
+        'invoiceDate' => 'date-time',
+        'invoiceDue' => 'date-time',
+        'type' => null
     ];
 
     /**
@@ -100,19 +98,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'reference' => true,
-        'hash' => true,
-        'contact' => true,
-        'organisation' => true,
-        'status' => false,
-        'totalCost' => true,
-        'netCost' => true,
-        'createdAt' => true,
-        'centre' => false,
-        'arrivalDate' => true,
-        'departureDate' => true,
-        'origin' => true,
-        'bookingTags' => false
+        'id' => false,
+        'invoiceNumber' => true,
+        'invoiceType' => false,
+        'status' => true,
+        'booking' => false,
+        'totalNet' => true,
+        'totalGross' => false,
+        'createdAt' => false,
+        'updatedAt' => false,
+        'invoiceDate' => false,
+        'invoiceDue' => false,
+        'type' => true
     ];
 
     /**
@@ -201,19 +198,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'reference' => 'reference',
-        'hash' => 'hash',
-        'contact' => 'contact',
-        'organisation' => 'organisation',
+        'id' => 'id',
+        'invoiceNumber' => 'invoiceNumber',
+        'invoiceType' => 'invoiceType',
         'status' => 'status',
-        'totalCost' => 'totalCost',
-        'netCost' => 'netCost',
+        'booking' => 'booking',
+        'totalNet' => 'totalNet',
+        'totalGross' => 'totalGross',
         'createdAt' => 'createdAt',
-        'centre' => 'centre',
-        'arrivalDate' => 'arrivalDate',
-        'departureDate' => 'departureDate',
-        'origin' => 'origin',
-        'bookingTags' => 'bookingTags'
+        'updatedAt' => 'updatedAt',
+        'invoiceDate' => 'invoiceDate',
+        'invoiceDue' => 'invoiceDue',
+        'type' => 'type'
     ];
 
     /**
@@ -222,19 +218,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $setters = [
-        'reference' => 'setReference',
-        'hash' => 'setHash',
-        'contact' => 'setContact',
-        'organisation' => 'setOrganisation',
+        'id' => 'setId',
+        'invoiceNumber' => 'setInvoiceNumber',
+        'invoiceType' => 'setInvoiceType',
         'status' => 'setStatus',
-        'totalCost' => 'setTotalCost',
-        'netCost' => 'setNetCost',
+        'booking' => 'setBooking',
+        'totalNet' => 'setTotalNet',
+        'totalGross' => 'setTotalGross',
         'createdAt' => 'setCreatedAt',
-        'centre' => 'setCentre',
-        'arrivalDate' => 'setArrivalDate',
-        'departureDate' => 'setDepartureDate',
-        'origin' => 'setOrigin',
-        'bookingTags' => 'setBookingTags'
+        'updatedAt' => 'setUpdatedAt',
+        'invoiceDate' => 'setInvoiceDate',
+        'invoiceDue' => 'setInvoiceDue',
+        'type' => 'setType'
     ];
 
     /**
@@ -243,19 +238,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $getters = [
-        'reference' => 'getReference',
-        'hash' => 'getHash',
-        'contact' => 'getContact',
-        'organisation' => 'getOrganisation',
+        'id' => 'getId',
+        'invoiceNumber' => 'getInvoiceNumber',
+        'invoiceType' => 'getInvoiceType',
         'status' => 'getStatus',
-        'totalCost' => 'getTotalCost',
-        'netCost' => 'getNetCost',
+        'booking' => 'getBooking',
+        'totalNet' => 'getTotalNet',
+        'totalGross' => 'getTotalGross',
         'createdAt' => 'getCreatedAt',
-        'centre' => 'getCentre',
-        'arrivalDate' => 'getArrivalDate',
-        'departureDate' => 'getDepartureDate',
-        'origin' => 'getOrigin',
-        'bookingTags' => 'getBookingTags'
+        'updatedAt' => 'getUpdatedAt',
+        'invoiceDate' => 'getInvoiceDate',
+        'invoiceDue' => 'getInvoiceDue',
+        'type' => 'getType'
     ];
 
     /**
@@ -299,21 +293,19 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const STATUS_QUOTE = 'quote';
-    public const STATUS_DRAFT = 'draft';
-    public const STATUS_CONFIRMED = 'confirmed';
+    public const INVOICE_TYPE_STANDARD = 'standard';
+    public const INVOICE_TYPE_DEPOSIT = 'deposit';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getStatusAllowableValues()
+    public function getInvoiceTypeAllowableValues()
     {
         return [
-            self::STATUS_QUOTE,
-            self::STATUS_DRAFT,
-            self::STATUS_CONFIRMED,
+            self::INVOICE_TYPE_STANDARD,
+            self::INVOICE_TYPE_DEPOSIT,
         ];
     }
 
@@ -331,19 +323,18 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('reference', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('contact', $data ?? [], null);
-        $this->setIfExists('organisation', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('totalCost', $data ?? [], null);
-        $this->setIfExists('netCost', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('invoiceNumber', $data ?? [], null);
+        $this->setIfExists('invoiceType', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], 'draft');
+        $this->setIfExists('booking', $data ?? [], null);
+        $this->setIfExists('totalNet', $data ?? [], null);
+        $this->setIfExists('totalGross', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('centre', $data ?? [], null);
-        $this->setIfExists('arrivalDate', $data ?? [], null);
-        $this->setIfExists('departureDate', $data ?? [], null);
-        $this->setIfExists('origin', $data ?? [], null);
-        $this->setIfExists('bookingTags', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
+        $this->setIfExists('invoiceDate', $data ?? [], null);
+        $this->setIfExists('invoiceDue', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -373,20 +364,38 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ($this->container['invoiceType'] === null) {
+            $invalidProperties[] = "'invoiceType' can't be null";
+        }
+        $allowedValues = $this->getInvoiceTypeAllowableValues();
+        if (!is_null($this->container['invoiceType']) && !in_array($this->container['invoiceType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
+                "invalid value '%s' for 'invoiceType', must be one of '%s'",
+                $this->container['invoiceType'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['bookingTags'] === null) {
-            $invalidProperties[] = "'bookingTags' can't be null";
+        if ($this->container['booking'] === null) {
+            $invalidProperties[] = "'booking' can't be null";
+        }
+        if ($this->container['totalGross'] === null) {
+            $invalidProperties[] = "'totalGross' can't be null";
+        }
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
+        }
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
+        }
+        if ($this->container['invoiceDate'] === null) {
+            $invalidProperties[] = "'invoiceDate' can't be null";
+        }
+        if ($this->container['invoiceDue'] === null) {
+            $invalidProperties[] = "'invoiceDue' can't be null";
         }
         return $invalidProperties;
     }
@@ -404,137 +413,99 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
 
 
     /**
-     * Gets reference
+     * Gets id
      *
-     * @return string|null
+     * @return int
      */
-    public function getReference(): ?string
+    public function getId(): int
     {
-        return $this->container['reference'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets reference
+     * Sets id
      *
-     * @param string|null $reference reference
+     * @param int $id id
      *
      * @return $this
      */
-    public function setReference(?string $reference): static
+    public function setId(int $id): static
     {
-        if (is_null($reference)) {
-            array_push($this->openAPINullablesSetToNull, 'reference');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($id)) {
+            throw new InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['reference'] = $reference;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets hash
+     * Gets invoiceNumber
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getHash(): ?string
+    public function getInvoiceNumber(): ?int
     {
-        return $this->container['hash'];
+        return $this->container['invoiceNumber'];
     }
 
     /**
-     * Sets hash
+     * Sets invoiceNumber
      *
-     * @param string|null $hash hash
+     * @param int|null $invoiceNumber invoiceNumber
      *
      * @return $this
      */
-    public function setHash(?string $hash): static
+    public function setInvoiceNumber(?int $invoiceNumber): static
     {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
+        if (is_null($invoiceNumber)) {
+            array_push($this->openAPINullablesSetToNull, 'invoiceNumber');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
+            $index = array_search('invoiceNumber', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hash'] = $hash;
+        $this->container['invoiceNumber'] = $invoiceNumber;
 
         return $this;
     }
 
     /**
-     * Gets contact
+     * Gets invoiceType
      *
-     * @return \SynergiTech\Cinolla\Model\ClientBookingCollectionContact|null
+     * @return string
      */
-    public function getContact(): ?\SynergiTech\Cinolla\Model\ClientBookingCollectionContact
+    public function getInvoiceType(): string
     {
-        return $this->container['contact'];
+        return $this->container['invoiceType'];
     }
 
     /**
-     * Sets contact
+     * Sets invoiceType
      *
-     * @param \SynergiTech\Cinolla\Model\ClientBookingCollectionContact|null $contact contact
+     * @param string $invoiceType invoiceType
      *
      * @return $this
      */
-    public function setContact(?\SynergiTech\Cinolla\Model\ClientBookingCollectionContact $contact): static
+    public function setInvoiceType(string $invoiceType): static
     {
-        if (is_null($contact)) {
-            array_push($this->openAPINullablesSetToNull, 'contact');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('contact', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($invoiceType)) {
+            throw new InvalidArgumentException('non-nullable invoiceType cannot be null');
         }
-        $this->container['contact'] = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Gets organisation
-     *
-     * @return object|null
-     */
-    public function getOrganisation(): ?object
-    {
-        return $this->container['organisation'];
-    }
-
-    /**
-     * Sets organisation
-     *
-     * @param object|null $organisation organisation
-     *
-     * @return $this
-     */
-    public function setOrganisation(?object $organisation): static
-    {
-        if (is_null($organisation)) {
-            array_push($this->openAPINullablesSetToNull, 'organisation');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('organisation', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getInvoiceTypeAllowableValues();
+        if (!in_array($invoiceType, $allowedValues, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'invoiceType', must be one of '%s'",
+                    $invoiceType,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['organisation'] = $organisation;
+        $this->container['invoiceType'] = $invoiceType;
 
         return $this;
     }
@@ -542,9 +513,9 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -552,24 +523,21 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param string|null $status status
      *
      * @return $this
      */
-    public function setStatus(string $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 
@@ -577,69 +545,91 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     }
 
     /**
-     * Gets totalCost
+     * Gets booking
      *
-     * @return string|null
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Booking
      */
-    public function getTotalCost(): ?string
+    public function getBooking(): \SynergiTech\Cinolla\Model\InvoicedBooking2Booking
     {
-        return $this->container['totalCost'];
+        return $this->container['booking'];
     }
 
     /**
-     * Sets totalCost
+     * Sets booking
      *
-     * @param string|null $totalCost totalCost
+     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Booking $booking booking
      *
      * @return $this
      */
-    public function setTotalCost(?string $totalCost): static
+    public function setBooking(\SynergiTech\Cinolla\Model\InvoicedBooking2Booking $booking): static
     {
-        if (is_null($totalCost)) {
-            array_push($this->openAPINullablesSetToNull, 'totalCost');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('totalCost', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($booking)) {
+            throw new InvalidArgumentException('non-nullable booking cannot be null');
         }
-        $this->container['totalCost'] = $totalCost;
+        $this->container['booking'] = $booking;
 
         return $this;
     }
 
     /**
-     * Gets netCost
+     * Gets totalNet
      *
      * @return string|null
      */
-    public function getNetCost(): ?string
+    public function getTotalNet(): ?string
     {
-        return $this->container['netCost'];
+        return $this->container['totalNet'];
     }
 
     /**
-     * Sets netCost
+     * Sets totalNet
      *
-     * @param string|null $netCost netCost
+     * @param string|null $totalNet totalNet
      *
      * @return $this
      */
-    public function setNetCost(?string $netCost): static
+    public function setTotalNet(?string $totalNet): static
     {
-        if (is_null($netCost)) {
-            array_push($this->openAPINullablesSetToNull, 'netCost');
+        if (is_null($totalNet)) {
+            array_push($this->openAPINullablesSetToNull, 'totalNet');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('netCost', $nullablesSetToNull);
+            $index = array_search('totalNet', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['netCost'] = $netCost;
+        $this->container['totalNet'] = $totalNet;
+
+        return $this;
+    }
+
+    /**
+     * Gets totalGross
+     *
+     * @return string
+     */
+    public function getTotalGross(): string
+    {
+        return $this->container['totalGross'];
+    }
+
+    /**
+     * Sets totalGross
+     *
+     * @param string $totalGross totalGross
+     *
+     * @return $this
+     */
+    public function setTotalGross(string $totalGross): static
+    {
+        if (is_null($totalGross)) {
+            throw new InvalidArgumentException('non-nullable totalGross cannot be null');
+        }
+
+
+        $this->container['totalGross'] = $totalGross;
 
         return $this;
     }
@@ -647,9 +637,9 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets createdAt
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->container['createdAt'];
     }
@@ -657,21 +647,14 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets createdAt
      *
-     * @param \DateTime|null $createdAt createdAt
+     * @param \DateTime $createdAt createdAt
      *
      * @return $this
      */
-    public function setCreatedAt(?\DateTime $createdAt): static
+    public function setCreatedAt(\DateTime $createdAt): static
     {
         if (is_null($createdAt)) {
-            array_push($this->openAPINullablesSetToNull, 'createdAt');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('createdAt', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
         }
         $this->container['createdAt'] = $createdAt;
 
@@ -679,157 +662,116 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     }
 
     /**
-     * Gets centre
+     * Gets updatedAt
      *
-     * @return object|null
+     * @return \DateTime
      */
-    public function getCentre(): ?object
+    public function getUpdatedAt(): \DateTime
     {
-        return $this->container['centre'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets centre
+     * Sets updatedAt
      *
-     * @param object|null $centre centre
+     * @param \DateTime $updatedAt updatedAt
      *
      * @return $this
      */
-    public function setCentre(?object $centre): static
+    public function setUpdatedAt(\DateTime $updatedAt): static
     {
-        if (is_null($centre)) {
-            throw new InvalidArgumentException('non-nullable centre cannot be null');
+        if (is_null($updatedAt)) {
+            throw new InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['centre'] = $centre;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Gets arrivalDate
+     * Gets invoiceDate
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getArrivalDate(): ?\DateTime
+    public function getInvoiceDate(): \DateTime
     {
-        return $this->container['arrivalDate'];
+        return $this->container['invoiceDate'];
     }
 
     /**
-     * Sets arrivalDate
+     * Sets invoiceDate
      *
-     * @param \DateTime|null $arrivalDate arrivalDate
+     * @param \DateTime $invoiceDate invoiceDate
      *
      * @return $this
      */
-    public function setArrivalDate(?\DateTime $arrivalDate): static
+    public function setInvoiceDate(\DateTime $invoiceDate): static
     {
-        if (is_null($arrivalDate)) {
-            array_push($this->openAPINullablesSetToNull, 'arrivalDate');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('arrivalDate', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($invoiceDate)) {
+            throw new InvalidArgumentException('non-nullable invoiceDate cannot be null');
         }
-        $this->container['arrivalDate'] = $arrivalDate;
+        $this->container['invoiceDate'] = $invoiceDate;
 
         return $this;
     }
 
     /**
-     * Gets departureDate
+     * Gets invoiceDue
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getDepartureDate(): ?\DateTime
+    public function getInvoiceDue(): \DateTime
     {
-        return $this->container['departureDate'];
+        return $this->container['invoiceDue'];
     }
 
     /**
-     * Sets departureDate
+     * Sets invoiceDue
      *
-     * @param \DateTime|null $departureDate departureDate
+     * @param \DateTime $invoiceDue invoiceDue
      *
      * @return $this
      */
-    public function setDepartureDate(?\DateTime $departureDate): static
+    public function setInvoiceDue(\DateTime $invoiceDue): static
     {
-        if (is_null($departureDate)) {
-            array_push($this->openAPINullablesSetToNull, 'departureDate');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('departureDate', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($invoiceDue)) {
+            throw new InvalidArgumentException('non-nullable invoiceDue cannot be null');
         }
-        $this->container['departureDate'] = $departureDate;
+        $this->container['invoiceDue'] = $invoiceDue;
 
         return $this;
     }
 
     /**
-     * Gets origin
+     * Gets type
      *
      * @return string|null
      */
-    public function getOrigin(): ?string
+    public function getType(): ?string
     {
-        return $this->container['origin'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets origin
+     * Sets type
      *
-     * @param string|null $origin origin
+     * @param string|null $type type
      *
      * @return $this
      */
-    public function setOrigin(?string $origin): static
+    public function setType(?string $type): static
     {
-        if (is_null($origin)) {
-            array_push($this->openAPINullablesSetToNull, 'origin');
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('origin', $nullablesSetToNull);
+            $index = array_search('type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['origin'] = $origin;
-
-        return $this;
-    }
-
-    /**
-     * Gets bookingTags
-     *
-     * @return \SynergiTech\Cinolla\Model\BookingType[]
-     */
-    public function getBookingTags(): array
-    {
-        return $this->container['bookingTags'];
-    }
-
-    /**
-     * Sets bookingTags
-     *
-     * @param \SynergiTech\Cinolla\Model\BookingType[] $bookingTags bookingTags
-     *
-     * @return $this
-     */
-    public function setBookingTags(array $bookingTags): static
-    {
-        if (is_null($bookingTags)) {
-            throw new InvalidArgumentException('non-nullable bookingTags cannot be null');
-        }
-        $this->container['bookingTags'] = $bookingTags;
+        $this->container['type'] = $type;
 
         return $this;
     }
