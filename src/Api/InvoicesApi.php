@@ -460,7 +460,7 @@ class InvoicesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
@@ -473,13 +473,13 @@ class InvoicesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): array
     {
-        list($response) = $this->getInvoicesWithHttpInfo($offset, $limit, $startDate, $endDateRange, $bookingId, $dateRangeFilter, $contentType);
+        list($response) = $this->getInvoicesWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
         return $response;
     }
 
@@ -491,7 +491,7 @@ class InvoicesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
@@ -504,13 +504,13 @@ class InvoicesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): array
     {
-        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDateRange, $bookingId, $dateRangeFilter, $contentType);
+        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -628,7 +628,7 @@ class InvoicesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
@@ -640,13 +640,13 @@ class InvoicesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): PromiseInterface
     {
-        return $this->getInvoicesAsyncWithHttpInfo($offset, $limit, $startDate, $endDateRange, $bookingId, $dateRangeFilter, $contentType)
+        return $this->getInvoicesAsyncWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -662,7 +662,7 @@ class InvoicesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
@@ -674,14 +674,14 @@ class InvoicesApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $bookingId = null,
         $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking[]';
-        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDateRange, $bookingId, $dateRangeFilter, $contentType);
+        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -725,7 +725,7 @@ class InvoicesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
@@ -737,7 +737,7 @@ class InvoicesApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $bookingId = null,
         $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
@@ -787,8 +787,8 @@ class InvoicesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $endDateRange,
-            'endDateRange', // param base name
+            $endDate,
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

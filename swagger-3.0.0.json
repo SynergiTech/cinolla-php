@@ -2033,7 +2033,7 @@
         }
       },
       "endDateRange": {
-        "name": "endDateRange",
+        "name": "endDate",
         "in": "query",
         "description": "End date of a date range. Used in conjunction with startDate to create a date range to filter by.",
         "schema": {

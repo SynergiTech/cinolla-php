@@ -71,7 +71,7 @@ try {
 ## `getPayments()`
 
 ```php
-getPayments($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved): \SynergiTech\Cinolla\Model\Payment
+getPayments($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved): \SynergiTech\Cinolla\Model\Payment
 ```
 
 Fetch a collection of Payments.
@@ -98,12 +98,12 @@ $apiInstance = new SynergiTech\Cinolla\Api\PaymentsApi(
 $offset = 0; // int | An offset to return a paginated list of results
 $limit = 100; // int | The limit on the number of results
 $startDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
-$endDateRange = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
+$endDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
 $dateRangeFilter = 'datePaid'; // string | Used in conjunction with startDate and endDate to filter Invoices.
 $includeRemoved = false; // bool | Whether or not to include entities flagged as removed
 
 try {
-    $result = $apiInstance->getPayments($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved);
+    $result = $apiInstance->getPayments($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentsApi->getPayments: ', $e->getMessage(), PHP_EOL;
@@ -117,7 +117,7 @@ try {
 | **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
 | **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
 | **startDate** | **\DateTime**| Start date of a date range. Used in conjunction with endDate to create a date range to filter by. | [optional] |
-| **endDateRange** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
+| **endDate** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
 | **dateRangeFilter** | **string**| Used in conjunction with startDate and endDate to filter Invoices. | [optional] [default to &#39;datePaid&#39;] |
 | **includeRemoved** | **bool**| Whether or not to include entities flagged as removed | [optional] [default to false] |
 

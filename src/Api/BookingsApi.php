@@ -458,7 +458,7 @@ class BookingsApi
      * Get a collection of Bookings
      *
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
@@ -475,7 +475,7 @@ class BookingsApi
      */
     public function getBookings(
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $offset = 0,
         ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
@@ -487,7 +487,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): array
     {
-        list($response) = $this->getBookingsWithHttpInfo($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        list($response) = $this->getBookingsWithHttpInfo($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
         return $response;
     }
 
@@ -497,7 +497,7 @@ class BookingsApi
      * Get a collection of Bookings
      *
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
@@ -514,7 +514,7 @@ class BookingsApi
      */
     public function getBookingsWithHttpInfo(
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $offset = 0,
         ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
@@ -526,7 +526,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): array
     {
-        $request = $this->getBookingsRequest($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        $request = $this->getBookingsRequest($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -642,7 +642,7 @@ class BookingsApi
      * Get a collection of Bookings
      *
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
@@ -658,7 +658,7 @@ class BookingsApi
      */
     public function getBookingsAsync(
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?int $offset = 0,
         ?int $limit = 100,
         ?string $dateRangeFilter = 'arrivalDate',
@@ -670,7 +670,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): PromiseInterface
     {
-        return $this->getBookingsAsyncWithHttpInfo($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType)
+        return $this->getBookingsAsyncWithHttpInfo($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -684,7 +684,7 @@ class BookingsApi
      * Get a collection of Bookings
      *
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
@@ -700,7 +700,7 @@ class BookingsApi
      */
     public function getBookingsAsyncWithHttpInfo(
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $offset = 0,
         $limit = 100,
         $dateRangeFilter = 'arrivalDate',
@@ -713,7 +713,7 @@ class BookingsApi
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\ClientBookingCollection[]';
-        $request = $this->getBookingsRequest($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
+        $request = $this->getBookingsRequest($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -755,7 +755,7 @@ class BookingsApi
      * Create request for operation 'getBookings'
      *
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter bookings. (optional, default to 'arrivalDate')
@@ -771,7 +771,7 @@ class BookingsApi
      */
     public function getBookingsRequest(
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $offset = 0,
         $limit = 100,
         $dateRangeFilter = 'arrivalDate',
@@ -813,8 +813,8 @@ class BookingsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $endDateRange,
-            'endDateRange', // param base name
+            $endDate,
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

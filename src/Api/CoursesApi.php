@@ -134,7 +134,7 @@ class CoursesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourseRuns'] to see the possible values for this operation
      *
@@ -147,12 +147,12 @@ class CoursesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?bool $sellOnPortal = null,
         string $contentType = self::contentTypes['getCourseRuns'][0]
     ): array
     {
-        list($response) = $this->getCourseRunsWithHttpInfo($id, $offset, $limit, $startDate, $endDateRange, $sellOnPortal, $contentType);
+        list($response) = $this->getCourseRunsWithHttpInfo($id, $offset, $limit, $startDate, $endDate, $sellOnPortal, $contentType);
         return $response;
     }
 
@@ -165,7 +165,7 @@ class CoursesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourseRuns'] to see the possible values for this operation
      *
@@ -178,12 +178,12 @@ class CoursesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?bool $sellOnPortal = null,
         string $contentType = self::contentTypes['getCourseRuns'][0]
     ): array
     {
-        $request = $this->getCourseRunsRequest($id, $offset, $limit, $startDate, $endDateRange, $sellOnPortal, $contentType);
+        $request = $this->getCourseRunsRequest($id, $offset, $limit, $startDate, $endDate, $sellOnPortal, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -302,7 +302,7 @@ class CoursesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourseRuns'] to see the possible values for this operation
      *
@@ -314,12 +314,12 @@ class CoursesApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?bool $sellOnPortal = null,
         string $contentType = self::contentTypes['getCourseRuns'][0]
     ): PromiseInterface
     {
-        return $this->getCourseRunsAsyncWithHttpInfo($id, $offset, $limit, $startDate, $endDateRange, $sellOnPortal, $contentType)
+        return $this->getCourseRunsAsyncWithHttpInfo($id, $offset, $limit, $startDate, $endDate, $sellOnPortal, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -336,7 +336,7 @@ class CoursesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourseRuns'] to see the possible values for this operation
      *
@@ -348,13 +348,13 @@ class CoursesApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $sellOnPortal = null,
         string $contentType = self::contentTypes['getCourseRuns'][0]
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\CourseRun[]';
-        $request = $this->getCourseRunsRequest($id, $offset, $limit, $startDate, $endDateRange, $sellOnPortal, $contentType);
+        $request = $this->getCourseRunsRequest($id, $offset, $limit, $startDate, $endDate, $sellOnPortal, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -399,7 +399,7 @@ class CoursesApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  bool|null $sellOnPortal Filter items to only those marked for sale on the Booking Portal. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCourseRuns'] to see the possible values for this operation
      *
@@ -411,7 +411,7 @@ class CoursesApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $sellOnPortal = null,
         string $contentType = self::contentTypes['getCourseRuns'][0]
     ): Request
@@ -466,8 +466,8 @@ class CoursesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $endDateRange,
-            'endDateRange', // param base name
+            $endDate,
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

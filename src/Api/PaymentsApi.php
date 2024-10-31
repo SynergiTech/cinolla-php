@@ -459,7 +459,7 @@ class PaymentsApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'datePaid')
      * @param  bool|null $includeRemoved Whether or not to include entities flagged as removed (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPayments'] to see the possible values for this operation
@@ -472,13 +472,13 @@ class PaymentsApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?string $dateRangeFilter = 'datePaid',
         ?bool $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
     ): \SynergiTech\Cinolla\Model\Payment
     {
-        list($response) = $this->getPaymentsWithHttpInfo($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved, $contentType);
+        list($response) = $this->getPaymentsWithHttpInfo($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType);
         return $response;
     }
 
@@ -490,7 +490,7 @@ class PaymentsApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'datePaid')
      * @param  bool|null $includeRemoved Whether or not to include entities flagged as removed (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPayments'] to see the possible values for this operation
@@ -503,13 +503,13 @@ class PaymentsApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?string $dateRangeFilter = 'datePaid',
         ?bool $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
     ): array
     {
-        $request = $this->getPaymentsRequest($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved, $contentType);
+        $request = $this->getPaymentsRequest($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -627,7 +627,7 @@ class PaymentsApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'datePaid')
      * @param  bool|null $includeRemoved Whether or not to include entities flagged as removed (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPayments'] to see the possible values for this operation
@@ -639,13 +639,13 @@ class PaymentsApi
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
-        ?\DateTime $endDateRange = null,
+        ?\DateTime $endDate = null,
         ?string $dateRangeFilter = 'datePaid',
         ?bool $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
     ): PromiseInterface
     {
-        return $this->getPaymentsAsyncWithHttpInfo($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved, $contentType)
+        return $this->getPaymentsAsyncWithHttpInfo($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -661,7 +661,7 @@ class PaymentsApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'datePaid')
      * @param  bool|null $includeRemoved Whether or not to include entities flagged as removed (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPayments'] to see the possible values for this operation
@@ -673,14 +673,14 @@ class PaymentsApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $dateRangeFilter = 'datePaid',
         $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\Payment';
-        $request = $this->getPaymentsRequest($offset, $limit, $startDate, $endDateRange, $dateRangeFilter, $includeRemoved, $contentType);
+        $request = $this->getPaymentsRequest($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -724,7 +724,7 @@ class PaymentsApi
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
-     * @param  \DateTime|null $endDateRange End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
+     * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'datePaid')
      * @param  bool|null $includeRemoved Whether or not to include entities flagged as removed (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPayments'] to see the possible values for this operation
@@ -736,7 +736,7 @@ class PaymentsApi
         $offset = 0,
         $limit = 100,
         $startDate = null,
-        $endDateRange = null,
+        $endDate = null,
         $dateRangeFilter = 'datePaid',
         $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
@@ -786,8 +786,8 @@ class PaymentsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $endDateRange,
-            'endDateRange', // param base name
+            $endDate,
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

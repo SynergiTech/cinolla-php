@@ -71,7 +71,7 @@ try {
 ## `getBookings()`
 
 ```php
-getBookings($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\ClientBookingCollection[]
+getBookings($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\ClientBookingCollection[]
 ```
 
 Get a collection of Bookings
@@ -96,7 +96,7 @@ $apiInstance = new SynergiTech\Cinolla\Api\BookingsApi(
     $config
 );
 $startDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
-$endDateRange = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
+$endDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
 $offset = 0; // int | An offset to return a paginated list of results
 $limit = 100; // int | The limit on the number of results
 $dateRangeFilter = 'arrivalDate'; // string | Used in conjunction with startDate and endDate to filter bookings.
@@ -107,7 +107,7 @@ $tagsOperator = 'all'; // string | Operator for use with tags or tagIds params. 
 $reference = 'reference_example'; // string | Fuzzy match on booking reference, e.g. B-001 will match B-00100, B-00101, B-00102 etc.
 
 try {
-    $result = $apiInstance->getBookings($startDate, $endDateRange, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference);
+    $result = $apiInstance->getBookings($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->getBookings: ', $e->getMessage(), PHP_EOL;
@@ -119,7 +119,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **startDate** | **\DateTime**| Start date of a date range. Used in conjunction with endDate to create a date range to filter by. | [optional] |
-| **endDateRange** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
+| **endDate** | **\DateTime**| End date of a date range. Used in conjunction with startDate to create a date range to filter by. | [optional] |
 | **offset** | **int**| An offset to return a paginated list of results | [optional] [default to 0] |
 | **limit** | **int**| The limit on the number of results | [optional] [default to 100] |
 | **dateRangeFilter** | **string**| Used in conjunction with startDate and endDate to filter bookings. | [optional] [default to &#39;arrivalDate&#39;] |
