@@ -59,6 +59,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPITypes = [
         'value' => 'string',
+        'subFormSubmission' => 'bool',
         'customField' => 'object'
     ];
 
@@ -69,6 +70,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPIFormats = [
         'value' => null,
+        'subFormSubmission' => null,
         'customField' => null
     ];
 
@@ -79,6 +81,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPINullables = [
         'value' => false,
+        'subFormSubmission' => false,
         'customField' => false
     ];
 
@@ -169,6 +172,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $attributeMap = [
         'value' => 'value',
+        'subFormSubmission' => 'subFormSubmission',
         'customField' => 'customField'
     ];
 
@@ -179,6 +183,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $setters = [
         'value' => 'setValue',
+        'subFormSubmission' => 'setSubFormSubmission',
         'customField' => 'setCustomField'
     ];
 
@@ -189,6 +194,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $getters = [
         'value' => 'getValue',
+        'subFormSubmission' => 'getSubFormSubmission',
         'customField' => 'getCustomField'
     ];
 
@@ -249,6 +255,7 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('value', $data ?? [], '');
+        $this->setIfExists('subFormSubmission', $data ?? [], false);
         $this->setIfExists('customField', $data ?? [], null);
     }
 
@@ -317,6 +324,33 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable value cannot be null');
         }
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets subFormSubmission
+     *
+     * @return bool|null
+     */
+    public function getSubFormSubmission(): ?bool
+    {
+        return $this->container['subFormSubmission'];
+    }
+
+    /**
+     * Sets subFormSubmission
+     *
+     * @param bool|null $subFormSubmission subFormSubmission
+     *
+     * @return $this
+     */
+    public function setSubFormSubmission(?bool $subFormSubmission): static
+    {
+        if (is_null($subFormSubmission)) {
+            throw new InvalidArgumentException('non-nullable subFormSubmission cannot be null');
+        }
+        $this->container['subFormSubmission'] = $subFormSubmission;
 
         return $this;
     }

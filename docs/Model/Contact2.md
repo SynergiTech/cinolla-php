@@ -17,7 +17,10 @@ Name | Type | Description | Notes
 **removed** | **bool** |  | [optional] [default to false]
 **removedAt** | **\DateTime** |  | [optional]
 **removedBy** | **int** |  | [optional]
+**defaultBillingAddress** | [**\SynergiTech\Cinolla\Model\Null1**](Null1.md) |  | [optional]
+**defaultDeliveryAddress** | [**\SynergiTech\Cinolla\Model\Null1**](Null1.md) |  | [optional]
 **archivedAt** | **\DateTime** |  | [optional]
 **archived** | **int** |  | [optional]
+**addresses** | [**\SynergiTech\Cinolla\Model\Address2[]**](Address2.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

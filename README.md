@@ -94,6 +94,8 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [Address](docs/Model/Address.md)
+- [Address2](docs/Model/Address2.md)
 - [Booking](docs/Model/Booking.md)
 - [Booking2](docs/Model/Booking2.md)
 - [Booking2Contact](docs/Model/Booking2Contact.md)
@@ -120,6 +122,8 @@ Class | Method | HTTP request | Description
 - [InvoicedBooking2Booking](docs/Model/InvoicedBooking2Booking.md)
 - [InvoicedBookingBooking](docs/Model/InvoicedBookingBooking.md)
 - [LineItem](docs/Model/LineItem.md)
+- [Null](docs/Model/Null.md)
+- [Null1](docs/Model/Null1.md)
 - [Payment](docs/Model/Payment.md)
 - [Payment2](docs/Model/Payment2.md)
 

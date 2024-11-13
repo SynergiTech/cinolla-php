@@ -71,8 +71,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => 'bool',
         'removedAt' => '\DateTime',
         'removedBy' => 'int',
+        'defaultBillingAddress' => '\SynergiTech\Cinolla\Model\Null1',
+        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\Null1',
         'archivedAt' => '\DateTime',
-        'archived' => 'int'
+        'archived' => 'int',
+        'addresses' => '\SynergiTech\Cinolla\Model\Address2[]'
     ];
 
     /**
@@ -94,8 +97,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => null,
         'removedAt' => 'date-time',
         'removedBy' => null,
+        'defaultBillingAddress' => null,
+        'defaultDeliveryAddress' => null,
         'archivedAt' => 'date-time',
-        'archived' => null
+        'archived' => null,
+        'addresses' => null
     ];
 
     /**
@@ -117,8 +123,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => false,
         'removedAt' => true,
         'removedBy' => true,
+        'defaultBillingAddress' => true,
+        'defaultDeliveryAddress' => true,
         'archivedAt' => true,
-        'archived' => true
+        'archived' => true,
+        'addresses' => false
     ];
 
     /**
@@ -220,8 +229,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => 'removed',
         'removedAt' => 'removedAt',
         'removedBy' => 'removedBy',
+        'defaultBillingAddress' => 'defaultBillingAddress',
+        'defaultDeliveryAddress' => 'defaultDeliveryAddress',
         'archivedAt' => 'archivedAt',
-        'archived' => 'archived'
+        'archived' => 'archived',
+        'addresses' => 'addresses'
     ];
 
     /**
@@ -243,8 +255,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => 'setRemoved',
         'removedAt' => 'setRemovedAt',
         'removedBy' => 'setRemovedBy',
+        'defaultBillingAddress' => 'setDefaultBillingAddress',
+        'defaultDeliveryAddress' => 'setDefaultDeliveryAddress',
         'archivedAt' => 'setArchivedAt',
-        'archived' => 'setArchived'
+        'archived' => 'setArchived',
+        'addresses' => 'setAddresses'
     ];
 
     /**
@@ -266,8 +281,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'removed' => 'getRemoved',
         'removedAt' => 'getRemovedAt',
         'removedBy' => 'getRemovedBy',
+        'defaultBillingAddress' => 'getDefaultBillingAddress',
+        'defaultDeliveryAddress' => 'getDefaultDeliveryAddress',
         'archivedAt' => 'getArchivedAt',
-        'archived' => 'getArchived'
+        'archived' => 'getArchived',
+        'addresses' => 'getAddresses'
     ];
 
     /**
@@ -339,8 +357,11 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('removed', $data ?? [], false);
         $this->setIfExists('removedAt', $data ?? [], null);
         $this->setIfExists('removedBy', $data ?? [], null);
+        $this->setIfExists('defaultBillingAddress', $data ?? [], null);
+        $this->setIfExists('defaultDeliveryAddress', $data ?? [], null);
         $this->setIfExists('archivedAt', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('addresses', $data ?? [], null);
     }
 
     /**
@@ -370,6 +391,9 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['addresses'] === null) {
+            $invalidProperties[] = "'addresses' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -821,6 +845,74 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
+     * Gets defaultBillingAddress
+     *
+     * @return \SynergiTech\Cinolla\Model\Null1|null
+     */
+    public function getDefaultBillingAddress(): ?\SynergiTech\Cinolla\Model\Null1
+    {
+        return $this->container['defaultBillingAddress'];
+    }
+
+    /**
+     * Sets defaultBillingAddress
+     *
+     * @param \SynergiTech\Cinolla\Model\Null1|null $defaultBillingAddress defaultBillingAddress
+     *
+     * @return $this
+     */
+    public function setDefaultBillingAddress(?\SynergiTech\Cinolla\Model\Null1 $defaultBillingAddress): static
+    {
+        if (is_null($defaultBillingAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'defaultBillingAddress');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('defaultBillingAddress', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['defaultBillingAddress'] = $defaultBillingAddress;
+
+        return $this;
+    }
+
+    /**
+     * Gets defaultDeliveryAddress
+     *
+     * @return \SynergiTech\Cinolla\Model\Null1|null
+     */
+    public function getDefaultDeliveryAddress(): ?\SynergiTech\Cinolla\Model\Null1
+    {
+        return $this->container['defaultDeliveryAddress'];
+    }
+
+    /**
+     * Sets defaultDeliveryAddress
+     *
+     * @param \SynergiTech\Cinolla\Model\Null1|null $defaultDeliveryAddress defaultDeliveryAddress
+     *
+     * @return $this
+     */
+    public function setDefaultDeliveryAddress(?\SynergiTech\Cinolla\Model\Null1 $defaultDeliveryAddress): static
+    {
+        if (is_null($defaultDeliveryAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'defaultDeliveryAddress');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('defaultDeliveryAddress', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['defaultDeliveryAddress'] = $defaultDeliveryAddress;
+
+        return $this;
+    }
+
+    /**
      * Gets archivedAt
      *
      * @return \DateTime|null
@@ -884,6 +976,33 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets addresses
+     *
+     * @return \SynergiTech\Cinolla\Model\Address2[]
+     */
+    public function getAddresses(): array
+    {
+        return $this->container['addresses'];
+    }
+
+    /**
+     * Sets addresses
+     *
+     * @param \SynergiTech\Cinolla\Model\Address2[] $addresses addresses
+     *
+     * @return $this
+     */
+    public function setAddresses(array $addresses): static
+    {
+        if (is_null($addresses)) {
+            throw new InvalidArgumentException('non-nullable addresses cannot be null');
+        }
+        $this->container['addresses'] = $addresses;
 
         return $this;
     }

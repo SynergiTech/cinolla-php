@@ -69,7 +69,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => '\DateTime',
         'invoiceDate' => '\DateTime',
         'invoiceDue' => '\DateTime',
-        'type' => 'string'
+        'type' => 'string',
+        'deliveryAddressName' => 'string',
+        'deliveryAddressOrganisation' => 'string',
+        'deliveryAddressAddress1' => 'string',
+        'deliveryAddressAddress2' => 'string',
+        'deliveryAddressTown' => 'string',
+        'deliveryAddressCounty' => 'string',
+        'deliveryAddressPostcode' => 'string',
+        'deliveryAddressCountry' => 'string',
+        'billingAddressName' => 'string',
+        'billingAddressOrganisation' => 'string',
+        'billingAddressAddress1' => 'string',
+        'billingAddressAddress2' => 'string',
+        'billingAddressTown' => 'string',
+        'billingAddressCounty' => 'string',
+        'billingAddressPostcode' => 'string',
+        'billingAddressCountry' => 'string',
+        'reference' => 'string',
+        'poReference' => 'string'
     ];
 
     /**
@@ -89,7 +107,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => 'date-time',
         'invoiceDate' => 'date-time',
         'invoiceDue' => 'date-time',
-        'type' => null
+        'type' => null,
+        'deliveryAddressName' => null,
+        'deliveryAddressOrganisation' => null,
+        'deliveryAddressAddress1' => null,
+        'deliveryAddressAddress2' => null,
+        'deliveryAddressTown' => null,
+        'deliveryAddressCounty' => null,
+        'deliveryAddressPostcode' => null,
+        'deliveryAddressCountry' => null,
+        'billingAddressName' => null,
+        'billingAddressOrganisation' => null,
+        'billingAddressAddress1' => null,
+        'billingAddressAddress2' => null,
+        'billingAddressTown' => null,
+        'billingAddressCounty' => null,
+        'billingAddressPostcode' => null,
+        'billingAddressCountry' => null,
+        'reference' => null,
+        'poReference' => null
     ];
 
     /**
@@ -109,7 +145,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => false,
         'invoiceDate' => false,
         'invoiceDue' => false,
-        'type' => true
+        'type' => true,
+        'deliveryAddressName' => true,
+        'deliveryAddressOrganisation' => true,
+        'deliveryAddressAddress1' => true,
+        'deliveryAddressAddress2' => true,
+        'deliveryAddressTown' => true,
+        'deliveryAddressCounty' => true,
+        'deliveryAddressPostcode' => true,
+        'deliveryAddressCountry' => true,
+        'billingAddressName' => true,
+        'billingAddressOrganisation' => true,
+        'billingAddressAddress1' => true,
+        'billingAddressAddress2' => true,
+        'billingAddressTown' => true,
+        'billingAddressCounty' => true,
+        'billingAddressPostcode' => true,
+        'billingAddressCountry' => true,
+        'reference' => true,
+        'poReference' => true
     ];
 
     /**
@@ -209,7 +263,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => 'updatedAt',
         'invoiceDate' => 'invoiceDate',
         'invoiceDue' => 'invoiceDue',
-        'type' => 'type'
+        'type' => 'type',
+        'deliveryAddressName' => 'deliveryAddressName',
+        'deliveryAddressOrganisation' => 'deliveryAddressOrganisation',
+        'deliveryAddressAddress1' => 'deliveryAddressAddress1',
+        'deliveryAddressAddress2' => 'deliveryAddressAddress2',
+        'deliveryAddressTown' => 'deliveryAddressTown',
+        'deliveryAddressCounty' => 'deliveryAddressCounty',
+        'deliveryAddressPostcode' => 'deliveryAddressPostcode',
+        'deliveryAddressCountry' => 'deliveryAddressCountry',
+        'billingAddressName' => 'billingAddressName',
+        'billingAddressOrganisation' => 'billingAddressOrganisation',
+        'billingAddressAddress1' => 'billingAddressAddress1',
+        'billingAddressAddress2' => 'billingAddressAddress2',
+        'billingAddressTown' => 'billingAddressTown',
+        'billingAddressCounty' => 'billingAddressCounty',
+        'billingAddressPostcode' => 'billingAddressPostcode',
+        'billingAddressCountry' => 'billingAddressCountry',
+        'reference' => 'reference',
+        'poReference' => 'poReference'
     ];
 
     /**
@@ -229,7 +301,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => 'setUpdatedAt',
         'invoiceDate' => 'setInvoiceDate',
         'invoiceDue' => 'setInvoiceDue',
-        'type' => 'setType'
+        'type' => 'setType',
+        'deliveryAddressName' => 'setDeliveryAddressName',
+        'deliveryAddressOrganisation' => 'setDeliveryAddressOrganisation',
+        'deliveryAddressAddress1' => 'setDeliveryAddressAddress1',
+        'deliveryAddressAddress2' => 'setDeliveryAddressAddress2',
+        'deliveryAddressTown' => 'setDeliveryAddressTown',
+        'deliveryAddressCounty' => 'setDeliveryAddressCounty',
+        'deliveryAddressPostcode' => 'setDeliveryAddressPostcode',
+        'deliveryAddressCountry' => 'setDeliveryAddressCountry',
+        'billingAddressName' => 'setBillingAddressName',
+        'billingAddressOrganisation' => 'setBillingAddressOrganisation',
+        'billingAddressAddress1' => 'setBillingAddressAddress1',
+        'billingAddressAddress2' => 'setBillingAddressAddress2',
+        'billingAddressTown' => 'setBillingAddressTown',
+        'billingAddressCounty' => 'setBillingAddressCounty',
+        'billingAddressPostcode' => 'setBillingAddressPostcode',
+        'billingAddressCountry' => 'setBillingAddressCountry',
+        'reference' => 'setReference',
+        'poReference' => 'setPoReference'
     ];
 
     /**
@@ -249,7 +339,25 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'updatedAt' => 'getUpdatedAt',
         'invoiceDate' => 'getInvoiceDate',
         'invoiceDue' => 'getInvoiceDue',
-        'type' => 'getType'
+        'type' => 'getType',
+        'deliveryAddressName' => 'getDeliveryAddressName',
+        'deliveryAddressOrganisation' => 'getDeliveryAddressOrganisation',
+        'deliveryAddressAddress1' => 'getDeliveryAddressAddress1',
+        'deliveryAddressAddress2' => 'getDeliveryAddressAddress2',
+        'deliveryAddressTown' => 'getDeliveryAddressTown',
+        'deliveryAddressCounty' => 'getDeliveryAddressCounty',
+        'deliveryAddressPostcode' => 'getDeliveryAddressPostcode',
+        'deliveryAddressCountry' => 'getDeliveryAddressCountry',
+        'billingAddressName' => 'getBillingAddressName',
+        'billingAddressOrganisation' => 'getBillingAddressOrganisation',
+        'billingAddressAddress1' => 'getBillingAddressAddress1',
+        'billingAddressAddress2' => 'getBillingAddressAddress2',
+        'billingAddressTown' => 'getBillingAddressTown',
+        'billingAddressCounty' => 'getBillingAddressCounty',
+        'billingAddressPostcode' => 'getBillingAddressPostcode',
+        'billingAddressCountry' => 'getBillingAddressCountry',
+        'reference' => 'getReference',
+        'poReference' => 'getPoReference'
     ];
 
     /**
@@ -335,6 +443,24 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('invoiceDate', $data ?? [], null);
         $this->setIfExists('invoiceDue', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('deliveryAddressName', $data ?? [], null);
+        $this->setIfExists('deliveryAddressOrganisation', $data ?? [], null);
+        $this->setIfExists('deliveryAddressAddress1', $data ?? [], null);
+        $this->setIfExists('deliveryAddressAddress2', $data ?? [], null);
+        $this->setIfExists('deliveryAddressTown', $data ?? [], null);
+        $this->setIfExists('deliveryAddressCounty', $data ?? [], null);
+        $this->setIfExists('deliveryAddressPostcode', $data ?? [], null);
+        $this->setIfExists('deliveryAddressCountry', $data ?? [], null);
+        $this->setIfExists('billingAddressName', $data ?? [], null);
+        $this->setIfExists('billingAddressOrganisation', $data ?? [], null);
+        $this->setIfExists('billingAddressAddress1', $data ?? [], null);
+        $this->setIfExists('billingAddressAddress2', $data ?? [], null);
+        $this->setIfExists('billingAddressTown', $data ?? [], null);
+        $this->setIfExists('billingAddressCounty', $data ?? [], null);
+        $this->setIfExists('billingAddressPostcode', $data ?? [], null);
+        $this->setIfExists('billingAddressCountry', $data ?? [], null);
+        $this->setIfExists('reference', $data ?? [], null);
+        $this->setIfExists('poReference', $data ?? [], null);
     }
 
     /**
@@ -772,6 +898,618 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressName
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressName(): ?string
+    {
+        return $this->container['deliveryAddressName'];
+    }
+
+    /**
+     * Sets deliveryAddressName
+     *
+     * @param string|null $deliveryAddressName deliveryAddressName
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressName(?string $deliveryAddressName): static
+    {
+        if (is_null($deliveryAddressName)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressName');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressName', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressName'] = $deliveryAddressName;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressOrganisation
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressOrganisation(): ?string
+    {
+        return $this->container['deliveryAddressOrganisation'];
+    }
+
+    /**
+     * Sets deliveryAddressOrganisation
+     *
+     * @param string|null $deliveryAddressOrganisation deliveryAddressOrganisation
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressOrganisation(?string $deliveryAddressOrganisation): static
+    {
+        if (is_null($deliveryAddressOrganisation)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressOrganisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressOrganisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressOrganisation'] = $deliveryAddressOrganisation;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressAddress1
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressAddress1(): ?string
+    {
+        return $this->container['deliveryAddressAddress1'];
+    }
+
+    /**
+     * Sets deliveryAddressAddress1
+     *
+     * @param string|null $deliveryAddressAddress1 deliveryAddressAddress1
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressAddress1(?string $deliveryAddressAddress1): static
+    {
+        if (is_null($deliveryAddressAddress1)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressAddress1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressAddress1', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressAddress1'] = $deliveryAddressAddress1;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressAddress2
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressAddress2(): ?string
+    {
+        return $this->container['deliveryAddressAddress2'];
+    }
+
+    /**
+     * Sets deliveryAddressAddress2
+     *
+     * @param string|null $deliveryAddressAddress2 deliveryAddressAddress2
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressAddress2(?string $deliveryAddressAddress2): static
+    {
+        if (is_null($deliveryAddressAddress2)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressAddress2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressAddress2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressAddress2'] = $deliveryAddressAddress2;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressTown
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressTown(): ?string
+    {
+        return $this->container['deliveryAddressTown'];
+    }
+
+    /**
+     * Sets deliveryAddressTown
+     *
+     * @param string|null $deliveryAddressTown deliveryAddressTown
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressTown(?string $deliveryAddressTown): static
+    {
+        if (is_null($deliveryAddressTown)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressTown');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressTown', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressTown'] = $deliveryAddressTown;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressCounty
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressCounty(): ?string
+    {
+        return $this->container['deliveryAddressCounty'];
+    }
+
+    /**
+     * Sets deliveryAddressCounty
+     *
+     * @param string|null $deliveryAddressCounty deliveryAddressCounty
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressCounty(?string $deliveryAddressCounty): static
+    {
+        if (is_null($deliveryAddressCounty)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressCounty');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressCounty', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressCounty'] = $deliveryAddressCounty;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressPostcode
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressPostcode(): ?string
+    {
+        return $this->container['deliveryAddressPostcode'];
+    }
+
+    /**
+     * Sets deliveryAddressPostcode
+     *
+     * @param string|null $deliveryAddressPostcode deliveryAddressPostcode
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressPostcode(?string $deliveryAddressPostcode): static
+    {
+        if (is_null($deliveryAddressPostcode)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressPostcode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressPostcode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressPostcode'] = $deliveryAddressPostcode;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddressCountry
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressCountry(): ?string
+    {
+        return $this->container['deliveryAddressCountry'];
+    }
+
+    /**
+     * Sets deliveryAddressCountry
+     *
+     * @param string|null $deliveryAddressCountry deliveryAddressCountry
+     *
+     * @return $this
+     */
+    public function setDeliveryAddressCountry(?string $deliveryAddressCountry): static
+    {
+        if (is_null($deliveryAddressCountry)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddressCountry');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddressCountry', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddressCountry'] = $deliveryAddressCountry;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressName
+     *
+     * @return string|null
+     */
+    public function getBillingAddressName(): ?string
+    {
+        return $this->container['billingAddressName'];
+    }
+
+    /**
+     * Sets billingAddressName
+     *
+     * @param string|null $billingAddressName billingAddressName
+     *
+     * @return $this
+     */
+    public function setBillingAddressName(?string $billingAddressName): static
+    {
+        if (is_null($billingAddressName)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressName');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressName', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressName'] = $billingAddressName;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressOrganisation
+     *
+     * @return string|null
+     */
+    public function getBillingAddressOrganisation(): ?string
+    {
+        return $this->container['billingAddressOrganisation'];
+    }
+
+    /**
+     * Sets billingAddressOrganisation
+     *
+     * @param string|null $billingAddressOrganisation billingAddressOrganisation
+     *
+     * @return $this
+     */
+    public function setBillingAddressOrganisation(?string $billingAddressOrganisation): static
+    {
+        if (is_null($billingAddressOrganisation)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressOrganisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressOrganisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressOrganisation'] = $billingAddressOrganisation;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressAddress1
+     *
+     * @return string|null
+     */
+    public function getBillingAddressAddress1(): ?string
+    {
+        return $this->container['billingAddressAddress1'];
+    }
+
+    /**
+     * Sets billingAddressAddress1
+     *
+     * @param string|null $billingAddressAddress1 billingAddressAddress1
+     *
+     * @return $this
+     */
+    public function setBillingAddressAddress1(?string $billingAddressAddress1): static
+    {
+        if (is_null($billingAddressAddress1)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressAddress1');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressAddress1', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressAddress1'] = $billingAddressAddress1;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressAddress2
+     *
+     * @return string|null
+     */
+    public function getBillingAddressAddress2(): ?string
+    {
+        return $this->container['billingAddressAddress2'];
+    }
+
+    /**
+     * Sets billingAddressAddress2
+     *
+     * @param string|null $billingAddressAddress2 billingAddressAddress2
+     *
+     * @return $this
+     */
+    public function setBillingAddressAddress2(?string $billingAddressAddress2): static
+    {
+        if (is_null($billingAddressAddress2)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressAddress2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressAddress2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressAddress2'] = $billingAddressAddress2;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressTown
+     *
+     * @return string|null
+     */
+    public function getBillingAddressTown(): ?string
+    {
+        return $this->container['billingAddressTown'];
+    }
+
+    /**
+     * Sets billingAddressTown
+     *
+     * @param string|null $billingAddressTown billingAddressTown
+     *
+     * @return $this
+     */
+    public function setBillingAddressTown(?string $billingAddressTown): static
+    {
+        if (is_null($billingAddressTown)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressTown');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressTown', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressTown'] = $billingAddressTown;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressCounty
+     *
+     * @return string|null
+     */
+    public function getBillingAddressCounty(): ?string
+    {
+        return $this->container['billingAddressCounty'];
+    }
+
+    /**
+     * Sets billingAddressCounty
+     *
+     * @param string|null $billingAddressCounty billingAddressCounty
+     *
+     * @return $this
+     */
+    public function setBillingAddressCounty(?string $billingAddressCounty): static
+    {
+        if (is_null($billingAddressCounty)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressCounty');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressCounty', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressCounty'] = $billingAddressCounty;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressPostcode
+     *
+     * @return string|null
+     */
+    public function getBillingAddressPostcode(): ?string
+    {
+        return $this->container['billingAddressPostcode'];
+    }
+
+    /**
+     * Sets billingAddressPostcode
+     *
+     * @param string|null $billingAddressPostcode billingAddressPostcode
+     *
+     * @return $this
+     */
+    public function setBillingAddressPostcode(?string $billingAddressPostcode): static
+    {
+        if (is_null($billingAddressPostcode)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressPostcode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressPostcode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressPostcode'] = $billingAddressPostcode;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddressCountry
+     *
+     * @return string|null
+     */
+    public function getBillingAddressCountry(): ?string
+    {
+        return $this->container['billingAddressCountry'];
+    }
+
+    /**
+     * Sets billingAddressCountry
+     *
+     * @param string|null $billingAddressCountry billingAddressCountry
+     *
+     * @return $this
+     */
+    public function setBillingAddressCountry(?string $billingAddressCountry): static
+    {
+        if (is_null($billingAddressCountry)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddressCountry');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddressCountry', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddressCountry'] = $billingAddressCountry;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference
+     *
+     * @return string|null
+     */
+    public function getReference(): ?string
+    {
+        return $this->container['reference'];
+    }
+
+    /**
+     * Sets reference
+     *
+     * @param string|null $reference reference
+     *
+     * @return $this
+     */
+    public function setReference(?string $reference): static
+    {
+        if (is_null($reference)) {
+            array_push($this->openAPINullablesSetToNull, 'reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['reference'] = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets poReference
+     *
+     * @return string|null
+     */
+    public function getPoReference(): ?string
+    {
+        return $this->container['poReference'];
+    }
+
+    /**
+     * Sets poReference
+     *
+     * @param string|null $poReference poReference
+     *
+     * @return $this
+     */
+    public function setPoReference(?string $poReference): static
+    {
+        if (is_null($poReference)) {
+            array_push($this->openAPINullablesSetToNull, 'poReference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('poReference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['poReference'] = $poReference;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contact
+ * Address2
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Contact Class Doc Comment
+ * Address2 Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Contact implements ModelInterface, ArrayAccess, JsonSerializable
+class Address2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Contact';
+    protected static string $openAPIModelName = 'Address2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,18 +58,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'hash' => 'string',
-        'customerId' => 'string',
+        'id' => 'int',
         'title' => 'string',
         'firstName' => 'string',
-        'secondName' => 'string',
-        'tel' => 'string',
-        'eveningTel' => 'string',
-        'mobile' => 'string',
-        'workTel' => 'string',
+        'surname' => 'string',
+        'address1' => 'string',
+        'address2' => 'string',
+        'address3' => 'string',
+        'town' => 'string',
+        'county' => 'string',
+        'postCode' => 'string',
+        'active' => 'string',
         'createdAt' => '\DateTime',
-        'defaultBillingAddress' => '\SynergiTech\Cinolla\Model\Null',
-        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\Null'
+        'countryName' => 'string'
     ];
 
     /**
@@ -78,18 +79,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'hash' => null,
-        'customerId' => null,
+        'id' => null,
         'title' => null,
         'firstName' => null,
-        'secondName' => null,
-        'tel' => null,
-        'eveningTel' => null,
-        'mobile' => null,
-        'workTel' => null,
+        'surname' => null,
+        'address1' => null,
+        'address2' => null,
+        'address3' => null,
+        'town' => null,
+        'county' => null,
+        'postCode' => null,
+        'active' => null,
         'createdAt' => 'date-time',
-        'defaultBillingAddress' => null,
-        'defaultDeliveryAddress' => null
+        'countryName' => null
     ];
 
     /**
@@ -98,18 +100,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'hash' => true,
-        'customerId' => true,
+        'id' => false,
         'title' => true,
         'firstName' => true,
-        'secondName' => true,
-        'tel' => true,
-        'eveningTel' => true,
-        'mobile' => true,
-        'workTel' => true,
+        'surname' => true,
+        'address1' => true,
+        'address2' => true,
+        'address3' => true,
+        'town' => true,
+        'county' => true,
+        'postCode' => true,
+        'active' => true,
         'createdAt' => true,
-        'defaultBillingAddress' => true,
-        'defaultDeliveryAddress' => true
+        'countryName' => true
     ];
 
     /**
@@ -198,18 +201,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'hash' => 'hash',
-        'customerId' => 'customerId',
+        'id' => 'id',
         'title' => 'title',
         'firstName' => 'firstName',
-        'secondName' => 'secondName',
-        'tel' => 'tel',
-        'eveningTel' => 'eveningTel',
-        'mobile' => 'mobile',
-        'workTel' => 'workTel',
+        'surname' => 'surname',
+        'address1' => 'address1',
+        'address2' => 'address2',
+        'address3' => 'address3',
+        'town' => 'town',
+        'county' => 'county',
+        'postCode' => 'postCode',
+        'active' => 'active',
         'createdAt' => 'createdAt',
-        'defaultBillingAddress' => 'defaultBillingAddress',
-        'defaultDeliveryAddress' => 'defaultDeliveryAddress'
+        'countryName' => 'countryName'
     ];
 
     /**
@@ -218,18 +222,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
-        'hash' => 'setHash',
-        'customerId' => 'setCustomerId',
+        'id' => 'setId',
         'title' => 'setTitle',
         'firstName' => 'setFirstName',
-        'secondName' => 'setSecondName',
-        'tel' => 'setTel',
-        'eveningTel' => 'setEveningTel',
-        'mobile' => 'setMobile',
-        'workTel' => 'setWorkTel',
+        'surname' => 'setSurname',
+        'address1' => 'setAddress1',
+        'address2' => 'setAddress2',
+        'address3' => 'setAddress3',
+        'town' => 'setTown',
+        'county' => 'setCounty',
+        'postCode' => 'setPostCode',
+        'active' => 'setActive',
         'createdAt' => 'setCreatedAt',
-        'defaultBillingAddress' => 'setDefaultBillingAddress',
-        'defaultDeliveryAddress' => 'setDefaultDeliveryAddress'
+        'countryName' => 'setCountryName'
     ];
 
     /**
@@ -238,18 +243,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
-        'hash' => 'getHash',
-        'customerId' => 'getCustomerId',
+        'id' => 'getId',
         'title' => 'getTitle',
         'firstName' => 'getFirstName',
-        'secondName' => 'getSecondName',
-        'tel' => 'getTel',
-        'eveningTel' => 'getEveningTel',
-        'mobile' => 'getMobile',
-        'workTel' => 'getWorkTel',
+        'surname' => 'getSurname',
+        'address1' => 'getAddress1',
+        'address2' => 'getAddress2',
+        'address3' => 'getAddress3',
+        'town' => 'getTown',
+        'county' => 'getCounty',
+        'postCode' => 'getPostCode',
+        'active' => 'getActive',
         'createdAt' => 'getCreatedAt',
-        'defaultBillingAddress' => 'getDefaultBillingAddress',
-        'defaultDeliveryAddress' => 'getDefaultDeliveryAddress'
+        'countryName' => 'getCountryName'
     ];
 
     /**
@@ -308,18 +314,19 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('customerId', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], '');
-        $this->setIfExists('firstName', $data ?? [], '');
-        $this->setIfExists('secondName', $data ?? [], '');
-        $this->setIfExists('tel', $data ?? [], '');
-        $this->setIfExists('eveningTel', $data ?? [], null);
-        $this->setIfExists('mobile', $data ?? [], '');
-        $this->setIfExists('workTel', $data ?? [], '');
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('firstName', $data ?? [], null);
+        $this->setIfExists('surname', $data ?? [], null);
+        $this->setIfExists('address1', $data ?? [], null);
+        $this->setIfExists('address2', $data ?? [], null);
+        $this->setIfExists('address3', $data ?? [], null);
+        $this->setIfExists('town', $data ?? [], null);
+        $this->setIfExists('county', $data ?? [], null);
+        $this->setIfExists('postCode', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('defaultBillingAddress', $data ?? [], null);
-        $this->setIfExists('defaultDeliveryAddress', $data ?? [], null);
+        $this->setIfExists('countryName', $data ?? [], null);
     }
 
     /**
@@ -349,6 +356,9 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -365,69 +375,28 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets hash
+     * Gets id
      *
-     * @return string|null
+     * @return int
      */
-    public function getHash(): ?string
+    public function getId(): int
     {
-        return $this->container['hash'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets hash
+     * Sets id
      *
-     * @param string|null $hash hash
+     * @param int $id id
      *
      * @return $this
      */
-    public function setHash(?string $hash): static
+    public function setId(int $id): static
     {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($id)) {
+            throw new InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['hash'] = $hash;
-
-        return $this;
-    }
-
-    /**
-     * Gets customerId
-     *
-     * @return string|null
-     */
-    public function getCustomerId(): ?string
-    {
-        return $this->container['customerId'];
-    }
-
-    /**
-     * Sets customerId
-     *
-     * @param string|null $customerId customerId
-     *
-     * @return $this
-     */
-    public function setCustomerId(?string $customerId): static
-    {
-        if (is_null($customerId)) {
-            array_push($this->openAPINullablesSetToNull, 'customerId');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customerId', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['customerId'] = $customerId;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -501,171 +470,273 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets secondName
+     * Gets surname
      *
      * @return string|null
      */
-    public function getSecondName(): ?string
+    public function getSurname(): ?string
     {
-        return $this->container['secondName'];
+        return $this->container['surname'];
     }
 
     /**
-     * Sets secondName
+     * Sets surname
      *
-     * @param string|null $secondName secondName
+     * @param string|null $surname surname
      *
      * @return $this
      */
-    public function setSecondName(?string $secondName): static
+    public function setSurname(?string $surname): static
     {
-        if (is_null($secondName)) {
-            array_push($this->openAPINullablesSetToNull, 'secondName');
+        if (is_null($surname)) {
+            array_push($this->openAPINullablesSetToNull, 'surname');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('secondName', $nullablesSetToNull);
+            $index = array_search('surname', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['secondName'] = $secondName;
+        $this->container['surname'] = $surname;
 
         return $this;
     }
 
     /**
-     * Gets tel
+     * Gets address1
      *
      * @return string|null
      */
-    public function getTel(): ?string
+    public function getAddress1(): ?string
     {
-        return $this->container['tel'];
+        return $this->container['address1'];
     }
 
     /**
-     * Sets tel
+     * Sets address1
      *
-     * @param string|null $tel tel
+     * @param string|null $address1 address1
      *
      * @return $this
      */
-    public function setTel(?string $tel): static
+    public function setAddress1(?string $address1): static
     {
-        if (is_null($tel)) {
-            array_push($this->openAPINullablesSetToNull, 'tel');
+        if (is_null($address1)) {
+            array_push($this->openAPINullablesSetToNull, 'address1');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tel', $nullablesSetToNull);
+            $index = array_search('address1', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['tel'] = $tel;
+        $this->container['address1'] = $address1;
 
         return $this;
     }
 
     /**
-     * Gets eveningTel
+     * Gets address2
      *
      * @return string|null
      */
-    public function getEveningTel(): ?string
+    public function getAddress2(): ?string
     {
-        return $this->container['eveningTel'];
+        return $this->container['address2'];
     }
 
     /**
-     * Sets eveningTel
+     * Sets address2
      *
-     * @param string|null $eveningTel eveningTel
+     * @param string|null $address2 address2
      *
      * @return $this
      */
-    public function setEveningTel(?string $eveningTel): static
+    public function setAddress2(?string $address2): static
     {
-        if (is_null($eveningTel)) {
-            array_push($this->openAPINullablesSetToNull, 'eveningTel');
+        if (is_null($address2)) {
+            array_push($this->openAPINullablesSetToNull, 'address2');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('eveningTel', $nullablesSetToNull);
+            $index = array_search('address2', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['eveningTel'] = $eveningTel;
+        $this->container['address2'] = $address2;
 
         return $this;
     }
 
     /**
-     * Gets mobile
+     * Gets address3
      *
      * @return string|null
      */
-    public function getMobile(): ?string
+    public function getAddress3(): ?string
     {
-        return $this->container['mobile'];
+        return $this->container['address3'];
     }
 
     /**
-     * Sets mobile
+     * Sets address3
      *
-     * @param string|null $mobile mobile
+     * @param string|null $address3 address3
      *
      * @return $this
      */
-    public function setMobile(?string $mobile): static
+    public function setAddress3(?string $address3): static
     {
-        if (is_null($mobile)) {
-            array_push($this->openAPINullablesSetToNull, 'mobile');
+        if (is_null($address3)) {
+            array_push($this->openAPINullablesSetToNull, 'address3');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('mobile', $nullablesSetToNull);
+            $index = array_search('address3', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['mobile'] = $mobile;
+        $this->container['address3'] = $address3;
 
         return $this;
     }
 
     /**
-     * Gets workTel
+     * Gets town
      *
      * @return string|null
      */
-    public function getWorkTel(): ?string
+    public function getTown(): ?string
     {
-        return $this->container['workTel'];
+        return $this->container['town'];
     }
 
     /**
-     * Sets workTel
+     * Sets town
      *
-     * @param string|null $workTel workTel
+     * @param string|null $town town
      *
      * @return $this
      */
-    public function setWorkTel(?string $workTel): static
+    public function setTown(?string $town): static
     {
-        if (is_null($workTel)) {
-            array_push($this->openAPINullablesSetToNull, 'workTel');
+        if (is_null($town)) {
+            array_push($this->openAPINullablesSetToNull, 'town');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('workTel', $nullablesSetToNull);
+            $index = array_search('town', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['workTel'] = $workTel;
+        $this->container['town'] = $town;
+
+        return $this;
+    }
+
+    /**
+     * Gets county
+     *
+     * @return string|null
+     */
+    public function getCounty(): ?string
+    {
+        return $this->container['county'];
+    }
+
+    /**
+     * Sets county
+     *
+     * @param string|null $county county
+     *
+     * @return $this
+     */
+    public function setCounty(?string $county): static
+    {
+        if (is_null($county)) {
+            array_push($this->openAPINullablesSetToNull, 'county');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('county', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['county'] = $county;
+
+        return $this;
+    }
+
+    /**
+     * Gets postCode
+     *
+     * @return string|null
+     */
+    public function getPostCode(): ?string
+    {
+        return $this->container['postCode'];
+    }
+
+    /**
+     * Sets postCode
+     *
+     * @param string|null $postCode postCode
+     *
+     * @return $this
+     */
+    public function setPostCode(?string $postCode): static
+    {
+        if (is_null($postCode)) {
+            array_push($this->openAPINullablesSetToNull, 'postCode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('postCode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['postCode'] = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return string|null
+     */
+    public function getActive(): ?string
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param string|null $active active
+     *
+     * @return $this
+     */
+    public function setActive(?string $active): static
+    {
+        if (is_null($active)) {
+            array_push($this->openAPINullablesSetToNull, 'active');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('active', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['active'] = $active;
 
         return $this;
     }
@@ -705,69 +776,35 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets defaultBillingAddress
+     * Gets countryName
      *
-     * @return \SynergiTech\Cinolla\Model\Null|null
+     * @return string|null
      */
-    public function getDefaultBillingAddress(): ?\SynergiTech\Cinolla\Model\Null
+    public function getCountryName(): ?string
     {
-        return $this->container['defaultBillingAddress'];
+        return $this->container['countryName'];
     }
 
     /**
-     * Sets defaultBillingAddress
+     * Sets countryName
      *
-     * @param \SynergiTech\Cinolla\Model\Null|null $defaultBillingAddress defaultBillingAddress
+     * @param string|null $countryName countryName
      *
      * @return $this
      */
-    public function setDefaultBillingAddress(?\SynergiTech\Cinolla\Model\Null $defaultBillingAddress): static
+    public function setCountryName(?string $countryName): static
     {
-        if (is_null($defaultBillingAddress)) {
-            array_push($this->openAPINullablesSetToNull, 'defaultBillingAddress');
+        if (is_null($countryName)) {
+            array_push($this->openAPINullablesSetToNull, 'countryName');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('defaultBillingAddress', $nullablesSetToNull);
+            $index = array_search('countryName', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['defaultBillingAddress'] = $defaultBillingAddress;
-
-        return $this;
-    }
-
-    /**
-     * Gets defaultDeliveryAddress
-     *
-     * @return \SynergiTech\Cinolla\Model\Null|null
-     */
-    public function getDefaultDeliveryAddress(): ?\SynergiTech\Cinolla\Model\Null
-    {
-        return $this->container['defaultDeliveryAddress'];
-    }
-
-    /**
-     * Sets defaultDeliveryAddress
-     *
-     * @param \SynergiTech\Cinolla\Model\Null|null $defaultDeliveryAddress defaultDeliveryAddress
-     *
-     * @return $this
-     */
-    public function setDefaultDeliveryAddress(?\SynergiTech\Cinolla\Model\Null $defaultDeliveryAddress): static
-    {
-        if (is_null($defaultDeliveryAddress)) {
-            array_push($this->openAPINullablesSetToNull, 'defaultDeliveryAddress');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('defaultDeliveryAddress', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['defaultDeliveryAddress'] = $defaultDeliveryAddress;
+        $this->container['countryName'] = $countryName;
 
         return $this;
     }

@@ -1150,11 +1150,32 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "defaultBillingAddress": {
+            "title": "|null",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "defaultDeliveryAddress": {
+            "title": "|null",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
           }
         },
         "type": "object"
       },
       "Contact2": {
+        "required": [
+          "addresses"
+        ],
         "properties": {
           "hash": {
             "type": "string",
@@ -1216,6 +1237,24 @@
             "type": "integer",
             "nullable": true
           },
+          "defaultBillingAddress": {
+            "title": "|null",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address2"
+              }
+            ]
+          },
+          "defaultDeliveryAddress": {
+            "title": "|null",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Address2"
+              }
+            ]
+          },
           "archivedAt": {
             "type": "string",
             "format": "date-time",
@@ -1224,6 +1263,12 @@
           "archived": {
             "type": "integer",
             "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address2"
+            }
           }
         },
         "type": "object"
@@ -1445,6 +1490,78 @@
           "type": {
             "type": "string",
             "nullable": true
+          },
+          "deliveryAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object"
@@ -1512,6 +1629,78 @@
             "format": "date-time"
           },
           "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
             "type": "string",
             "nullable": true
           }
@@ -1746,6 +1935,126 @@
         },
         "type": "object"
       },
+      "Address": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "address1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "address3": {
+            "type": "string",
+            "nullable": true
+          },
+          "town": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "postCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Address2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "address1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "address3": {
+            "type": "string",
+            "nullable": true
+          },
+          "town": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "postCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "CourseRunDate": {
         "required": [
           "id",
@@ -1772,6 +2081,10 @@
           "value": {
             "type": "string",
             "default": ""
+          },
+          "subFormSubmission": {
+            "type": "boolean",
+            "default": false
           },
           "customField": {
             "type": "object"
