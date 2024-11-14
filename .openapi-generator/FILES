@@ -12,7 +12,6 @@ docs/Api/InvoicesApi.md
 docs/Api/LineItemsApi.md
 docs/Api/PaymentsApi.md
 docs/Model/Address.md
-docs/Model/Address2.md
 docs/Model/Booking.md
 docs/Model/Booking2.md
 docs/Model/Booking2Contact.md
@@ -29,6 +28,7 @@ docs/Model/Contact3.md
 docs/Model/Contact4.md
 docs/Model/Contact5.md
 docs/Model/Contact6.md
+docs/Model/ContactDefaultBillingAddress.md
 docs/Model/CourseRun.md
 docs/Model/CourseRunDate.md
 docs/Model/CustomFieldsData.md
@@ -39,8 +39,6 @@ docs/Model/InvoicedBooking2.md
 docs/Model/InvoicedBooking2Booking.md
 docs/Model/InvoicedBookingBooking.md
 docs/Model/LineItem.md
-docs/Model/Null.md
-docs/Model/Null1.md
 docs/Model/Payment.md
 docs/Model/Payment2.md
 git_push.sh
@@ -56,7 +54,6 @@ src/ApiException.php
 src/Configuration.php
 src/HeaderSelector.php
 src/Model/Address.php
-src/Model/Address2.php
 src/Model/Booking.php
 src/Model/Booking2.php
 src/Model/Booking2Contact.php
@@ -73,6 +70,7 @@ src/Model/Contact3.php
 src/Model/Contact4.php
 src/Model/Contact5.php
 src/Model/Contact6.php
+src/Model/ContactDefaultBillingAddress.php
 src/Model/CourseRun.php
 src/Model/CourseRunDate.php
 src/Model/CustomFieldsData.php
@@ -84,8 +82,6 @@ src/Model/InvoicedBooking2Booking.php
 src/Model/InvoicedBookingBooking.php
 src/Model/LineItem.php
 src/Model/ModelInterface.php
-src/Model/Null.php
-src/Model/Null1.php
 src/Model/Payment.php
 src/Model/Payment2.php
 src/ObjectSerializer.php

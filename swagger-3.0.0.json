@@ -1152,22 +1152,22 @@
             "nullable": true
           },
           "defaultBillingAddress": {
-            "title": "|null",
-            "nullable": true,
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Address"
               }
-            ]
+            ],
+            "nullable": true,
+            "type": "object"
           },
           "defaultDeliveryAddress": {
-            "title": "|null",
-            "nullable": true,
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Address"
               }
-            ]
+            ],
+            "nullable": true,
+            "type": "object"
           }
         },
         "type": "object"
@@ -1238,22 +1238,22 @@
             "nullable": true
           },
           "defaultBillingAddress": {
-            "title": "|null",
-            "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Address2"
+                "$ref": "#/components/schemas/Address"
               }
-            ]
+            ],
+            "nullable": true,
+            "type": "object"
           },
           "defaultDeliveryAddress": {
-            "title": "|null",
-            "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Address2"
+                "$ref": "#/components/schemas/Address"
               }
-            ]
+            ],
+            "nullable": true,
+            "type": "object"
           },
           "archivedAt": {
             "type": "string",
@@ -1267,7 +1267,7 @@
           "addresses": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Address2"
+              "$ref": "#/components/schemas/Address"
             }
           }
         },
@@ -1936,66 +1936,6 @@
         "type": "object"
       },
       "Address": {
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "surname": {
-            "type": "string",
-            "nullable": true
-          },
-          "address1": {
-            "type": "string",
-            "nullable": true
-          },
-          "address2": {
-            "type": "string",
-            "nullable": true
-          },
-          "address3": {
-            "type": "string",
-            "nullable": true
-          },
-          "town": {
-            "type": "string",
-            "nullable": true
-          },
-          "county": {
-            "type": "string",
-            "nullable": true
-          },
-          "postCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "active": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "countryName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "Address2": {
         "required": [
           "id"
         ],

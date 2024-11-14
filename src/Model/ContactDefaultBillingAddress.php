@@ -1,6 +1,6 @@
 <?php
 /**
- * Address2
+ * ContactDefaultBillingAddress
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Address2 Class Doc Comment
+ * ContactDefaultBillingAddress Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Address2 implements ModelInterface, ArrayAccess, JsonSerializable
+class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Address2 implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Address2';
+    protected static string $openAPIModelName = 'Contact_defaultBillingAddress';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

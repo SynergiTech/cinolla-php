@@ -68,8 +68,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'mobile' => 'string',
         'workTel' => 'string',
         'createdAt' => '\DateTime',
-        'defaultBillingAddress' => '\SynergiTech\Cinolla\Model\Null',
-        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\Null'
+        'defaultBillingAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress',
+        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress'
     ];
 
     /**
@@ -707,9 +707,9 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets defaultBillingAddress
      *
-     * @return \SynergiTech\Cinolla\Model\Null|null
+     * @return \SynergiTech\Cinolla\Model\ContactDefaultBillingAddress|null
      */
-    public function getDefaultBillingAddress(): ?\SynergiTech\Cinolla\Model\Null
+    public function getDefaultBillingAddress(): ?\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress
     {
         return $this->container['defaultBillingAddress'];
     }
@@ -717,11 +717,11 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets defaultBillingAddress
      *
-     * @param \SynergiTech\Cinolla\Model\Null|null $defaultBillingAddress defaultBillingAddress
+     * @param \SynergiTech\Cinolla\Model\ContactDefaultBillingAddress|null $defaultBillingAddress defaultBillingAddress
      *
      * @return $this
      */
-    public function setDefaultBillingAddress(?\SynergiTech\Cinolla\Model\Null $defaultBillingAddress): static
+    public function setDefaultBillingAddress(?\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress $defaultBillingAddress): static
     {
         if (is_null($defaultBillingAddress)) {
             array_push($this->openAPINullablesSetToNull, 'defaultBillingAddress');
@@ -741,9 +741,9 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets defaultDeliveryAddress
      *
-     * @return \SynergiTech\Cinolla\Model\Null|null
+     * @return \SynergiTech\Cinolla\Model\ContactDefaultBillingAddress|null
      */
-    public function getDefaultDeliveryAddress(): ?\SynergiTech\Cinolla\Model\Null
+    public function getDefaultDeliveryAddress(): ?\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress
     {
         return $this->container['defaultDeliveryAddress'];
     }
@@ -751,11 +751,11 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets defaultDeliveryAddress
      *
-     * @param \SynergiTech\Cinolla\Model\Null|null $defaultDeliveryAddress defaultDeliveryAddress
+     * @param \SynergiTech\Cinolla\Model\ContactDefaultBillingAddress|null $defaultDeliveryAddress defaultDeliveryAddress
      *
      * @return $this
      */
-    public function setDefaultDeliveryAddress(?\SynergiTech\Cinolla\Model\Null $defaultDeliveryAddress): static
+    public function setDefaultDeliveryAddress(?\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress $defaultDeliveryAddress): static
     {
         if (is_null($defaultDeliveryAddress)) {
             array_push($this->openAPINullablesSetToNull, 'defaultDeliveryAddress');
