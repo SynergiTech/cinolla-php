@@ -11,7 +11,7 @@ All URIs are relative to https://api.prod.cinolla.com, except if the operation d
 ## `getInvoice()`
 
 ```php
-getInvoice($id): \SynergiTech\Cinolla\Model\InvoicedBooking2[]
+getInvoice($id): \SynergiTech\Cinolla\Model\InvoicedBooking2
 ```
 
 Get detail for a single Invoice
@@ -53,7 +53,7 @@ try {
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\InvoicedBooking2[]**](../Model/InvoicedBooking2.md)
+[**\SynergiTech\Cinolla\Model\InvoicedBooking2**](../Model/InvoicedBooking2.md)
 
 ### Authorization
 

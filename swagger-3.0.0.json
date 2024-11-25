@@ -729,10 +729,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/InvoicedBooking2"
-                  }
+                  "$ref": "#/components/schemas/InvoicedBooking2"
                 }
               }
             }
