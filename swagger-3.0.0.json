@@ -950,7 +950,8 @@
       "ClientBookingDetail": {
         "required": [
           "status",
-          "bookingTags"
+          "bookingTags",
+          "bookingType"
         ],
         "properties": {
           "reference": {
@@ -1021,6 +1022,12 @@
             "items": {
               "$ref": "#/components/schemas/BookingType2"
             }
+          },
+          "bookingType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType2"
+            }
           }
         },
         "type": "object"
@@ -1028,7 +1035,8 @@
       "ClientBookingCollection": {
         "required": [
           "status",
-          "bookingTags"
+          "bookingTags",
+          "bookingType"
         ],
         "properties": {
           "reference": {
@@ -1091,6 +1099,12 @@
             "nullable": true
           },
           "bookingTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType"
+            }
+          },
+          "bookingType": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BookingType"
@@ -1559,6 +1573,11 @@
           "poReference": {
             "type": "string",
             "nullable": true
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object"
@@ -1698,6 +1717,11 @@
             "nullable": true
           },
           "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
             "type": "string",
             "nullable": true
           }
@@ -2031,7 +2055,8 @@
       },
       "Booking": {
         "required": [
-          "status"
+          "status",
+          "bookingType"
         ],
         "properties": {
           "reference": {
@@ -2085,13 +2110,20 @@
           "origin": {
             "type": "string",
             "nullable": true
+          },
+          "bookingType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType3"
+            }
           }
         },
         "type": "object"
       },
       "Booking2": {
         "required": [
-          "status"
+          "status",
+          "bookingType"
         ],
         "properties": {
           "reference": {
@@ -2145,6 +2177,12 @@
           "origin": {
             "type": "string",
             "nullable": true
+          },
+          "bookingType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingType4"
+            }
           }
         },
         "type": "object"
@@ -2201,6 +2239,9 @@
         },
         "type": "object"
       },
+      "BookingType3": {
+        "type": "object"
+      },
       "Contact6": {
         "properties": {
           "hash": {
@@ -2251,6 +2292,9 @@
             "nullable": true
           }
         },
+        "type": "object"
+      },
+      "BookingType4": {
         "type": "object"
       }
     },

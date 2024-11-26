@@ -87,7 +87,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => 'string',
         'billingAddressCountry' => 'string',
         'reference' => 'string',
-        'poReference' => 'string'
+        'poReference' => 'string',
+        'outstandingAmount' => 'string'
     ];
 
     /**
@@ -125,7 +126,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => null,
         'billingAddressCountry' => null,
         'reference' => null,
-        'poReference' => null
+        'poReference' => null,
+        'outstandingAmount' => null
     ];
 
     /**
@@ -163,7 +165,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => true,
         'billingAddressCountry' => true,
         'reference' => true,
-        'poReference' => true
+        'poReference' => true,
+        'outstandingAmount' => true
     ];
 
     /**
@@ -281,7 +284,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => 'billingAddressPostcode',
         'billingAddressCountry' => 'billingAddressCountry',
         'reference' => 'reference',
-        'poReference' => 'poReference'
+        'poReference' => 'poReference',
+        'outstandingAmount' => 'outstandingAmount'
     ];
 
     /**
@@ -319,7 +323,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => 'setBillingAddressPostcode',
         'billingAddressCountry' => 'setBillingAddressCountry',
         'reference' => 'setReference',
-        'poReference' => 'setPoReference'
+        'poReference' => 'setPoReference',
+        'outstandingAmount' => 'setOutstandingAmount'
     ];
 
     /**
@@ -357,7 +362,8 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressPostcode' => 'getBillingAddressPostcode',
         'billingAddressCountry' => 'getBillingAddressCountry',
         'reference' => 'getReference',
-        'poReference' => 'getPoReference'
+        'poReference' => 'getPoReference',
+        'outstandingAmount' => 'getOutstandingAmount'
     ];
 
     /**
@@ -461,6 +467,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('billingAddressCountry', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('poReference', $data ?? [], null);
+        $this->setIfExists('outstandingAmount', $data ?? [], null);
     }
 
     /**
@@ -1510,6 +1517,40 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['poReference'] = $poReference;
+
+        return $this;
+    }
+
+    /**
+     * Gets outstandingAmount
+     *
+     * @return string|null
+     */
+    public function getOutstandingAmount(): ?string
+    {
+        return $this->container['outstandingAmount'];
+    }
+
+    /**
+     * Sets outstandingAmount
+     *
+     * @param string|null $outstandingAmount outstandingAmount
+     *
+     * @return $this
+     */
+    public function setOutstandingAmount(?string $outstandingAmount): static
+    {
+        if (is_null($outstandingAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'outstandingAmount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('outstandingAmount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['outstandingAmount'] = $outstandingAmount;
 
         return $this;
     }

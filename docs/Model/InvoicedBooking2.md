@@ -34,5 +34,6 @@ Name | Type | Description | Notes
 **billingAddressCountry** | **string** |  | [optional]
 **reference** | **string** |  | [optional]
 **poReference** | **string** |  | [optional]
+**outstandingAmount** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

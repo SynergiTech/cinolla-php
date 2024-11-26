@@ -67,7 +67,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => '\DateTime',
         'arrivalDate' => '\DateTime',
         'departureDate' => '\DateTime',
-        'origin' => 'string'
+        'origin' => 'string',
+        'bookingType' => 'object[]'
     ];
 
     /**
@@ -85,7 +86,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => 'date-time',
         'arrivalDate' => 'date-time',
         'departureDate' => 'date-time',
-        'origin' => null
+        'origin' => null,
+        'bookingType' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => true,
         'arrivalDate' => true,
         'departureDate' => true,
-        'origin' => true
+        'origin' => true,
+        'bookingType' => false
     ];
 
     /**
@@ -201,7 +204,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => 'createdAt',
         'arrivalDate' => 'arrivalDate',
         'departureDate' => 'departureDate',
-        'origin' => 'origin'
+        'origin' => 'origin',
+        'bookingType' => 'bookingType'
     ];
 
     /**
@@ -219,7 +223,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => 'setCreatedAt',
         'arrivalDate' => 'setArrivalDate',
         'departureDate' => 'setDepartureDate',
-        'origin' => 'setOrigin'
+        'origin' => 'setOrigin',
+        'bookingType' => 'setBookingType'
     ];
 
     /**
@@ -237,7 +242,8 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         'createdAt' => 'getCreatedAt',
         'arrivalDate' => 'getArrivalDate',
         'departureDate' => 'getDepartureDate',
-        'origin' => 'getOrigin'
+        'origin' => 'getOrigin',
+        'bookingType' => 'getBookingType'
     ];
 
     /**
@@ -323,6 +329,7 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
         $this->setIfExists('arrivalDate', $data ?? [], null);
         $this->setIfExists('departureDate', $data ?? [], null);
         $this->setIfExists('origin', $data ?? [], null);
+        $this->setIfExists('bookingType', $data ?? [], null);
     }
 
     /**
@@ -364,6 +371,9 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
             );
         }
 
+        if ($this->container['bookingType'] === null) {
+            $invalidProperties[] = "'bookingType' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -718,6 +728,33 @@ class InvoicedBookingBooking implements ModelInterface, ArrayAccess, JsonSeriali
             }
         }
         $this->container['origin'] = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Gets bookingType
+     *
+     * @return object[]
+     */
+    public function getBookingType(): array
+    {
+        return $this->container['bookingType'];
+    }
+
+    /**
+     * Sets bookingType
+     *
+     * @param object[] $bookingType bookingType
+     *
+     * @return $this
+     */
+    public function setBookingType(array $bookingType): static
+    {
+        if (is_null($bookingType)) {
+            throw new InvalidArgumentException('non-nullable bookingType cannot be null');
+        }
+        $this->container['bookingType'] = $bookingType;
 
         return $this;
     }
