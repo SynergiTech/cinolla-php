@@ -14,6 +14,5 @@ Name | Type | Description | Notes
 **arrivalDate** | **\DateTime** |  | [optional]
 **departureDate** | **\DateTime** |  | [optional]
 **origin** | **string** |  | [optional]
-**bookingType** | **object[]** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

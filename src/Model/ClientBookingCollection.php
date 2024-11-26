@@ -70,8 +70,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => '\DateTime',
         'departureDate' => '\DateTime',
         'origin' => 'string',
-        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType[]',
-        'bookingType' => '\SynergiTech\Cinolla\Model\BookingType[]'
+        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType[]'
     ];
 
     /**
@@ -92,8 +91,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => 'date-time',
         'departureDate' => 'date-time',
         'origin' => null,
-        'bookingTags' => null,
-        'bookingType' => null
+        'bookingTags' => null
     ];
 
     /**
@@ -114,8 +112,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => true,
         'departureDate' => true,
         'origin' => true,
-        'bookingTags' => false,
-        'bookingType' => false
+        'bookingTags' => false
     ];
 
     /**
@@ -216,8 +213,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => 'arrivalDate',
         'departureDate' => 'departureDate',
         'origin' => 'origin',
-        'bookingTags' => 'bookingTags',
-        'bookingType' => 'bookingType'
+        'bookingTags' => 'bookingTags'
     ];
 
     /**
@@ -238,8 +234,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => 'setArrivalDate',
         'departureDate' => 'setDepartureDate',
         'origin' => 'setOrigin',
-        'bookingTags' => 'setBookingTags',
-        'bookingType' => 'setBookingType'
+        'bookingTags' => 'setBookingTags'
     ];
 
     /**
@@ -260,8 +255,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'arrivalDate' => 'getArrivalDate',
         'departureDate' => 'getDepartureDate',
         'origin' => 'getOrigin',
-        'bookingTags' => 'getBookingTags',
-        'bookingType' => 'getBookingType'
+        'bookingTags' => 'getBookingTags'
     ];
 
     /**
@@ -350,7 +344,6 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         $this->setIfExists('departureDate', $data ?? [], null);
         $this->setIfExists('origin', $data ?? [], null);
         $this->setIfExists('bookingTags', $data ?? [], null);
-        $this->setIfExists('bookingType', $data ?? [], null);
     }
 
     /**
@@ -394,9 +387,6 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
 
         if ($this->container['bookingTags'] === null) {
             $invalidProperties[] = "'bookingTags' can't be null";
-        }
-        if ($this->container['bookingType'] === null) {
-            $invalidProperties[] = "'bookingType' can't be null";
         }
         return $invalidProperties;
     }
@@ -840,33 +830,6 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
             throw new InvalidArgumentException('non-nullable bookingTags cannot be null');
         }
         $this->container['bookingTags'] = $bookingTags;
-
-        return $this;
-    }
-
-    /**
-     * Gets bookingType
-     *
-     * @return \SynergiTech\Cinolla\Model\BookingType[]
-     */
-    public function getBookingType(): array
-    {
-        return $this->container['bookingType'];
-    }
-
-    /**
-     * Sets bookingType
-     *
-     * @param \SynergiTech\Cinolla\Model\BookingType[] $bookingType bookingType
-     *
-     * @return $this
-     */
-    public function setBookingType(array $bookingType): static
-    {
-        if (is_null($bookingType)) {
-            throw new InvalidArgumentException('non-nullable bookingType cannot be null');
-        }
-        $this->container['bookingType'] = $bookingType;
 
         return $this;
     }
