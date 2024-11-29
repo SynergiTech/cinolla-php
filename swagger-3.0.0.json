@@ -1552,6 +1552,15 @@
             "type": "string",
             "nullable": true
           },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
           "reference": {
             "type": "string",
             "nullable": true
@@ -1696,6 +1705,15 @@
           },
           "billingAddressCountry": {
             "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           },
           "reference": {

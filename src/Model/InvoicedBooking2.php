@@ -86,6 +86,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => 'string',
         'billingAddressPostcode' => 'string',
         'billingAddressCountry' => 'string',
+        'void' => 'bool',
+        'voidAt' => '\DateTime',
         'reference' => 'string',
         'poReference' => 'string',
         'outstandingAmount' => 'string'
@@ -125,6 +127,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => null,
         'billingAddressPostcode' => null,
         'billingAddressCountry' => null,
+        'void' => null,
+        'voidAt' => 'date-time',
         'reference' => null,
         'poReference' => null,
         'outstandingAmount' => null
@@ -164,6 +168,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => true,
         'billingAddressPostcode' => true,
         'billingAddressCountry' => true,
+        'void' => true,
+        'voidAt' => true,
         'reference' => true,
         'poReference' => true,
         'outstandingAmount' => true
@@ -283,6 +289,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => 'billingAddressCounty',
         'billingAddressPostcode' => 'billingAddressPostcode',
         'billingAddressCountry' => 'billingAddressCountry',
+        'void' => 'void',
+        'voidAt' => 'voidAt',
         'reference' => 'reference',
         'poReference' => 'poReference',
         'outstandingAmount' => 'outstandingAmount'
@@ -322,6 +330,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => 'setBillingAddressCounty',
         'billingAddressPostcode' => 'setBillingAddressPostcode',
         'billingAddressCountry' => 'setBillingAddressCountry',
+        'void' => 'setVoid',
+        'voidAt' => 'setVoidAt',
         'reference' => 'setReference',
         'poReference' => 'setPoReference',
         'outstandingAmount' => 'setOutstandingAmount'
@@ -361,6 +371,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'billingAddressCounty' => 'getBillingAddressCounty',
         'billingAddressPostcode' => 'getBillingAddressPostcode',
         'billingAddressCountry' => 'getBillingAddressCountry',
+        'void' => 'getVoid',
+        'voidAt' => 'getVoidAt',
         'reference' => 'getReference',
         'poReference' => 'getPoReference',
         'outstandingAmount' => 'getOutstandingAmount'
@@ -465,6 +477,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('billingAddressCounty', $data ?? [], null);
         $this->setIfExists('billingAddressPostcode', $data ?? [], null);
         $this->setIfExists('billingAddressCountry', $data ?? [], null);
+        $this->setIfExists('void', $data ?? [], null);
+        $this->setIfExists('voidAt', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('poReference', $data ?? [], null);
         $this->setIfExists('outstandingAmount', $data ?? [], null);
@@ -1449,6 +1463,74 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['billingAddressCountry'] = $billingAddressCountry;
+
+        return $this;
+    }
+
+    /**
+     * Gets void
+     *
+     * @return bool|null
+     */
+    public function getVoid(): ?bool
+    {
+        return $this->container['void'];
+    }
+
+    /**
+     * Sets void
+     *
+     * @param bool|null $void void
+     *
+     * @return $this
+     */
+    public function setVoid(?bool $void): static
+    {
+        if (is_null($void)) {
+            array_push($this->openAPINullablesSetToNull, 'void');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('void', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['void'] = $void;
+
+        return $this;
+    }
+
+    /**
+     * Gets voidAt
+     *
+     * @return \DateTime|null
+     */
+    public function getVoidAt(): ?\DateTime
+    {
+        return $this->container['voidAt'];
+    }
+
+    /**
+     * Sets voidAt
+     *
+     * @param \DateTime|null $voidAt voidAt
+     *
+     * @return $this
+     */
+    public function setVoidAt(?\DateTime $voidAt): static
+    {
+        if (is_null($voidAt)) {
+            array_push($this->openAPINullablesSetToNull, 'voidAt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('voidAt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['voidAt'] = $voidAt;
 
         return $this;
     }

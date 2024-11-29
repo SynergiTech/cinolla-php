@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **billingAddressCounty** | **string** |  | [optional]
 **billingAddressPostcode** | **string** |  | [optional]
 **billingAddressCountry** | **string** |  | [optional]
+**void** | **bool** |  | [optional]
+**voidAt** | **\DateTime** |  | [optional]
 **reference** | **string** |  | [optional]
 **poReference** | **string** |  | [optional]
 **outstandingAmount** | **string** |  | [optional]
