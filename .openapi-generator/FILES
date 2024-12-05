@@ -34,10 +34,12 @@ docs/Model/CourseRunDate.md
 docs/Model/CustomFieldsData.md
 docs/Model/CustomForm.md
 docs/Model/CustomFormSubmissions.md
+docs/Model/IncomeCode.md
 docs/Model/InvoicedBooking.md
 docs/Model/InvoicedBooking2.md
 docs/Model/InvoicedBooking2Booking.md
 docs/Model/InvoicedBookingBooking.md
+docs/Model/InvoicedBookingLineItem.md
 docs/Model/LineItem.md
 docs/Model/Payment.md
 docs/Model/Payment2.md
@@ -76,10 +78,12 @@ src/Model/CourseRunDate.php
 src/Model/CustomFieldsData.php
 src/Model/CustomForm.php
 src/Model/CustomFormSubmissions.php
+src/Model/IncomeCode.php
 src/Model/InvoicedBooking.php
 src/Model/InvoicedBooking2.php
 src/Model/InvoicedBooking2Booking.php
 src/Model/InvoicedBookingBooking.php
+src/Model/InvoicedBookingLineItem.php
 src/Model/LineItem.php
 src/Model/ModelInterface.php
 src/Model/Payment.php
