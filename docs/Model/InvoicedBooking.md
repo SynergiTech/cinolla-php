@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **voidAt** | **\DateTime** |  | [optional]
 **reference** | **string** |  | [optional]
 **poReference** | **string** |  | [optional]
+**invoicedBookingLineItems** | [**\SynergiTech\Cinolla\Model\InvoicedBookingLineItem[]**](InvoicedBookingLineItem.md) |  |
 **outstandingAmount** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

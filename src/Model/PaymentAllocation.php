@@ -1,6 +1,6 @@
 <?php
 /**
- * Payment
+ * PaymentAllocation
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Payment Class Doc Comment
+ * PaymentAllocation Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Payment implements ModelInterface, ArrayAccess, JsonSerializable
+class PaymentAllocation implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Payment';
+    protected static string $openAPIModelName = 'PaymentAllocation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'amount' => 'string',
-        'datePaid' => '\DateTime',
-        'status' => 'string',
-        'paymentMethod' => 'string',
-        'createdAt' => '\DateTime',
-        'paymentAllocations' => '\SynergiTech\Cinolla\Model\PaymentAllocation[]'
+        'invoicedBooking' => '\SynergiTech\Cinolla\Model\PaymentAllocationInvoicedBooking',
+        'refund' => '\SynergiTech\Cinolla\Model\PaymentAllocationRefund',
+        'allocatedAt' => '\DateTime',
+        'allocatedAmount' => 'string',
+        'actionGroupId' => 'int',
+        'actionType' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'amount' => null,
-        'datePaid' => 'date-time',
-        'status' => null,
-        'paymentMethod' => null,
-        'createdAt' => 'date-time',
-        'paymentAllocations' => null
+        'invoicedBooking' => null,
+        'refund' => null,
+        'allocatedAt' => 'date-time',
+        'allocatedAmount' => null,
+        'actionGroupId' => null,
+        'actionType' => null
     ];
 
     /**
@@ -89,12 +89,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'amount' => true,
-        'datePaid' => true,
-        'status' => true,
-        'paymentMethod' => true,
-        'createdAt' => false,
-        'paymentAllocations' => false
+        'invoicedBooking' => true,
+        'refund' => true,
+        'allocatedAt' => true,
+        'allocatedAmount' => true,
+        'actionGroupId' => true,
+        'actionType' => true
     ];
 
     /**
@@ -184,12 +184,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'amount' => 'amount',
-        'datePaid' => 'datePaid',
-        'status' => 'status',
-        'paymentMethod' => 'paymentMethod',
-        'createdAt' => 'createdAt',
-        'paymentAllocations' => 'paymentAllocations'
+        'invoicedBooking' => 'invoicedBooking',
+        'refund' => 'refund',
+        'allocatedAt' => 'allocatedAt',
+        'allocatedAmount' => 'allocatedAmount',
+        'actionGroupId' => 'actionGroupId',
+        'actionType' => 'actionType'
     ];
 
     /**
@@ -199,12 +199,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $setters = [
         'id' => 'setId',
-        'amount' => 'setAmount',
-        'datePaid' => 'setDatePaid',
-        'status' => 'setStatus',
-        'paymentMethod' => 'setPaymentMethod',
-        'createdAt' => 'setCreatedAt',
-        'paymentAllocations' => 'setPaymentAllocations'
+        'invoicedBooking' => 'setInvoicedBooking',
+        'refund' => 'setRefund',
+        'allocatedAt' => 'setAllocatedAt',
+        'allocatedAmount' => 'setAllocatedAmount',
+        'actionGroupId' => 'setActionGroupId',
+        'actionType' => 'setActionType'
     ];
 
     /**
@@ -214,12 +214,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $getters = [
         'id' => 'getId',
-        'amount' => 'getAmount',
-        'datePaid' => 'getDatePaid',
-        'status' => 'getStatus',
-        'paymentMethod' => 'getPaymentMethod',
-        'createdAt' => 'getCreatedAt',
-        'paymentAllocations' => 'getPaymentAllocations'
+        'invoicedBooking' => 'getInvoicedBooking',
+        'refund' => 'getRefund',
+        'allocatedAt' => 'getAllocatedAt',
+        'allocatedAmount' => 'getAllocatedAmount',
+        'actionGroupId' => 'getActionGroupId',
+        'actionType' => 'getActionType'
     ];
 
     /**
@@ -279,12 +279,12 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('datePaid', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('paymentMethod', $data ?? [], null);
-        $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('paymentAllocations', $data ?? [], null);
+        $this->setIfExists('invoicedBooking', $data ?? [], null);
+        $this->setIfExists('refund', $data ?? [], null);
+        $this->setIfExists('allocatedAt', $data ?? [], null);
+        $this->setIfExists('allocatedAmount', $data ?? [], null);
+        $this->setIfExists('actionGroupId', $data ?? [], null);
+        $this->setIfExists('actionType', $data ?? [], null);
     }
 
     /**
@@ -316,12 +316,6 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['createdAt'] === null) {
-            $invalidProperties[] = "'createdAt' can't be null";
-        }
-        if ($this->container['paymentAllocations'] === null) {
-            $invalidProperties[] = "'paymentAllocations' can't be null";
         }
         return $invalidProperties;
     }
@@ -366,191 +360,205 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets amount
+     * Gets invoicedBooking
      *
-     * @return string|null
+     * @return \SynergiTech\Cinolla\Model\PaymentAllocationInvoicedBooking|null
      */
-    public function getAmount(): ?string
+    public function getInvoicedBooking(): ?\SynergiTech\Cinolla\Model\PaymentAllocationInvoicedBooking
     {
-        return $this->container['amount'];
+        return $this->container['invoicedBooking'];
     }
 
     /**
-     * Sets amount
+     * Sets invoicedBooking
      *
-     * @param string|null $amount amount
+     * @param \SynergiTech\Cinolla\Model\PaymentAllocationInvoicedBooking|null $invoicedBooking invoicedBooking
      *
      * @return $this
      */
-    public function setAmount(?string $amount): static
+    public function setInvoicedBooking(?\SynergiTech\Cinolla\Model\PaymentAllocationInvoicedBooking $invoicedBooking): static
     {
-        if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
+        if (is_null($invoicedBooking)) {
+            array_push($this->openAPINullablesSetToNull, 'invoicedBooking');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
+            $index = array_search('invoicedBooking', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['amount'] = $amount;
+        $this->container['invoicedBooking'] = $invoicedBooking;
 
         return $this;
     }
 
     /**
-     * Gets datePaid
+     * Gets refund
+     *
+     * @return \SynergiTech\Cinolla\Model\PaymentAllocationRefund|null
+     */
+    public function getRefund(): ?\SynergiTech\Cinolla\Model\PaymentAllocationRefund
+    {
+        return $this->container['refund'];
+    }
+
+    /**
+     * Sets refund
+     *
+     * @param \SynergiTech\Cinolla\Model\PaymentAllocationRefund|null $refund refund
+     *
+     * @return $this
+     */
+    public function setRefund(?\SynergiTech\Cinolla\Model\PaymentAllocationRefund $refund): static
+    {
+        if (is_null($refund)) {
+            array_push($this->openAPINullablesSetToNull, 'refund');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('refund', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['refund'] = $refund;
+
+        return $this;
+    }
+
+    /**
+     * Gets allocatedAt
      *
      * @return \DateTime|null
      */
-    public function getDatePaid(): ?\DateTime
+    public function getAllocatedAt(): ?\DateTime
     {
-        return $this->container['datePaid'];
+        return $this->container['allocatedAt'];
     }
 
     /**
-     * Sets datePaid
+     * Sets allocatedAt
      *
-     * @param \DateTime|null $datePaid datePaid
+     * @param \DateTime|null $allocatedAt allocatedAt
      *
      * @return $this
      */
-    public function setDatePaid(?\DateTime $datePaid): static
+    public function setAllocatedAt(?\DateTime $allocatedAt): static
     {
-        if (is_null($datePaid)) {
-            array_push($this->openAPINullablesSetToNull, 'datePaid');
+        if (is_null($allocatedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'allocatedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('datePaid', $nullablesSetToNull);
+            $index = array_search('allocatedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['datePaid'] = $datePaid;
+        $this->container['allocatedAt'] = $allocatedAt;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets allocatedAmount
      *
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getAllocatedAmount(): ?string
     {
-        return $this->container['status'];
+        return $this->container['allocatedAmount'];
     }
 
     /**
-     * Sets status
+     * Sets allocatedAmount
      *
-     * @param string|null $status status
+     * @param string|null $allocatedAmount allocatedAmount
      *
      * @return $this
      */
-    public function setStatus(?string $status): static
+    public function setAllocatedAmount(?string $allocatedAmount): static
     {
-        if (is_null($status)) {
-            array_push($this->openAPINullablesSetToNull, 'status');
+        if (is_null($allocatedAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'allocatedAmount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('status', $nullablesSetToNull);
+            $index = array_search('allocatedAmount', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['status'] = $status;
+        $this->container['allocatedAmount'] = $allocatedAmount;
 
         return $this;
     }
 
     /**
-     * Gets paymentMethod
+     * Gets actionGroupId
+     *
+     * @return int|null
+     */
+    public function getActionGroupId(): ?int
+    {
+        return $this->container['actionGroupId'];
+    }
+
+    /**
+     * Sets actionGroupId
+     *
+     * @param int|null $actionGroupId actionGroupId
+     *
+     * @return $this
+     */
+    public function setActionGroupId(?int $actionGroupId): static
+    {
+        if (is_null($actionGroupId)) {
+            array_push($this->openAPINullablesSetToNull, 'actionGroupId');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('actionGroupId', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['actionGroupId'] = $actionGroupId;
+
+        return $this;
+    }
+
+    /**
+     * Gets actionType
      *
      * @return string|null
      */
-    public function getPaymentMethod(): ?string
+    public function getActionType(): ?string
     {
-        return $this->container['paymentMethod'];
+        return $this->container['actionType'];
     }
 
     /**
-     * Sets paymentMethod
+     * Sets actionType
      *
-     * @param string|null $paymentMethod paymentMethod
+     * @param string|null $actionType actionType
      *
      * @return $this
      */
-    public function setPaymentMethod(?string $paymentMethod): static
+    public function setActionType(?string $actionType): static
     {
-        if (is_null($paymentMethod)) {
-            array_push($this->openAPINullablesSetToNull, 'paymentMethod');
+        if (is_null($actionType)) {
+            array_push($this->openAPINullablesSetToNull, 'actionType');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paymentMethod', $nullablesSetToNull);
+            $index = array_search('actionType', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paymentMethod'] = $paymentMethod;
-
-        return $this;
-    }
-
-    /**
-     * Gets createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * Sets createdAt
-     *
-     * @param \DateTime $createdAt createdAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt(\DateTime $createdAt): static
-    {
-        if (is_null($createdAt)) {
-            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
-        }
-        $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets paymentAllocations
-     *
-     * @return \SynergiTech\Cinolla\Model\PaymentAllocation[]
-     */
-    public function getPaymentAllocations(): array
-    {
-        return $this->container['paymentAllocations'];
-    }
-
-    /**
-     * Sets paymentAllocations
-     *
-     * @param \SynergiTech\Cinolla\Model\PaymentAllocation[] $paymentAllocations paymentAllocations
-     *
-     * @return $this
-     */
-    public function setPaymentAllocations(array $paymentAllocations): static
-    {
-        if (is_null($paymentAllocations)) {
-            throw new InvalidArgumentException('non-nullable paymentAllocations cannot be null');
-        }
-        $this->container['paymentAllocations'] = $paymentAllocations;
+        $this->container['actionType'] = $actionType;
 
         return $this;
     }

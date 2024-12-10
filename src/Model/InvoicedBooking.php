@@ -90,6 +90,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => '\DateTime',
         'reference' => 'string',
         'poReference' => 'string',
+        'invoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\InvoicedBookingLineItem[]',
         'outstandingAmount' => 'string'
     ];
 
@@ -131,6 +132,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'date-time',
         'reference' => null,
         'poReference' => null,
+        'invoicedBookingLineItems' => null,
         'outstandingAmount' => null
     ];
 
@@ -172,6 +174,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => true,
         'reference' => true,
         'poReference' => true,
+        'invoicedBookingLineItems' => false,
         'outstandingAmount' => true
     ];
 
@@ -293,6 +296,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'voidAt',
         'reference' => 'reference',
         'poReference' => 'poReference',
+        'invoicedBookingLineItems' => 'invoicedBookingLineItems',
         'outstandingAmount' => 'outstandingAmount'
     ];
 
@@ -334,6 +338,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'setVoidAt',
         'reference' => 'setReference',
         'poReference' => 'setPoReference',
+        'invoicedBookingLineItems' => 'setInvoicedBookingLineItems',
         'outstandingAmount' => 'setOutstandingAmount'
     ];
 
@@ -375,6 +380,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'getVoidAt',
         'reference' => 'getReference',
         'poReference' => 'getPoReference',
+        'invoicedBookingLineItems' => 'getInvoicedBookingLineItems',
         'outstandingAmount' => 'getOutstandingAmount'
     ];
 
@@ -481,6 +487,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('voidAt', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('poReference', $data ?? [], null);
+        $this->setIfExists('invoicedBookingLineItems', $data ?? [], null);
         $this->setIfExists('outstandingAmount', $data ?? [], null);
     }
 
@@ -543,6 +550,9 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         }
         if ($this->container['invoiceDue'] === null) {
             $invalidProperties[] = "'invoiceDue' can't be null";
+        }
+        if ($this->container['invoicedBookingLineItems'] === null) {
+            $invalidProperties[] = "'invoicedBookingLineItems' can't be null";
         }
         return $invalidProperties;
     }
@@ -1599,6 +1609,33 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['poReference'] = $poReference;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoicedBookingLineItems
+     *
+     * @return \SynergiTech\Cinolla\Model\InvoicedBookingLineItem[]
+     */
+    public function getInvoicedBookingLineItems(): array
+    {
+        return $this->container['invoicedBookingLineItems'];
+    }
+
+    /**
+     * Sets invoicedBookingLineItems
+     *
+     * @param \SynergiTech\Cinolla\Model\InvoicedBookingLineItem[] $invoicedBookingLineItems invoicedBookingLineItems
+     *
+     * @return $this
+     */
+    public function setInvoicedBookingLineItems(array $invoicedBookingLineItems): static
+    {
+        if (is_null($invoicedBookingLineItems)) {
+            throw new InvalidArgumentException('non-nullable invoicedBookingLineItems cannot be null');
+        }
+        $this->container['invoicedBookingLineItems'] = $invoicedBookingLineItems;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoicedBooking2
+ * PaymentAllocationInvoicedBooking
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * InvoicedBooking2 Class Doc Comment
+ * PaymentAllocationInvoicedBooking Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
+class PaymentAllocationInvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'InvoicedBooking2';
+    protected static string $openAPIModelName = 'PaymentAllocation_invoicedBooking';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => 'int',
         'invoiceType' => 'string',
         'status' => 'string',
-        'booking' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Booking',
         'totalNet' => 'string',
         'totalGross' => 'string',
         'createdAt' => '\DateTime',
@@ -90,7 +89,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => '\DateTime',
         'reference' => 'string',
         'poReference' => 'string',
-        'invoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\InvoicedBookingLineItem2[]',
         'outstandingAmount' => 'string'
     ];
 
@@ -104,7 +102,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => null,
         'invoiceType' => null,
         'status' => null,
-        'booking' => null,
         'totalNet' => null,
         'totalGross' => null,
         'createdAt' => 'date-time',
@@ -132,7 +129,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'date-time',
         'reference' => null,
         'poReference' => null,
-        'invoicedBookingLineItems' => null,
         'outstandingAmount' => null
     ];
 
@@ -146,7 +142,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => true,
         'invoiceType' => false,
         'status' => true,
-        'booking' => false,
         'totalNet' => true,
         'totalGross' => false,
         'createdAt' => false,
@@ -174,7 +169,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => true,
         'reference' => true,
         'poReference' => true,
-        'invoicedBookingLineItems' => false,
         'outstandingAmount' => true
     ];
 
@@ -268,7 +262,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => 'invoiceNumber',
         'invoiceType' => 'invoiceType',
         'status' => 'status',
-        'booking' => 'booking',
         'totalNet' => 'totalNet',
         'totalGross' => 'totalGross',
         'createdAt' => 'createdAt',
@@ -296,7 +289,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'voidAt',
         'reference' => 'reference',
         'poReference' => 'poReference',
-        'invoicedBookingLineItems' => 'invoicedBookingLineItems',
         'outstandingAmount' => 'outstandingAmount'
     ];
 
@@ -310,7 +302,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => 'setInvoiceNumber',
         'invoiceType' => 'setInvoiceType',
         'status' => 'setStatus',
-        'booking' => 'setBooking',
         'totalNet' => 'setTotalNet',
         'totalGross' => 'setTotalGross',
         'createdAt' => 'setCreatedAt',
@@ -338,7 +329,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'setVoidAt',
         'reference' => 'setReference',
         'poReference' => 'setPoReference',
-        'invoicedBookingLineItems' => 'setInvoicedBookingLineItems',
         'outstandingAmount' => 'setOutstandingAmount'
     ];
 
@@ -352,7 +342,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceNumber' => 'getInvoiceNumber',
         'invoiceType' => 'getInvoiceType',
         'status' => 'getStatus',
-        'booking' => 'getBooking',
         'totalNet' => 'getTotalNet',
         'totalGross' => 'getTotalGross',
         'createdAt' => 'getCreatedAt',
@@ -380,7 +369,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'voidAt' => 'getVoidAt',
         'reference' => 'getReference',
         'poReference' => 'getPoReference',
-        'invoicedBookingLineItems' => 'getInvoicedBookingLineItems',
         'outstandingAmount' => 'getOutstandingAmount'
     ];
 
@@ -459,7 +447,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('invoiceNumber', $data ?? [], null);
         $this->setIfExists('invoiceType', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], 'draft');
-        $this->setIfExists('booking', $data ?? [], null);
         $this->setIfExists('totalNet', $data ?? [], null);
         $this->setIfExists('totalGross', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
@@ -487,7 +474,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('voidAt', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('poReference', $data ?? [], null);
-        $this->setIfExists('invoicedBookingLineItems', $data ?? [], null);
         $this->setIfExists('outstandingAmount', $data ?? [], null);
     }
 
@@ -533,9 +519,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             );
         }
 
-        if ($this->container['booking'] === null) {
-            $invalidProperties[] = "'booking' can't be null";
-        }
         if ($this->container['totalGross'] === null) {
             $invalidProperties[] = "'totalGross' can't be null";
         }
@@ -550,9 +533,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         }
         if ($this->container['invoiceDue'] === null) {
             $invalidProperties[] = "'invoiceDue' can't be null";
-        }
-        if ($this->container['invoicedBookingLineItems'] === null) {
-            $invalidProperties[] = "'invoicedBookingLineItems' can't be null";
         }
         return $invalidProperties;
     }
@@ -697,33 +677,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets booking
-     *
-     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Booking
-     */
-    public function getBooking(): \SynergiTech\Cinolla\Model\InvoicedBooking2Booking
-    {
-        return $this->container['booking'];
-    }
-
-    /**
-     * Sets booking
-     *
-     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Booking $booking booking
-     *
-     * @return $this
-     */
-    public function setBooking(\SynergiTech\Cinolla\Model\InvoicedBooking2Booking $booking): static
-    {
-        if (is_null($booking)) {
-            throw new InvalidArgumentException('non-nullable booking cannot be null');
-        }
-        $this->container['booking'] = $booking;
 
         return $this;
     }
@@ -1609,33 +1562,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['poReference'] = $poReference;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoicedBookingLineItems
-     *
-     * @return \SynergiTech\Cinolla\Model\InvoicedBookingLineItem2[]
-     */
-    public function getInvoicedBookingLineItems(): array
-    {
-        return $this->container['invoicedBookingLineItems'];
-    }
-
-    /**
-     * Sets invoicedBookingLineItems
-     *
-     * @param \SynergiTech\Cinolla\Model\InvoicedBookingLineItem2[] $invoicedBookingLineItems invoicedBookingLineItems
-     *
-     * @return $this
-     */
-    public function setInvoicedBookingLineItems(array $invoicedBookingLineItems): static
-    {
-        if (is_null($invoicedBookingLineItems)) {
-            throw new InvalidArgumentException('non-nullable invoicedBookingLineItems cannot be null');
-        }
-        $this->container['invoicedBookingLineItems'] = $invoicedBookingLineItems;
 
         return $this;
     }

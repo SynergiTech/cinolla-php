@@ -1,6 +1,6 @@
 <?php
 /**
- * Payment
+ * IncomeCode2
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Payment Class Doc Comment
+ * IncomeCode2 Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Payment implements ModelInterface, ArrayAccess, JsonSerializable
+class IncomeCode2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Payment';
+    protected static string $openAPIModelName = 'IncomeCode2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'amount' => 'string',
-        'datePaid' => '\DateTime',
-        'status' => 'string',
-        'paymentMethod' => 'string',
-        'createdAt' => '\DateTime',
-        'paymentAllocations' => '\SynergiTech\Cinolla\Model\PaymentAllocation[]'
+        'name' => 'string',
+        'code' => 'string',
+        'weight' => 'int',
+        'accountNumber' => 'int',
+        'percentage' => 'string'
     ];
 
     /**
@@ -74,12 +73,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'amount' => null,
-        'datePaid' => 'date-time',
-        'status' => null,
-        'paymentMethod' => null,
-        'createdAt' => 'date-time',
-        'paymentAllocations' => null
+        'name' => null,
+        'code' => null,
+        'weight' => null,
+        'accountNumber' => null,
+        'percentage' => null
     ];
 
     /**
@@ -89,12 +87,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'amount' => true,
-        'datePaid' => true,
-        'status' => true,
-        'paymentMethod' => true,
-        'createdAt' => false,
-        'paymentAllocations' => false
+        'name' => false,
+        'code' => true,
+        'weight' => false,
+        'accountNumber' => true,
+        'percentage' => false
     ];
 
     /**
@@ -184,12 +181,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'amount' => 'amount',
-        'datePaid' => 'datePaid',
-        'status' => 'status',
-        'paymentMethod' => 'paymentMethod',
-        'createdAt' => 'createdAt',
-        'paymentAllocations' => 'paymentAllocations'
+        'name' => 'name',
+        'code' => 'code',
+        'weight' => 'weight',
+        'accountNumber' => 'accountNumber',
+        'percentage' => 'percentage'
     ];
 
     /**
@@ -199,12 +195,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $setters = [
         'id' => 'setId',
-        'amount' => 'setAmount',
-        'datePaid' => 'setDatePaid',
-        'status' => 'setStatus',
-        'paymentMethod' => 'setPaymentMethod',
-        'createdAt' => 'setCreatedAt',
-        'paymentAllocations' => 'setPaymentAllocations'
+        'name' => 'setName',
+        'code' => 'setCode',
+        'weight' => 'setWeight',
+        'accountNumber' => 'setAccountNumber',
+        'percentage' => 'setPercentage'
     ];
 
     /**
@@ -214,12 +209,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $getters = [
         'id' => 'getId',
-        'amount' => 'getAmount',
-        'datePaid' => 'getDatePaid',
-        'status' => 'getStatus',
-        'paymentMethod' => 'getPaymentMethod',
-        'createdAt' => 'getCreatedAt',
-        'paymentAllocations' => 'getPaymentAllocations'
+        'name' => 'getName',
+        'code' => 'getCode',
+        'weight' => 'getWeight',
+        'accountNumber' => 'getAccountNumber',
+        'percentage' => 'getPercentage'
     ];
 
     /**
@@ -279,12 +273,11 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('datePaid', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('paymentMethod', $data ?? [], null);
-        $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('paymentAllocations', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], '');
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('weight', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
+        $this->setIfExists('percentage', $data ?? [], '100.00000');
     }
 
     /**
@@ -316,12 +309,6 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['createdAt'] === null) {
-            $invalidProperties[] = "'createdAt' can't be null";
-        }
-        if ($this->container['paymentAllocations'] === null) {
-            $invalidProperties[] = "'paymentAllocations' can't be null";
         }
         return $invalidProperties;
     }
@@ -366,191 +353,150 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets amount
+     * Gets name
      *
      * @return string|null
      */
-    public function getAmount(): ?string
+    public function getName(): ?string
     {
-        return $this->container['amount'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets amount
+     * Sets name
      *
-     * @param string|null $amount amount
+     * @param string|null $name name
      *
      * @return $this
      */
-    public function setAmount(?string $amount): static
+    public function setName(?string $name): static
     {
-        if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($name)) {
+            throw new InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets datePaid
-     *
-     * @return \DateTime|null
-     */
-    public function getDatePaid(): ?\DateTime
-    {
-        return $this->container['datePaid'];
-    }
-
-    /**
-     * Sets datePaid
-     *
-     * @param \DateTime|null $datePaid datePaid
-     *
-     * @return $this
-     */
-    public function setDatePaid(?\DateTime $datePaid): static
-    {
-        if (is_null($datePaid)) {
-            array_push($this->openAPINullablesSetToNull, 'datePaid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('datePaid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['datePaid'] = $datePaid;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
+     * Gets code
      *
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getCode(): ?string
     {
-        return $this->container['status'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets status
+     * Sets code
      *
-     * @param string|null $status status
+     * @param string|null $code code
      *
      * @return $this
      */
-    public function setStatus(?string $status): static
+    public function setCode(?string $code): static
     {
-        if (is_null($status)) {
-            array_push($this->openAPINullablesSetToNull, 'status');
+        if (is_null($code)) {
+            array_push($this->openAPINullablesSetToNull, 'code');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('status', $nullablesSetToNull);
+            $index = array_search('code', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['status'] = $status;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets paymentMethod
+     * Gets weight
+     *
+     * @return int|null
+     */
+    public function getWeight(): ?int
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param int|null $weight weight
+     *
+     * @return $this
+     */
+    public function setWeight(?int $weight): static
+    {
+        if (is_null($weight)) {
+            throw new InvalidArgumentException('non-nullable weight cannot be null');
+        }
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets accountNumber
+     *
+     * @return int|null
+     */
+    public function getAccountNumber(): ?int
+    {
+        return $this->container['accountNumber'];
+    }
+
+    /**
+     * Sets accountNumber
+     *
+     * @param int|null $accountNumber accountNumber
+     *
+     * @return $this
+     */
+    public function setAccountNumber(?int $accountNumber): static
+    {
+        if (is_null($accountNumber)) {
+            array_push($this->openAPINullablesSetToNull, 'accountNumber');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('accountNumber', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['accountNumber'] = $accountNumber;
+
+        return $this;
+    }
+
+    /**
+     * Gets percentage
      *
      * @return string|null
      */
-    public function getPaymentMethod(): ?string
+    public function getPercentage(): ?string
     {
-        return $this->container['paymentMethod'];
+        return $this->container['percentage'];
     }
 
     /**
-     * Sets paymentMethod
+     * Sets percentage
      *
-     * @param string|null $paymentMethod paymentMethod
+     * @param string|null $percentage percentage
      *
      * @return $this
      */
-    public function setPaymentMethod(?string $paymentMethod): static
+    public function setPercentage(?string $percentage): static
     {
-        if (is_null($paymentMethod)) {
-            array_push($this->openAPINullablesSetToNull, 'paymentMethod');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paymentMethod', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($percentage)) {
+            throw new InvalidArgumentException('non-nullable percentage cannot be null');
         }
-        $this->container['paymentMethod'] = $paymentMethod;
-
-        return $this;
-    }
-
-    /**
-     * Gets createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * Sets createdAt
-     *
-     * @param \DateTime $createdAt createdAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt(\DateTime $createdAt): static
-    {
-        if (is_null($createdAt)) {
-            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
-        }
-        $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets paymentAllocations
-     *
-     * @return \SynergiTech\Cinolla\Model\PaymentAllocation[]
-     */
-    public function getPaymentAllocations(): array
-    {
-        return $this->container['paymentAllocations'];
-    }
-
-    /**
-     * Sets paymentAllocations
-     *
-     * @param \SynergiTech\Cinolla\Model\PaymentAllocation[] $paymentAllocations paymentAllocations
-     *
-     * @return $this
-     */
-    public function setPaymentAllocations(array $paymentAllocations): static
-    {
-        if (is_null($paymentAllocations)) {
-            throw new InvalidArgumentException('non-nullable paymentAllocations cannot be null');
-        }
-        $this->container['paymentAllocations'] = $paymentAllocations;
+        $this->container['percentage'] = $percentage;
 
         return $this;
     }

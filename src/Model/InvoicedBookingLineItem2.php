@@ -1,6 +1,6 @@
 <?php
 /**
- * Payment
+ * InvoicedBookingLineItem2
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Payment Class Doc Comment
+ * InvoicedBookingLineItem2 Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Payment implements ModelInterface, ArrayAccess, JsonSerializable
+class InvoicedBookingLineItem2 implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Payment';
+    protected static string $openAPIModelName = 'InvoicedBookingLineItem2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'amount' => 'string',
-        'datePaid' => '\DateTime',
-        'status' => 'string',
-        'paymentMethod' => 'string',
-        'createdAt' => '\DateTime',
-        'paymentAllocations' => '\SynergiTech\Cinolla\Model\PaymentAllocation[]'
+        'name' => 'string',
+        'qty' => 'int',
+        'netAmount' => 'string',
+        'grossAmount' => 'string',
+        'unitPrice' => 'string',
+        'unitPriceWithTax' => 'string',
+        'taxPercent' => 'string',
+        'taxAmount' => 'string',
+        'taxCode' => 'string',
+        'incomeAllocations' => '\SynergiTech\Cinolla\Model\IncomeCode2[]'
     ];
 
     /**
@@ -74,12 +78,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'amount' => null,
-        'datePaid' => 'date-time',
-        'status' => null,
-        'paymentMethod' => null,
-        'createdAt' => 'date-time',
-        'paymentAllocations' => null
+        'name' => null,
+        'qty' => null,
+        'netAmount' => null,
+        'grossAmount' => null,
+        'unitPrice' => null,
+        'unitPriceWithTax' => null,
+        'taxPercent' => null,
+        'taxAmount' => null,
+        'taxCode' => null,
+        'incomeAllocations' => null
     ];
 
     /**
@@ -89,12 +97,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'amount' => true,
-        'datePaid' => true,
-        'status' => true,
-        'paymentMethod' => true,
-        'createdAt' => false,
-        'paymentAllocations' => false
+        'name' => true,
+        'qty' => false,
+        'netAmount' => true,
+        'grossAmount' => true,
+        'unitPrice' => true,
+        'unitPriceWithTax' => true,
+        'taxPercent' => true,
+        'taxAmount' => true,
+        'taxCode' => true,
+        'incomeAllocations' => true
     ];
 
     /**
@@ -184,12 +196,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'amount' => 'amount',
-        'datePaid' => 'datePaid',
-        'status' => 'status',
-        'paymentMethod' => 'paymentMethod',
-        'createdAt' => 'createdAt',
-        'paymentAllocations' => 'paymentAllocations'
+        'name' => 'name',
+        'qty' => 'qty',
+        'netAmount' => 'netAmount',
+        'grossAmount' => 'grossAmount',
+        'unitPrice' => 'unitPrice',
+        'unitPriceWithTax' => 'unitPriceWithTax',
+        'taxPercent' => 'taxPercent',
+        'taxAmount' => 'taxAmount',
+        'taxCode' => 'taxCode',
+        'incomeAllocations' => 'incomeAllocations'
     ];
 
     /**
@@ -199,12 +215,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $setters = [
         'id' => 'setId',
-        'amount' => 'setAmount',
-        'datePaid' => 'setDatePaid',
-        'status' => 'setStatus',
-        'paymentMethod' => 'setPaymentMethod',
-        'createdAt' => 'setCreatedAt',
-        'paymentAllocations' => 'setPaymentAllocations'
+        'name' => 'setName',
+        'qty' => 'setQty',
+        'netAmount' => 'setNetAmount',
+        'grossAmount' => 'setGrossAmount',
+        'unitPrice' => 'setUnitPrice',
+        'unitPriceWithTax' => 'setUnitPriceWithTax',
+        'taxPercent' => 'setTaxPercent',
+        'taxAmount' => 'setTaxAmount',
+        'taxCode' => 'setTaxCode',
+        'incomeAllocations' => 'setIncomeAllocations'
     ];
 
     /**
@@ -214,12 +234,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $getters = [
         'id' => 'getId',
-        'amount' => 'getAmount',
-        'datePaid' => 'getDatePaid',
-        'status' => 'getStatus',
-        'paymentMethod' => 'getPaymentMethod',
-        'createdAt' => 'getCreatedAt',
-        'paymentAllocations' => 'getPaymentAllocations'
+        'name' => 'getName',
+        'qty' => 'getQty',
+        'netAmount' => 'getNetAmount',
+        'grossAmount' => 'getGrossAmount',
+        'unitPrice' => 'getUnitPrice',
+        'unitPriceWithTax' => 'getUnitPriceWithTax',
+        'taxPercent' => 'getTaxPercent',
+        'taxAmount' => 'getTaxAmount',
+        'taxCode' => 'getTaxCode',
+        'incomeAllocations' => 'getIncomeAllocations'
     ];
 
     /**
@@ -279,12 +303,16 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('datePaid', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('paymentMethod', $data ?? [], null);
-        $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('paymentAllocations', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('qty', $data ?? [], null);
+        $this->setIfExists('netAmount', $data ?? [], null);
+        $this->setIfExists('grossAmount', $data ?? [], null);
+        $this->setIfExists('unitPrice', $data ?? [], null);
+        $this->setIfExists('unitPriceWithTax', $data ?? [], null);
+        $this->setIfExists('taxPercent', $data ?? [], null);
+        $this->setIfExists('taxAmount', $data ?? [], null);
+        $this->setIfExists('taxCode', $data ?? [], null);
+        $this->setIfExists('incomeAllocations', $data ?? [], null);
     }
 
     /**
@@ -316,12 +344,6 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['createdAt'] === null) {
-            $invalidProperties[] = "'createdAt' can't be null";
-        }
-        if ($this->container['paymentAllocations'] === null) {
-            $invalidProperties[] = "'paymentAllocations' can't be null";
         }
         return $invalidProperties;
     }
@@ -366,191 +388,334 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets amount
+     * Gets name
      *
      * @return string|null
      */
-    public function getAmount(): ?string
+    public function getName(): ?string
     {
-        return $this->container['amount'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets amount
+     * Sets name
      *
-     * @param string|null $amount amount
+     * @param string|null $name name
      *
      * @return $this
      */
-    public function setAmount(?string $amount): static
+    public function setName(?string $name): static
     {
-        if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['amount'] = $amount;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets datePaid
+     * Gets qty
      *
-     * @return \DateTime|null
+     * @return int|null
      */
-    public function getDatePaid(): ?\DateTime
+    public function getQty(): ?int
     {
-        return $this->container['datePaid'];
+        return $this->container['qty'];
     }
 
     /**
-     * Sets datePaid
+     * Sets qty
      *
-     * @param \DateTime|null $datePaid datePaid
+     * @param int|null $qty qty
      *
      * @return $this
      */
-    public function setDatePaid(?\DateTime $datePaid): static
+    public function setQty(?int $qty): static
     {
-        if (is_null($datePaid)) {
-            array_push($this->openAPINullablesSetToNull, 'datePaid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('datePaid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($qty)) {
+            throw new InvalidArgumentException('non-nullable qty cannot be null');
         }
-        $this->container['datePaid'] = $datePaid;
+        $this->container['qty'] = $qty;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets netAmount
      *
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getNetAmount(): ?string
     {
-        return $this->container['status'];
+        return $this->container['netAmount'];
     }
 
     /**
-     * Sets status
+     * Sets netAmount
      *
-     * @param string|null $status status
+     * @param string|null $netAmount netAmount
      *
      * @return $this
      */
-    public function setStatus(?string $status): static
+    public function setNetAmount(?string $netAmount): static
     {
-        if (is_null($status)) {
-            array_push($this->openAPINullablesSetToNull, 'status');
+        if (is_null($netAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'netAmount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('status', $nullablesSetToNull);
+            $index = array_search('netAmount', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['status'] = $status;
+        $this->container['netAmount'] = $netAmount;
 
         return $this;
     }
 
     /**
-     * Gets paymentMethod
+     * Gets grossAmount
      *
      * @return string|null
      */
-    public function getPaymentMethod(): ?string
+    public function getGrossAmount(): ?string
     {
-        return $this->container['paymentMethod'];
+        return $this->container['grossAmount'];
     }
 
     /**
-     * Sets paymentMethod
+     * Sets grossAmount
      *
-     * @param string|null $paymentMethod paymentMethod
+     * @param string|null $grossAmount grossAmount
      *
      * @return $this
      */
-    public function setPaymentMethod(?string $paymentMethod): static
+    public function setGrossAmount(?string $grossAmount): static
     {
-        if (is_null($paymentMethod)) {
-            array_push($this->openAPINullablesSetToNull, 'paymentMethod');
+        if (is_null($grossAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'grossAmount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paymentMethod', $nullablesSetToNull);
+            $index = array_search('grossAmount', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paymentMethod'] = $paymentMethod;
+        $this->container['grossAmount'] = $grossAmount;
 
         return $this;
     }
 
     /**
-     * Gets createdAt
+     * Gets unitPrice
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getCreatedAt(): \DateTime
+    public function getUnitPrice(): ?string
     {
-        return $this->container['createdAt'];
+        return $this->container['unitPrice'];
     }
 
     /**
-     * Sets createdAt
+     * Sets unitPrice
      *
-     * @param \DateTime $createdAt createdAt
+     * @param string|null $unitPrice unitPrice
      *
      * @return $this
      */
-    public function setCreatedAt(\DateTime $createdAt): static
+    public function setUnitPrice(?string $unitPrice): static
     {
-        if (is_null($createdAt)) {
-            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
+        if (is_null($unitPrice)) {
+            array_push($this->openAPINullablesSetToNull, 'unitPrice');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unitPrice', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['createdAt'] = $createdAt;
+        $this->container['unitPrice'] = $unitPrice;
 
         return $this;
     }
 
     /**
-     * Gets paymentAllocations
+     * Gets unitPriceWithTax
      *
-     * @return \SynergiTech\Cinolla\Model\PaymentAllocation[]
+     * @return string|null
      */
-    public function getPaymentAllocations(): array
+    public function getUnitPriceWithTax(): ?string
     {
-        return $this->container['paymentAllocations'];
+        return $this->container['unitPriceWithTax'];
     }
 
     /**
-     * Sets paymentAllocations
+     * Sets unitPriceWithTax
      *
-     * @param \SynergiTech\Cinolla\Model\PaymentAllocation[] $paymentAllocations paymentAllocations
+     * @param string|null $unitPriceWithTax unitPriceWithTax
      *
      * @return $this
      */
-    public function setPaymentAllocations(array $paymentAllocations): static
+    public function setUnitPriceWithTax(?string $unitPriceWithTax): static
     {
-        if (is_null($paymentAllocations)) {
-            throw new InvalidArgumentException('non-nullable paymentAllocations cannot be null');
+        if (is_null($unitPriceWithTax)) {
+            array_push($this->openAPINullablesSetToNull, 'unitPriceWithTax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unitPriceWithTax', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['paymentAllocations'] = $paymentAllocations;
+        $this->container['unitPriceWithTax'] = $unitPriceWithTax;
+
+        return $this;
+    }
+
+    /**
+     * Gets taxPercent
+     *
+     * @return string|null
+     */
+    public function getTaxPercent(): ?string
+    {
+        return $this->container['taxPercent'];
+    }
+
+    /**
+     * Sets taxPercent
+     *
+     * @param string|null $taxPercent taxPercent
+     *
+     * @return $this
+     */
+    public function setTaxPercent(?string $taxPercent): static
+    {
+        if (is_null($taxPercent)) {
+            array_push($this->openAPINullablesSetToNull, 'taxPercent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxPercent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['taxPercent'] = $taxPercent;
+
+        return $this;
+    }
+
+    /**
+     * Gets taxAmount
+     *
+     * @return string|null
+     */
+    public function getTaxAmount(): ?string
+    {
+        return $this->container['taxAmount'];
+    }
+
+    /**
+     * Sets taxAmount
+     *
+     * @param string|null $taxAmount taxAmount
+     *
+     * @return $this
+     */
+    public function setTaxAmount(?string $taxAmount): static
+    {
+        if (is_null($taxAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'taxAmount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxAmount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['taxAmount'] = $taxAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets taxCode
+     *
+     * @return string|null
+     */
+    public function getTaxCode(): ?string
+    {
+        return $this->container['taxCode'];
+    }
+
+    /**
+     * Sets taxCode
+     *
+     * @param string|null $taxCode taxCode
+     *
+     * @return $this
+     */
+    public function setTaxCode(?string $taxCode): static
+    {
+        if (is_null($taxCode)) {
+            array_push($this->openAPINullablesSetToNull, 'taxCode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('taxCode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['taxCode'] = $taxCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets incomeAllocations
+     *
+     * @return \SynergiTech\Cinolla\Model\IncomeCode2[]|null
+     */
+    public function getIncomeAllocations(): ?array
+    {
+        return $this->container['incomeAllocations'];
+    }
+
+    /**
+     * Sets incomeAllocations
+     *
+     * @param \SynergiTech\Cinolla\Model\IncomeCode2[]|null $incomeAllocations incomeAllocations
+     *
+     * @return $this
+     */
+    public function setIncomeAllocations(?array $incomeAllocations): static
+    {
+        if (is_null($incomeAllocations)) {
+            array_push($this->openAPINullablesSetToNull, 'incomeAllocations');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('incomeAllocations', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['incomeAllocations'] = $incomeAllocations;
 
         return $this;
     }

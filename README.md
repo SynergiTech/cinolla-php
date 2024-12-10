@@ -118,14 +118,20 @@ Class | Method | HTTP request | Description
 - [CustomForm](docs/Model/CustomForm.md)
 - [CustomFormSubmissions](docs/Model/CustomFormSubmissions.md)
 - [IncomeCode](docs/Model/IncomeCode.md)
+- [IncomeCode2](docs/Model/IncomeCode2.md)
 - [InvoicedBooking](docs/Model/InvoicedBooking.md)
 - [InvoicedBooking2](docs/Model/InvoicedBooking2.md)
 - [InvoicedBooking2Booking](docs/Model/InvoicedBooking2Booking.md)
+- [InvoicedBooking3](docs/Model/InvoicedBooking3.md)
 - [InvoicedBookingBooking](docs/Model/InvoicedBookingBooking.md)
 - [InvoicedBookingLineItem](docs/Model/InvoicedBookingLineItem.md)
+- [InvoicedBookingLineItem2](docs/Model/InvoicedBookingLineItem2.md)
 - [LineItem](docs/Model/LineItem.md)
 - [Payment](docs/Model/Payment.md)
 - [Payment2](docs/Model/Payment2.md)
+- [PaymentAllocation](docs/Model/PaymentAllocation.md)
+- [PaymentAllocationInvoicedBooking](docs/Model/PaymentAllocationInvoicedBooking.md)
+- [PaymentAllocationRefund](docs/Model/PaymentAllocationRefund.md)
 
 ## Authorization
 
