@@ -71,7 +71,7 @@ try {
 ## `getPayments()`
 
 ```php
-getPayments($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved): \SynergiTech\Cinolla\Model\Payment
+getPayments($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved): \SynergiTech\Cinolla\Model\Payment[]
 ```
 
 Fetch a collection of Payments.
@@ -123,7 +123,7 @@ try {
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\Payment**](../Model/Payment.md)
+[**\SynergiTech\Cinolla\Model\Payment[]**](../Model/Payment.md)
 
 ### Authorization
 

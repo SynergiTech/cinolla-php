@@ -466,7 +466,7 @@ class PaymentsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\Payment
+     * @return \SynergiTech\Cinolla\Model\Payment[]
      */
     public function getPayments(
         ?int $offset = 0,
@@ -476,7 +476,7 @@ class PaymentsApi
         ?string $dateRangeFilter = 'datePaid',
         ?bool $includeRemoved = false,
         string $contentType = self::contentTypes['getPayments'][0]
-    ): \SynergiTech\Cinolla\Model\Payment
+    ): array
     {
         list($response) = $this->getPaymentsWithHttpInfo($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType);
         return $response;
@@ -497,7 +497,7 @@ class PaymentsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\Payment, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\Payment[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getPaymentsWithHttpInfo(
         ?int $offset = 0,
@@ -548,11 +548,11 @@ class PaymentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SynergiTech\Cinolla\Model\Payment' === '\SplFileObject') {
+                    if ('\SynergiTech\Cinolla\Model\Payment[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\Payment' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\Payment[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -570,13 +570,13 @@ class PaymentsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Payment', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Payment[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\Payment';
+            $returnType = '\SynergiTech\Cinolla\Model\Payment[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -609,7 +609,7 @@ class PaymentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\Payment',
+                        '\SynergiTech\Cinolla\Model\Payment[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -679,7 +679,7 @@ class PaymentsApi
         string $contentType = self::contentTypes['getPayments'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\Payment';
+        $returnType = '\SynergiTech\Cinolla\Model\Payment[]';
         $request = $this->getPaymentsRequest($offset, $limit, $startDate, $endDate, $dateRangeFilter, $includeRemoved, $contentType);
 
         return $this->client
