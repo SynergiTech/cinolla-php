@@ -385,6 +385,9 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
             );
         }
 
+        if ($this->container['centre'] === null) {
+            $invalidProperties[] = "'centre' can't be null";
+        }
         if ($this->container['bookingTags'] === null) {
             $invalidProperties[] = "'bookingTags' can't be null";
         }
@@ -681,9 +684,9 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets centre
      *
-     * @return object|null
+     * @return object
      */
-    public function getCentre(): ?object
+    public function getCentre(): object
     {
         return $this->container['centre'];
     }
@@ -691,11 +694,11 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets centre
      *
-     * @param object|null $centre centre
+     * @param object $centre centre
      *
      * @return $this
      */
-    public function setCentre(?object $centre): static
+    public function setCentre(object $centre): static
     {
         if (is_null($centre)) {
             throw new InvalidArgumentException('non-nullable centre cannot be null');

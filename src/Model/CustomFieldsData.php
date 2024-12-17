@@ -286,6 +286,9 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['customField'] === null) {
+            $invalidProperties[] = "'customField' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -358,9 +361,9 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets customField
      *
-     * @return object|null
+     * @return object
      */
-    public function getCustomField(): ?object
+    public function getCustomField(): object
     {
         return $this->container['customField'];
     }
@@ -368,11 +371,11 @@ class CustomFieldsData implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets customField
      *
-     * @param object|null $customField customField
+     * @param object $customField customField
      *
      * @return $this
      */
-    public function setCustomField(?object $customField): static
+    public function setCustomField(object $customField): static
     {
         if (is_null($customField)) {
             throw new InvalidArgumentException('non-nullable customField cannot be null');

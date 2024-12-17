@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **speciality** | **string** |  | [optional] [default to '']
 **active** | **bool** |  | [optional] [default to true]
 **createdAt** | **\DateTime** |  |
-**centre** | **object** |  | [optional]
+**centre** | **object** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

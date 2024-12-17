@@ -293,6 +293,12 @@ class CustomFormSubmissions implements ModelInterface, ArrayAccess, JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['customForm'] === null) {
+            $invalidProperties[] = "'customForm' can't be null";
+        }
+        if ($this->container['booking'] === null) {
+            $invalidProperties[] = "'booking' can't be null";
+        }
         if ($this->container['createdAt'] === null) {
             $invalidProperties[] = "'createdAt' can't be null";
         }
@@ -317,9 +323,9 @@ class CustomFormSubmissions implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Gets customForm
      *
-     * @return object|null
+     * @return object
      */
-    public function getCustomForm(): ?object
+    public function getCustomForm(): object
     {
         return $this->container['customForm'];
     }
@@ -327,11 +333,11 @@ class CustomFormSubmissions implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Sets customForm
      *
-     * @param object|null $customForm customForm
+     * @param object $customForm customForm
      *
      * @return $this
      */
-    public function setCustomForm(?object $customForm): static
+    public function setCustomForm(object $customForm): static
     {
         if (is_null($customForm)) {
             throw new InvalidArgumentException('non-nullable customForm cannot be null');
@@ -344,9 +350,9 @@ class CustomFormSubmissions implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Gets booking
      *
-     * @return object|null
+     * @return object
      */
-    public function getBooking(): ?object
+    public function getBooking(): object
     {
         return $this->container['booking'];
     }
@@ -354,11 +360,11 @@ class CustomFormSubmissions implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Sets booking
      *
-     * @param object|null $booking booking
+     * @param object $booking booking
      *
      * @return $this
      */
-    public function setBooking(?object $booking): static
+    public function setBooking(object $booking): static
     {
         if (is_null($booking)) {
             throw new InvalidArgumentException('non-nullable booking cannot be null');

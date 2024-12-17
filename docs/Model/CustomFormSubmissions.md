@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**customForm** | **object** |  | [optional]
-**booking** | **object** |  | [optional]
+**customForm** | **object** |  |
+**booking** | **object** |  |
 **createdAt** | **\DateTime** |  |
 **customFieldsData** | [**\SynergiTech\Cinolla\Model\CustomFieldsData[]**](CustomFieldsData.md) |  |
 

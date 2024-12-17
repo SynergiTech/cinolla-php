@@ -953,6 +953,7 @@
       "ClientBookingDetail": {
         "required": [
           "status",
+          "centre",
           "bookingTags"
         ],
         "properties": {
@@ -1031,6 +1032,7 @@
       "ClientBookingCollection": {
         "required": [
           "status",
+          "centre",
           "bookingTags"
         ],
         "properties": {
@@ -1371,7 +1373,8 @@
       },
       "CustomForm": {
         "required": [
-          "createdAt"
+          "createdAt",
+          "centre"
         ],
         "properties": {
           "hash": {
@@ -1402,6 +1405,8 @@
       },
       "CustomFormSubmissions": {
         "required": [
+          "customForm",
+          "booking",
           "createdAt",
           "customFieldsData"
         ],
@@ -1755,6 +1760,7 @@
         "required": [
           "id",
           "createdAt",
+          "updatedAt",
           "paymentAllocations"
         ],
         "properties": {
@@ -1779,6 +1785,10 @@
             "nullable": true
           },
           "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -2068,6 +2078,9 @@
         "type": "object"
       },
       "CustomFieldsData": {
+        "required": [
+          "customField"
+        ],
         "properties": {
           "value": {
             "type": "string",

@@ -64,6 +64,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => 'string',
         'paymentMethod' => 'string',
         'createdAt' => '\DateTime',
+        'updatedAt' => '\DateTime',
         'paymentAllocations' => '\SynergiTech\Cinolla\Model\PaymentAllocation[]'
     ];
 
@@ -79,6 +80,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => null,
         'paymentMethod' => null,
         'createdAt' => 'date-time',
+        'updatedAt' => 'date-time',
         'paymentAllocations' => null
     ];
 
@@ -94,6 +96,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => true,
         'paymentMethod' => true,
         'createdAt' => false,
+        'updatedAt' => false,
         'paymentAllocations' => false
     ];
 
@@ -189,6 +192,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => 'status',
         'paymentMethod' => 'paymentMethod',
         'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt',
         'paymentAllocations' => 'paymentAllocations'
     ];
 
@@ -204,6 +208,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => 'setStatus',
         'paymentMethod' => 'setPaymentMethod',
         'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
         'paymentAllocations' => 'setPaymentAllocations'
     ];
 
@@ -219,6 +224,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         'status' => 'getStatus',
         'paymentMethod' => 'getPaymentMethod',
         'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
         'paymentAllocations' => 'getPaymentAllocations'
     ];
 
@@ -284,6 +290,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('paymentMethod', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('paymentAllocations', $data ?? [], null);
     }
 
@@ -319,6 +326,9 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
         }
         if ($this->container['createdAt'] === null) {
             $invalidProperties[] = "'createdAt' can't be null";
+        }
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['paymentAllocations'] === null) {
             $invalidProperties[] = "'paymentAllocations' can't be null";
@@ -524,6 +534,33 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable createdAt cannot be null');
         }
         $this->container['createdAt'] = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->container['updatedAt'];
+    }
+
+    /**
+     * Sets updatedAt
+     *
+     * @param \DateTime $updatedAt updatedAt
+     *
+     * @return $this
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): static
+    {
+        if (is_null($updatedAt)) {
+            throw new InvalidArgumentException('non-nullable updatedAt cannot be null');
+        }
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
