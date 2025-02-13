@@ -653,7 +653,8 @@
               "default": "invoiceDate",
               "enum": [
                 "invoiceDate",
-                "invoiceDue"
+                "invoiceDue",
+                "updatedAt"
               ]
             }
           }
@@ -1585,6 +1586,14 @@
               "$ref": "#/components/schemas/InvoicedBookingLineItem"
             }
           },
+          "invoicedBookingDeposit": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingDeposit"
+              }
+            ]
+          },
           "outstandingAmount": {
             "title": "Calculates the outstanding amount left of the invoice",
             "type": "string",
@@ -1747,6 +1756,14 @@
             "items": {
               "$ref": "#/components/schemas/InvoicedBookingLineItem2"
             }
+          },
+          "invoicedBookingDeposit": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingDeposit2"
+              }
+            ]
           },
           "outstandingAmount": {
             "title": "Calculates the outstanding amount left of the invoice",
@@ -2210,6 +2227,37 @@
         },
         "type": "object"
       },
+      "InvoicedBookingDeposit": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "Booking2": {
         "required": [
           "status"
@@ -2319,6 +2367,37 @@
             "items": {
               "$ref": "#/components/schemas/IncomeCode2"
             },
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingDeposit2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
             "nullable": true
           }
         },

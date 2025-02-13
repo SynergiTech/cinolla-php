@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **reference** | **string** |  | [optional]
 **poReference** | **string** |  | [optional]
 **invoicedBookingLineItems** | [**\SynergiTech\Cinolla\Model\InvoicedBookingLineItem2[]**](InvoicedBookingLineItem2.md) |  |
+**invoicedBookingDeposit** | [**\SynergiTech\Cinolla\Model\InvoicedBooking2InvoicedBookingDeposit**](InvoicedBooking2InvoicedBookingDeposit.md) |  | [optional]
 **outstandingAmount** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

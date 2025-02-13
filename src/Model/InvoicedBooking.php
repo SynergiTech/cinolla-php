@@ -91,6 +91,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'string',
         'poReference' => 'string',
         'invoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\InvoicedBookingLineItem[]',
+        'invoicedBookingDeposit' => '\SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit',
         'outstandingAmount' => 'string'
     ];
 
@@ -133,6 +134,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => null,
         'poReference' => null,
         'invoicedBookingLineItems' => null,
+        'invoicedBookingDeposit' => null,
         'outstandingAmount' => null
     ];
 
@@ -175,6 +177,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => true,
         'poReference' => true,
         'invoicedBookingLineItems' => false,
+        'invoicedBookingDeposit' => true,
         'outstandingAmount' => true
     ];
 
@@ -297,6 +300,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'reference',
         'poReference' => 'poReference',
         'invoicedBookingLineItems' => 'invoicedBookingLineItems',
+        'invoicedBookingDeposit' => 'invoicedBookingDeposit',
         'outstandingAmount' => 'outstandingAmount'
     ];
 
@@ -339,6 +343,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'setReference',
         'poReference' => 'setPoReference',
         'invoicedBookingLineItems' => 'setInvoicedBookingLineItems',
+        'invoicedBookingDeposit' => 'setInvoicedBookingDeposit',
         'outstandingAmount' => 'setOutstandingAmount'
     ];
 
@@ -381,6 +386,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'getReference',
         'poReference' => 'getPoReference',
         'invoicedBookingLineItems' => 'getInvoicedBookingLineItems',
+        'invoicedBookingDeposit' => 'getInvoicedBookingDeposit',
         'outstandingAmount' => 'getOutstandingAmount'
     ];
 
@@ -488,6 +494,7 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('poReference', $data ?? [], null);
         $this->setIfExists('invoicedBookingLineItems', $data ?? [], null);
+        $this->setIfExists('invoicedBookingDeposit', $data ?? [], null);
         $this->setIfExists('outstandingAmount', $data ?? [], null);
     }
 
@@ -1636,6 +1643,40 @@ class InvoicedBooking implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable invoicedBookingLineItems cannot be null');
         }
         $this->container['invoicedBookingLineItems'] = $invoicedBookingLineItems;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoicedBookingDeposit
+     *
+     * @return \SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit|null
+     */
+    public function getInvoicedBookingDeposit(): ?\SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit
+    {
+        return $this->container['invoicedBookingDeposit'];
+    }
+
+    /**
+     * Sets invoicedBookingDeposit
+     *
+     * @param \SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit|null $invoicedBookingDeposit invoicedBookingDeposit
+     *
+     * @return $this
+     */
+    public function setInvoicedBookingDeposit(?\SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit $invoicedBookingDeposit): static
+    {
+        if (is_null($invoicedBookingDeposit)) {
+            array_push($this->openAPINullablesSetToNull, 'invoicedBookingDeposit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoicedBookingDeposit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['invoicedBookingDeposit'] = $invoicedBookingDeposit;
 
         return $this;
     }
