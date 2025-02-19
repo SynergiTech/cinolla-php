@@ -38,8 +38,8 @@ $apiInstance = new SynergiTech\Cinolla\Api\CoursesApi(
 $id = 'id_example'; // string
 $offset = 0; // int | An offset to return a paginated list of results
 $limit = 100; // int | The limit on the number of results
-$startDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
-$endDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
+$startDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of a date range. Used in conjunction with endDate to create a date range to filter by.
+$endDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of a date range. Used in conjunction with startDate to create a date range to filter by.
 $sellOnPortal = True; // bool | Filter items to only those marked for sale on the Booking Portal.
 
 try {
