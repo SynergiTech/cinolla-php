@@ -28,7 +28,13 @@ docs/Model/Contact3.md
 docs/Model/Contact4.md
 docs/Model/Contact5.md
 docs/Model/Contact6.md
+docs/Model/ContactBelongsToOrganisation.md
+docs/Model/ContactBelongsToOrganisation2.md
+docs/Model/ContactBelongsToOrganisation2Organisation.md
+docs/Model/ContactBelongsToOrganisationOrganisation.md
 docs/Model/ContactDefaultBillingAddress.md
+docs/Model/ContactOrganisation.md
+docs/Model/ContactOrganisation2.md
 docs/Model/CourseRun.md
 docs/Model/CourseRunDate.md
 docs/Model/CustomFieldsData.md
@@ -82,7 +88,13 @@ src/Model/Contact3.php
 src/Model/Contact4.php
 src/Model/Contact5.php
 src/Model/Contact6.php
+src/Model/ContactBelongsToOrganisation.php
+src/Model/ContactBelongsToOrganisation2.php
+src/Model/ContactBelongsToOrganisation2Organisation.php
+src/Model/ContactBelongsToOrganisationOrganisation.php
 src/Model/ContactDefaultBillingAddress.php
+src/Model/ContactOrganisation.php
+src/Model/ContactOrganisation2.php
 src/Model/CourseRun.php
 src/Model/CourseRunDate.php
 src/Model/CustomFieldsData.php

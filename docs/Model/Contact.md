@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **createdAt** | **\DateTime** |  | [optional]
 **defaultBillingAddress** | [**\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress**](ContactDefaultBillingAddress.md) |  | [optional]
 **defaultDeliveryAddress** | [**\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress**](ContactDefaultBillingAddress.md) |  | [optional]
+**belongsToOrganisations** | [**\SynergiTech\Cinolla\Model\ContactBelongsToOrganisation[]**](ContactBelongsToOrganisation.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

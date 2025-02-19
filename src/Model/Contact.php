@@ -69,7 +69,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => 'string',
         'createdAt' => '\DateTime',
         'defaultBillingAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress',
-        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress'
+        'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress',
+        'belongsToOrganisations' => '\SynergiTech\Cinolla\Model\ContactBelongsToOrganisation[]'
     ];
 
     /**
@@ -89,7 +90,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => null,
         'createdAt' => 'date-time',
         'defaultBillingAddress' => null,
-        'defaultDeliveryAddress' => null
+        'defaultDeliveryAddress' => null,
+        'belongsToOrganisations' => null
     ];
 
     /**
@@ -109,7 +111,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => true,
         'createdAt' => true,
         'defaultBillingAddress' => true,
-        'defaultDeliveryAddress' => true
+        'defaultDeliveryAddress' => true,
+        'belongsToOrganisations' => false
     ];
 
     /**
@@ -209,7 +212,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => 'workTel',
         'createdAt' => 'createdAt',
         'defaultBillingAddress' => 'defaultBillingAddress',
-        'defaultDeliveryAddress' => 'defaultDeliveryAddress'
+        'defaultDeliveryAddress' => 'defaultDeliveryAddress',
+        'belongsToOrganisations' => 'belongsToOrganisations'
     ];
 
     /**
@@ -229,7 +233,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => 'setWorkTel',
         'createdAt' => 'setCreatedAt',
         'defaultBillingAddress' => 'setDefaultBillingAddress',
-        'defaultDeliveryAddress' => 'setDefaultDeliveryAddress'
+        'defaultDeliveryAddress' => 'setDefaultDeliveryAddress',
+        'belongsToOrganisations' => 'setBelongsToOrganisations'
     ];
 
     /**
@@ -249,7 +254,8 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         'workTel' => 'getWorkTel',
         'createdAt' => 'getCreatedAt',
         'defaultBillingAddress' => 'getDefaultBillingAddress',
-        'defaultDeliveryAddress' => 'getDefaultDeliveryAddress'
+        'defaultDeliveryAddress' => 'getDefaultDeliveryAddress',
+        'belongsToOrganisations' => 'getBelongsToOrganisations'
     ];
 
     /**
@@ -320,6 +326,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('defaultBillingAddress', $data ?? [], null);
         $this->setIfExists('defaultDeliveryAddress', $data ?? [], null);
+        $this->setIfExists('belongsToOrganisations', $data ?? [], null);
     }
 
     /**
@@ -349,6 +356,9 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['belongsToOrganisations'] === null) {
+            $invalidProperties[] = "'belongsToOrganisations' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -768,6 +778,33 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['defaultDeliveryAddress'] = $defaultDeliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * Gets belongsToOrganisations
+     *
+     * @return \SynergiTech\Cinolla\Model\ContactBelongsToOrganisation[]
+     */
+    public function getBelongsToOrganisations(): array
+    {
+        return $this->container['belongsToOrganisations'];
+    }
+
+    /**
+     * Sets belongsToOrganisations
+     *
+     * @param \SynergiTech\Cinolla\Model\ContactBelongsToOrganisation[] $belongsToOrganisations belongsToOrganisations
+     *
+     * @return $this
+     */
+    public function setBelongsToOrganisations(array $belongsToOrganisations): static
+    {
+        if (is_null($belongsToOrganisations)) {
+            throw new InvalidArgumentException('non-nullable belongsToOrganisations cannot be null');
+        }
+        $this->container['belongsToOrganisations'] = $belongsToOrganisations;
 
         return $this;
     }

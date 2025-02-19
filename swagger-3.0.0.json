@@ -1106,6 +1106,9 @@
         "type": "object"
       },
       "Contact": {
+        "required": [
+          "belongsToOrganisations"
+        ],
         "properties": {
           "hash": {
             "type": "string",
@@ -1171,13 +1174,20 @@
             ],
             "nullable": true,
             "type": "object"
+          },
+          "belongsToOrganisations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactBelongsToOrganisation"
+            }
           }
         },
         "type": "object"
       },
       "Contact2": {
         "required": [
-          "addresses"
+          "addresses",
+          "belongsToOrganisations"
         ],
         "properties": {
           "hash": {
@@ -1271,6 +1281,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Address"
+            }
+          },
+          "belongsToOrganisations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactBelongsToOrganisation2"
             }
           }
         },
@@ -2013,6 +2029,35 @@
         },
         "type": "object"
       },
+      "ContactBelongsToOrganisation": {
+        "required": [
+          "start"
+        ],
+        "properties": {
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation"
+              }
+            ]
+          },
+          "position": {
+            "type": "string",
+            "nullable": true
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "Address": {
         "required": [
           "id"
@@ -2068,6 +2113,35 @@
           },
           "countryName": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactBelongsToOrganisation2": {
+        "required": [
+          "start"
+        ],
+        "properties": {
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation2"
+              }
+            ]
+          },
+          "position": {
+            "type": "string",
+            "nullable": true
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },
@@ -2443,6 +2517,48 @@
             "nullable": true
           },
           "actionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation2": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
             "type": "string",
             "nullable": true
           }
