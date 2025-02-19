@@ -312,7 +312,7 @@ class InvoicedBookingLineItem implements ModelInterface, ArrayAccess, JsonSerial
         $this->setIfExists('taxPercent', $data ?? [], null);
         $this->setIfExists('taxAmount', $data ?? [], null);
         $this->setIfExists('taxCode', $data ?? [], null);
-        $this->setIfExists('incomeAllocations', $data ?? [], null);
+        $this->setIfExists('incomeAllocations', $data ?? [], [[]]);
     }
 
     /**

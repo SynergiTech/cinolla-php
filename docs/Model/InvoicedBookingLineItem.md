@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **taxPercent** | **string** |  | [optional]
 **taxAmount** | **string** |  | [optional]
 **taxCode** | **string** |  | [optional]
-**incomeAllocations** | [**\SynergiTech\Cinolla\Model\IncomeCode[]**](IncomeCode.md) |  | [optional]
+**incomeAllocations** | [**\SynergiTech\Cinolla\Model\IncomeCode[]**](IncomeCode.md) |  | [optional] [default to [[]]]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

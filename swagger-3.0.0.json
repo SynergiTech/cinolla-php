@@ -2222,6 +2222,7 @@
             "items": {
               "$ref": "#/components/schemas/IncomeCode"
             },
+            "default": [],
             "nullable": true
           }
         },
@@ -2367,6 +2368,7 @@
             "items": {
               "$ref": "#/components/schemas/IncomeCode2"
             },
+            "default": [],
             "nullable": true
           }
         },
