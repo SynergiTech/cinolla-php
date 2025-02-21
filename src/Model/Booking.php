@@ -61,6 +61,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'string',
         'hash' => 'string',
         'contact' => '\SynergiTech\Cinolla\Model\BookingContact',
+        'organisation' => '\SynergiTech\Cinolla\Model\BookingOrganisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
@@ -79,6 +80,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => null,
         'hash' => null,
         'contact' => null,
+        'organisation' => null,
         'status' => null,
         'totalCost' => null,
         'netCost' => null,
@@ -97,6 +99,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => true,
         'hash' => true,
         'contact' => true,
+        'organisation' => true,
         'status' => false,
         'totalCost' => true,
         'netCost' => true,
@@ -195,6 +198,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'reference',
         'hash' => 'hash',
         'contact' => 'contact',
+        'organisation' => 'organisation',
         'status' => 'status',
         'totalCost' => 'totalCost',
         'netCost' => 'netCost',
@@ -213,6 +217,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'setReference',
         'hash' => 'setHash',
         'contact' => 'setContact',
+        'organisation' => 'setOrganisation',
         'status' => 'setStatus',
         'totalCost' => 'setTotalCost',
         'netCost' => 'setNetCost',
@@ -231,6 +236,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'reference' => 'getReference',
         'hash' => 'getHash',
         'contact' => 'getContact',
+        'organisation' => 'getOrganisation',
         'status' => 'getStatus',
         'totalCost' => 'getTotalCost',
         'netCost' => 'getNetCost',
@@ -316,6 +322,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('hash', $data ?? [], null);
         $this->setIfExists('contact', $data ?? [], null);
+        $this->setIfExists('organisation', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('totalCost', $data ?? [], null);
         $this->setIfExists('netCost', $data ?? [], null);
@@ -477,6 +484,40 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Gets organisation
+     *
+     * @return \SynergiTech\Cinolla\Model\BookingOrganisation|null
+     */
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\BookingOrganisation
+    {
+        return $this->container['organisation'];
+    }
+
+    /**
+     * Sets organisation
+     *
+     * @param \SynergiTech\Cinolla\Model\BookingOrganisation|null $organisation organisation
+     *
+     * @return $this
+     */
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\BookingOrganisation $organisation): static
+    {
+        if (is_null($organisation)) {
+            array_push($this->openAPINullablesSetToNull, 'organisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('organisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['organisation'] = $organisation;
 
         return $this;
     }

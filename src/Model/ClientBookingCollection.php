@@ -61,7 +61,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => 'string',
         'hash' => 'string',
         'contact' => '\SynergiTech\Cinolla\Model\ClientBookingCollectionContact',
-        'organisation' => 'object',
+        'organisation' => '\SynergiTech\Cinolla\Model\ClientBookingCollectionOrganisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
@@ -511,9 +511,9 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets organisation
      *
-     * @return object|null
+     * @return \SynergiTech\Cinolla\Model\ClientBookingCollectionOrganisation|null
      */
-    public function getOrganisation(): ?object
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\ClientBookingCollectionOrganisation
     {
         return $this->container['organisation'];
     }
@@ -521,11 +521,11 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets organisation
      *
-     * @param object|null $organisation organisation
+     * @param \SynergiTech\Cinolla\Model\ClientBookingCollectionOrganisation|null $organisation organisation
      *
      * @return $this
      */
-    public function setOrganisation(?object $organisation): static
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\ClientBookingCollectionOrganisation $organisation): static
     {
         if (is_null($organisation)) {
             array_push($this->openAPINullablesSetToNull, 'organisation');

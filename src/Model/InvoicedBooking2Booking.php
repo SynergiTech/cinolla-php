@@ -61,6 +61,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => 'string',
         'hash' => 'string',
         'contact' => '\SynergiTech\Cinolla\Model\Booking2Contact',
+        'organisation' => '\SynergiTech\Cinolla\Model\Booking2Organisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
@@ -79,6 +80,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => null,
         'hash' => null,
         'contact' => null,
+        'organisation' => null,
         'status' => null,
         'totalCost' => null,
         'netCost' => null,
@@ -97,6 +99,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => true,
         'hash' => true,
         'contact' => true,
+        'organisation' => true,
         'status' => false,
         'totalCost' => true,
         'netCost' => true,
@@ -195,6 +198,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => 'reference',
         'hash' => 'hash',
         'contact' => 'contact',
+        'organisation' => 'organisation',
         'status' => 'status',
         'totalCost' => 'totalCost',
         'netCost' => 'netCost',
@@ -213,6 +217,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => 'setReference',
         'hash' => 'setHash',
         'contact' => 'setContact',
+        'organisation' => 'setOrganisation',
         'status' => 'setStatus',
         'totalCost' => 'setTotalCost',
         'netCost' => 'setNetCost',
@@ -231,6 +236,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         'reference' => 'getReference',
         'hash' => 'getHash',
         'contact' => 'getContact',
+        'organisation' => 'getOrganisation',
         'status' => 'getStatus',
         'totalCost' => 'getTotalCost',
         'netCost' => 'getNetCost',
@@ -316,6 +322,7 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('hash', $data ?? [], null);
         $this->setIfExists('contact', $data ?? [], null);
+        $this->setIfExists('organisation', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('totalCost', $data ?? [], null);
         $this->setIfExists('netCost', $data ?? [], null);
@@ -477,6 +484,40 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
             }
         }
         $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Gets organisation
+     *
+     * @return \SynergiTech\Cinolla\Model\Booking2Organisation|null
+     */
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\Booking2Organisation
+    {
+        return $this->container['organisation'];
+    }
+
+    /**
+     * Sets organisation
+     *
+     * @param \SynergiTech\Cinolla\Model\Booking2Organisation|null $organisation organisation
+     *
+     * @return $this
+     */
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\Booking2Organisation $organisation): static
+    {
+        if (is_null($organisation)) {
+            array_push($this->openAPINullablesSetToNull, 'organisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('organisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['organisation'] = $organisation;
 
         return $this;
     }

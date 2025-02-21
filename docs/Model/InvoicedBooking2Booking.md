@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **reference** | **string** |  | [optional]
 **hash** | **string** |  | [optional]
 **contact** | [**\SynergiTech\Cinolla\Model\Booking2Contact**](Booking2Contact.md) |  | [optional]
+**organisation** | [**\SynergiTech\Cinolla\Model\Booking2Organisation**](Booking2Organisation.md) |  | [optional]
 **status** | **string** |  |
 **totalCost** | **string** |  | [optional]
 **netCost** | **string** |  | [optional]

@@ -1,6 +1,6 @@
 <?php
 /**
- * ContactOrganisation
+ * ContactOrganisationAccountManager
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ContactOrganisation Class Doc Comment
+ * ContactOrganisationAccountManager Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class ContactOrganisationAccountManager implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ContactOrganisation';
+    protected static string $openAPIModelName = 'ContactOrganisation_accountManager';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id' => 'int',
-        'hash' => 'string',
-        'name' => 'string',
-        'shortName' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        
     ];
 
     /**
@@ -71,11 +67,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'hash' => null,
-        'name' => null,
-        'shortName' => null,
-        'accountManager' => null
+        
     ];
 
     /**
@@ -84,11 +76,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'hash' => true,
-        'name' => false,
-        'shortName' => true,
-        'accountManager' => true
+        
     ];
 
     /**
@@ -177,11 +165,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'hash' => 'hash',
-        'name' => 'name',
-        'shortName' => 'shortName',
-        'accountManager' => 'accountManager'
+        
     ];
 
     /**
@@ -190,11 +174,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'hash' => 'setHash',
-        'name' => 'setName',
-        'shortName' => 'setShortName',
-        'accountManager' => 'setAccountManager'
+        
     ];
 
     /**
@@ -203,11 +183,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'hash' => 'getHash',
-        'name' => 'getName',
-        'shortName' => 'getShortName',
-        'accountManager' => 'getAccountManager'
+        
     ];
 
     /**
@@ -266,11 +242,6 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
-        $this->setIfExists('accountManager', $data ?? [], null);
     }
 
     /**
@@ -300,9 +271,6 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -317,162 +285,6 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId(int $id): static
-    {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash
-     *
-     * @return string|null
-     */
-    public function getHash(): ?string
-    {
-        return $this->container['hash'];
-    }
-
-    /**
-     * Sets hash
-     *
-     * @param string|null $hash hash
-     *
-     * @return $this
-     */
-    public function setHash(?string $hash): static
-    {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hash'] = $hash;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return $this
-     */
-    public function setName(?string $name): static
-    {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shortName
-     *
-     * @return string|null
-     */
-    public function getShortName(): ?string
-    {
-        return $this->container['shortName'];
-    }
-
-    /**
-     * Sets shortName
-     *
-     * @param string|null $shortName shortName
-     *
-     * @return $this
-     */
-    public function setShortName(?string $shortName): static
-    {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['shortName'] = $shortName;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountManager
-     *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
-     */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
-    {
-        return $this->container['accountManager'];
-    }
-
-    /**
-     * Sets accountManager
-     *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
-     *
-     * @return $this
-     */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
-    {
-        if (is_null($accountManager)) {
-            array_push($this->openAPINullablesSetToNull, 'accountManager');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accountManager', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accountManager'] = $accountManager;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

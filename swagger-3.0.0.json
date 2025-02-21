@@ -976,8 +976,12 @@
             ]
           },
           "organisation": {
-            "type": "object",
-            "nullable": true
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation2"
+              }
+            ]
           },
           "status": {
             "type": "string",
@@ -1055,8 +1059,12 @@
             ]
           },
           "organisation": {
-            "type": "object",
-            "nullable": true
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation"
+              }
+            ]
           },
           "status": {
             "type": "string",
@@ -1929,6 +1937,37 @@
         },
         "type": "object"
       },
+      "ContactOrganisation": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountManager": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Staff"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
       "BookingType": {
         "properties": {
           "name": {
@@ -2016,6 +2055,27 @@
         },
         "type": "object"
       },
+      "ContactOrganisation2": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "BookingType2": {
         "properties": {
           "name": {
@@ -2038,7 +2098,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation"
+                "$ref": "#/components/schemas/ContactOrganisation3"
               }
             ]
           },
@@ -2127,7 +2187,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation2"
+                "$ref": "#/components/schemas/ContactOrganisation4"
               }
             ]
           },
@@ -2206,6 +2266,14 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Contact5"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation5"
               }
             ]
           },
@@ -2352,6 +2420,14 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Contact6"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation6"
               }
             ]
           },
@@ -2523,7 +2599,10 @@
         },
         "type": "object"
       },
-      "ContactOrganisation": {
+      "Staff": {
+        "type": "object"
+      },
+      "ContactOrganisation3": {
         "properties": {
           "hash": {
             "type": "string",
@@ -2544,7 +2623,7 @@
         },
         "type": "object"
       },
-      "ContactOrganisation2": {
+      "ContactOrganisation4": {
         "properties": {
           "hash": {
             "type": "string",
@@ -2612,6 +2691,27 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -2696,6 +2796,27 @@
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation6": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
             "nullable": true
           }
         },
