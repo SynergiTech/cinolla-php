@@ -1,6 +1,6 @@
 <?php
 /**
- * BookingContact
+ * InvoicedBooking2Contact
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * BookingContact Class Doc Comment
+ * InvoicedBooking2Contact Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BookingContact implements ModelInterface, ArrayAccess, JsonSerializable
+class InvoicedBooking2Contact implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BookingContact implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Booking_contact';
+    protected static string $openAPIModelName = 'InvoicedBooking2_contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **totalCost** | **string** |  | [optional]
 **netCost** | **string** |  | [optional]
 **createdAt** | **\DateTime** |  | [optional]
-**centre** | **object** |  |
+**centre** | [**\SynergiTech\Cinolla\Model\ClientBookingDetailCentre**](ClientBookingDetailCentre.md) |  | [optional]
 **arrivalDate** | **\DateTime** |  | [optional]
 **departureDate** | **\DateTime** |  | [optional]
 **origin** | **string** |  | [optional]

@@ -16,16 +16,12 @@ Name | Type | Description | Notes
 **invoiceDate** | **\DateTime** |  |
 **invoiceDue** | **\DateTime** |  |
 **type** | **string** |  | [optional]
-**deliveryAddressName** | **string** |  | [optional]
-**deliveryAddressOrganisation** | **string** |  | [optional]
 **deliveryAddressAddress1** | **string** |  | [optional]
 **deliveryAddressAddress2** | **string** |  | [optional]
 **deliveryAddressTown** | **string** |  | [optional]
 **deliveryAddressCounty** | **string** |  | [optional]
 **deliveryAddressPostcode** | **string** |  | [optional]
 **deliveryAddressCountry** | **string** |  | [optional]
-**billingAddressName** | **string** |  | [optional]
-**billingAddressOrganisation** | **string** |  | [optional]
 **billingAddressAddress1** | **string** |  | [optional]
 **billingAddressAddress2** | **string** |  | [optional]
 **billingAddressTown** | **string** |  | [optional]
@@ -39,5 +35,7 @@ Name | Type | Description | Notes
 **invoicedBookingLineItems** | [**\SynergiTech\Cinolla\Model\InvoicedBookingLineItem[]**](InvoicedBookingLineItem.md) |  |
 **invoicedBookingDeposit** | [**\SynergiTech\Cinolla\Model\InvoicedBookingInvoicedBookingDeposit**](InvoicedBookingInvoicedBookingDeposit.md) |  | [optional]
 **outstandingAmount** | **string** |  | [optional]
+**contact** | [**\SynergiTech\Cinolla\Model\InvoicedBookingContact**](InvoicedBookingContact.md) |  | [optional]
+**organisation** | [**\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation**](InvoicedBookingOrganisation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

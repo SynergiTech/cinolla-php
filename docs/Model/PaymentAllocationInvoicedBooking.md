@@ -15,16 +15,12 @@ Name | Type | Description | Notes
 **invoiceDate** | **\DateTime** |  |
 **invoiceDue** | **\DateTime** |  |
 **type** | **string** |  | [optional]
-**deliveryAddressName** | **string** |  | [optional]
-**deliveryAddressOrganisation** | **string** |  | [optional]
 **deliveryAddressAddress1** | **string** |  | [optional]
 **deliveryAddressAddress2** | **string** |  | [optional]
 **deliveryAddressTown** | **string** |  | [optional]
 **deliveryAddressCounty** | **string** |  | [optional]
 **deliveryAddressPostcode** | **string** |  | [optional]
 **deliveryAddressCountry** | **string** |  | [optional]
-**billingAddressName** | **string** |  | [optional]
-**billingAddressOrganisation** | **string** |  | [optional]
 **billingAddressAddress1** | **string** |  | [optional]
 **billingAddressAddress2** | **string** |  | [optional]
 **billingAddressTown** | **string** |  | [optional]

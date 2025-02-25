@@ -954,7 +954,6 @@
       "ClientBookingDetail": {
         "required": [
           "status",
-          "centre",
           "bookingTags"
         ],
         "properties": {
@@ -1005,7 +1004,12 @@
             "nullable": true
           },
           "centre": {
-            "type": "object"
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Centre2"
+              }
+            ]
           },
           "arrivalDate": {
             "type": "string",
@@ -1037,7 +1041,6 @@
       "ClientBookingCollection": {
         "required": [
           "status",
-          "centre",
           "bookingTags"
         ],
         "properties": {
@@ -1088,7 +1091,12 @@
             "nullable": true
           },
           "centre": {
-            "type": "object"
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Centre"
+              }
+            ]
           },
           "arrivalDate": {
             "type": "string",
@@ -1522,14 +1530,6 @@
             "type": "string",
             "nullable": true
           },
-          "deliveryAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "deliveryAddressOrganisation": {
-            "type": "string",
-            "nullable": true
-          },
           "deliveryAddressAddress1": {
             "type": "string",
             "nullable": true
@@ -1551,14 +1551,6 @@
             "nullable": true
           },
           "deliveryAddressCountry": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressOrganisation": {
             "type": "string",
             "nullable": true
           },
@@ -1622,6 +1614,22 @@
             "title": "Calculates the outstanding amount left of the invoice",
             "type": "string",
             "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact5"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation3"
+              }
+            ]
           }
         },
         "type": "object"
@@ -1693,14 +1701,6 @@
             "type": "string",
             "nullable": true
           },
-          "deliveryAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "deliveryAddressOrganisation": {
-            "type": "string",
-            "nullable": true
-          },
           "deliveryAddressAddress1": {
             "type": "string",
             "nullable": true
@@ -1722,14 +1722,6 @@
             "nullable": true
           },
           "deliveryAddressCountry": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressOrganisation": {
             "type": "string",
             "nullable": true
           },
@@ -1793,6 +1785,22 @@
             "title": "Calculates the outstanding amount left of the invoice",
             "type": "string",
             "nullable": true
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact6"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation4"
+              }
+            ]
           }
         },
         "type": "object"
@@ -1968,6 +1976,19 @@
         },
         "type": "object"
       },
+      "Centre": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "type": "object"
+      },
       "BookingType": {
         "properties": {
           "name": {
@@ -2076,6 +2097,19 @@
         },
         "type": "object"
       },
+      "Centre2": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "type": "object"
+      },
       "BookingType2": {
         "properties": {
           "name": {
@@ -2098,7 +2132,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation3"
+                "$ref": "#/components/schemas/ContactOrganisation5"
               }
             ]
           },
@@ -2187,7 +2221,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation4"
+                "$ref": "#/components/schemas/ContactOrganisation6"
               }
             ]
           },
@@ -2273,7 +2307,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation5"
+                "$ref": "#/components/schemas/ContactOrganisation3"
               }
             ]
           },
@@ -2401,6 +2435,79 @@
         },
         "type": "object"
       },
+      "Contact5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation3": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "Booking2": {
         "required": [
           "status"
@@ -2427,7 +2534,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation6"
+                "$ref": "#/components/schemas/ContactOrganisation4"
               }
             ]
           },
@@ -2555,200 +2662,6 @@
         },
         "type": "object"
       },
-      "PaymentAllocation": {
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "invoicedBooking": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InvoicedBooking3"
-              }
-            ]
-          },
-          "refund": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Refund"
-              }
-            ]
-          },
-          "allocatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "allocatedAmount": {
-            "type": "string",
-            "nullable": true
-          },
-          "actionGroupId": {
-            "type": "integer",
-            "nullable": true
-          },
-          "actionType": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "Staff": {
-        "type": "object"
-      },
-      "ContactOrganisation3": {
-        "properties": {
-          "hash": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "default": ""
-          },
-          "shortName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "ContactOrganisation4": {
-        "properties": {
-          "hash": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "default": ""
-          },
-          "shortName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "Contact5": {
-        "properties": {
-          "hash": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "firstName": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "secondName": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "tel": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "eveningTel": {
-            "type": "string",
-            "nullable": true
-          },
-          "mobile": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "workTel": {
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "ContactOrganisation5": {
-        "properties": {
-          "hash": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "default": ""
-          },
-          "shortName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "type": "object"
-      },
-      "IncomeCode": {
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string",
-            "default": ""
-          },
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "weight": {
-            "type": "integer",
-            "default": "999"
-          },
-          "accountNumber": {
-            "type": "integer",
-            "nullable": true
-          },
-          "percentage": {
-            "title": "\n\nNon-DB value, calculated and set at the time of api response",
-            "type": "string",
-            "default": "100.00000"
-          }
-        },
-        "type": "object"
-      },
       "Contact6": {
         "properties": {
           "hash": {
@@ -2801,6 +2714,95 @@
         },
         "type": "object"
       },
+      "ContactOrganisation4": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "PaymentAllocation": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoicedBooking": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBooking3"
+              }
+            ]
+          },
+          "refund": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Refund"
+              }
+            ]
+          },
+          "allocatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "allocatedAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionGroupId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "actionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "Staff": {
+        "type": "object"
+      },
+      "ContactOrganisation5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "ContactOrganisation6": {
         "properties": {
           "hash": {
@@ -2818,6 +2820,38 @@
           "shortName": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "IncomeCode": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "integer",
+            "default": "999"
+          },
+          "accountNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "percentage": {
+            "title": "\n\nNon-DB value, calculated and set at the time of api response",
+            "type": "string",
+            "default": "100.00000"
           }
         },
         "type": "object"
@@ -2912,14 +2946,6 @@
             "type": "string",
             "nullable": true
           },
-          "deliveryAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "deliveryAddressOrganisation": {
-            "type": "string",
-            "nullable": true
-          },
           "deliveryAddressAddress1": {
             "type": "string",
             "nullable": true
@@ -2941,14 +2967,6 @@
             "nullable": true
           },
           "deliveryAddressCountry": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressOrganisation": {
             "type": "string",
             "nullable": true
           },

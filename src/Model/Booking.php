@@ -60,8 +60,8 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPITypes = [
         'reference' => 'string',
         'hash' => 'string',
-        'contact' => '\SynergiTech\Cinolla\Model\BookingContact',
-        'organisation' => '\SynergiTech\Cinolla\Model\BookingOrganisation',
+        'contact' => '\SynergiTech\Cinolla\Model\InvoicedBookingContact',
+        'organisation' => '\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
@@ -457,9 +457,9 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets contact
      *
-     * @return \SynergiTech\Cinolla\Model\BookingContact|null
+     * @return \SynergiTech\Cinolla\Model\InvoicedBookingContact|null
      */
-    public function getContact(): ?\SynergiTech\Cinolla\Model\BookingContact
+    public function getContact(): ?\SynergiTech\Cinolla\Model\InvoicedBookingContact
     {
         return $this->container['contact'];
     }
@@ -467,11 +467,11 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets contact
      *
-     * @param \SynergiTech\Cinolla\Model\BookingContact|null $contact contact
+     * @param \SynergiTech\Cinolla\Model\InvoicedBookingContact|null $contact contact
      *
      * @return $this
      */
-    public function setContact(?\SynergiTech\Cinolla\Model\BookingContact $contact): static
+    public function setContact(?\SynergiTech\Cinolla\Model\InvoicedBookingContact $contact): static
     {
         if (is_null($contact)) {
             array_push($this->openAPINullablesSetToNull, 'contact');
@@ -491,9 +491,9 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets organisation
      *
-     * @return \SynergiTech\Cinolla\Model\BookingOrganisation|null
+     * @return \SynergiTech\Cinolla\Model\InvoicedBookingOrganisation|null
      */
-    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\BookingOrganisation
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation
     {
         return $this->container['organisation'];
     }
@@ -501,11 +501,11 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets organisation
      *
-     * @param \SynergiTech\Cinolla\Model\BookingOrganisation|null $organisation organisation
+     * @param \SynergiTech\Cinolla\Model\InvoicedBookingOrganisation|null $organisation organisation
      *
      * @return $this
      */
-    public function setOrganisation(?\SynergiTech\Cinolla\Model\BookingOrganisation $organisation): static
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation $organisation): static
     {
         if (is_null($organisation)) {
             array_push($this->openAPINullablesSetToNull, 'organisation');

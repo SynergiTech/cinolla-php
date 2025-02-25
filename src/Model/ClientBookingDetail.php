@@ -66,7 +66,7 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
         'totalCost' => 'string',
         'netCost' => 'string',
         'createdAt' => '\DateTime',
-        'centre' => 'object',
+        'centre' => '\SynergiTech\Cinolla\Model\ClientBookingDetailCentre',
         'arrivalDate' => '\DateTime',
         'departureDate' => '\DateTime',
         'origin' => 'string',
@@ -110,7 +110,7 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
         'totalCost' => true,
         'netCost' => true,
         'createdAt' => true,
-        'centre' => false,
+        'centre' => true,
         'arrivalDate' => true,
         'departureDate' => true,
         'origin' => true,
@@ -392,9 +392,6 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
             );
         }
 
-        if ($this->container['centre'] === null) {
-            $invalidProperties[] = "'centre' can't be null";
-        }
         if ($this->container['bookingTags'] === null) {
             $invalidProperties[] = "'bookingTags' can't be null";
         }
@@ -691,9 +688,9 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Gets centre
      *
-     * @return object
+     * @return \SynergiTech\Cinolla\Model\ClientBookingDetailCentre|null
      */
-    public function getCentre(): object
+    public function getCentre(): ?\SynergiTech\Cinolla\Model\ClientBookingDetailCentre
     {
         return $this->container['centre'];
     }
@@ -701,14 +698,21 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Sets centre
      *
-     * @param object $centre centre
+     * @param \SynergiTech\Cinolla\Model\ClientBookingDetailCentre|null $centre centre
      *
      * @return $this
      */
-    public function setCentre(object $centre): static
+    public function setCentre(?\SynergiTech\Cinolla\Model\ClientBookingDetailCentre $centre): static
     {
         if (is_null($centre)) {
-            throw new InvalidArgumentException('non-nullable centre cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'centre');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('centre', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['centre'] = $centre;
 

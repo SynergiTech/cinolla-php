@@ -1,6 +1,6 @@
 <?php
 /**
- * BookingOrganisation
+ * Centre
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * BookingOrganisation Class Doc Comment
+ * Centre Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class Centre implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Booking_organisation';
+    protected static string $openAPIModelName = 'Centre';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       */
     protected static array $openAPITypes = [
         'hash' => 'string',
-        'customerId' => 'string',
-        'name' => 'string',
-        'shortName' => 'string'
+        'name' => 'string'
     ];
 
     /**
@@ -71,9 +69,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       */
     protected static array $openAPIFormats = [
         'hash' => null,
-        'customerId' => null,
-        'name' => null,
-        'shortName' => null
+        'name' => null
     ];
 
     /**
@@ -83,9 +79,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
       */
     protected static array $openAPINullables = [
         'hash' => true,
-        'customerId' => true,
-        'name' => false,
-        'shortName' => true
+        'name' => false
     ];
 
     /**
@@ -175,9 +169,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      */
     protected static array $attributeMap = [
         'hash' => 'hash',
-        'customerId' => 'customerId',
-        'name' => 'name',
-        'shortName' => 'shortName'
+        'name' => 'name'
     ];
 
     /**
@@ -187,9 +179,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      */
     protected static array $setters = [
         'hash' => 'setHash',
-        'customerId' => 'setCustomerId',
-        'name' => 'setName',
-        'shortName' => 'setShortName'
+        'name' => 'setName'
     ];
 
     /**
@@ -199,9 +189,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
      */
     protected static array $getters = [
         'hash' => 'getHash',
-        'customerId' => 'getCustomerId',
-        'name' => 'getName',
-        'shortName' => 'getShortName'
+        'name' => 'getName'
     ];
 
     /**
@@ -261,9 +249,7 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
     public function __construct(?array $data = null)
     {
         $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('customerId', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
     }
 
     /**
@@ -343,40 +329,6 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
     }
 
     /**
-     * Gets customerId
-     *
-     * @return string|null
-     */
-    public function getCustomerId(): ?string
-    {
-        return $this->container['customerId'];
-    }
-
-    /**
-     * Sets customerId
-     *
-     * @param string|null $customerId customerId
-     *
-     * @return $this
-     */
-    public function setCustomerId(?string $customerId): static
-    {
-        if (is_null($customerId)) {
-            array_push($this->openAPINullablesSetToNull, 'customerId');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customerId', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['customerId'] = $customerId;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -399,40 +351,6 @@ class BookingOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
             throw new InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shortName
-     *
-     * @return string|null
-     */
-    public function getShortName(): ?string
-    {
-        return $this->container['shortName'];
-    }
-
-    /**
-     * Sets shortName
-     *
-     * @param string|null $shortName shortName
-     *
-     * @return $this
-     */
-    public function setShortName(?string $shortName): static
-    {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['shortName'] = $shortName;
 
         return $this;
     }

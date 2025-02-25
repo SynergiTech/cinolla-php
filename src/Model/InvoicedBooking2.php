@@ -70,16 +70,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => '\DateTime',
         'invoiceDue' => '\DateTime',
         'type' => 'string',
-        'deliveryAddressName' => 'string',
-        'deliveryAddressOrganisation' => 'string',
         'deliveryAddressAddress1' => 'string',
         'deliveryAddressAddress2' => 'string',
         'deliveryAddressTown' => 'string',
         'deliveryAddressCounty' => 'string',
         'deliveryAddressPostcode' => 'string',
         'deliveryAddressCountry' => 'string',
-        'billingAddressName' => 'string',
-        'billingAddressOrganisation' => 'string',
         'billingAddressAddress1' => 'string',
         'billingAddressAddress2' => 'string',
         'billingAddressTown' => 'string',
@@ -92,7 +88,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => 'string',
         'invoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\InvoicedBookingLineItem2[]',
         'invoicedBookingDeposit' => '\SynergiTech\Cinolla\Model\InvoicedBooking2InvoicedBookingDeposit',
-        'outstandingAmount' => 'string'
+        'outstandingAmount' => 'string',
+        'contact' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Contact',
+        'organisation' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation'
     ];
 
     /**
@@ -113,16 +111,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => 'date-time',
         'invoiceDue' => 'date-time',
         'type' => null,
-        'deliveryAddressName' => null,
-        'deliveryAddressOrganisation' => null,
         'deliveryAddressAddress1' => null,
         'deliveryAddressAddress2' => null,
         'deliveryAddressTown' => null,
         'deliveryAddressCounty' => null,
         'deliveryAddressPostcode' => null,
         'deliveryAddressCountry' => null,
-        'billingAddressName' => null,
-        'billingAddressOrganisation' => null,
         'billingAddressAddress1' => null,
         'billingAddressAddress2' => null,
         'billingAddressTown' => null,
@@ -135,7 +129,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => null,
         'invoicedBookingLineItems' => null,
         'invoicedBookingDeposit' => null,
-        'outstandingAmount' => null
+        'outstandingAmount' => null,
+        'contact' => null,
+        'organisation' => null
     ];
 
     /**
@@ -156,16 +152,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => false,
         'invoiceDue' => false,
         'type' => true,
-        'deliveryAddressName' => true,
-        'deliveryAddressOrganisation' => true,
         'deliveryAddressAddress1' => true,
         'deliveryAddressAddress2' => true,
         'deliveryAddressTown' => true,
         'deliveryAddressCounty' => true,
         'deliveryAddressPostcode' => true,
         'deliveryAddressCountry' => true,
-        'billingAddressName' => true,
-        'billingAddressOrganisation' => true,
         'billingAddressAddress1' => true,
         'billingAddressAddress2' => true,
         'billingAddressTown' => true,
@@ -178,7 +170,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => true,
         'invoicedBookingLineItems' => false,
         'invoicedBookingDeposit' => true,
-        'outstandingAmount' => true
+        'outstandingAmount' => true,
+        'contact' => true,
+        'organisation' => true
     ];
 
     /**
@@ -279,16 +273,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => 'invoiceDate',
         'invoiceDue' => 'invoiceDue',
         'type' => 'type',
-        'deliveryAddressName' => 'deliveryAddressName',
-        'deliveryAddressOrganisation' => 'deliveryAddressOrganisation',
         'deliveryAddressAddress1' => 'deliveryAddressAddress1',
         'deliveryAddressAddress2' => 'deliveryAddressAddress2',
         'deliveryAddressTown' => 'deliveryAddressTown',
         'deliveryAddressCounty' => 'deliveryAddressCounty',
         'deliveryAddressPostcode' => 'deliveryAddressPostcode',
         'deliveryAddressCountry' => 'deliveryAddressCountry',
-        'billingAddressName' => 'billingAddressName',
-        'billingAddressOrganisation' => 'billingAddressOrganisation',
         'billingAddressAddress1' => 'billingAddressAddress1',
         'billingAddressAddress2' => 'billingAddressAddress2',
         'billingAddressTown' => 'billingAddressTown',
@@ -301,7 +291,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => 'poReference',
         'invoicedBookingLineItems' => 'invoicedBookingLineItems',
         'invoicedBookingDeposit' => 'invoicedBookingDeposit',
-        'outstandingAmount' => 'outstandingAmount'
+        'outstandingAmount' => 'outstandingAmount',
+        'contact' => 'contact',
+        'organisation' => 'organisation'
     ];
 
     /**
@@ -322,16 +314,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => 'setInvoiceDate',
         'invoiceDue' => 'setInvoiceDue',
         'type' => 'setType',
-        'deliveryAddressName' => 'setDeliveryAddressName',
-        'deliveryAddressOrganisation' => 'setDeliveryAddressOrganisation',
         'deliveryAddressAddress1' => 'setDeliveryAddressAddress1',
         'deliveryAddressAddress2' => 'setDeliveryAddressAddress2',
         'deliveryAddressTown' => 'setDeliveryAddressTown',
         'deliveryAddressCounty' => 'setDeliveryAddressCounty',
         'deliveryAddressPostcode' => 'setDeliveryAddressPostcode',
         'deliveryAddressCountry' => 'setDeliveryAddressCountry',
-        'billingAddressName' => 'setBillingAddressName',
-        'billingAddressOrganisation' => 'setBillingAddressOrganisation',
         'billingAddressAddress1' => 'setBillingAddressAddress1',
         'billingAddressAddress2' => 'setBillingAddressAddress2',
         'billingAddressTown' => 'setBillingAddressTown',
@@ -344,7 +332,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => 'setPoReference',
         'invoicedBookingLineItems' => 'setInvoicedBookingLineItems',
         'invoicedBookingDeposit' => 'setInvoicedBookingDeposit',
-        'outstandingAmount' => 'setOutstandingAmount'
+        'outstandingAmount' => 'setOutstandingAmount',
+        'contact' => 'setContact',
+        'organisation' => 'setOrganisation'
     ];
 
     /**
@@ -365,16 +355,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'invoiceDate' => 'getInvoiceDate',
         'invoiceDue' => 'getInvoiceDue',
         'type' => 'getType',
-        'deliveryAddressName' => 'getDeliveryAddressName',
-        'deliveryAddressOrganisation' => 'getDeliveryAddressOrganisation',
         'deliveryAddressAddress1' => 'getDeliveryAddressAddress1',
         'deliveryAddressAddress2' => 'getDeliveryAddressAddress2',
         'deliveryAddressTown' => 'getDeliveryAddressTown',
         'deliveryAddressCounty' => 'getDeliveryAddressCounty',
         'deliveryAddressPostcode' => 'getDeliveryAddressPostcode',
         'deliveryAddressCountry' => 'getDeliveryAddressCountry',
-        'billingAddressName' => 'getBillingAddressName',
-        'billingAddressOrganisation' => 'getBillingAddressOrganisation',
         'billingAddressAddress1' => 'getBillingAddressAddress1',
         'billingAddressAddress2' => 'getBillingAddressAddress2',
         'billingAddressTown' => 'getBillingAddressTown',
@@ -387,7 +373,9 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         'poReference' => 'getPoReference',
         'invoicedBookingLineItems' => 'getInvoicedBookingLineItems',
         'invoicedBookingDeposit' => 'getInvoicedBookingDeposit',
-        'outstandingAmount' => 'getOutstandingAmount'
+        'outstandingAmount' => 'getOutstandingAmount',
+        'contact' => 'getContact',
+        'organisation' => 'getOrganisation'
     ];
 
     /**
@@ -473,16 +461,12 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('invoiceDate', $data ?? [], null);
         $this->setIfExists('invoiceDue', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('deliveryAddressName', $data ?? [], null);
-        $this->setIfExists('deliveryAddressOrganisation', $data ?? [], null);
         $this->setIfExists('deliveryAddressAddress1', $data ?? [], null);
         $this->setIfExists('deliveryAddressAddress2', $data ?? [], null);
         $this->setIfExists('deliveryAddressTown', $data ?? [], null);
         $this->setIfExists('deliveryAddressCounty', $data ?? [], null);
         $this->setIfExists('deliveryAddressPostcode', $data ?? [], null);
         $this->setIfExists('deliveryAddressCountry', $data ?? [], null);
-        $this->setIfExists('billingAddressName', $data ?? [], null);
-        $this->setIfExists('billingAddressOrganisation', $data ?? [], null);
         $this->setIfExists('billingAddressAddress1', $data ?? [], null);
         $this->setIfExists('billingAddressAddress2', $data ?? [], null);
         $this->setIfExists('billingAddressTown', $data ?? [], null);
@@ -496,6 +480,8 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('invoicedBookingLineItems', $data ?? [], null);
         $this->setIfExists('invoicedBookingDeposit', $data ?? [], null);
         $this->setIfExists('outstandingAmount', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
+        $this->setIfExists('organisation', $data ?? [], null);
     }
 
     /**
@@ -941,74 +927,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets deliveryAddressName
-     *
-     * @return string|null
-     */
-    public function getDeliveryAddressName(): ?string
-    {
-        return $this->container['deliveryAddressName'];
-    }
-
-    /**
-     * Sets deliveryAddressName
-     *
-     * @param string|null $deliveryAddressName deliveryAddressName
-     *
-     * @return $this
-     */
-    public function setDeliveryAddressName(?string $deliveryAddressName): static
-    {
-        if (is_null($deliveryAddressName)) {
-            array_push($this->openAPINullablesSetToNull, 'deliveryAddressName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deliveryAddressName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['deliveryAddressName'] = $deliveryAddressName;
-
-        return $this;
-    }
-
-    /**
-     * Gets deliveryAddressOrganisation
-     *
-     * @return string|null
-     */
-    public function getDeliveryAddressOrganisation(): ?string
-    {
-        return $this->container['deliveryAddressOrganisation'];
-    }
-
-    /**
-     * Sets deliveryAddressOrganisation
-     *
-     * @param string|null $deliveryAddressOrganisation deliveryAddressOrganisation
-     *
-     * @return $this
-     */
-    public function setDeliveryAddressOrganisation(?string $deliveryAddressOrganisation): static
-    {
-        if (is_null($deliveryAddressOrganisation)) {
-            array_push($this->openAPINullablesSetToNull, 'deliveryAddressOrganisation');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deliveryAddressOrganisation', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['deliveryAddressOrganisation'] = $deliveryAddressOrganisation;
-
-        return $this;
-    }
-
-    /**
      * Gets deliveryAddressAddress1
      *
      * @return string|null
@@ -1208,74 +1126,6 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['deliveryAddressCountry'] = $deliveryAddressCountry;
-
-        return $this;
-    }
-
-    /**
-     * Gets billingAddressName
-     *
-     * @return string|null
-     */
-    public function getBillingAddressName(): ?string
-    {
-        return $this->container['billingAddressName'];
-    }
-
-    /**
-     * Sets billingAddressName
-     *
-     * @param string|null $billingAddressName billingAddressName
-     *
-     * @return $this
-     */
-    public function setBillingAddressName(?string $billingAddressName): static
-    {
-        if (is_null($billingAddressName)) {
-            array_push($this->openAPINullablesSetToNull, 'billingAddressName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('billingAddressName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['billingAddressName'] = $billingAddressName;
-
-        return $this;
-    }
-
-    /**
-     * Gets billingAddressOrganisation
-     *
-     * @return string|null
-     */
-    public function getBillingAddressOrganisation(): ?string
-    {
-        return $this->container['billingAddressOrganisation'];
-    }
-
-    /**
-     * Sets billingAddressOrganisation
-     *
-     * @param string|null $billingAddressOrganisation billingAddressOrganisation
-     *
-     * @return $this
-     */
-    public function setBillingAddressOrganisation(?string $billingAddressOrganisation): static
-    {
-        if (is_null($billingAddressOrganisation)) {
-            array_push($this->openAPINullablesSetToNull, 'billingAddressOrganisation');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('billingAddressOrganisation', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['billingAddressOrganisation'] = $billingAddressOrganisation;
 
         return $this;
     }
@@ -1711,6 +1561,74 @@ class InvoicedBooking2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['outstandingAmount'] = $outstandingAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
+     *
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Contact|null
+     */
+    public function getContact(): ?\SynergiTech\Cinolla\Model\InvoicedBooking2Contact
+    {
+        return $this->container['contact'];
+    }
+
+    /**
+     * Sets contact
+     *
+     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Contact|null $contact contact
+     *
+     * @return $this
+     */
+    public function setContact(?\SynergiTech\Cinolla\Model\InvoicedBooking2Contact $contact): static
+    {
+        if (is_null($contact)) {
+            array_push($this->openAPINullablesSetToNull, 'contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Gets organisation
+     *
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Organisation|null
+     */
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation
+    {
+        return $this->container['organisation'];
+    }
+
+    /**
+     * Sets organisation
+     *
+     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Organisation|null $organisation organisation
+     *
+     * @return $this
+     */
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation $organisation): static
+    {
+        if (is_null($organisation)) {
+            array_push($this->openAPINullablesSetToNull, 'organisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('organisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['organisation'] = $organisation;
 
         return $this;
     }

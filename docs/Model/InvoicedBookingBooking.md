@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **string** |  | [optional]
 **hash** | **string** |  | [optional]
-**contact** | [**\SynergiTech\Cinolla\Model\BookingContact**](BookingContact.md) |  | [optional]
-**organisation** | [**\SynergiTech\Cinolla\Model\BookingOrganisation**](BookingOrganisation.md) |  | [optional]
+**contact** | [**\SynergiTech\Cinolla\Model\InvoicedBookingContact**](InvoicedBookingContact.md) |  | [optional]
+**organisation** | [**\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation**](InvoicedBookingOrganisation.md) |  | [optional]
 **status** | **string** |  |
 **totalCost** | **string** |  | [optional]
 **netCost** | **string** |  | [optional]

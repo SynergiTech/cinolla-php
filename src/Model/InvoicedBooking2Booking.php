@@ -60,8 +60,8 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
     protected static array $openAPITypes = [
         'reference' => 'string',
         'hash' => 'string',
-        'contact' => '\SynergiTech\Cinolla\Model\Booking2Contact',
-        'organisation' => '\SynergiTech\Cinolla\Model\Booking2Organisation',
+        'contact' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Contact',
+        'organisation' => '\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
@@ -457,9 +457,9 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets contact
      *
-     * @return \SynergiTech\Cinolla\Model\Booking2Contact|null
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Contact|null
      */
-    public function getContact(): ?\SynergiTech\Cinolla\Model\Booking2Contact
+    public function getContact(): ?\SynergiTech\Cinolla\Model\InvoicedBooking2Contact
     {
         return $this->container['contact'];
     }
@@ -467,11 +467,11 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets contact
      *
-     * @param \SynergiTech\Cinolla\Model\Booking2Contact|null $contact contact
+     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Contact|null $contact contact
      *
      * @return $this
      */
-    public function setContact(?\SynergiTech\Cinolla\Model\Booking2Contact $contact): static
+    public function setContact(?\SynergiTech\Cinolla\Model\InvoicedBooking2Contact $contact): static
     {
         if (is_null($contact)) {
             array_push($this->openAPINullablesSetToNull, 'contact');
@@ -491,9 +491,9 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets organisation
      *
-     * @return \SynergiTech\Cinolla\Model\Booking2Organisation|null
+     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2Organisation|null
      */
-    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\Booking2Organisation
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation
     {
         return $this->container['organisation'];
     }
@@ -501,11 +501,11 @@ class InvoicedBooking2Booking implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets organisation
      *
-     * @param \SynergiTech\Cinolla\Model\Booking2Organisation|null $organisation organisation
+     * @param \SynergiTech\Cinolla\Model\InvoicedBooking2Organisation|null $organisation organisation
      *
      * @return $this
      */
-    public function setOrganisation(?\SynergiTech\Cinolla\Model\Booking2Organisation $organisation): static
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\InvoicedBooking2Organisation $organisation): static
     {
         if (is_null($organisation)) {
             array_push($this->openAPINullablesSetToNull, 'organisation');

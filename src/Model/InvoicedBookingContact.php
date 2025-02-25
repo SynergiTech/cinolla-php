@@ -1,6 +1,6 @@
 <?php
 /**
- * Booking2Organisation
+ * InvoicedBookingContact
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * Booking2Organisation Class Doc Comment
+ * InvoicedBookingContact Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializable
+class InvoicedBookingContact implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'Booking2_organisation';
+    protected static string $openAPIModelName = 'InvoicedBooking_contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $openAPITypes = [
         'hash' => 'string',
         'customerId' => 'string',
-        'name' => 'string',
-        'shortName' => 'string'
+        'title' => 'string',
+        'firstName' => 'string',
+        'secondName' => 'string',
+        'tel' => 'string',
+        'eveningTel' => 'string',
+        'mobile' => 'string',
+        'workTel' => 'string',
+        'createdAt' => '\DateTime'
     ];
 
     /**
@@ -72,8 +78,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $openAPIFormats = [
         'hash' => null,
         'customerId' => null,
-        'name' => null,
-        'shortName' => null
+        'title' => null,
+        'firstName' => null,
+        'secondName' => null,
+        'tel' => null,
+        'eveningTel' => null,
+        'mobile' => null,
+        'workTel' => null,
+        'createdAt' => 'date-time'
     ];
 
     /**
@@ -84,8 +96,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $openAPINullables = [
         'hash' => true,
         'customerId' => true,
-        'name' => false,
-        'shortName' => true
+        'title' => true,
+        'firstName' => true,
+        'secondName' => true,
+        'tel' => true,
+        'eveningTel' => true,
+        'mobile' => true,
+        'workTel' => true,
+        'createdAt' => true
     ];
 
     /**
@@ -176,8 +194,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $attributeMap = [
         'hash' => 'hash',
         'customerId' => 'customerId',
-        'name' => 'name',
-        'shortName' => 'shortName'
+        'title' => 'title',
+        'firstName' => 'firstName',
+        'secondName' => 'secondName',
+        'tel' => 'tel',
+        'eveningTel' => 'eveningTel',
+        'mobile' => 'mobile',
+        'workTel' => 'workTel',
+        'createdAt' => 'createdAt'
     ];
 
     /**
@@ -188,8 +212,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $setters = [
         'hash' => 'setHash',
         'customerId' => 'setCustomerId',
-        'name' => 'setName',
-        'shortName' => 'setShortName'
+        'title' => 'setTitle',
+        'firstName' => 'setFirstName',
+        'secondName' => 'setSecondName',
+        'tel' => 'setTel',
+        'eveningTel' => 'setEveningTel',
+        'mobile' => 'setMobile',
+        'workTel' => 'setWorkTel',
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -200,8 +230,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     protected static array $getters = [
         'hash' => 'getHash',
         'customerId' => 'getCustomerId',
-        'name' => 'getName',
-        'shortName' => 'getShortName'
+        'title' => 'getTitle',
+        'firstName' => 'getFirstName',
+        'secondName' => 'getSecondName',
+        'tel' => 'getTel',
+        'eveningTel' => 'getEveningTel',
+        'mobile' => 'getMobile',
+        'workTel' => 'getWorkTel',
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -262,8 +298,14 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     {
         $this->setIfExists('hash', $data ?? [], null);
         $this->setIfExists('customerId', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], '');
+        $this->setIfExists('firstName', $data ?? [], '');
+        $this->setIfExists('secondName', $data ?? [], '');
+        $this->setIfExists('tel', $data ?? [], '');
+        $this->setIfExists('eveningTel', $data ?? [], null);
+        $this->setIfExists('mobile', $data ?? [], '');
+        $this->setIfExists('workTel', $data ?? [], '');
+        $this->setIfExists('createdAt', $data ?? [], null);
     }
 
     /**
@@ -377,62 +419,273 @@ class Booking2Organisation implements ModelInterface, ArrayAccess, JsonSerializa
     }
 
     /**
-     * Gets name
+     * Gets title
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->container['name'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets name
+     * Sets title
      *
-     * @param string|null $name name
+     * @param string|null $title title
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setTitle(?string $title): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shortName
-     *
-     * @return string|null
-     */
-    public function getShortName(): ?string
-    {
-        return $this->container['shortName'];
-    }
-
-    /**
-     * Sets shortName
-     *
-     * @param string|null $shortName shortName
-     *
-     * @return $this
-     */
-    public function setShortName(?string $shortName): static
-    {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
+            $index = array_search('title', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['shortName'] = $shortName;
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets firstName
+     *
+     * @return string|null
+     */
+    public function getFirstName(): ?string
+    {
+        return $this->container['firstName'];
+    }
+
+    /**
+     * Sets firstName
+     *
+     * @param string|null $firstName firstName
+     *
+     * @return $this
+     */
+    public function setFirstName(?string $firstName): static
+    {
+        if (is_null($firstName)) {
+            array_push($this->openAPINullablesSetToNull, 'firstName');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('firstName', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['firstName'] = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Gets secondName
+     *
+     * @return string|null
+     */
+    public function getSecondName(): ?string
+    {
+        return $this->container['secondName'];
+    }
+
+    /**
+     * Sets secondName
+     *
+     * @param string|null $secondName secondName
+     *
+     * @return $this
+     */
+    public function setSecondName(?string $secondName): static
+    {
+        if (is_null($secondName)) {
+            array_push($this->openAPINullablesSetToNull, 'secondName');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('secondName', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['secondName'] = $secondName;
+
+        return $this;
+    }
+
+    /**
+     * Gets tel
+     *
+     * @return string|null
+     */
+    public function getTel(): ?string
+    {
+        return $this->container['tel'];
+    }
+
+    /**
+     * Sets tel
+     *
+     * @param string|null $tel tel
+     *
+     * @return $this
+     */
+    public function setTel(?string $tel): static
+    {
+        if (is_null($tel)) {
+            array_push($this->openAPINullablesSetToNull, 'tel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tel'] = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Gets eveningTel
+     *
+     * @return string|null
+     */
+    public function getEveningTel(): ?string
+    {
+        return $this->container['eveningTel'];
+    }
+
+    /**
+     * Sets eveningTel
+     *
+     * @param string|null $eveningTel eveningTel
+     *
+     * @return $this
+     */
+    public function setEveningTel(?string $eveningTel): static
+    {
+        if (is_null($eveningTel)) {
+            array_push($this->openAPINullablesSetToNull, 'eveningTel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('eveningTel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['eveningTel'] = $eveningTel;
+
+        return $this;
+    }
+
+    /**
+     * Gets mobile
+     *
+     * @return string|null
+     */
+    public function getMobile(): ?string
+    {
+        return $this->container['mobile'];
+    }
+
+    /**
+     * Sets mobile
+     *
+     * @param string|null $mobile mobile
+     *
+     * @return $this
+     */
+    public function setMobile(?string $mobile): static
+    {
+        if (is_null($mobile)) {
+            array_push($this->openAPINullablesSetToNull, 'mobile');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mobile', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mobile'] = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Gets workTel
+     *
+     * @return string|null
+     */
+    public function getWorkTel(): ?string
+    {
+        return $this->container['workTel'];
+    }
+
+    /**
+     * Sets workTel
+     *
+     * @param string|null $workTel workTel
+     *
+     * @return $this
+     */
+    public function setWorkTel(?string $workTel): static
+    {
+        if (is_null($workTel)) {
+            array_push($this->openAPINullablesSetToNull, 'workTel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('workTel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['workTel'] = $workTel;
+
+        return $this;
+    }
+
+    /**
+     * Gets createdAt
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->container['createdAt'];
+    }
+
+    /**
+     * Sets createdAt
+     *
+     * @param \DateTime|null $createdAt createdAt
+     *
+     * @return $this
+     */
+    public function setCreatedAt(?\DateTime $createdAt): static
+    {
+        if (is_null($createdAt)) {
+            array_push($this->openAPINullablesSetToNull, 'createdAt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('createdAt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }

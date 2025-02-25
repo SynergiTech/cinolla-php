@@ -1,4 +1,4 @@
-# # BookingContact
+# # InvoicedBookingContact
 
 ## Properties
 
