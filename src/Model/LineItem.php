@@ -68,7 +68,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => 'string',
         'tease' => 'string',
         'sellOnPortal' => 'bool',
-        'portalSlug' => 'string'
+        'portalSlug' => 'string',
+        'deposit' => 'string'
     ];
 
     /**
@@ -87,7 +88,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => null,
         'tease' => null,
         'sellOnPortal' => null,
-        'portalSlug' => null
+        'portalSlug' => null,
+        'deposit' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => true,
         'tease' => true,
         'sellOnPortal' => false,
-        'portalSlug' => true
+        'portalSlug' => true,
+        'deposit' => true
     ];
 
     /**
@@ -205,7 +208,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => 'description',
         'tease' => 'tease',
         'sellOnPortal' => 'sellOnPortal',
-        'portalSlug' => 'portalSlug'
+        'portalSlug' => 'portalSlug',
+        'deposit' => 'deposit'
     ];
 
     /**
@@ -224,7 +228,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => 'setDescription',
         'tease' => 'setTease',
         'sellOnPortal' => 'setSellOnPortal',
-        'portalSlug' => 'setPortalSlug'
+        'portalSlug' => 'setPortalSlug',
+        'deposit' => 'setDeposit'
     ];
 
     /**
@@ -243,7 +248,8 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         'description' => 'getDescription',
         'tease' => 'getTease',
         'sellOnPortal' => 'getSellOnPortal',
-        'portalSlug' => 'getPortalSlug'
+        'portalSlug' => 'getPortalSlug',
+        'deposit' => 'getDeposit'
     ];
 
     /**
@@ -313,6 +319,7 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('tease', $data ?? [], null);
         $this->setIfExists('sellOnPortal', $data ?? [], false);
         $this->setIfExists('portalSlug', $data ?? [], null);
+        $this->setIfExists('deposit', $data ?? [], null);
     }
 
     /**
@@ -716,6 +723,40 @@ class LineItem implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['portalSlug'] = $portalSlug;
+
+        return $this;
+    }
+
+    /**
+     * Gets deposit
+     *
+     * @return string|null
+     */
+    public function getDeposit(): ?string
+    {
+        return $this->container['deposit'];
+    }
+
+    /**
+     * Sets deposit
+     *
+     * @param string|null $deposit deposit
+     *
+     * @return $this
+     */
+    public function setDeposit(?string $deposit): static
+    {
+        if (is_null($deposit)) {
+            array_push($this->openAPINullablesSetToNull, 'deposit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deposit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deposit'] = $deposit;
 
         return $this;
     }

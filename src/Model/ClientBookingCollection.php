@@ -302,6 +302,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
     public const STATUS_QUOTE = 'quote';
     public const STATUS_DRAFT = 'draft';
     public const STATUS_CONFIRMED = 'confirmed';
+    public const STATUS_CANCELLED = 'cancelled';
 
     /**
      * Gets allowable values of the enum
@@ -314,6 +315,7 @@ class ClientBookingCollection implements ModelInterface, ArrayAccess, JsonSerial
             self::STATUS_QUOTE,
             self::STATUS_DRAFT,
             self::STATUS_CONFIRMED,
+            self::STATUS_CANCELLED,
         ];
     }
 

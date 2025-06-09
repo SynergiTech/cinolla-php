@@ -58,6 +58,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
+        'id' => 'int',
         'hash' => 'string',
         'courseCode' => 'string',
         'numPlaces' => 'int',
@@ -74,6 +75,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
+        'id' => null,
         'hash' => null,
         'courseCode' => null,
         'numPlaces' => null,
@@ -90,6 +92,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'hash' => true,
         'courseCode' => true,
         'numPlaces' => false,
@@ -186,6 +189,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $attributeMap = [
+        'id' => 'id',
         'hash' => 'hash',
         'courseCode' => 'courseCode',
         'numPlaces' => 'numPlaces',
@@ -202,6 +206,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $setters = [
+        'id' => 'setId',
         'hash' => 'setHash',
         'courseCode' => 'setCourseCode',
         'numPlaces' => 'setNumPlaces',
@@ -218,6 +223,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $getters = [
+        'id' => 'getId',
         'hash' => 'getHash',
         'courseCode' => 'getCourseCode',
         'numPlaces' => 'getNumPlaces',
@@ -284,6 +290,7 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('hash', $data ?? [], null);
         $this->setIfExists('courseCode', $data ?? [], null);
         $this->setIfExists('numPlaces', $data ?? [], null);
@@ -321,6 +328,9 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['startDate'] === null) {
             $invalidProperties[] = "'startDate' can't be null";
         }
@@ -341,6 +351,33 @@ class CourseRun implements ModelInterface, ArrayAccess, JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId(int $id): static
+    {
+        if (is_null($id)) {
+            throw new InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets hash

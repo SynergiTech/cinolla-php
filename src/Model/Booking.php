@@ -290,6 +290,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     public const STATUS_QUOTE = 'quote';
     public const STATUS_DRAFT = 'draft';
     public const STATUS_CONFIRMED = 'confirmed';
+    public const STATUS_CANCELLED = 'cancelled';
 
     /**
      * Gets allowable values of the enum
@@ -302,6 +303,7 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
             self::STATUS_QUOTE,
             self::STATUS_DRAFT,
             self::STATUS_CONFIRMED,
+            self::STATUS_CANCELLED,
         ];
     }
 

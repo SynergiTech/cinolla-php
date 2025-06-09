@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** |  |
 **hash** | **string** |  | [optional]
 **courseCode** | **string** |  | [optional]
 **numPlaces** | **int** |  | [optional]

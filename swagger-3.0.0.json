@@ -987,7 +987,8 @@
             "enum": [
               "quote",
               "draft",
-              "confirmed"
+              "confirmed",
+              "cancelled"
             ]
           },
           "totalCost": {
@@ -1074,7 +1075,8 @@
             "enum": [
               "quote",
               "draft",
-              "confirmed"
+              "confirmed",
+              "cancelled"
             ]
           },
           "totalCost": {
@@ -1357,16 +1359,24 @@
           "portalSlug": {
             "type": "string",
             "nullable": true
+          },
+          "deposit": {
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object"
       },
       "CourseRun": {
         "required": [
+          "id",
           "startDate",
           "courseRunDates"
         ],
         "properties": {
+          "id": {
+            "type": "integer"
+          },
           "hash": {
             "type": "string",
             "nullable": true
@@ -2316,7 +2326,8 @@
             "enum": [
               "quote",
               "draft",
-              "confirmed"
+              "confirmed",
+              "cancelled"
             ]
           },
           "totalCost": {
@@ -2543,7 +2554,8 @@
             "enum": [
               "quote",
               "draft",
-              "confirmed"
+              "confirmed",
+              "cancelled"
             ]
           },
           "totalCost": {
