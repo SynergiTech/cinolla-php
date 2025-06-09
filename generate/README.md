@@ -3,7 +3,7 @@
 We've cached a copy of the swagger.yaml to avoid annoying their API so you can do something like this.
 
 ```sh
-docker run --rm -v "$(pwd):/local" openapitools/openapi-generator-cli generate \
+docker run --rm -v "$(pwd):/local" openapitools/openapi-generator-cli:v7.12.0 generate \
     --input-spec /local/swagger-3.0.0.json \
     --config /local/generate/config.yaml \
     --generator-name php-nextgen \
