@@ -459,6 +459,184 @@
         }
       }
     },
+    "/v3/client/credit-notes": {
+      "get": {
+        "tags": [
+          "Credit Notes"
+        ],
+        "summary": "Get a collection of Credit Notes",
+        "operationId": "getCreditNotes",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "An offset to return a paginated list of results",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The limit on the number of results",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/startDateRange"
+          },
+          {
+            "$ref": "#/components/parameters/endDateRange"
+          },
+          {
+            "name": "bookingId",
+            "in": "query",
+            "description": "Filter Credit Notes based on a specific Booking ID.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "dateRangeFilter",
+            "in": "query",
+            "description": "Used in conjunction with startDate and endDate to filter Credit Notes.",
+            "schema": {
+              "type": "string",
+              "default": "creditNoteDate",
+              "enum": [
+                "creditNoteDate",
+                "updatedAt"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of Credit Notes",
+            "headers": {
+              "x-applied-offset": {
+                "$ref": "#/components/headers/xAppliedOffset"
+              },
+              "x-applied-limit": {
+                "$ref": "#/components/headers/xAppliedLimit"
+              },
+              "x-total-count": {
+                "$ref": "#/components/headers/xTotalCount"
+              },
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreditNote"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/credit-notes/{id}": {
+      "get": {
+        "tags": [
+          "Credit Notes"
+        ],
+        "summary": "Get detail for a single Credit Note",
+        "operationId": "getCreditNote",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The detail of a single Credit Note",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditNote2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/credit-notes/{id}/documents": {
+      "get": {
+        "tags": [
+          "Credit Notes"
+        ],
+        "summary": "Get documents for a Credit Note",
+        "operationId": "getCreditNoteDocuments",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The documents related to a Credit Note",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v3/client/custom-forms": {
       "get": {
         "tags": [
@@ -731,6 +909,51 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InvoicedBooking2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/client/invoices/{id}/documents": {
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Get documents for an Invoice",
+        "operationId": "getInvoiceDocuments",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The documents related to an invoice",
+            "headers": {
+              "x-rate-limit-limit": {
+                "$ref": "#/components/headers/xRateLimitLimit"
+              },
+              "x-rate-limit-remaining": {
+                "$ref": "#/components/headers/xRateLimitRemaining"
+              },
+              "x-rate-limit-reset": {
+                "$ref": "#/components/headers/xRateLimitReset"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
                 }
               }
             }
@@ -1410,6 +1633,243 @@
             "items": {
               "$ref": "#/components/schemas/CourseRunDate"
             }
+          }
+        },
+        "type": "object"
+      },
+      "CreditNote": {
+        "required": [
+          "id",
+          "creditNoteNumber",
+          "creditNoteDate",
+          "createdAt",
+          "updatedAt",
+          "creditNoteInvoicedBookingLineItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "creditNoteNumber": {
+            "type": "integer"
+          },
+          "creditNoteDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalVatAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "globalReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "default": false
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "default": "1"
+          },
+          "creditNoteInvoicedBookingLineItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditNoteInvoicedBookingLineItem"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "CreditNote2": {
+        "required": [
+          "id",
+          "creditNoteNumber",
+          "creditNoteDate",
+          "createdAt",
+          "updatedAt",
+          "creditNoteInvoicedBookingLineItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoicedBooking": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBooking3"
+              }
+            ]
+          },
+          "creditNoteNumber": {
+            "type": "integer"
+          },
+          "creditNoteDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalVatAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "globalReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "default": false
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "default": "1"
+          },
+          "creditNoteInvoicedBookingLineItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditNoteInvoicedBookingLineItem2"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "Document": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "presignedUrl": {
+            "title": "\n\nSet manually by calling DocumentService->getDocumentPresignedUrl()",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object"
@@ -2272,6 +2732,267 @@
         },
         "type": "object"
       },
+      "CreditNoteInvoicedBookingLineItem": {
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "qty": {
+            "type": "integer",
+            "default": "0"
+          },
+          "numGuests": {
+            "type": "integer",
+            "default": "0"
+          },
+          "numNights": {
+            "type": "integer",
+            "default": "0"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPriceWithTax": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking3": {
+        "required": [
+          "id",
+          "invoiceType",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CreditNoteInvoicedBookingLineItem2": {
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "qty": {
+            "type": "integer",
+            "default": "0"
+          },
+          "numGuests": {
+            "type": "integer",
+            "default": "0"
+          },
+          "numNights": {
+            "type": "integer",
+            "default": "0"
+          },
+          "netAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "grossAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitPriceWithTax": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPercent": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "type": "object"
+      },
       "CustomFieldsData": {
         "required": [
           "customField"
@@ -2759,7 +3480,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/InvoicedBooking3"
+                "$ref": "#/components/schemas/InvoicedBooking4"
               }
             ]
           },
@@ -2900,7 +3621,7 @@
         },
         "type": "object"
       },
-      "InvoicedBooking3": {
+      "InvoicedBooking4": {
         "required": [
           "id",
           "invoiceType",
@@ -3138,6 +3859,9 @@
     },
     {
       "name": "Courses"
+    },
+    {
+      "name": "Credit Notes"
     },
     {
       "name": "Custom Forms"

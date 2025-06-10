@@ -84,9 +84,13 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**getContacts**](docs/Api/ContactsApi.md#getcontacts) | **GET** /v3/client/contacts | Returns a collection of Contacts
 *CoursesApi* | [**getCourseRuns**](docs/Api/CoursesApi.md#getcourseruns) | **GET** /v3/client/courses/{id}/course-runs | Returns a collection of Course Runs for a given course
 *CoursesApi* | [**getCourses**](docs/Api/CoursesApi.md#getcourses) | **GET** /v3/client/courses | Returns a collection of Courses
+*CreditNotesApi* | [**getCreditNote**](docs/Api/CreditNotesApi.md#getcreditnote) | **GET** /v3/client/credit-notes/{id} | Get detail for a single Credit Note
+*CreditNotesApi* | [**getCreditNoteDocuments**](docs/Api/CreditNotesApi.md#getcreditnotedocuments) | **GET** /v3/client/credit-notes/{id}/documents | Get documents for a Credit Note
+*CreditNotesApi* | [**getCreditNotes**](docs/Api/CreditNotesApi.md#getcreditnotes) | **GET** /v3/client/credit-notes | Get a collection of Credit Notes
 *CustomFormsApi* | [**getCustomFormSubmissions**](docs/Api/CustomFormsApi.md#getcustomformsubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions
 *CustomFormsApi* | [**getCustomForms**](docs/Api/CustomFormsApi.md#getcustomforms) | **GET** /v3/client/custom-forms | Get a collection of Custom Forms
 *InvoicesApi* | [**getInvoice**](docs/Api/InvoicesApi.md#getinvoice) | **GET** /v3/client/invoices/{id} | Get detail for a single Invoice
+*InvoicesApi* | [**getInvoiceDocuments**](docs/Api/InvoicesApi.md#getinvoicedocuments) | **GET** /v3/client/invoices/{id}/documents | Get documents for an Invoice
 *InvoicesApi* | [**getInvoices**](docs/Api/InvoicesApi.md#getinvoices) | **GET** /v3/client/invoices | Get a collection of Invoices
 *LineItemsApi* | [**getLineItems**](docs/Api/LineItemsApi.md#getlineitems) | **GET** /v3/client/lineitems | Returns a collection of Line Items.
 *PaymentsApi* | [**createPayment**](docs/Api/PaymentsApi.md#createpayment) | **POST** /v3/client/payments | Create a new Payment.
@@ -129,9 +133,15 @@ Class | Method | HTTP request | Description
 - [ContactOrganisationAccountManager](docs/Model/ContactOrganisationAccountManager.md)
 - [CourseRun](docs/Model/CourseRun.md)
 - [CourseRunDate](docs/Model/CourseRunDate.md)
+- [CreditNote](docs/Model/CreditNote.md)
+- [CreditNote2](docs/Model/CreditNote2.md)
+- [CreditNote2InvoicedBooking](docs/Model/CreditNote2InvoicedBooking.md)
+- [CreditNoteInvoicedBookingLineItem](docs/Model/CreditNoteInvoicedBookingLineItem.md)
+- [CreditNoteInvoicedBookingLineItem2](docs/Model/CreditNoteInvoicedBookingLineItem2.md)
 - [CustomFieldsData](docs/Model/CustomFieldsData.md)
 - [CustomForm](docs/Model/CustomForm.md)
 - [CustomFormSubmissions](docs/Model/CustomFormSubmissions.md)
+- [Document](docs/Model/Document.md)
 - [IncomeCode](docs/Model/IncomeCode.md)
 - [IncomeCode2](docs/Model/IncomeCode2.md)
 - [InvoicedBooking](docs/Model/InvoicedBooking.md)
@@ -141,6 +151,7 @@ Class | Method | HTTP request | Description
 - [InvoicedBooking2InvoicedBookingDeposit](docs/Model/InvoicedBooking2InvoicedBookingDeposit.md)
 - [InvoicedBooking2Organisation](docs/Model/InvoicedBooking2Organisation.md)
 - [InvoicedBooking3](docs/Model/InvoicedBooking3.md)
+- [InvoicedBooking4](docs/Model/InvoicedBooking4.md)
 - [InvoicedBookingBooking](docs/Model/InvoicedBookingBooking.md)
 - [InvoicedBookingContact](docs/Model/InvoicedBookingContact.md)
 - [InvoicedBookingDeposit](docs/Model/InvoicedBookingDeposit.md)

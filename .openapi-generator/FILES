@@ -7,6 +7,7 @@ composer.json
 docs/Api/BookingsApi.md
 docs/Api/ContactsApi.md
 docs/Api/CoursesApi.md
+docs/Api/CreditNotesApi.md
 docs/Api/CustomFormsApi.md
 docs/Api/InvoicesApi.md
 docs/Api/LineItemsApi.md
@@ -46,9 +47,15 @@ docs/Model/ContactOrganisation6.md
 docs/Model/ContactOrganisationAccountManager.md
 docs/Model/CourseRun.md
 docs/Model/CourseRunDate.md
+docs/Model/CreditNote.md
+docs/Model/CreditNote2.md
+docs/Model/CreditNote2InvoicedBooking.md
+docs/Model/CreditNoteInvoicedBookingLineItem.md
+docs/Model/CreditNoteInvoicedBookingLineItem2.md
 docs/Model/CustomFieldsData.md
 docs/Model/CustomForm.md
 docs/Model/CustomFormSubmissions.md
+docs/Model/Document.md
 docs/Model/IncomeCode.md
 docs/Model/IncomeCode2.md
 docs/Model/InvoicedBooking.md
@@ -58,6 +65,7 @@ docs/Model/InvoicedBooking2Contact.md
 docs/Model/InvoicedBooking2InvoicedBookingDeposit.md
 docs/Model/InvoicedBooking2Organisation.md
 docs/Model/InvoicedBooking3.md
+docs/Model/InvoicedBooking4.md
 docs/Model/InvoicedBookingBooking.md
 docs/Model/InvoicedBookingContact.md
 docs/Model/InvoicedBookingDeposit.md
@@ -77,6 +85,7 @@ phpunit.xml.dist
 src/Api/BookingsApi.php
 src/Api/ContactsApi.php
 src/Api/CoursesApi.php
+src/Api/CreditNotesApi.php
 src/Api/CustomFormsApi.php
 src/Api/InvoicesApi.php
 src/Api/LineItemsApi.php
@@ -119,9 +128,15 @@ src/Model/ContactOrganisation6.php
 src/Model/ContactOrganisationAccountManager.php
 src/Model/CourseRun.php
 src/Model/CourseRunDate.php
+src/Model/CreditNote.php
+src/Model/CreditNote2.php
+src/Model/CreditNote2InvoicedBooking.php
+src/Model/CreditNoteInvoicedBookingLineItem.php
+src/Model/CreditNoteInvoicedBookingLineItem2.php
 src/Model/CustomFieldsData.php
 src/Model/CustomForm.php
 src/Model/CustomFormSubmissions.php
+src/Model/Document.php
 src/Model/IncomeCode.php
 src/Model/IncomeCode2.php
 src/Model/InvoicedBooking.php
@@ -131,6 +146,7 @@ src/Model/InvoicedBooking2Contact.php
 src/Model/InvoicedBooking2InvoicedBookingDeposit.php
 src/Model/InvoicedBooking2Organisation.php
 src/Model/InvoicedBooking3.php
+src/Model/InvoicedBooking4.php
 src/Model/InvoicedBookingBooking.php
 src/Model/InvoicedBookingContact.php
 src/Model/InvoicedBookingDeposit.php

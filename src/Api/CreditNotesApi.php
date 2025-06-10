@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoicesApi
+ * CreditNotesApi
  * PHP version 8.1
  *
  * @package  SynergiTech\Cinolla
@@ -41,13 +41,13 @@ use SynergiTech\Cinolla\HeaderSelector;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * InvoicesApi Class Doc Comment
+ * CreditNotesApi Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InvoicesApi
+class CreditNotesApi
 {
     /**
      * @var ClientInterface
@@ -71,13 +71,13 @@ class InvoicesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getInvoice' => [
+        'getCreditNote' => [
             'application/json',
         ],
-        'getInvoiceDocuments' => [
+        'getCreditNoteDocuments' => [
             'application/json',
         ],
-        'getInvoices' => [
+        'getCreditNotes' => [
             'application/json',
         ],
     ];
@@ -129,44 +129,44 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoice
+     * Operation getCreditNote
      *
-     * Get detail for a single Invoice
+     * Get detail for a single Credit Note
      *
      * @param  string $id id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoice'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNote'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\InvoicedBooking2
+     * @return \SynergiTech\Cinolla\Model\CreditNote2
      */
-    public function getInvoice(
+    public function getCreditNote(
         string $id,
-        string $contentType = self::contentTypes['getInvoice'][0]
-    ): \SynergiTech\Cinolla\Model\InvoicedBooking2
+        string $contentType = self::contentTypes['getCreditNote'][0]
+    ): \SynergiTech\Cinolla\Model\CreditNote2
     {
-        list($response) = $this->getInvoiceWithHttpInfo($id, $contentType);
+        list($response) = $this->getCreditNoteWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getInvoiceWithHttpInfo
+     * Operation getCreditNoteWithHttpInfo
      *
-     * Get detail for a single Invoice
+     * Get detail for a single Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoice'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNote'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\InvoicedBooking2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\CreditNote2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getInvoiceWithHttpInfo(
+    public function getCreditNoteWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['getInvoice'][0]
+        string $contentType = self::contentTypes['getCreditNote'][0]
     ): array
     {
-        $request = $this->getInvoiceRequest($id, $contentType);
+        $request = $this->getCreditNoteRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,11 +193,11 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if (in_array('\SynergiTech\Cinolla\Model\InvoicedBooking2', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SynergiTech\Cinolla\Model\CreditNote2', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\InvoicedBooking2' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\CreditNote2' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -215,7 +215,7 @@ class InvoicesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\InvoicedBooking2', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\CreditNote2', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -234,7 +234,7 @@ class InvoicesApi
                 );
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking2';
+            $returnType = '\SynergiTech\Cinolla\Model\CreditNote2';
             if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -267,7 +267,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\InvoicedBooking2',
+                        '\SynergiTech\Cinolla\Model\CreditNote2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -278,22 +278,22 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoiceAsync
+     * Operation getCreditNoteAsync
      *
-     * Get detail for a single Invoice
+     * Get detail for a single Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoice'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNote'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoiceAsync(
+    public function getCreditNoteAsync(
         string $id,
-        string $contentType = self::contentTypes['getInvoice'][0]
+        string $contentType = self::contentTypes['getCreditNote'][0]
     ): PromiseInterface
     {
-        return $this->getInvoiceAsyncWithHttpInfo($id, $contentType)
+        return $this->getCreditNoteAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -302,23 +302,23 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoiceAsyncWithHttpInfo
+     * Operation getCreditNoteAsyncWithHttpInfo
      *
-     * Get detail for a single Invoice
+     * Get detail for a single Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoice'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNote'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoiceAsyncWithHttpInfo(
+    public function getCreditNoteAsyncWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['getInvoice'][0]
+        string $contentType = self::contentTypes['getCreditNote'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking2';
-        $request = $this->getInvoiceRequest($id, $contentType);
+        $returnType = '\SynergiTech\Cinolla\Model\CreditNote2';
+        $request = $this->getCreditNoteRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,29 +357,29 @@ class InvoicesApi
     }
 
     /**
-     * Create request for operation 'getInvoice'
+     * Create request for operation 'getCreditNote'
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoice'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNote'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getInvoiceRequest(
+    public function getCreditNoteRequest(
         string $id,
-        string $contentType = self::contentTypes['getInvoice'][0]
+        string $contentType = self::contentTypes['getCreditNote'][0]
     ): Request
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling getInvoice'
+                'Missing the required parameter $id when calling getCreditNote'
             );
         }
 
 
-        $resourcePath = '/v3/client/invoices/{id}';
+        $resourcePath = '/v3/client/credit-notes/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -457,44 +457,44 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoiceDocuments
+     * Operation getCreditNoteDocuments
      *
-     * Get documents for an Invoice
+     * Get documents for a Credit Note
      *
      * @param  string $id id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoiceDocuments'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNoteDocuments'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \SynergiTech\Cinolla\Model\Document[]
      */
-    public function getInvoiceDocuments(
+    public function getCreditNoteDocuments(
         string $id,
-        string $contentType = self::contentTypes['getInvoiceDocuments'][0]
+        string $contentType = self::contentTypes['getCreditNoteDocuments'][0]
     ): array
     {
-        list($response) = $this->getInvoiceDocumentsWithHttpInfo($id, $contentType);
+        list($response) = $this->getCreditNoteDocumentsWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getInvoiceDocumentsWithHttpInfo
+     * Operation getCreditNoteDocumentsWithHttpInfo
      *
-     * Get documents for an Invoice
+     * Get documents for a Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoiceDocuments'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNoteDocuments'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return array of \SynergiTech\Cinolla\Model\Document[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getInvoiceDocumentsWithHttpInfo(
+    public function getCreditNoteDocumentsWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['getInvoiceDocuments'][0]
+        string $contentType = self::contentTypes['getCreditNoteDocuments'][0]
     ): array
     {
-        $request = $this->getInvoiceDocumentsRequest($id, $contentType);
+        $request = $this->getCreditNoteDocumentsRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -606,22 +606,22 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoiceDocumentsAsync
+     * Operation getCreditNoteDocumentsAsync
      *
-     * Get documents for an Invoice
+     * Get documents for a Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoiceDocuments'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNoteDocuments'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoiceDocumentsAsync(
+    public function getCreditNoteDocumentsAsync(
         string $id,
-        string $contentType = self::contentTypes['getInvoiceDocuments'][0]
+        string $contentType = self::contentTypes['getCreditNoteDocuments'][0]
     ): PromiseInterface
     {
-        return $this->getInvoiceDocumentsAsyncWithHttpInfo($id, $contentType)
+        return $this->getCreditNoteDocumentsAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -630,23 +630,23 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoiceDocumentsAsyncWithHttpInfo
+     * Operation getCreditNoteDocumentsAsyncWithHttpInfo
      *
-     * Get documents for an Invoice
+     * Get documents for a Credit Note
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoiceDocuments'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNoteDocuments'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoiceDocumentsAsyncWithHttpInfo(
+    public function getCreditNoteDocumentsAsyncWithHttpInfo(
         string $id,
-        string $contentType = self::contentTypes['getInvoiceDocuments'][0]
+        string $contentType = self::contentTypes['getCreditNoteDocuments'][0]
     ): PromiseInterface
     {
         $returnType = '\SynergiTech\Cinolla\Model\Document[]';
-        $request = $this->getInvoiceDocumentsRequest($id, $contentType);
+        $request = $this->getCreditNoteDocumentsRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -685,29 +685,29 @@ class InvoicesApi
     }
 
     /**
-     * Create request for operation 'getInvoiceDocuments'
+     * Create request for operation 'getCreditNoteDocuments'
      *
      * @param  string $id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoiceDocuments'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNoteDocuments'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getInvoiceDocumentsRequest(
+    public function getCreditNoteDocumentsRequest(
         string $id,
-        string $contentType = self::contentTypes['getInvoiceDocuments'][0]
+        string $contentType = self::contentTypes['getCreditNoteDocuments'][0]
     ): Request
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling getInvoiceDocuments'
+                'Missing the required parameter $id when calling getCreditNoteDocuments'
             );
         }
 
 
-        $resourcePath = '/v3/client/invoices/{id}/documents';
+        $resourcePath = '/v3/client/credit-notes/{id}/documents';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -785,64 +785,64 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoices
+     * Operation getCreditNotes
      *
-     * Get a collection of Invoices
+     * Get a collection of Credit Notes
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
-     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
+     * @param  int|null $bookingId Filter Credit Notes based on a specific Booking ID. (optional)
+     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Credit Notes. (optional, default to 'creditNoteDate')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNotes'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\InvoicedBooking[]
+     * @return \SynergiTech\Cinolla\Model\CreditNote[]
      */
-    public function getInvoices(
+    public function getCreditNotes(
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
         ?int $bookingId = null,
-        ?string $dateRangeFilter = 'invoiceDate',
-        string $contentType = self::contentTypes['getInvoices'][0]
+        ?string $dateRangeFilter = 'creditNoteDate',
+        string $contentType = self::contentTypes['getCreditNotes'][0]
     ): array
     {
-        list($response) = $this->getInvoicesWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
+        list($response) = $this->getCreditNotesWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
         return $response;
     }
 
     /**
-     * Operation getInvoicesWithHttpInfo
+     * Operation getCreditNotesWithHttpInfo
      *
-     * Get a collection of Invoices
+     * Get a collection of Credit Notes
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
-     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
+     * @param  int|null $bookingId Filter Credit Notes based on a specific Booking ID. (optional)
+     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Credit Notes. (optional, default to 'creditNoteDate')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNotes'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\InvoicedBooking[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\CreditNote[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getInvoicesWithHttpInfo(
+    public function getCreditNotesWithHttpInfo(
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
         ?int $bookingId = null,
-        ?string $dateRangeFilter = 'invoiceDate',
-        string $contentType = self::contentTypes['getInvoices'][0]
+        ?string $dateRangeFilter = 'creditNoteDate',
+        string $contentType = self::contentTypes['getCreditNotes'][0]
     ): array
     {
-        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
+        $request = $this->getCreditNotesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -869,11 +869,11 @@ class InvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if (in_array('\SynergiTech\Cinolla\Model\InvoicedBooking[]', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SynergiTech\Cinolla\Model\CreditNote[]', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\InvoicedBooking[]' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\CreditNote[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -891,7 +891,7 @@ class InvoicesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\InvoicedBooking[]', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\CreditNote[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -910,7 +910,7 @@ class InvoicesApi
                 );
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking[]';
+            $returnType = '\SynergiTech\Cinolla\Model\CreditNote[]';
             if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -943,7 +943,7 @@ class InvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\InvoicedBooking[]',
+                        '\SynergiTech\Cinolla\Model\CreditNote[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -954,32 +954,32 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoicesAsync
+     * Operation getCreditNotesAsync
      *
-     * Get a collection of Invoices
+     * Get a collection of Credit Notes
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
-     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
+     * @param  int|null $bookingId Filter Credit Notes based on a specific Booking ID. (optional)
+     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Credit Notes. (optional, default to 'creditNoteDate')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNotes'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoicesAsync(
+    public function getCreditNotesAsync(
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
         ?int $bookingId = null,
-        ?string $dateRangeFilter = 'invoiceDate',
-        string $contentType = self::contentTypes['getInvoices'][0]
+        ?string $dateRangeFilter = 'creditNoteDate',
+        string $contentType = self::contentTypes['getCreditNotes'][0]
     ): PromiseInterface
     {
-        return $this->getInvoicesAsyncWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType)
+        return $this->getCreditNotesAsyncWithHttpInfo($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -988,33 +988,33 @@ class InvoicesApi
     }
 
     /**
-     * Operation getInvoicesAsyncWithHttpInfo
+     * Operation getCreditNotesAsyncWithHttpInfo
      *
-     * Get a collection of Invoices
+     * Get a collection of Credit Notes
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
-     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
+     * @param  int|null $bookingId Filter Credit Notes based on a specific Booking ID. (optional)
+     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Credit Notes. (optional, default to 'creditNoteDate')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNotes'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
-    public function getInvoicesAsyncWithHttpInfo(
+    public function getCreditNotesAsyncWithHttpInfo(
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
         ?int $bookingId = null,
-        ?string $dateRangeFilter = 'invoiceDate',
-        string $contentType = self::contentTypes['getInvoices'][0]
+        ?string $dateRangeFilter = 'creditNoteDate',
+        string $contentType = self::contentTypes['getCreditNotes'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\InvoicedBooking[]';
-        $request = $this->getInvoicesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
+        $returnType = '\SynergiTech\Cinolla\Model\CreditNote[]';
+        $request = $this->getCreditNotesRequest($offset, $limit, $startDate, $endDate, $bookingId, $dateRangeFilter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1053,27 +1053,27 @@ class InvoicesApi
     }
 
     /**
-     * Create request for operation 'getInvoices'
+     * Create request for operation 'getCreditNotes'
      *
      * @param  int|null $offset An offset to return a paginated list of results (optional, default to 0)
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
-     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
+     * @param  int|null $bookingId Filter Credit Notes based on a specific Booking ID. (optional)
+     * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Credit Notes. (optional, default to 'creditNoteDate')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreditNotes'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getInvoicesRequest(
+    public function getCreditNotesRequest(
         ?int $offset = 0,
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
         ?int $bookingId = null,
-        ?string $dateRangeFilter = 'invoiceDate',
-        string $contentType = self::contentTypes['getInvoices'][0]
+        ?string $dateRangeFilter = 'creditNoteDate',
+        string $contentType = self::contentTypes['getCreditNotes'][0]
     ): Request
     {
 
@@ -1084,7 +1084,7 @@ class InvoicesApi
 
 
 
-        $resourcePath = '/v3/client/invoices';
+        $resourcePath = '/v3/client/credit-notes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
