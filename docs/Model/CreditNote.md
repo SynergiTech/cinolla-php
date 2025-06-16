@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  |
+**invoicedBooking** | [**\SynergiTech\Cinolla\Model\CreditNoteInvoicedBooking**](CreditNoteInvoicedBooking.md) |  | [optional]
 **creditNoteNumber** | **int** |  |
 **creditNoteDate** | **\DateTime** |  |
 **totalVatAmount** | **string** |  | [optional]
@@ -26,5 +27,7 @@ Name | Type | Description | Notes
 **voidAt** | **\DateTime** |  | [optional]
 **version** | **int** |  | [optional]
 **creditNoteInvoicedBookingLineItems** | [**\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem[]**](CreditNoteInvoicedBookingLineItem.md) |  |
+**contact** | [**\SynergiTech\Cinolla\Model\CreditNoteContact**](CreditNoteContact.md) |  | [optional]
+**organisation** | [**\SynergiTech\Cinolla\Model\CreditNoteOrganisation**](CreditNoteOrganisation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

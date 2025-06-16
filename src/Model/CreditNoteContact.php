@@ -1,6 +1,6 @@
 <?php
 /**
- * CreditNoteInvoicedBookingLineItem2
+ * CreditNoteContact
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * CreditNoteInvoicedBookingLineItem2 Class Doc Comment
+ * CreditNoteContact Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess, JsonSerializable
+class CreditNoteContact implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'CreditNoteInvoicedBookingLineItem2';
+    protected static string $openAPIModelName = 'CreditNote_contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,21 +58,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id' => 'int',
-        'invoicedBookingLineItem' => '\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem',
-        'name' => 'string',
-        'reason' => 'string',
-        'qty' => 'int',
-        'numGuests' => 'int',
-        'numNights' => 'int',
-        'netAmount' => 'string',
-        'grossAmount' => 'string',
-        'unitPrice' => 'string',
-        'unitPriceWithTax' => 'string',
-        'taxPercent' => 'string',
-        'taxAmount' => 'string',
-        'createdAt' => '\DateTime',
-        'updatedAt' => '\DateTime'
+        'hash' => 'string',
+        'customerId' => 'string',
+        'title' => 'string',
+        'firstName' => 'string',
+        'secondName' => 'string',
+        'tel' => 'string',
+        'eveningTel' => 'string',
+        'mobile' => 'string',
+        'workTel' => 'string',
+        'createdAt' => '\DateTime'
     ];
 
     /**
@@ -81,21 +76,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'invoicedBookingLineItem' => null,
-        'name' => null,
-        'reason' => null,
-        'qty' => null,
-        'numGuests' => null,
-        'numNights' => null,
-        'netAmount' => null,
-        'grossAmount' => null,
-        'unitPrice' => null,
-        'unitPriceWithTax' => null,
-        'taxPercent' => null,
-        'taxAmount' => null,
-        'createdAt' => 'date-time',
-        'updatedAt' => 'date-time'
+        'hash' => null,
+        'customerId' => null,
+        'title' => null,
+        'firstName' => null,
+        'secondName' => null,
+        'tel' => null,
+        'eveningTel' => null,
+        'mobile' => null,
+        'workTel' => null,
+        'createdAt' => 'date-time'
     ];
 
     /**
@@ -104,21 +94,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'invoicedBookingLineItem' => true,
-        'name' => true,
-        'reason' => true,
-        'qty' => false,
-        'numGuests' => false,
-        'numNights' => false,
-        'netAmount' => true,
-        'grossAmount' => true,
-        'unitPrice' => true,
-        'unitPriceWithTax' => true,
-        'taxPercent' => true,
-        'taxAmount' => true,
-        'createdAt' => false,
-        'updatedAt' => false
+        'hash' => true,
+        'customerId' => true,
+        'title' => true,
+        'firstName' => true,
+        'secondName' => true,
+        'tel' => true,
+        'eveningTel' => true,
+        'mobile' => true,
+        'workTel' => true,
+        'createdAt' => true
     ];
 
     /**
@@ -207,21 +192,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'invoicedBookingLineItem' => 'invoicedBookingLineItem',
-        'name' => 'name',
-        'reason' => 'reason',
-        'qty' => 'qty',
-        'numGuests' => 'numGuests',
-        'numNights' => 'numNights',
-        'netAmount' => 'netAmount',
-        'grossAmount' => 'grossAmount',
-        'unitPrice' => 'unitPrice',
-        'unitPriceWithTax' => 'unitPriceWithTax',
-        'taxPercent' => 'taxPercent',
-        'taxAmount' => 'taxAmount',
-        'createdAt' => 'createdAt',
-        'updatedAt' => 'updatedAt'
+        'hash' => 'hash',
+        'customerId' => 'customerId',
+        'title' => 'title',
+        'firstName' => 'firstName',
+        'secondName' => 'secondName',
+        'tel' => 'tel',
+        'eveningTel' => 'eveningTel',
+        'mobile' => 'mobile',
+        'workTel' => 'workTel',
+        'createdAt' => 'createdAt'
     ];
 
     /**
@@ -230,21 +210,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'invoicedBookingLineItem' => 'setInvoicedBookingLineItem',
-        'name' => 'setName',
-        'reason' => 'setReason',
-        'qty' => 'setQty',
-        'numGuests' => 'setNumGuests',
-        'numNights' => 'setNumNights',
-        'netAmount' => 'setNetAmount',
-        'grossAmount' => 'setGrossAmount',
-        'unitPrice' => 'setUnitPrice',
-        'unitPriceWithTax' => 'setUnitPriceWithTax',
-        'taxPercent' => 'setTaxPercent',
-        'taxAmount' => 'setTaxAmount',
-        'createdAt' => 'setCreatedAt',
-        'updatedAt' => 'setUpdatedAt'
+        'hash' => 'setHash',
+        'customerId' => 'setCustomerId',
+        'title' => 'setTitle',
+        'firstName' => 'setFirstName',
+        'secondName' => 'setSecondName',
+        'tel' => 'setTel',
+        'eveningTel' => 'setEveningTel',
+        'mobile' => 'setMobile',
+        'workTel' => 'setWorkTel',
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -253,21 +228,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'invoicedBookingLineItem' => 'getInvoicedBookingLineItem',
-        'name' => 'getName',
-        'reason' => 'getReason',
-        'qty' => 'getQty',
-        'numGuests' => 'getNumGuests',
-        'numNights' => 'getNumNights',
-        'netAmount' => 'getNetAmount',
-        'grossAmount' => 'getGrossAmount',
-        'unitPrice' => 'getUnitPrice',
-        'unitPriceWithTax' => 'getUnitPriceWithTax',
-        'taxPercent' => 'getTaxPercent',
-        'taxAmount' => 'getTaxAmount',
-        'createdAt' => 'getCreatedAt',
-        'updatedAt' => 'getUpdatedAt'
+        'hash' => 'getHash',
+        'customerId' => 'getCustomerId',
+        'title' => 'getTitle',
+        'firstName' => 'getFirstName',
+        'secondName' => 'getSecondName',
+        'tel' => 'getTel',
+        'eveningTel' => 'getEveningTel',
+        'mobile' => 'getMobile',
+        'workTel' => 'getWorkTel',
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -326,21 +296,16 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('invoicedBookingLineItem', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
-        $this->setIfExists('qty', $data ?? [], null);
-        $this->setIfExists('numGuests', $data ?? [], null);
-        $this->setIfExists('numNights', $data ?? [], null);
-        $this->setIfExists('netAmount', $data ?? [], null);
-        $this->setIfExists('grossAmount', $data ?? [], null);
-        $this->setIfExists('unitPrice', $data ?? [], null);
-        $this->setIfExists('unitPriceWithTax', $data ?? [], null);
-        $this->setIfExists('taxPercent', $data ?? [], null);
-        $this->setIfExists('taxAmount', $data ?? [], null);
+        $this->setIfExists('hash', $data ?? [], null);
+        $this->setIfExists('customerId', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], '');
+        $this->setIfExists('firstName', $data ?? [], '');
+        $this->setIfExists('secondName', $data ?? [], '');
+        $this->setIfExists('tel', $data ?? [], '');
+        $this->setIfExists('eveningTel', $data ?? [], null);
+        $this->setIfExists('mobile', $data ?? [], '');
+        $this->setIfExists('workTel', $data ?? [], '');
         $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -370,15 +335,6 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['createdAt'] === null) {
-            $invalidProperties[] = "'createdAt' can't be null";
-        }
-        if ($this->container['updatedAt'] === null) {
-            $invalidProperties[] = "'updatedAt' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -395,415 +351,307 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId(int $id): static
-    {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoicedBookingLineItem
-     *
-     * @return \SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem|null
-     */
-    public function getInvoicedBookingLineItem(): ?\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem
-    {
-        return $this->container['invoicedBookingLineItem'];
-    }
-
-    /**
-     * Sets invoicedBookingLineItem
-     *
-     * @param \SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem|null $invoicedBookingLineItem invoicedBookingLineItem
-     *
-     * @return $this
-     */
-    public function setInvoicedBookingLineItem(?\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem $invoicedBookingLineItem): static
-    {
-        if (is_null($invoicedBookingLineItem)) {
-            array_push($this->openAPINullablesSetToNull, 'invoicedBookingLineItem');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('invoicedBookingLineItem', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['invoicedBookingLineItem'] = $invoicedBookingLineItem;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets hash
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getHash(): ?string
     {
-        return $this->container['name'];
+        return $this->container['hash'];
     }
 
     /**
-     * Sets name
+     * Sets hash
      *
-     * @param string|null $name name
+     * @param string|null $hash hash
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setHash(?string $hash): static
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($hash)) {
+            array_push($this->openAPINullablesSetToNull, 'hash');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('hash', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['hash'] = $hash;
 
         return $this;
     }
 
     /**
-     * Gets reason
+     * Gets customerId
      *
      * @return string|null
      */
-    public function getReason(): ?string
+    public function getCustomerId(): ?string
     {
-        return $this->container['reason'];
+        return $this->container['customerId'];
     }
 
     /**
-     * Sets reason
+     * Sets customerId
      *
-     * @param string|null $reason reason
+     * @param string|null $customerId customerId
      *
      * @return $this
      */
-    public function setReason(?string $reason): static
+    public function setCustomerId(?string $customerId): static
     {
-        if (is_null($reason)) {
-            array_push($this->openAPINullablesSetToNull, 'reason');
+        if (is_null($customerId)) {
+            array_push($this->openAPINullablesSetToNull, 'customerId');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reason', $nullablesSetToNull);
+            $index = array_search('customerId', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['reason'] = $reason;
+        $this->container['customerId'] = $customerId;
 
         return $this;
     }
 
     /**
-     * Gets qty
-     *
-     * @return int|null
-     */
-    public function getQty(): ?int
-    {
-        return $this->container['qty'];
-    }
-
-    /**
-     * Sets qty
-     *
-     * @param int|null $qty qty
-     *
-     * @return $this
-     */
-    public function setQty(?int $qty): static
-    {
-        if (is_null($qty)) {
-            throw new InvalidArgumentException('non-nullable qty cannot be null');
-        }
-        $this->container['qty'] = $qty;
-
-        return $this;
-    }
-
-    /**
-     * Gets numGuests
-     *
-     * @return int|null
-     */
-    public function getNumGuests(): ?int
-    {
-        return $this->container['numGuests'];
-    }
-
-    /**
-     * Sets numGuests
-     *
-     * @param int|null $numGuests numGuests
-     *
-     * @return $this
-     */
-    public function setNumGuests(?int $numGuests): static
-    {
-        if (is_null($numGuests)) {
-            throw new InvalidArgumentException('non-nullable numGuests cannot be null');
-        }
-        $this->container['numGuests'] = $numGuests;
-
-        return $this;
-    }
-
-    /**
-     * Gets numNights
-     *
-     * @return int|null
-     */
-    public function getNumNights(): ?int
-    {
-        return $this->container['numNights'];
-    }
-
-    /**
-     * Sets numNights
-     *
-     * @param int|null $numNights numNights
-     *
-     * @return $this
-     */
-    public function setNumNights(?int $numNights): static
-    {
-        if (is_null($numNights)) {
-            throw new InvalidArgumentException('non-nullable numNights cannot be null');
-        }
-        $this->container['numNights'] = $numNights;
-
-        return $this;
-    }
-
-    /**
-     * Gets netAmount
+     * Gets title
      *
      * @return string|null
      */
-    public function getNetAmount(): ?string
+    public function getTitle(): ?string
     {
-        return $this->container['netAmount'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets netAmount
+     * Sets title
      *
-     * @param string|null $netAmount netAmount
+     * @param string|null $title title
      *
      * @return $this
      */
-    public function setNetAmount(?string $netAmount): static
+    public function setTitle(?string $title): static
     {
-        if (is_null($netAmount)) {
-            array_push($this->openAPINullablesSetToNull, 'netAmount');
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('netAmount', $nullablesSetToNull);
+            $index = array_search('title', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['netAmount'] = $netAmount;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets grossAmount
+     * Gets firstName
      *
      * @return string|null
      */
-    public function getGrossAmount(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->container['grossAmount'];
+        return $this->container['firstName'];
     }
 
     /**
-     * Sets grossAmount
+     * Sets firstName
      *
-     * @param string|null $grossAmount grossAmount
+     * @param string|null $firstName firstName
      *
      * @return $this
      */
-    public function setGrossAmount(?string $grossAmount): static
+    public function setFirstName(?string $firstName): static
     {
-        if (is_null($grossAmount)) {
-            array_push($this->openAPINullablesSetToNull, 'grossAmount');
+        if (is_null($firstName)) {
+            array_push($this->openAPINullablesSetToNull, 'firstName');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('grossAmount', $nullablesSetToNull);
+            $index = array_search('firstName', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['grossAmount'] = $grossAmount;
+        $this->container['firstName'] = $firstName;
 
         return $this;
     }
 
     /**
-     * Gets unitPrice
+     * Gets secondName
      *
      * @return string|null
      */
-    public function getUnitPrice(): ?string
+    public function getSecondName(): ?string
     {
-        return $this->container['unitPrice'];
+        return $this->container['secondName'];
     }
 
     /**
-     * Sets unitPrice
+     * Sets secondName
      *
-     * @param string|null $unitPrice unitPrice
+     * @param string|null $secondName secondName
      *
      * @return $this
      */
-    public function setUnitPrice(?string $unitPrice): static
+    public function setSecondName(?string $secondName): static
     {
-        if (is_null($unitPrice)) {
-            array_push($this->openAPINullablesSetToNull, 'unitPrice');
+        if (is_null($secondName)) {
+            array_push($this->openAPINullablesSetToNull, 'secondName');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('unitPrice', $nullablesSetToNull);
+            $index = array_search('secondName', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['unitPrice'] = $unitPrice;
+        $this->container['secondName'] = $secondName;
 
         return $this;
     }
 
     /**
-     * Gets unitPriceWithTax
+     * Gets tel
      *
      * @return string|null
      */
-    public function getUnitPriceWithTax(): ?string
+    public function getTel(): ?string
     {
-        return $this->container['unitPriceWithTax'];
+        return $this->container['tel'];
     }
 
     /**
-     * Sets unitPriceWithTax
+     * Sets tel
      *
-     * @param string|null $unitPriceWithTax unitPriceWithTax
+     * @param string|null $tel tel
      *
      * @return $this
      */
-    public function setUnitPriceWithTax(?string $unitPriceWithTax): static
+    public function setTel(?string $tel): static
     {
-        if (is_null($unitPriceWithTax)) {
-            array_push($this->openAPINullablesSetToNull, 'unitPriceWithTax');
+        if (is_null($tel)) {
+            array_push($this->openAPINullablesSetToNull, 'tel');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('unitPriceWithTax', $nullablesSetToNull);
+            $index = array_search('tel', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['unitPriceWithTax'] = $unitPriceWithTax;
+        $this->container['tel'] = $tel;
 
         return $this;
     }
 
     /**
-     * Gets taxPercent
+     * Gets eveningTel
      *
      * @return string|null
      */
-    public function getTaxPercent(): ?string
+    public function getEveningTel(): ?string
     {
-        return $this->container['taxPercent'];
+        return $this->container['eveningTel'];
     }
 
     /**
-     * Sets taxPercent
+     * Sets eveningTel
      *
-     * @param string|null $taxPercent taxPercent
+     * @param string|null $eveningTel eveningTel
      *
      * @return $this
      */
-    public function setTaxPercent(?string $taxPercent): static
+    public function setEveningTel(?string $eveningTel): static
     {
-        if (is_null($taxPercent)) {
-            array_push($this->openAPINullablesSetToNull, 'taxPercent');
+        if (is_null($eveningTel)) {
+            array_push($this->openAPINullablesSetToNull, 'eveningTel');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('taxPercent', $nullablesSetToNull);
+            $index = array_search('eveningTel', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['taxPercent'] = $taxPercent;
+        $this->container['eveningTel'] = $eveningTel;
 
         return $this;
     }
 
     /**
-     * Gets taxAmount
+     * Gets mobile
      *
      * @return string|null
      */
-    public function getTaxAmount(): ?string
+    public function getMobile(): ?string
     {
-        return $this->container['taxAmount'];
+        return $this->container['mobile'];
     }
 
     /**
-     * Sets taxAmount
+     * Sets mobile
      *
-     * @param string|null $taxAmount taxAmount
+     * @param string|null $mobile mobile
      *
      * @return $this
      */
-    public function setTaxAmount(?string $taxAmount): static
+    public function setMobile(?string $mobile): static
     {
-        if (is_null($taxAmount)) {
-            array_push($this->openAPINullablesSetToNull, 'taxAmount');
+        if (is_null($mobile)) {
+            array_push($this->openAPINullablesSetToNull, 'mobile');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('taxAmount', $nullablesSetToNull);
+            $index = array_search('mobile', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['taxAmount'] = $taxAmount;
+        $this->container['mobile'] = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Gets workTel
+     *
+     * @return string|null
+     */
+    public function getWorkTel(): ?string
+    {
+        return $this->container['workTel'];
+    }
+
+    /**
+     * Sets workTel
+     *
+     * @param string|null $workTel workTel
+     *
+     * @return $this
+     */
+    public function setWorkTel(?string $workTel): static
+    {
+        if (is_null($workTel)) {
+            array_push($this->openAPINullablesSetToNull, 'workTel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('workTel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['workTel'] = $workTel;
 
         return $this;
     }
@@ -811,9 +659,9 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
     /**
      * Gets createdAt
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->container['createdAt'];
     }
@@ -821,43 +669,23 @@ class CreditNoteInvoicedBookingLineItem2 implements ModelInterface, ArrayAccess,
     /**
      * Sets createdAt
      *
-     * @param \DateTime $createdAt createdAt
+     * @param \DateTime|null $createdAt createdAt
      *
      * @return $this
      */
-    public function setCreatedAt(\DateTime $createdAt): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
         if (is_null($createdAt)) {
-            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'createdAt');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('createdAt', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt(): \DateTime
-    {
-        return $this->container['updatedAt'];
-    }
-
-    /**
-     * Sets updatedAt
-     *
-     * @param \DateTime $updatedAt updatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt(\DateTime $updatedAt): static
-    {
-        if (is_null($updatedAt)) {
-            throw new InvalidArgumentException('non-nullable updatedAt cannot be null');
-        }
-        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

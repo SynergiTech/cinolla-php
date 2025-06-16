@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  |
+**invoicedBookingLineItem** | [**\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem**](CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem.md) |  | [optional]
 **name** | **string** |  | [optional]
 **reason** | **string** |  | [optional]
 **qty** | **int** |  | [optional]

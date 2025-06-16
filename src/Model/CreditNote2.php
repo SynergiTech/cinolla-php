@@ -80,7 +80,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => 'bool',
         'voidAt' => '\DateTime',
         'version' => 'int',
-        'creditNoteInvoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2[]'
+        'creditNoteInvoicedBookingLineItems' => '\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2[]',
+        'contact' => '\SynergiTech\Cinolla\Model\CreditNote2Contact',
+        'organisation' => '\SynergiTech\Cinolla\Model\CreditNote2Organisation'
     ];
 
     /**
@@ -111,7 +113,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => null,
         'voidAt' => 'date-time',
         'version' => null,
-        'creditNoteInvoicedBookingLineItems' => null
+        'creditNoteInvoicedBookingLineItems' => null,
+        'contact' => null,
+        'organisation' => null
     ];
 
     /**
@@ -142,7 +146,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => false,
         'voidAt' => true,
         'version' => false,
-        'creditNoteInvoicedBookingLineItems' => false
+        'creditNoteInvoicedBookingLineItems' => false,
+        'contact' => true,
+        'organisation' => true
     ];
 
     /**
@@ -253,7 +259,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => 'void',
         'voidAt' => 'voidAt',
         'version' => 'version',
-        'creditNoteInvoicedBookingLineItems' => 'creditNoteInvoicedBookingLineItems'
+        'creditNoteInvoicedBookingLineItems' => 'creditNoteInvoicedBookingLineItems',
+        'contact' => 'contact',
+        'organisation' => 'organisation'
     ];
 
     /**
@@ -284,7 +292,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => 'setVoid',
         'voidAt' => 'setVoidAt',
         'version' => 'setVersion',
-        'creditNoteInvoicedBookingLineItems' => 'setCreditNoteInvoicedBookingLineItems'
+        'creditNoteInvoicedBookingLineItems' => 'setCreditNoteInvoicedBookingLineItems',
+        'contact' => 'setContact',
+        'organisation' => 'setOrganisation'
     ];
 
     /**
@@ -315,7 +325,9 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         'void' => 'getVoid',
         'voidAt' => 'getVoidAt',
         'version' => 'getVersion',
-        'creditNoteInvoicedBookingLineItems' => 'getCreditNoteInvoicedBookingLineItems'
+        'creditNoteInvoicedBookingLineItems' => 'getCreditNoteInvoicedBookingLineItems',
+        'contact' => 'getContact',
+        'organisation' => 'getOrganisation'
     ];
 
     /**
@@ -397,6 +409,8 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('voidAt', $data ?? [], null);
         $this->setIfExists('version', $data ?? [], null);
         $this->setIfExists('creditNoteInvoicedBookingLineItems', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
+        $this->setIfExists('organisation', $data ?? [], null);
     }
 
     /**
@@ -1181,6 +1195,74 @@ class CreditNote2 implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable creditNoteInvoicedBookingLineItems cannot be null');
         }
         $this->container['creditNoteInvoicedBookingLineItems'] = $creditNoteInvoicedBookingLineItems;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
+     *
+     * @return \SynergiTech\Cinolla\Model\CreditNote2Contact|null
+     */
+    public function getContact(): ?\SynergiTech\Cinolla\Model\CreditNote2Contact
+    {
+        return $this->container['contact'];
+    }
+
+    /**
+     * Sets contact
+     *
+     * @param \SynergiTech\Cinolla\Model\CreditNote2Contact|null $contact contact
+     *
+     * @return $this
+     */
+    public function setContact(?\SynergiTech\Cinolla\Model\CreditNote2Contact $contact): static
+    {
+        if (is_null($contact)) {
+            array_push($this->openAPINullablesSetToNull, 'contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Gets organisation
+     *
+     * @return \SynergiTech\Cinolla\Model\CreditNote2Organisation|null
+     */
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\CreditNote2Organisation
+    {
+        return $this->container['organisation'];
+    }
+
+    /**
+     * Sets organisation
+     *
+     * @param \SynergiTech\Cinolla\Model\CreditNote2Organisation|null $organisation organisation
+     *
+     * @return $this
+     */
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\CreditNote2Organisation $organisation): static
+    {
+        if (is_null($organisation)) {
+            array_push($this->openAPINullablesSetToNull, 'organisation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('organisation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['organisation'] = $organisation;
 
         return $this;
     }

@@ -27,5 +27,7 @@ Name | Type | Description | Notes
 **voidAt** | **\DateTime** |  | [optional]
 **version** | **int** |  | [optional]
 **creditNoteInvoicedBookingLineItems** | [**\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2[]**](CreditNoteInvoicedBookingLineItem2.md) |  |
+**contact** | [**\SynergiTech\Cinolla\Model\CreditNote2Contact**](CreditNote2Contact.md) |  | [optional]
+**organisation** | [**\SynergiTech\Cinolla\Model\CreditNote2Organisation**](CreditNote2Organisation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

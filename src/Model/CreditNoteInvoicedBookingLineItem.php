@@ -59,6 +59,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPITypes = [
         'id' => 'int',
+        'invoicedBookingLineItem' => '\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem',
         'name' => 'string',
         'reason' => 'string',
         'qty' => 'int',
@@ -81,6 +82,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPIFormats = [
         'id' => null,
+        'invoicedBookingLineItem' => null,
         'name' => null,
         'reason' => null,
         'qty' => null,
@@ -103,6 +105,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'invoicedBookingLineItem' => true,
         'name' => true,
         'reason' => true,
         'qty' => false,
@@ -205,6 +208,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
      */
     protected static array $attributeMap = [
         'id' => 'id',
+        'invoicedBookingLineItem' => 'invoicedBookingLineItem',
         'name' => 'name',
         'reason' => 'reason',
         'qty' => 'qty',
@@ -227,6 +231,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
      */
     protected static array $setters = [
         'id' => 'setId',
+        'invoicedBookingLineItem' => 'setInvoicedBookingLineItem',
         'name' => 'setName',
         'reason' => 'setReason',
         'qty' => 'setQty',
@@ -249,6 +254,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
      */
     protected static array $getters = [
         'id' => 'getId',
+        'invoicedBookingLineItem' => 'getInvoicedBookingLineItem',
         'name' => 'getName',
         'reason' => 'getReason',
         'qty' => 'getQty',
@@ -321,6 +327,7 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('invoicedBookingLineItem', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('qty', $data ?? [], null);
@@ -410,6 +417,40 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
             throw new InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoicedBookingLineItem
+     *
+     * @return \SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem|null
+     */
+    public function getInvoicedBookingLineItem(): ?\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem
+    {
+        return $this->container['invoicedBookingLineItem'];
+    }
+
+    /**
+     * Sets invoicedBookingLineItem
+     *
+     * @param \SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem|null $invoicedBookingLineItem invoicedBookingLineItem
+     *
+     * @return $this
+     */
+    public function setInvoicedBookingLineItem(?\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem $invoicedBookingLineItem): static
+    {
+        if (is_null($invoicedBookingLineItem)) {
+            array_push($this->openAPINullablesSetToNull, 'invoicedBookingLineItem');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('invoicedBookingLineItem', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['invoicedBookingLineItem'] = $invoicedBookingLineItem;
 
         return $this;
     }

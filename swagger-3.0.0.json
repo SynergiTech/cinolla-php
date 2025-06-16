@@ -1650,108 +1650,6 @@
           "id": {
             "type": "integer"
           },
-          "creditNoteNumber": {
-            "type": "integer"
-          },
-          "creditNoteDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "totalVatAmount": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalNet": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalGross": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressName": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressOrganisation": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressAddress1": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressAddress2": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressTown": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressCounty": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressPostcode": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingAddressCountry": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "globalReason": {
-            "type": "string",
-            "nullable": true
-          },
-          "reference": {
-            "type": "string",
-            "nullable": true
-          },
-          "void": {
-            "type": "boolean",
-            "default": false
-          },
-          "voidAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "version": {
-            "type": "integer",
-            "default": "1"
-          },
-          "creditNoteInvoicedBookingLineItems": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CreditNoteInvoicedBookingLineItem"
-            }
-          }
-        },
-        "type": "object"
-      },
-      "CreditNote2": {
-        "required": [
-          "id",
-          "creditNoteNumber",
-          "creditNoteDate",
-          "createdAt",
-          "updatedAt",
-          "creditNoteInvoicedBookingLineItems"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
           "invoicedBooking": {
             "nullable": true,
             "oneOf": [
@@ -1843,8 +1741,150 @@
           "creditNoteInvoicedBookingLineItems": {
             "type": "array",
             "items": {
+              "$ref": "#/components/schemas/CreditNoteInvoicedBookingLineItem"
+            }
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact5"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation3"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "CreditNote2": {
+        "required": [
+          "id",
+          "creditNoteNumber",
+          "creditNoteDate",
+          "createdAt",
+          "updatedAt",
+          "creditNoteInvoicedBookingLineItems"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoicedBooking": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBooking4"
+              }
+            ]
+          },
+          "creditNoteNumber": {
+            "type": "integer"
+          },
+          "creditNoteDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalVatAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressOrganisation": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "globalReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "default": false
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "default": "1"
+          },
+          "creditNoteInvoicedBookingLineItems": {
+            "type": "array",
+            "items": {
               "$ref": "#/components/schemas/CreditNoteInvoicedBookingLineItem2"
             }
+          },
+          "contact": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Contact6"
+              }
+            ]
+          },
+          "organisation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ContactOrganisation4"
+              }
+            ]
           }
         },
         "type": "object"
@@ -2089,7 +2129,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Contact5"
+                "$ref": "#/components/schemas/Contact7"
               }
             ]
           },
@@ -2097,7 +2137,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation3"
+                "$ref": "#/components/schemas/ContactOrganisation5"
               }
             ]
           }
@@ -2260,7 +2300,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Contact6"
+                "$ref": "#/components/schemas/Contact8"
               }
             ]
           },
@@ -2268,7 +2308,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation4"
+                "$ref": "#/components/schemas/ContactOrganisation6"
               }
             ]
           }
@@ -2602,7 +2642,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation5"
+                "$ref": "#/components/schemas/ContactOrganisation7"
               }
             ]
           },
@@ -2691,7 +2731,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation6"
+                "$ref": "#/components/schemas/ContactOrganisation8"
               }
             ]
           },
@@ -2732,6 +2772,137 @@
         },
         "type": "object"
       },
+      "InvoicedBooking3": {
+        "required": [
+          "id",
+          "invoiceType",
+          "totalGross",
+          "createdAt",
+          "updatedAt",
+          "invoiceDate",
+          "invoiceDue"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "invoiceNumber": {
+            "type": "integer",
+            "nullable": true
+          },
+          "invoiceType": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "deposit"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "nullable": true
+          },
+          "totalNet": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalGross": {
+            "type": "string",
+            "minimum": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoiceDue": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress1": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressAddress2": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressTown": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCounty": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressPostcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "void": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "voidAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "poReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "outstandingAmount": {
+            "title": "Calculates the outstanding amount left of the invoice",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "CreditNoteInvoicedBookingLineItem": {
         "required": [
           "id",
@@ -2741,6 +2912,14 @@
         "properties": {
           "id": {
             "type": "integer"
+          },
+          "invoicedBookingLineItem": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingLineItem3"
+              }
+            ]
           },
           "name": {
             "type": "string",
@@ -2797,7 +2976,80 @@
         },
         "type": "object"
       },
-      "InvoicedBooking3": {
+      "Contact5": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation3": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBooking4": {
         "required": [
           "id",
           "invoiceType",
@@ -2938,6 +3190,14 @@
           "id": {
             "type": "integer"
           },
+          "invoicedBookingLineItem": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/InvoicedBookingLineItem4"
+              }
+            ]
+          },
           "name": {
             "type": "string",
             "nullable": true
@@ -2993,6 +3253,79 @@
         },
         "type": "object"
       },
+      "Contact6": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "tel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "eveningTel": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "workTel": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactOrganisation4": {
+        "properties": {
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "shortName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
       "CustomFieldsData": {
         "required": [
           "customField"
@@ -3030,7 +3363,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Contact5"
+                "$ref": "#/components/schemas/Contact7"
               }
             ]
           },
@@ -3038,7 +3371,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation3"
+                "$ref": "#/components/schemas/ContactOrganisation5"
               }
             ]
           },
@@ -3167,7 +3500,7 @@
         },
         "type": "object"
       },
-      "Contact5": {
+      "Contact7": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3219,7 +3552,7 @@
         },
         "type": "object"
       },
-      "ContactOrganisation3": {
+      "ContactOrganisation5": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3258,7 +3591,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Contact6"
+                "$ref": "#/components/schemas/Contact8"
               }
             ]
           },
@@ -3266,7 +3599,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/ContactOrganisation4"
+                "$ref": "#/components/schemas/ContactOrganisation6"
               }
             ]
           },
@@ -3395,7 +3728,7 @@
         },
         "type": "object"
       },
-      "Contact6": {
+      "Contact8": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3447,7 +3780,7 @@
         },
         "type": "object"
       },
-      "ContactOrganisation4": {
+      "ContactOrganisation6": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3480,7 +3813,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/InvoicedBooking4"
+                "$ref": "#/components/schemas/InvoicedBooking5"
               }
             ]
           },
@@ -3515,7 +3848,7 @@
       "Staff": {
         "type": "object"
       },
-      "ContactOrganisation5": {
+      "ContactOrganisation7": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3536,7 +3869,7 @@
         },
         "type": "object"
       },
-      "ContactOrganisation6": {
+      "ContactOrganisation8": {
         "properties": {
           "hash": {
             "type": "string",
@@ -3553,6 +3886,32 @@
           "shortName": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingLineItem3": {
+        "properties": {
+          "lineItem": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LineItem2"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "InvoicedBookingLineItem4": {
+        "properties": {
+          "lineItem": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LineItem3"
+              }
+            ]
           }
         },
         "type": "object"
@@ -3621,7 +3980,7 @@
         },
         "type": "object"
       },
-      "InvoicedBooking4": {
+      "InvoicedBooking5": {
         "required": [
           "id",
           "invoiceType",
@@ -3753,6 +4112,28 @@
         "type": "object"
       },
       "Refund": {
+        "type": "object"
+      },
+      "LineItem2": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "LineItem3": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
         "type": "object"
       }
     },
