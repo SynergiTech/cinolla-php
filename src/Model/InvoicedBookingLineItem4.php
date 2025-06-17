@@ -58,6 +58,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
+        'id' => 'int',
         'lineItem' => '\SynergiTech\Cinolla\Model\InvoicedBookingLineItem4LineItem'
     ];
 
@@ -67,6 +68,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
+        'id' => null,
         'lineItem' => null
     ];
 
@@ -76,6 +78,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'lineItem' => true
     ];
 
@@ -165,6 +168,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
      * @var array<string, string>
      */
     protected static array $attributeMap = [
+        'id' => 'id',
         'lineItem' => 'lineItem'
     ];
 
@@ -174,6 +178,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
      * @var array<string, string>
      */
     protected static array $setters = [
+        'id' => 'setId',
         'lineItem' => 'setLineItem'
     ];
 
@@ -183,6 +188,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
      * @var array<string, string>
      */
     protected static array $getters = [
+        'id' => 'getId',
         'lineItem' => 'getLineItem'
     ];
 
@@ -242,6 +248,7 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('lineItem', $data ?? [], null);
     }
 
@@ -272,6 +279,9 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -286,6 +296,33 @@ class InvoicedBookingLineItem4 implements ModelInterface, ArrayAccess, JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId(int $id): static
+    {
+        if (is_null($id)) {
+            throw new InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets lineItem

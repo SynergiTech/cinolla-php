@@ -3891,7 +3891,13 @@
         "type": "object"
       },
       "InvoicedBookingLineItem3": {
+        "required": [
+          "id"
+        ],
         "properties": {
+          "id": {
+            "type": "integer"
+          },
           "lineItem": {
             "nullable": true,
             "oneOf": [
@@ -3904,7 +3910,13 @@
         "type": "object"
       },
       "InvoicedBookingLineItem4": {
+        "required": [
+          "id"
+        ],
         "properties": {
+          "id": {
+            "type": "integer"
+          },
           "lineItem": {
             "nullable": true,
             "oneOf": [
