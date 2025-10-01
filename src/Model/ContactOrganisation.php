@@ -62,6 +62,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => 'string',
         'name' => 'string',
         'shortName' => 'string',
+        'alert' => 'string',
         'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
     ];
 
@@ -75,6 +76,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => null,
         'name' => null,
         'shortName' => null,
+        'alert' => null,
         'accountManager' => null
     ];
 
@@ -88,6 +90,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => true,
         'name' => false,
         'shortName' => true,
+        'alert' => true,
         'accountManager' => true
     ];
 
@@ -181,6 +184,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => 'hash',
         'name' => 'name',
         'shortName' => 'shortName',
+        'alert' => 'alert',
         'accountManager' => 'accountManager'
     ];
 
@@ -194,6 +198,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => 'setHash',
         'name' => 'setName',
         'shortName' => 'setShortName',
+        'alert' => 'setAlert',
         'accountManager' => 'setAccountManager'
     ];
 
@@ -207,6 +212,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         'hash' => 'getHash',
         'name' => 'getName',
         'shortName' => 'getShortName',
+        'alert' => 'getAlert',
         'accountManager' => 'getAccountManager'
     ];
 
@@ -270,6 +276,7 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
         $this->setIfExists('hash', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], '');
         $this->setIfExists('shortName', $data ?? [], null);
+        $this->setIfExists('alert', $data ?? [], null);
         $this->setIfExists('accountManager', $data ?? [], null);
     }
 
@@ -436,6 +443,40 @@ class ContactOrganisation implements ModelInterface, ArrayAccess, JsonSerializab
             }
         }
         $this->container['shortName'] = $shortName;
+
+        return $this;
+    }
+
+    /**
+     * Gets alert
+     *
+     * @return string|null
+     */
+    public function getAlert(): ?string
+    {
+        return $this->container['alert'];
+    }
+
+    /**
+     * Sets alert
+     *
+     * @param string|null $alert alert
+     *
+     * @return $this
+     */
+    public function setAlert(?string $alert): static
+    {
+        if (is_null($alert)) {
+            array_push($this->openAPINullablesSetToNull, 'alert');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('alert', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['alert'] = $alert;
 
         return $this;
     }

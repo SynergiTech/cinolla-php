@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientBookingCollectionOrganisation
+ * CustomFormFields
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ClientBookingCollectionOrganisation Class Doc Comment
+ * CustomFormFields Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class CustomFormFields implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ClientBookingCollection_organisation';
+    protected static string $openAPIModelName = 'CustomFormFields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'hash' => 'string',
-        'name' => 'string',
-        'shortName' => 'string',
-        'alert' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        'customField' => '\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField',
+        'position' => 'int',
+        'required' => 'bool',
+        'createdAt' => '\DateTime',
+        'removedAt' => '\DateTime',
+        'active' => 'bool'
     ];
 
     /**
@@ -73,11 +74,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'hash' => null,
-        'name' => null,
-        'shortName' => null,
-        'alert' => null,
-        'accountManager' => null
+        'customField' => null,
+        'position' => null,
+        'required' => null,
+        'createdAt' => 'date-time',
+        'removedAt' => 'date-time',
+        'active' => null
     ];
 
     /**
@@ -87,11 +89,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'hash' => true,
-        'name' => false,
-        'shortName' => true,
-        'alert' => true,
-        'accountManager' => true
+        'customField' => true,
+        'position' => false,
+        'required' => false,
+        'createdAt' => false,
+        'removedAt' => true,
+        'active' => false
     ];
 
     /**
@@ -181,11 +184,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'hash' => 'hash',
-        'name' => 'name',
-        'shortName' => 'shortName',
-        'alert' => 'alert',
-        'accountManager' => 'accountManager'
+        'customField' => 'customField',
+        'position' => 'position',
+        'required' => 'required',
+        'createdAt' => 'createdAt',
+        'removedAt' => 'removedAt',
+        'active' => 'active'
     ];
 
     /**
@@ -195,11 +199,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $setters = [
         'id' => 'setId',
-        'hash' => 'setHash',
-        'name' => 'setName',
-        'shortName' => 'setShortName',
-        'alert' => 'setAlert',
-        'accountManager' => 'setAccountManager'
+        'customField' => 'setCustomField',
+        'position' => 'setPosition',
+        'required' => 'setRequired',
+        'createdAt' => 'setCreatedAt',
+        'removedAt' => 'setRemovedAt',
+        'active' => 'setActive'
     ];
 
     /**
@@ -209,11 +214,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $getters = [
         'id' => 'getId',
-        'hash' => 'getHash',
-        'name' => 'getName',
-        'shortName' => 'getShortName',
-        'alert' => 'getAlert',
-        'accountManager' => 'getAccountManager'
+        'customField' => 'getCustomField',
+        'position' => 'getPosition',
+        'required' => 'getRequired',
+        'createdAt' => 'getCreatedAt',
+        'removedAt' => 'getRemovedAt',
+        'active' => 'getActive'
     ];
 
     /**
@@ -273,11 +279,12 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
-        $this->setIfExists('alert', $data ?? [], null);
-        $this->setIfExists('accountManager', $data ?? [], null);
+        $this->setIfExists('customField', $data ?? [], null);
+        $this->setIfExists('position', $data ?? [], 0);
+        $this->setIfExists('required', $data ?? [], false);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('removedAt', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], true);
     }
 
     /**
@@ -309,6 +316,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -353,164 +363,177 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets hash
+     * Gets customField
      *
-     * @return string|null
+     * @return \SynergiTech\Cinolla\Model\CustomFormFieldsCustomField|null
      */
-    public function getHash(): ?string
+    public function getCustomField(): ?\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField
     {
-        return $this->container['hash'];
+        return $this->container['customField'];
     }
 
     /**
-     * Sets hash
+     * Sets customField
      *
-     * @param string|null $hash hash
+     * @param \SynergiTech\Cinolla\Model\CustomFormFieldsCustomField|null $customField customField
      *
      * @return $this
      */
-    public function setHash(?string $hash): static
+    public function setCustomField(?\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField $customField): static
     {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
+        if (is_null($customField)) {
+            array_push($this->openAPINullablesSetToNull, 'customField');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
+            $index = array_search('customField', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hash'] = $hash;
+        $this->container['customField'] = $customField;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets position
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName(): ?string
+    public function getPosition(): ?int
     {
-        return $this->container['name'];
+        return $this->container['position'];
     }
 
     /**
-     * Sets name
+     * Sets position
      *
-     * @param string|null $name name
+     * @param int|null $position position
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setPosition(?int $position): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($position)) {
+            throw new InvalidArgumentException('non-nullable position cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['position'] = $position;
 
         return $this;
     }
 
     /**
-     * Gets shortName
+     * Gets required
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getShortName(): ?string
+    public function getRequired(): ?bool
     {
-        return $this->container['shortName'];
+        return $this->container['required'];
     }
 
     /**
-     * Sets shortName
+     * Sets required
      *
-     * @param string|null $shortName shortName
+     * @param bool|null $required required
      *
      * @return $this
      */
-    public function setShortName(?string $shortName): static
+    public function setRequired(?bool $required): static
     {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
+        if (is_null($required)) {
+            throw new InvalidArgumentException('non-nullable required cannot be null');
+        }
+        $this->container['required'] = $required;
+
+        return $this;
+    }
+
+    /**
+     * Gets createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->container['createdAt'];
+    }
+
+    /**
+     * Sets createdAt
+     *
+     * @param \DateTime $createdAt createdAt
+     *
+     * @return $this
+     */
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        if (is_null($createdAt)) {
+            throw new InvalidArgumentException('non-nullable createdAt cannot be null');
+        }
+        $this->container['createdAt'] = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets removedAt
+     *
+     * @return \DateTime|null
+     */
+    public function getRemovedAt(): ?\DateTime
+    {
+        return $this->container['removedAt'];
+    }
+
+    /**
+     * Sets removedAt
+     *
+     * @param \DateTime|null $removedAt removedAt
+     *
+     * @return $this
+     */
+    public function setRemovedAt(?\DateTime $removedAt): static
+    {
+        if (is_null($removedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'removedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
+            $index = array_search('removedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['shortName'] = $shortName;
+        $this->container['removedAt'] = $removedAt;
 
         return $this;
     }
 
     /**
-     * Gets alert
+     * Gets active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getAlert(): ?string
+    public function getActive(): ?bool
     {
-        return $this->container['alert'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets alert
+     * Sets active
      *
-     * @param string|null $alert alert
+     * @param bool|null $active active
      *
      * @return $this
      */
-    public function setAlert(?string $alert): static
+    public function setActive(?bool $active): static
     {
-        if (is_null($alert)) {
-            array_push($this->openAPINullablesSetToNull, 'alert');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('alert', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($active)) {
+            throw new InvalidArgumentException('non-nullable active cannot be null');
         }
-        $this->container['alert'] = $alert;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountManager
-     *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
-     */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
-    {
-        return $this->container['accountManager'];
-    }
-
-    /**
-     * Sets accountManager
-     *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
-     *
-     * @return $this
-     */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
-    {
-        if (is_null($accountManager)) {
-            array_push($this->openAPINullablesSetToNull, 'accountManager');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accountManager', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accountManager'] = $accountManager;
+        $this->container['active'] = $active;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientBookingCollectionOrganisation
+ * CustomFormWorkflow
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ClientBookingCollectionOrganisation Class Doc Comment
+ * CustomFormWorkflow Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class CustomFormWorkflow implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ClientBookingCollection_organisation';
+    protected static string $openAPIModelName = 'CustomFormWorkflow';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'hash' => 'string',
-        'name' => 'string',
-        'shortName' => 'string',
-        'alert' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        'workflowAction' => '\SynergiTech\Cinolla\Model\CustomFormWorkflowWorkflowAction',
+        'grantMembership' => 'bool',
+        'createdAt' => '\DateTime',
+        'customFormWorkflowMappings' => '\SynergiTech\Cinolla\Model\CustomFormWorkflowMapping[]'
     ];
 
     /**
@@ -73,11 +72,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'hash' => null,
-        'name' => null,
-        'shortName' => null,
-        'alert' => null,
-        'accountManager' => null
+        'workflowAction' => null,
+        'grantMembership' => null,
+        'createdAt' => 'date-time',
+        'customFormWorkflowMappings' => null
     ];
 
     /**
@@ -87,11 +85,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'hash' => true,
-        'name' => false,
-        'shortName' => true,
-        'alert' => true,
-        'accountManager' => true
+        'workflowAction' => true,
+        'grantMembership' => true,
+        'createdAt' => true,
+        'customFormWorkflowMappings' => false
     ];
 
     /**
@@ -181,11 +178,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'hash' => 'hash',
-        'name' => 'name',
-        'shortName' => 'shortName',
-        'alert' => 'alert',
-        'accountManager' => 'accountManager'
+        'workflowAction' => 'workflowAction',
+        'grantMembership' => 'grantMembership',
+        'createdAt' => 'createdAt',
+        'customFormWorkflowMappings' => 'customFormWorkflowMappings'
     ];
 
     /**
@@ -195,11 +191,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $setters = [
         'id' => 'setId',
-        'hash' => 'setHash',
-        'name' => 'setName',
-        'shortName' => 'setShortName',
-        'alert' => 'setAlert',
-        'accountManager' => 'setAccountManager'
+        'workflowAction' => 'setWorkflowAction',
+        'grantMembership' => 'setGrantMembership',
+        'createdAt' => 'setCreatedAt',
+        'customFormWorkflowMappings' => 'setCustomFormWorkflowMappings'
     ];
 
     /**
@@ -209,11 +204,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     protected static array $getters = [
         'id' => 'getId',
-        'hash' => 'getHash',
-        'name' => 'getName',
-        'shortName' => 'getShortName',
-        'alert' => 'getAlert',
-        'accountManager' => 'getAccountManager'
+        'workflowAction' => 'getWorkflowAction',
+        'grantMembership' => 'getGrantMembership',
+        'createdAt' => 'getCreatedAt',
+        'customFormWorkflowMappings' => 'getCustomFormWorkflowMappings'
     ];
 
     /**
@@ -273,11 +267,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
-        $this->setIfExists('alert', $data ?? [], null);
-        $this->setIfExists('accountManager', $data ?? [], null);
+        $this->setIfExists('workflowAction', $data ?? [], null);
+        $this->setIfExists('grantMembership', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('customFormWorkflowMappings', $data ?? [], null);
     }
 
     /**
@@ -309,6 +302,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['customFormWorkflowMappings'] === null) {
+            $invalidProperties[] = "'customFormWorkflowMappings' can't be null";
         }
         return $invalidProperties;
     }
@@ -353,164 +349,130 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets hash
+     * Gets workflowAction
      *
-     * @return string|null
+     * @return \SynergiTech\Cinolla\Model\CustomFormWorkflowWorkflowAction|null
      */
-    public function getHash(): ?string
+    public function getWorkflowAction(): ?\SynergiTech\Cinolla\Model\CustomFormWorkflowWorkflowAction
     {
-        return $this->container['hash'];
+        return $this->container['workflowAction'];
     }
 
     /**
-     * Sets hash
+     * Sets workflowAction
      *
-     * @param string|null $hash hash
+     * @param \SynergiTech\Cinolla\Model\CustomFormWorkflowWorkflowAction|null $workflowAction workflowAction
      *
      * @return $this
      */
-    public function setHash(?string $hash): static
+    public function setWorkflowAction(?\SynergiTech\Cinolla\Model\CustomFormWorkflowWorkflowAction $workflowAction): static
     {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
+        if (is_null($workflowAction)) {
+            array_push($this->openAPINullablesSetToNull, 'workflowAction');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
+            $index = array_search('workflowAction', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hash'] = $hash;
+        $this->container['workflowAction'] = $workflowAction;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets grantMembership
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getName(): ?string
+    public function getGrantMembership(): ?bool
     {
-        return $this->container['name'];
+        return $this->container['grantMembership'];
     }
 
     /**
-     * Sets name
+     * Sets grantMembership
      *
-     * @param string|null $name name
+     * @param bool|null $grantMembership grantMembership
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setGrantMembership(?bool $grantMembership): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shortName
-     *
-     * @return string|null
-     */
-    public function getShortName(): ?string
-    {
-        return $this->container['shortName'];
-    }
-
-    /**
-     * Sets shortName
-     *
-     * @param string|null $shortName shortName
-     *
-     * @return $this
-     */
-    public function setShortName(?string $shortName): static
-    {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
+        if (is_null($grantMembership)) {
+            array_push($this->openAPINullablesSetToNull, 'grantMembership');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
+            $index = array_search('grantMembership', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['shortName'] = $shortName;
+        $this->container['grantMembership'] = $grantMembership;
 
         return $this;
     }
 
     /**
-     * Gets alert
+     * Gets createdAt
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getAlert(): ?string
+    public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['alert'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets alert
+     * Sets createdAt
      *
-     * @param string|null $alert alert
+     * @param \DateTime|null $createdAt createdAt
      *
      * @return $this
      */
-    public function setAlert(?string $alert): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($alert)) {
-            array_push($this->openAPINullablesSetToNull, 'alert');
+        if (is_null($createdAt)) {
+            array_push($this->openAPINullablesSetToNull, 'createdAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('alert', $nullablesSetToNull);
+            $index = array_search('createdAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['alert'] = $alert;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets accountManager
+     * Gets customFormWorkflowMappings
      *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
+     * @return \SynergiTech\Cinolla\Model\CustomFormWorkflowMapping[]
      */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
+    public function getCustomFormWorkflowMappings(): array
     {
-        return $this->container['accountManager'];
+        return $this->container['customFormWorkflowMappings'];
     }
 
     /**
-     * Sets accountManager
+     * Sets customFormWorkflowMappings
      *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
+     * @param \SynergiTech\Cinolla\Model\CustomFormWorkflowMapping[] $customFormWorkflowMappings customFormWorkflowMappings
      *
      * @return $this
      */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
+    public function setCustomFormWorkflowMappings(array $customFormWorkflowMappings): static
     {
-        if (is_null($accountManager)) {
-            array_push($this->openAPINullablesSetToNull, 'accountManager');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accountManager', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($customFormWorkflowMappings)) {
+            throw new InvalidArgumentException('non-nullable customFormWorkflowMappings cannot be null');
         }
-        $this->container['accountManager'] = $accountManager;
+        $this->container['customFormWorkflowMappings'] = $customFormWorkflowMappings;
 
         return $this;
     }

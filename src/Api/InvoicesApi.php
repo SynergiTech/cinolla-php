@@ -793,7 +793,7 @@ class InvoicesApi
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
+     * @param  string|null $bookingId Filter invoices based on a specific Booking ID (or hash). (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
@@ -806,7 +806,7 @@ class InvoicesApi
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
-        ?int $bookingId = null,
+        ?string $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): array
@@ -824,7 +824,7 @@ class InvoicesApi
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
+     * @param  string|null $bookingId Filter invoices based on a specific Booking ID (or hash). (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
@@ -837,7 +837,7 @@ class InvoicesApi
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
-        ?int $bookingId = null,
+        ?string $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): array
@@ -962,7 +962,7 @@ class InvoicesApi
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
+     * @param  string|null $bookingId Filter invoices based on a specific Booking ID (or hash). (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
@@ -974,7 +974,7 @@ class InvoicesApi
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
-        ?int $bookingId = null,
+        ?string $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): PromiseInterface
@@ -996,7 +996,7 @@ class InvoicesApi
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
+     * @param  string|null $bookingId Filter invoices based on a specific Booking ID (or hash). (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
@@ -1008,7 +1008,7 @@ class InvoicesApi
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
-        ?int $bookingId = null,
+        ?string $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): PromiseInterface
@@ -1059,7 +1059,7 @@ class InvoicesApi
      * @param  int|null $limit The limit on the number of results (optional, default to 100)
      * @param  \DateTime|null $startDate Start date of a date range. Used in conjunction with endDate to create a date range to filter by. (optional)
      * @param  \DateTime|null $endDate End date of a date range. Used in conjunction with startDate to create a date range to filter by. (optional)
-     * @param  int|null $bookingId Filter invoices based on a specific Booking ID. (optional)
+     * @param  string|null $bookingId Filter invoices based on a specific Booking ID (or hash). (optional)
      * @param  string|null $dateRangeFilter Used in conjunction with startDate and endDate to filter Invoices. (optional, default to 'invoiceDate')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
@@ -1071,7 +1071,7 @@ class InvoicesApi
         ?int $limit = 100,
         ?\DateTime $startDate = null,
         ?\DateTime $endDate = null,
-        ?int $bookingId = null,
+        ?string $bookingId = null,
         ?string $dateRangeFilter = 'invoiceDate',
         string $contentType = self::contentTypes['getInvoices'][0]
     ): Request
@@ -1131,7 +1131,7 @@ class InvoicesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $bookingId,
             'bookingId', // param base name
-            'integer', // openApiType
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

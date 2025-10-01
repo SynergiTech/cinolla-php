@@ -4,9 +4,70 @@ All URIs are relative to https://api.prod.cinolla.com, except if the operation d
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getAppClientapiCustomformsGetcustomformjson()**](CustomFormsApi.md#getAppClientapiCustomformsGetcustomformjson) | **GET** /v3/client/custom-forms/{idOrHash}/json |  |
 | [**getCustomFormSubmissions()**](CustomFormsApi.md#getCustomFormSubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions |
 | [**getCustomForms()**](CustomFormsApi.md#getCustomForms) | **GET** /v3/client/custom-forms | Get a collection of Custom Forms |
 
+
+## `getAppClientapiCustomformsGetcustomformjson()`
+
+```php
+getAppClientapiCustomformsGetcustomformjson($idOrHash): \SynergiTech\Cinolla\Model\CustomForm2
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKeyAuth
+$config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SynergiTech\Cinolla\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new SynergiTech\Cinolla\Api\CustomFormsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$idOrHash = 'idOrHash_example'; // string
+
+try {
+    $result = $apiInstance->getAppClientapiCustomformsGetcustomformjson($idOrHash);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CustomFormsApi->getAppClientapiCustomformsGetcustomformjson: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **idOrHash** | **string**|  | |
+
+### Return type
+
+[**\SynergiTech\Cinolla\Model\CustomForm2**](../Model/CustomForm2.md)
+
+### Authorization
+
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getCustomFormSubmissions()`
 

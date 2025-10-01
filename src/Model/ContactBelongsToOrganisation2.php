@@ -61,7 +61,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => '\SynergiTech\Cinolla\Model\ContactBelongsToOrganisation2Organisation',
         'position' => 'string',
         'start' => '\DateTime',
-        'end' => '\DateTime'
+        'end' => '\DateTime',
+        'doesBelongNow' => 'bool'
     ];
 
     /**
@@ -73,7 +74,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => null,
         'position' => null,
         'start' => 'date-time',
-        'end' => 'date-time'
+        'end' => 'date-time',
+        'doesBelongNow' => null
     ];
 
     /**
@@ -85,7 +87,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => true,
         'position' => true,
         'start' => false,
-        'end' => true
+        'end' => true,
+        'doesBelongNow' => false
     ];
 
     /**
@@ -177,7 +180,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => 'organisation',
         'position' => 'position',
         'start' => 'start',
-        'end' => 'end'
+        'end' => 'end',
+        'doesBelongNow' => 'doesBelongNow'
     ];
 
     /**
@@ -189,7 +193,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => 'setOrganisation',
         'position' => 'setPosition',
         'start' => 'setStart',
-        'end' => 'setEnd'
+        'end' => 'setEnd',
+        'doesBelongNow' => 'setDoesBelongNow'
     ];
 
     /**
@@ -201,7 +206,8 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         'organisation' => 'getOrganisation',
         'position' => 'getPosition',
         'start' => 'getStart',
-        'end' => 'getEnd'
+        'end' => 'getEnd',
+        'doesBelongNow' => 'getDoesBelongNow'
     ];
 
     /**
@@ -264,6 +270,7 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
         $this->setIfExists('position', $data ?? [], null);
         $this->setIfExists('start', $data ?? [], null);
         $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('doesBelongNow', $data ?? [], null);
     }
 
     /**
@@ -295,6 +302,9 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
 
         if ($this->container['start'] === null) {
             $invalidProperties[] = "'start' can't be null";
+        }
+        if ($this->container['doesBelongNow'] === null) {
+            $invalidProperties[] = "'doesBelongNow' can't be null";
         }
         return $invalidProperties;
     }
@@ -436,6 +446,33 @@ class ContactBelongsToOrganisation2 implements ModelInterface, ArrayAccess, Json
             }
         }
         $this->container['end'] = $end;
+
+        return $this;
+    }
+
+    /**
+     * Gets doesBelongNow
+     *
+     * @return bool
+     */
+    public function getDoesBelongNow(): bool
+    {
+        return $this->container['doesBelongNow'];
+    }
+
+    /**
+     * Sets doesBelongNow
+     *
+     * @param bool $doesBelongNow doesBelongNow
+     *
+     * @return $this
+     */
+    public function setDoesBelongNow(bool $doesBelongNow): static
+    {
+        if (is_null($doesBelongNow)) {
+            throw new InvalidArgumentException('non-nullable doesBelongNow cannot be null');
+        }
+        $this->container['doesBelongNow'] = $doesBelongNow;
 
         return $this;
     }

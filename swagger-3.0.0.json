@@ -494,9 +494,20 @@
           {
             "name": "bookingId",
             "in": "query",
-            "description": "Filter Credit Notes based on a specific Booking ID.",
+            "description": "Filter Credit Notes based on a specific Booking ID (or hash).",
+            "required": false,
             "schema": {
-              "type": "integer"
+              "type": "string",
+              "default": null,
+              "nullable": true,
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ]
             }
           },
           {
@@ -782,6 +793,36 @@
         }
       }
     },
+    "/v3/client/custom-forms/{idOrHash}/json": {
+      "get": {
+        "tags": [
+          "Custom Forms"
+        ],
+        "operationId": "get_app_clientapi_customforms_getcustomformjson",
+        "parameters": [
+          {
+            "name": "idOrHash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a Custom Form in JSON Schema format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomForm2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v3/client/invoices": {
       "get": {
         "tags": [
@@ -817,9 +858,20 @@
           {
             "name": "bookingId",
             "in": "query",
-            "description": "Filter invoices based on a specific Booking ID.",
+            "description": "Filter invoices based on a specific Booking ID (or hash).",
+            "required": false,
             "schema": {
-              "type": "integer"
+              "type": "string",
+              "default": null,
+              "nullable": true,
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ]
             }
           },
           {
@@ -1973,6 +2025,106 @@
         },
         "type": "object"
       },
+      "CustomForm2": {
+        "required": [
+          "id",
+          "createdAt",
+          "centre",
+          "customFormFields",
+          "customFormDisplayFields",
+          "customFormWorkflows"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "speciality": {
+            "type": "string",
+            "default": ""
+          },
+          "membership": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Membership"
+              }
+            ]
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "centre": {
+            "type": "object"
+          },
+          "customFormLocation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CustomFormLocation"
+              }
+            ]
+          },
+          "customFormFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFormFields"
+            }
+          },
+          "customFormDisplayFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFields"
+            }
+          },
+          "customFormWorkflows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFormWorkflow"
+            }
+          },
+          "requiresApproval": {
+            "type": "boolean",
+            "default": false
+          },
+          "requiresApprovalFromDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "requiresVisitor": {
+            "type": "boolean",
+            "default": false
+          },
+          "dataRetentionPeriod": {
+            "title": "value in weeks",
+            "type": "integer",
+            "nullable": true
+          },
+          "dataRetentionPeriodBooking": {
+            "title": "value in weeks",
+            "type": "integer",
+            "nullable": true
+          },
+          "automaticReturnToForm": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object"
+      },
       "InvoicedBooking": {
         "required": [
           "id",
@@ -2475,6 +2627,10 @@
             "type": "string",
             "nullable": true
           },
+          "alert": {
+            "type": "string",
+            "nullable": true
+          },
           "accountManager": {
             "nullable": true,
             "oneOf": [
@@ -2635,7 +2791,8 @@
       },
       "ContactBelongsToOrganisation": {
         "required": [
-          "start"
+          "start",
+          "doesBelongNow"
         ],
         "properties": {
           "organisation": {
@@ -2658,6 +2815,9 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "doesBelongNow": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -2724,7 +2884,8 @@
       },
       "ContactBelongsToOrganisation2": {
         "required": [
-          "start"
+          "start",
+          "doesBelongNow"
         ],
         "properties": {
           "organisation": {
@@ -2747,6 +2908,9 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "doesBelongNow": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -3345,6 +3509,213 @@
         },
         "type": "object"
       },
+      "Membership": {
+        "required": [
+          "id",
+          "lineItemName"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "lineItemName": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CustomFormLocation": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string",
+            "default": ""
+          },
+          "location": {
+            "type": "string",
+            "default": ""
+          },
+          "publicUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "type": "object"
+      },
+      "CustomFormFields": {
+        "required": [
+          "id",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "customField": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CustomFields"
+              }
+            ]
+          },
+          "position": {
+            "type": "integer",
+            "default": 0
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "removedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "type": "object"
+      },
+      "CustomFields": {
+        "required": [
+          "id",
+          "customFieldsValues"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "showLabel": {
+            "type": "boolean",
+            "default": true
+          },
+          "label": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "placeholderValue": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "targetBooking": {
+            "type": "boolean",
+            "default": false
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "speciality": {
+            "type": "string",
+            "nullable": true
+          },
+          "customFieldsValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFieldsValues"
+            }
+          },
+          "repeatRule": {
+            "type": "string",
+            "nullable": true
+          },
+          "repeatAllowAdd": {
+            "type": "boolean",
+            "default": false,
+            "nullable": true
+          },
+          "repeatAllowRemove": {
+            "type": "boolean",
+            "default": false,
+            "nullable": true
+          },
+          "allowMultiple": {
+            "type": "boolean",
+            "default": false
+          },
+          "template": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Templates"
+              }
+            ]
+          },
+          "customFormSubformId": {
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CustomFormWorkflow": {
+        "required": [
+          "id",
+          "customFormWorkflowMappings"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "workflowAction": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/WorkflowAction"
+              }
+            ]
+          },
+          "grantMembership": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "customFormWorkflowMappings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomFormWorkflowMapping"
+            }
+          }
+        },
+        "type": "object"
+      },
       "Booking": {
         "required": [
           "status"
@@ -3928,6 +4299,120 @@
         },
         "type": "object"
       },
+      "CustomFieldsValues": {
+        "required": [
+          "id",
+          "value"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "value": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "default": false
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "type": "object"
+      },
+      "Templates": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tplName": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "header": {
+            "type": "boolean",
+            "default": false
+          },
+          "footer": {
+            "type": "boolean",
+            "default": false
+          },
+          "weight": {
+            "type": "integer",
+            "default": "999"
+          },
+          "valid": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "errors": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "WorkflowAction": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "entityName": {
+            "type": "string",
+            "default": ""
+          },
+          "entityDisplayText": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "allowMultiple": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object"
+      },
+      "CustomFormWorkflowMapping": {
+        "properties": {
+          "customField": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CustomFields"
+              }
+            ]
+          },
+          "workflowActionMappableField": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/WorkflowActionMappableField"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
       "IncomeCode": {
         "required": [
           "id"
@@ -4144,6 +4629,33 @@
         "properties": {
           "id": {
             "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "WorkflowActionMappableField": {
+        "required": [
+          "id",
+          "required"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "fieldName": {
+            "type": "string",
+            "default": ""
+          },
+          "propertyName": {
+            "type": "string",
+            "default": ""
+          },
+          "required": {
+            "type": "boolean"
           }
         },
         "type": "object"

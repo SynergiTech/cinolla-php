@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientBookingCollectionOrganisation
+ * CustomForm2CustomFormLocation
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ClientBookingCollectionOrganisation Class Doc Comment
+ * CustomForm2CustomFormLocation Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class CustomForm2CustomFormLocation implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ClientBookingCollection_organisation';
+    protected static string $openAPIModelName = 'CustomForm2_customFormLocation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     protected static array $openAPITypes = [
         'id' => 'int',
         'hash' => 'string',
-        'name' => 'string',
-        'shortName' => 'string',
-        'alert' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        'location' => 'string',
+        'publicUrl' => 'string',
+        'active' => 'bool'
     ];
 
     /**
@@ -74,10 +73,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     protected static array $openAPIFormats = [
         'id' => null,
         'hash' => null,
-        'name' => null,
-        'shortName' => null,
-        'alert' => null,
-        'accountManager' => null
+        'location' => null,
+        'publicUrl' => null,
+        'active' => null
     ];
 
     /**
@@ -87,11 +85,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'hash' => true,
-        'name' => false,
-        'shortName' => true,
-        'alert' => true,
-        'accountManager' => true
+        'hash' => false,
+        'location' => false,
+        'publicUrl' => true,
+        'active' => false
     ];
 
     /**
@@ -182,10 +179,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     protected static array $attributeMap = [
         'id' => 'id',
         'hash' => 'hash',
-        'name' => 'name',
-        'shortName' => 'shortName',
-        'alert' => 'alert',
-        'accountManager' => 'accountManager'
+        'location' => 'location',
+        'publicUrl' => 'publicUrl',
+        'active' => 'active'
     ];
 
     /**
@@ -196,10 +192,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     protected static array $setters = [
         'id' => 'setId',
         'hash' => 'setHash',
-        'name' => 'setName',
-        'shortName' => 'setShortName',
-        'alert' => 'setAlert',
-        'accountManager' => 'setAccountManager'
+        'location' => 'setLocation',
+        'publicUrl' => 'setPublicUrl',
+        'active' => 'setActive'
     ];
 
     /**
@@ -210,10 +205,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     protected static array $getters = [
         'id' => 'getId',
         'hash' => 'getHash',
-        'name' => 'getName',
-        'shortName' => 'getShortName',
-        'alert' => 'getAlert',
-        'accountManager' => 'getAccountManager'
+        'location' => 'getLocation',
+        'publicUrl' => 'getPublicUrl',
+        'active' => 'getActive'
     ];
 
     /**
@@ -273,11 +267,10 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
-        $this->setIfExists('alert', $data ?? [], null);
-        $this->setIfExists('accountManager', $data ?? [], null);
+        $this->setIfExists('hash', $data ?? [], '');
+        $this->setIfExists('location', $data ?? [], '');
+        $this->setIfExists('publicUrl', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], true);
     }
 
     /**
@@ -372,14 +365,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     public function setHash(?string $hash): static
     {
         if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable hash cannot be null');
         }
         $this->container['hash'] = $hash;
 
@@ -387,130 +373,89 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets name
+     * Gets location
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getLocation(): ?string
     {
-        return $this->container['name'];
+        return $this->container['location'];
     }
 
     /**
-     * Sets name
+     * Sets location
      *
-     * @param string|null $name name
+     * @param string|null $location location
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setLocation(?string $location): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($location)) {
+            throw new InvalidArgumentException('non-nullable location cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['location'] = $location;
 
         return $this;
     }
 
     /**
-     * Gets shortName
+     * Gets publicUrl
      *
      * @return string|null
      */
-    public function getShortName(): ?string
+    public function getPublicUrl(): ?string
     {
-        return $this->container['shortName'];
+        return $this->container['publicUrl'];
     }
 
     /**
-     * Sets shortName
+     * Sets publicUrl
      *
-     * @param string|null $shortName shortName
+     * @param string|null $publicUrl publicUrl
      *
      * @return $this
      */
-    public function setShortName(?string $shortName): static
+    public function setPublicUrl(?string $publicUrl): static
     {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
+        if (is_null($publicUrl)) {
+            array_push($this->openAPINullablesSetToNull, 'publicUrl');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
+            $index = array_search('publicUrl', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['shortName'] = $shortName;
+        $this->container['publicUrl'] = $publicUrl;
 
         return $this;
     }
 
     /**
-     * Gets alert
+     * Gets active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getAlert(): ?string
+    public function getActive(): ?bool
     {
-        return $this->container['alert'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets alert
+     * Sets active
      *
-     * @param string|null $alert alert
+     * @param bool|null $active active
      *
      * @return $this
      */
-    public function setAlert(?string $alert): static
+    public function setActive(?bool $active): static
     {
-        if (is_null($alert)) {
-            array_push($this->openAPINullablesSetToNull, 'alert');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('alert', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($active)) {
+            throw new InvalidArgumentException('non-nullable active cannot be null');
         }
-        $this->container['alert'] = $alert;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountManager
-     *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
-     */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
-    {
-        return $this->container['accountManager'];
-    }
-
-    /**
-     * Sets accountManager
-     *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
-     *
-     * @return $this
-     */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
-    {
-        if (is_null($accountManager)) {
-            array_push($this->openAPINullablesSetToNull, 'accountManager');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accountManager', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accountManager'] = $accountManager;
+        $this->container['active'] = $active;
 
         return $this;
     }

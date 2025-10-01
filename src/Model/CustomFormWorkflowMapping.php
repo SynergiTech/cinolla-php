@@ -1,6 +1,6 @@
 <?php
 /**
- * ClientBookingCollectionOrganisation
+ * CustomFormWorkflowMapping
  *
  * PHP version 8.1
  *
@@ -34,14 +34,14 @@ use ReturnTypeWillChange;
 use SynergiTech\Cinolla\ObjectSerializer;
 
 /**
- * ClientBookingCollectionOrganisation Class Doc Comment
+ * CustomFormWorkflowMapping Class Doc Comment
  *
  * @package  SynergiTech\Cinolla
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess, JsonSerializable
+class CustomFormWorkflowMapping implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ClientBookingCollection_organisation';
+    protected static string $openAPIModelName = 'CustomFormWorkflowMapping';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id' => 'int',
-        'hash' => 'string',
-        'name' => 'string',
-        'shortName' => 'string',
-        'alert' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        'customField' => '\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField',
+        'workflowActionMappableField' => '\SynergiTech\Cinolla\Model\CustomFormWorkflowMappingWorkflowActionMappableField'
     ];
 
     /**
@@ -72,12 +68,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'hash' => null,
-        'name' => null,
-        'shortName' => null,
-        'alert' => null,
-        'accountManager' => null
+        'customField' => null,
+        'workflowActionMappableField' => null
     ];
 
     /**
@@ -86,12 +78,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'hash' => true,
-        'name' => false,
-        'shortName' => true,
-        'alert' => true,
-        'accountManager' => true
+        'customField' => true,
+        'workflowActionMappableField' => true
     ];
 
     /**
@@ -180,12 +168,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'hash' => 'hash',
-        'name' => 'name',
-        'shortName' => 'shortName',
-        'alert' => 'alert',
-        'accountManager' => 'accountManager'
+        'customField' => 'customField',
+        'workflowActionMappableField' => 'workflowActionMappableField'
     ];
 
     /**
@@ -194,12 +178,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'hash' => 'setHash',
-        'name' => 'setName',
-        'shortName' => 'setShortName',
-        'alert' => 'setAlert',
-        'accountManager' => 'setAccountManager'
+        'customField' => 'setCustomField',
+        'workflowActionMappableField' => 'setWorkflowActionMappableField'
     ];
 
     /**
@@ -208,12 +188,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'hash' => 'getHash',
-        'name' => 'getName',
-        'shortName' => 'getShortName',
-        'alert' => 'getAlert',
-        'accountManager' => 'getAccountManager'
+        'customField' => 'getCustomField',
+        'workflowActionMappableField' => 'getWorkflowActionMappableField'
     ];
 
     /**
@@ -272,12 +248,8 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('hash', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], '');
-        $this->setIfExists('shortName', $data ?? [], null);
-        $this->setIfExists('alert', $data ?? [], null);
-        $this->setIfExists('accountManager', $data ?? [], null);
+        $this->setIfExists('customField', $data ?? [], null);
+        $this->setIfExists('workflowActionMappableField', $data ?? [], null);
     }
 
     /**
@@ -307,9 +279,6 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -326,191 +295,69 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets customField
      *
-     * @return int
+     * @return \SynergiTech\Cinolla\Model\CustomFormFieldsCustomField|null
      */
-    public function getId(): int
+    public function getCustomField(): ?\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField
     {
-        return $this->container['id'];
+        return $this->container['customField'];
     }
 
     /**
-     * Sets id
+     * Sets customField
      *
-     * @param int $id id
+     * @param \SynergiTech\Cinolla\Model\CustomFormFieldsCustomField|null $customField customField
      *
      * @return $this
      */
-    public function setId(int $id): static
+    public function setCustomField(?\SynergiTech\Cinolla\Model\CustomFormFieldsCustomField $customField): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash
-     *
-     * @return string|null
-     */
-    public function getHash(): ?string
-    {
-        return $this->container['hash'];
-    }
-
-    /**
-     * Sets hash
-     *
-     * @param string|null $hash hash
-     *
-     * @return $this
-     */
-    public function setHash(?string $hash): static
-    {
-        if (is_null($hash)) {
-            array_push($this->openAPINullablesSetToNull, 'hash');
+        if (is_null($customField)) {
+            array_push($this->openAPINullablesSetToNull, 'customField');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hash', $nullablesSetToNull);
+            $index = array_search('customField', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hash'] = $hash;
+        $this->container['customField'] = $customField;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets workflowActionMappableField
      *
-     * @return string|null
+     * @return \SynergiTech\Cinolla\Model\CustomFormWorkflowMappingWorkflowActionMappableField|null
      */
-    public function getName(): ?string
+    public function getWorkflowActionMappableField(): ?\SynergiTech\Cinolla\Model\CustomFormWorkflowMappingWorkflowActionMappableField
     {
-        return $this->container['name'];
+        return $this->container['workflowActionMappableField'];
     }
 
     /**
-     * Sets name
+     * Sets workflowActionMappableField
      *
-     * @param string|null $name name
+     * @param \SynergiTech\Cinolla\Model\CustomFormWorkflowMappingWorkflowActionMappableField|null $workflowActionMappableField workflowActionMappableField
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setWorkflowActionMappableField(?\SynergiTech\Cinolla\Model\CustomFormWorkflowMappingWorkflowActionMappableField $workflowActionMappableField): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shortName
-     *
-     * @return string|null
-     */
-    public function getShortName(): ?string
-    {
-        return $this->container['shortName'];
-    }
-
-    /**
-     * Sets shortName
-     *
-     * @param string|null $shortName shortName
-     *
-     * @return $this
-     */
-    public function setShortName(?string $shortName): static
-    {
-        if (is_null($shortName)) {
-            array_push($this->openAPINullablesSetToNull, 'shortName');
+        if (is_null($workflowActionMappableField)) {
+            array_push($this->openAPINullablesSetToNull, 'workflowActionMappableField');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shortName', $nullablesSetToNull);
+            $index = array_search('workflowActionMappableField', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['shortName'] = $shortName;
-
-        return $this;
-    }
-
-    /**
-     * Gets alert
-     *
-     * @return string|null
-     */
-    public function getAlert(): ?string
-    {
-        return $this->container['alert'];
-    }
-
-    /**
-     * Sets alert
-     *
-     * @param string|null $alert alert
-     *
-     * @return $this
-     */
-    public function setAlert(?string $alert): static
-    {
-        if (is_null($alert)) {
-            array_push($this->openAPINullablesSetToNull, 'alert');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('alert', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['alert'] = $alert;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountManager
-     *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
-     */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
-    {
-        return $this->container['accountManager'];
-    }
-
-    /**
-     * Sets accountManager
-     *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
-     *
-     * @return $this
-     */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
-    {
-        if (is_null($accountManager)) {
-            array_push($this->openAPINullablesSetToNull, 'accountManager');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('accountManager', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['accountManager'] = $accountManager;
+        $this->container['workflowActionMappableField'] = $workflowActionMappableField;
 
         return $this;
     }

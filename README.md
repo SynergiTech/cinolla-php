@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *CreditNotesApi* | [**getCreditNote**](docs/Api/CreditNotesApi.md#getcreditnote) | **GET** /v3/client/credit-notes/{id} | Get detail for a single Credit Note
 *CreditNotesApi* | [**getCreditNoteDocuments**](docs/Api/CreditNotesApi.md#getcreditnotedocuments) | **GET** /v3/client/credit-notes/{id}/documents | Get documents for a Credit Note
 *CreditNotesApi* | [**getCreditNotes**](docs/Api/CreditNotesApi.md#getcreditnotes) | **GET** /v3/client/credit-notes | Get a collection of Credit Notes
+*CustomFormsApi* | [**getAppClientapiCustomformsGetcustomformjson**](docs/Api/CustomFormsApi.md#getappclientapicustomformsgetcustomformjson) | **GET** /v3/client/custom-forms/{idOrHash}/json | 
 *CustomFormsApi* | [**getCustomFormSubmissions**](docs/Api/CustomFormsApi.md#getcustomformsubmissions) | **GET** /v3/client/custom-forms/{customFormHash}/submissions | Get a collection of Custom Form Submissions
 *CustomFormsApi* | [**getCustomForms**](docs/Api/CustomFormsApi.md#getcustomforms) | **GET** /v3/client/custom-forms | Get a collection of Custom Forms
 *InvoicesApi* | [**getInvoice**](docs/Api/InvoicesApi.md#getinvoice) | **GET** /v3/client/invoices/{id} | Get detail for a single Invoice
@@ -149,9 +150,22 @@ Class | Method | HTTP request | Description
 - [CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem](docs/Model/CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem.md)
 - [CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem](docs/Model/CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem.md)
 - [CreditNoteOrganisation](docs/Model/CreditNoteOrganisation.md)
+- [CustomFields](docs/Model/CustomFields.md)
 - [CustomFieldsData](docs/Model/CustomFieldsData.md)
+- [CustomFieldsTemplate](docs/Model/CustomFieldsTemplate.md)
+- [CustomFieldsValues](docs/Model/CustomFieldsValues.md)
 - [CustomForm](docs/Model/CustomForm.md)
+- [CustomForm2](docs/Model/CustomForm2.md)
+- [CustomForm2CustomFormLocation](docs/Model/CustomForm2CustomFormLocation.md)
+- [CustomForm2Membership](docs/Model/CustomForm2Membership.md)
+- [CustomFormFields](docs/Model/CustomFormFields.md)
+- [CustomFormFieldsCustomField](docs/Model/CustomFormFieldsCustomField.md)
+- [CustomFormLocation](docs/Model/CustomFormLocation.md)
 - [CustomFormSubmissions](docs/Model/CustomFormSubmissions.md)
+- [CustomFormWorkflow](docs/Model/CustomFormWorkflow.md)
+- [CustomFormWorkflowMapping](docs/Model/CustomFormWorkflowMapping.md)
+- [CustomFormWorkflowMappingWorkflowActionMappableField](docs/Model/CustomFormWorkflowMappingWorkflowActionMappableField.md)
+- [CustomFormWorkflowWorkflowAction](docs/Model/CustomFormWorkflowWorkflowAction.md)
 - [Document](docs/Model/Document.md)
 - [IncomeCode](docs/Model/IncomeCode.md)
 - [IncomeCode2](docs/Model/IncomeCode2.md)
@@ -179,11 +193,15 @@ Class | Method | HTTP request | Description
 - [LineItem](docs/Model/LineItem.md)
 - [LineItem2](docs/Model/LineItem2.md)
 - [LineItem3](docs/Model/LineItem3.md)
+- [Membership](docs/Model/Membership.md)
 - [Payment](docs/Model/Payment.md)
 - [Payment2](docs/Model/Payment2.md)
 - [PaymentAllocation](docs/Model/PaymentAllocation.md)
 - [PaymentAllocationInvoicedBooking](docs/Model/PaymentAllocationInvoicedBooking.md)
 - [PaymentAllocationRefund](docs/Model/PaymentAllocationRefund.md)
+- [Templates](docs/Model/Templates.md)
+- [WorkflowAction](docs/Model/WorkflowAction.md)
+- [WorkflowActionMappableField](docs/Model/WorkflowActionMappableField.md)
 
 ## Authorization
 
