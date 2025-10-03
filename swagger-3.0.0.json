@@ -3093,31 +3093,11 @@
             "type": "string",
             "nullable": true
           },
-          "qty": {
-            "type": "integer",
-            "default": "0"
-          },
-          "numGuests": {
-            "type": "integer",
-            "default": "0"
-          },
-          "numNights": {
-            "type": "integer",
-            "default": "0"
-          },
           "netAmount": {
             "type": "string",
             "nullable": true
           },
           "grossAmount": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPrice": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPriceWithTax": {
             "type": "string",
             "nullable": true
           },
@@ -3370,31 +3350,11 @@
             "type": "string",
             "nullable": true
           },
-          "qty": {
-            "type": "integer",
-            "default": "0"
-          },
-          "numGuests": {
-            "type": "integer",
-            "default": "0"
-          },
-          "numNights": {
-            "type": "integer",
-            "default": "0"
-          },
           "netAmount": {
             "type": "string",
             "nullable": true
           },
           "grossAmount": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPrice": {
-            "type": "string",
-            "nullable": true
-          },
-          "unitPriceWithTax": {
             "type": "string",
             "nullable": true
           },

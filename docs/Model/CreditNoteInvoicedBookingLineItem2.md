@@ -8,13 +8,8 @@ Name | Type | Description | Notes
 **invoicedBookingLineItem** | [**\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem**](CreditNoteInvoicedBookingLineItem2InvoicedBookingLineItem.md) |  | [optional]
 **name** | **string** |  | [optional]
 **reason** | **string** |  | [optional]
-**qty** | **int** |  | [optional]
-**numGuests** | **int** |  | [optional]
-**numNights** | **int** |  | [optional]
 **netAmount** | **string** |  | [optional]
 **grossAmount** | **string** |  | [optional]
-**unitPrice** | **string** |  | [optional]
-**unitPriceWithTax** | **string** |  | [optional]
 **taxPercent** | **string** |  | [optional]
 **taxAmount** | **string** |  | [optional]
 **createdAt** | **\DateTime** |  |

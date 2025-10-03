@@ -62,13 +62,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => '\SynergiTech\Cinolla\Model\CreditNoteInvoicedBookingLineItemInvoicedBookingLineItem',
         'name' => 'string',
         'reason' => 'string',
-        'qty' => 'int',
-        'numGuests' => 'int',
-        'numNights' => 'int',
         'netAmount' => 'string',
         'grossAmount' => 'string',
-        'unitPrice' => 'string',
-        'unitPriceWithTax' => 'string',
         'taxPercent' => 'string',
         'taxAmount' => 'string',
         'createdAt' => '\DateTime',
@@ -85,13 +80,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => null,
         'name' => null,
         'reason' => null,
-        'qty' => null,
-        'numGuests' => null,
-        'numNights' => null,
         'netAmount' => null,
         'grossAmount' => null,
-        'unitPrice' => null,
-        'unitPriceWithTax' => null,
         'taxPercent' => null,
         'taxAmount' => null,
         'createdAt' => 'date-time',
@@ -108,13 +98,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => true,
         'name' => true,
         'reason' => true,
-        'qty' => false,
-        'numGuests' => false,
-        'numNights' => false,
         'netAmount' => true,
         'grossAmount' => true,
-        'unitPrice' => true,
-        'unitPriceWithTax' => true,
         'taxPercent' => true,
         'taxAmount' => true,
         'createdAt' => false,
@@ -211,13 +196,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => 'invoicedBookingLineItem',
         'name' => 'name',
         'reason' => 'reason',
-        'qty' => 'qty',
-        'numGuests' => 'numGuests',
-        'numNights' => 'numNights',
         'netAmount' => 'netAmount',
         'grossAmount' => 'grossAmount',
-        'unitPrice' => 'unitPrice',
-        'unitPriceWithTax' => 'unitPriceWithTax',
         'taxPercent' => 'taxPercent',
         'taxAmount' => 'taxAmount',
         'createdAt' => 'createdAt',
@@ -234,13 +214,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => 'setInvoicedBookingLineItem',
         'name' => 'setName',
         'reason' => 'setReason',
-        'qty' => 'setQty',
-        'numGuests' => 'setNumGuests',
-        'numNights' => 'setNumNights',
         'netAmount' => 'setNetAmount',
         'grossAmount' => 'setGrossAmount',
-        'unitPrice' => 'setUnitPrice',
-        'unitPriceWithTax' => 'setUnitPriceWithTax',
         'taxPercent' => 'setTaxPercent',
         'taxAmount' => 'setTaxAmount',
         'createdAt' => 'setCreatedAt',
@@ -257,13 +232,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         'invoicedBookingLineItem' => 'getInvoicedBookingLineItem',
         'name' => 'getName',
         'reason' => 'getReason',
-        'qty' => 'getQty',
-        'numGuests' => 'getNumGuests',
-        'numNights' => 'getNumNights',
         'netAmount' => 'getNetAmount',
         'grossAmount' => 'getGrossAmount',
-        'unitPrice' => 'getUnitPrice',
-        'unitPriceWithTax' => 'getUnitPriceWithTax',
         'taxPercent' => 'getTaxPercent',
         'taxAmount' => 'getTaxAmount',
         'createdAt' => 'getCreatedAt',
@@ -330,13 +300,8 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
         $this->setIfExists('invoicedBookingLineItem', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
-        $this->setIfExists('qty', $data ?? [], null);
-        $this->setIfExists('numGuests', $data ?? [], null);
-        $this->setIfExists('numNights', $data ?? [], null);
         $this->setIfExists('netAmount', $data ?? [], null);
         $this->setIfExists('grossAmount', $data ?? [], null);
-        $this->setIfExists('unitPrice', $data ?? [], null);
-        $this->setIfExists('unitPriceWithTax', $data ?? [], null);
         $this->setIfExists('taxPercent', $data ?? [], null);
         $this->setIfExists('taxAmount', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
@@ -524,87 +489,6 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets qty
-     *
-     * @return int|null
-     */
-    public function getQty(): ?int
-    {
-        return $this->container['qty'];
-    }
-
-    /**
-     * Sets qty
-     *
-     * @param int|null $qty qty
-     *
-     * @return $this
-     */
-    public function setQty(?int $qty): static
-    {
-        if (is_null($qty)) {
-            throw new InvalidArgumentException('non-nullable qty cannot be null');
-        }
-        $this->container['qty'] = $qty;
-
-        return $this;
-    }
-
-    /**
-     * Gets numGuests
-     *
-     * @return int|null
-     */
-    public function getNumGuests(): ?int
-    {
-        return $this->container['numGuests'];
-    }
-
-    /**
-     * Sets numGuests
-     *
-     * @param int|null $numGuests numGuests
-     *
-     * @return $this
-     */
-    public function setNumGuests(?int $numGuests): static
-    {
-        if (is_null($numGuests)) {
-            throw new InvalidArgumentException('non-nullable numGuests cannot be null');
-        }
-        $this->container['numGuests'] = $numGuests;
-
-        return $this;
-    }
-
-    /**
-     * Gets numNights
-     *
-     * @return int|null
-     */
-    public function getNumNights(): ?int
-    {
-        return $this->container['numNights'];
-    }
-
-    /**
-     * Sets numNights
-     *
-     * @param int|null $numNights numNights
-     *
-     * @return $this
-     */
-    public function setNumNights(?int $numNights): static
-    {
-        if (is_null($numNights)) {
-            throw new InvalidArgumentException('non-nullable numNights cannot be null');
-        }
-        $this->container['numNights'] = $numNights;
-
-        return $this;
-    }
-
-    /**
      * Gets netAmount
      *
      * @return string|null
@@ -668,74 +552,6 @@ class CreditNoteInvoicedBookingLineItem implements ModelInterface, ArrayAccess, 
             }
         }
         $this->container['grossAmount'] = $grossAmount;
-
-        return $this;
-    }
-
-    /**
-     * Gets unitPrice
-     *
-     * @return string|null
-     */
-    public function getUnitPrice(): ?string
-    {
-        return $this->container['unitPrice'];
-    }
-
-    /**
-     * Sets unitPrice
-     *
-     * @param string|null $unitPrice unitPrice
-     *
-     * @return $this
-     */
-    public function setUnitPrice(?string $unitPrice): static
-    {
-        if (is_null($unitPrice)) {
-            array_push($this->openAPINullablesSetToNull, 'unitPrice');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('unitPrice', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['unitPrice'] = $unitPrice;
-
-        return $this;
-    }
-
-    /**
-     * Gets unitPriceWithTax
-     *
-     * @return string|null
-     */
-    public function getUnitPriceWithTax(): ?string
-    {
-        return $this->container['unitPriceWithTax'];
-    }
-
-    /**
-     * Sets unitPriceWithTax
-     *
-     * @param string|null $unitPriceWithTax unitPriceWithTax
-     *
-     * @return $this
-     */
-    public function setUnitPriceWithTax(?string $unitPriceWithTax): static
-    {
-        if (is_null($unitPriceWithTax)) {
-            array_push($this->openAPINullablesSetToNull, 'unitPriceWithTax');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('unitPriceWithTax', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['unitPriceWithTax'] = $unitPriceWithTax;
 
         return $this;
     }
