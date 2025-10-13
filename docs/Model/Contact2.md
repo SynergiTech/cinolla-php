@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **defaultDeliveryAddress** | [**\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress**](ContactDefaultBillingAddress.md) |  | [optional]
 **archivedAt** | **\DateTime** |  | [optional]
 **archived** | **int** |  | [optional]
-**addresses** | [**\SynergiTech\Cinolla\Model\Address[]**](Address.md) |  |
+**addresses** | [**\SynergiTech\Cinolla\Model\Address3[]**](Address3.md) |  |
 **belongsToOrganisations** | [**\SynergiTech\Cinolla\Model\ContactBelongsToOrganisation2[]**](ContactBelongsToOrganisation2.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

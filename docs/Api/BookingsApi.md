@@ -11,7 +11,7 @@ All URIs are relative to https://api.prod.cinolla.com, except if the operation d
 ## `getBooking()`
 
 ```php
-getBooking($bookingHash): \SynergiTech\Cinolla\Model\ClientBookingDetail
+getBooking($bookingHash): \SynergiTech\Cinolla\Model\Booking2
 ```
 
 Get detail for a single Booking
@@ -53,7 +53,7 @@ try {
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\ClientBookingDetail**](../Model/ClientBookingDetail.md)
+[**\SynergiTech\Cinolla\Model\Booking2**](../Model/Booking2.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ try {
 ## `getBookings()`
 
 ```php
-getBookings($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\ClientBookingCollection[]
+getBookings($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference): \SynergiTech\Cinolla\Model\Booking[]
 ```
 
 Get a collection of Bookings
@@ -131,7 +131,7 @@ try {
 
 ### Return type
 
-[**\SynergiTech\Cinolla\Model\ClientBookingCollection[]**](../Model/ClientBookingCollection.md)
+[**\SynergiTech\Cinolla\Model\Booking[]**](../Model/Booking.md)
 
 ### Authorization
 

@@ -135,12 +135,12 @@ class BookingsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\ClientBookingDetail
+     * @return \SynergiTech\Cinolla\Model\Booking2
      */
     public function getBooking(
         string $bookingHash,
         string $contentType = self::contentTypes['getBooking'][0]
-    ): \SynergiTech\Cinolla\Model\ClientBookingDetail
+    ): \SynergiTech\Cinolla\Model\Booking2
     {
         list($response) = $this->getBookingWithHttpInfo($bookingHash, $contentType);
         return $response;
@@ -156,7 +156,7 @@ class BookingsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\ClientBookingDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\Booking2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBookingWithHttpInfo(
         string $bookingHash,
@@ -190,11 +190,11 @@ class BookingsApi
 
             switch($statusCode) {
                 case 200:
-                    if (in_array('\SynergiTech\Cinolla\Model\ClientBookingDetail', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SynergiTech\Cinolla\Model\Booking2', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\ClientBookingDetail' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\Booking2' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,7 +212,7 @@ class BookingsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\ClientBookingDetail', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Booking2', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -231,7 +231,7 @@ class BookingsApi
                 );
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\ClientBookingDetail';
+            $returnType = '\SynergiTech\Cinolla\Model\Booking2';
             if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -264,7 +264,7 @@ class BookingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\ClientBookingDetail',
+                        '\SynergiTech\Cinolla\Model\Booking2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -314,7 +314,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBooking'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\ClientBookingDetail';
+        $returnType = '\SynergiTech\Cinolla\Model\Booking2';
         $request = $this->getBookingRequest($bookingHash, $contentType);
 
         return $this->client
@@ -472,7 +472,7 @@ class BookingsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \SynergiTech\Cinolla\Model\ClientBookingCollection[]
+     * @return \SynergiTech\Cinolla\Model\Booking[]
      */
     public function getBookings(
         ?\DateTime $startDate = null,
@@ -511,7 +511,7 @@ class BookingsApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \SynergiTech\Cinolla\Model\ClientBookingCollection[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SynergiTech\Cinolla\Model\Booking[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getBookingsWithHttpInfo(
         ?\DateTime $startDate = null,
@@ -554,11 +554,11 @@ class BookingsApi
 
             switch($statusCode) {
                 case 200:
-                    if (in_array('\SynergiTech\Cinolla\Model\ClientBookingCollection[]', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SynergiTech\Cinolla\Model\Booking[]', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SynergiTech\Cinolla\Model\ClientBookingCollection[]' !== 'string') {
+                        if ('\SynergiTech\Cinolla\Model\Booking[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -576,7 +576,7 @@ class BookingsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\ClientBookingCollection[]', []),
+                        ObjectSerializer::deserialize($content, '\SynergiTech\Cinolla\Model\Booking[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -595,7 +595,7 @@ class BookingsApi
                 );
             }
 
-            $returnType = '\SynergiTech\Cinolla\Model\ClientBookingCollection[]';
+            $returnType = '\SynergiTech\Cinolla\Model\Booking[]';
             if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -628,7 +628,7 @@ class BookingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SynergiTech\Cinolla\Model\ClientBookingCollection[]',
+                        '\SynergiTech\Cinolla\Model\Booking[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -714,7 +714,7 @@ class BookingsApi
         string $contentType = self::contentTypes['getBookings'][0]
     ): PromiseInterface
     {
-        $returnType = '\SynergiTech\Cinolla\Model\ClientBookingCollection[]';
+        $returnType = '\SynergiTech\Cinolla\Model\Booking[]';
         $request = $this->getBookingsRequest($startDate, $endDate, $offset, $limit, $dateRangeFilter, $futureOnly, $tags, $tagIds, $tagsOperator, $reference, $contentType);
 
         return $this->client

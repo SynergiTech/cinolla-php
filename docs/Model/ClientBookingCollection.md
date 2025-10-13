@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **arrivalDate** | **\DateTime** |  | [optional]
 **departureDate** | **\DateTime** |  | [optional]
 **origin** | **string** |  | [optional]
-**bookingTags** | [**\SynergiTech\Cinolla\Model\BookingType[]**](BookingType.md) |  |
+**bookingTags** | [**\SynergiTech\Cinolla\Model\BookingType4[]**](BookingType4.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

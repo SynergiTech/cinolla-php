@@ -58,19 +58,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id' => 'int',
-        'title' => 'string',
-        'firstName' => 'string',
-        'surname' => 'string',
         'address1' => 'string',
         'address2' => 'string',
         'address3' => 'string',
         'town' => 'string',
         'county' => 'string',
+        'country' => '\SynergiTech\Cinolla\Model\AddressCountry',
         'postCode' => 'string',
-        'active' => 'string',
-        'createdAt' => '\DateTime',
-        'countryName' => 'string'
+        'createdAt' => '\DateTime'
     ];
 
     /**
@@ -79,19 +74,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'title' => null,
-        'firstName' => null,
-        'surname' => null,
         'address1' => null,
         'address2' => null,
         'address3' => null,
         'town' => null,
         'county' => null,
+        'country' => null,
         'postCode' => null,
-        'active' => null,
-        'createdAt' => 'date-time',
-        'countryName' => null
+        'createdAt' => 'date-time'
     ];
 
     /**
@@ -100,19 +90,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'title' => true,
-        'firstName' => true,
-        'surname' => true,
         'address1' => true,
         'address2' => true,
         'address3' => true,
         'town' => true,
         'county' => true,
+        'country' => true,
         'postCode' => true,
-        'active' => true,
-        'createdAt' => true,
-        'countryName' => true
+        'createdAt' => true
     ];
 
     /**
@@ -201,19 +186,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'title' => 'title',
-        'firstName' => 'firstName',
-        'surname' => 'surname',
         'address1' => 'address1',
         'address2' => 'address2',
         'address3' => 'address3',
         'town' => 'town',
         'county' => 'county',
+        'country' => 'country',
         'postCode' => 'postCode',
-        'active' => 'active',
-        'createdAt' => 'createdAt',
-        'countryName' => 'countryName'
+        'createdAt' => 'createdAt'
     ];
 
     /**
@@ -222,19 +202,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle',
-        'firstName' => 'setFirstName',
-        'surname' => 'setSurname',
         'address1' => 'setAddress1',
         'address2' => 'setAddress2',
         'address3' => 'setAddress3',
         'town' => 'setTown',
         'county' => 'setCounty',
+        'country' => 'setCountry',
         'postCode' => 'setPostCode',
-        'active' => 'setActive',
-        'createdAt' => 'setCreatedAt',
-        'countryName' => 'setCountryName'
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -243,19 +218,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle',
-        'firstName' => 'getFirstName',
-        'surname' => 'getSurname',
         'address1' => 'getAddress1',
         'address2' => 'getAddress2',
         'address3' => 'getAddress3',
         'town' => 'getTown',
         'county' => 'getCounty',
+        'country' => 'getCountry',
         'postCode' => 'getPostCode',
-        'active' => 'getActive',
-        'createdAt' => 'getCreatedAt',
-        'countryName' => 'getCountryName'
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -314,19 +284,14 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('firstName', $data ?? [], null);
-        $this->setIfExists('surname', $data ?? [], null);
         $this->setIfExists('address1', $data ?? [], null);
         $this->setIfExists('address2', $data ?? [], null);
         $this->setIfExists('address3', $data ?? [], null);
         $this->setIfExists('town', $data ?? [], null);
         $this->setIfExists('county', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('postCode', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
-        $this->setIfExists('countryName', $data ?? [], null);
     }
 
     /**
@@ -356,9 +321,6 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -373,135 +335,6 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId(int $id): static
-    {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return $this
-     */
-    public function setTitle(?string $title): static
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets firstName
-     *
-     * @return string|null
-     */
-    public function getFirstName(): ?string
-    {
-        return $this->container['firstName'];
-    }
-
-    /**
-     * Sets firstName
-     *
-     * @param string|null $firstName firstName
-     *
-     * @return $this
-     */
-    public function setFirstName(?string $firstName): static
-    {
-        if (is_null($firstName)) {
-            array_push($this->openAPINullablesSetToNull, 'firstName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('firstName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['firstName'] = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Gets surname
-     *
-     * @return string|null
-     */
-    public function getSurname(): ?string
-    {
-        return $this->container['surname'];
-    }
-
-    /**
-     * Sets surname
-     *
-     * @param string|null $surname surname
-     *
-     * @return $this
-     */
-    public function setSurname(?string $surname): static
-    {
-        if (is_null($surname)) {
-            array_push($this->openAPINullablesSetToNull, 'surname');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('surname', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['surname'] = $surname;
-
-        return $this;
-    }
 
     /**
      * Gets address1
@@ -674,6 +507,40 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
     }
 
     /**
+     * Gets country
+     *
+     * @return \SynergiTech\Cinolla\Model\AddressCountry|null
+     */
+    public function getCountry(): ?\SynergiTech\Cinolla\Model\AddressCountry
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param \SynergiTech\Cinolla\Model\AddressCountry|null $country country
+     *
+     * @return $this
+     */
+    public function setCountry(?\SynergiTech\Cinolla\Model\AddressCountry $country): static
+    {
+        if (is_null($country)) {
+            array_push($this->openAPINullablesSetToNull, 'country');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
      * Gets postCode
      *
      * @return string|null
@@ -708,40 +575,6 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
     }
 
     /**
-     * Gets active
-     *
-     * @return string|null
-     */
-    public function getActive(): ?string
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param string|null $active active
-     *
-     * @return $this
-     */
-    public function setActive(?string $active): static
-    {
-        if (is_null($active)) {
-            array_push($this->openAPINullablesSetToNull, 'active');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('active', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
      * Gets createdAt
      *
      * @return \DateTime|null
@@ -771,40 +604,6 @@ class ContactDefaultBillingAddress implements ModelInterface, ArrayAccess, JsonS
             }
         }
         $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets countryName
-     *
-     * @return string|null
-     */
-    public function getCountryName(): ?string
-    {
-        return $this->container['countryName'];
-    }
-
-    /**
-     * Sets countryName
-     *
-     * @param string|null $countryName countryName
-     *
-     * @return $this
-     */
-    public function setCountryName(?string $countryName): static
-    {
-        if (is_null($countryName)) {
-            array_push($this->openAPINullablesSetToNull, 'countryName');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('countryName', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['countryName'] = $countryName;
 
         return $this;
     }

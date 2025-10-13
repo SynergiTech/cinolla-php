@@ -71,7 +71,7 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
         'departureDate' => '\DateTime',
         'origin' => 'string',
         'group' => 'object',
-        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType2[]'
+        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType3[]'
     ];
 
     /**
@@ -860,7 +860,7 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Gets bookingTags
      *
-     * @return \SynergiTech\Cinolla\Model\BookingType2[]
+     * @return \SynergiTech\Cinolla\Model\BookingType3[]
      */
     public function getBookingTags(): array
     {
@@ -870,7 +870,7 @@ class ClientBookingDetail implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Sets bookingTags
      *
-     * @param \SynergiTech\Cinolla\Model\BookingType2[] $bookingTags bookingTags
+     * @param \SynergiTech\Cinolla\Model\BookingType3[] $bookingTags bookingTags
      *
      * @return $this
      */

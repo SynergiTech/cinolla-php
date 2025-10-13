@@ -60,15 +60,19 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPITypes = [
         'reference' => 'string',
         'hash' => 'string',
-        'contact' => '\SynergiTech\Cinolla\Model\InvoicedBookingContact',
-        'organisation' => '\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation',
+        'contact' => '\SynergiTech\Cinolla\Model\BookingContact',
+        'organisation' => '\SynergiTech\Cinolla\Model\BookingOrganisation',
         'status' => 'string',
         'totalCost' => 'string',
         'netCost' => 'string',
         'createdAt' => '\DateTime',
+        'centre' => '\SynergiTech\Cinolla\Model\BookingCentre',
+        'billingAddress' => '\SynergiTech\Cinolla\Model\BookingBillingAddress',
+        'deliveryAddress' => '\SynergiTech\Cinolla\Model\BookingBillingAddress',
         'arrivalDate' => '\DateTime',
         'departureDate' => '\DateTime',
-        'origin' => 'string'
+        'origin' => 'string',
+        'bookingTags' => '\SynergiTech\Cinolla\Model\BookingType[]'
     ];
 
     /**
@@ -85,9 +89,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'totalCost' => null,
         'netCost' => null,
         'createdAt' => 'date-time',
+        'centre' => null,
+        'billingAddress' => null,
+        'deliveryAddress' => null,
         'arrivalDate' => 'date-time',
         'departureDate' => 'date-time',
-        'origin' => null
+        'origin' => null,
+        'bookingTags' => null
     ];
 
     /**
@@ -104,9 +112,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'totalCost' => true,
         'netCost' => true,
         'createdAt' => true,
+        'centre' => true,
+        'billingAddress' => true,
+        'deliveryAddress' => true,
         'arrivalDate' => true,
         'departureDate' => true,
-        'origin' => true
+        'origin' => true,
+        'bookingTags' => false
     ];
 
     /**
@@ -203,9 +215,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'totalCost' => 'totalCost',
         'netCost' => 'netCost',
         'createdAt' => 'createdAt',
+        'centre' => 'centre',
+        'billingAddress' => 'billingAddress',
+        'deliveryAddress' => 'deliveryAddress',
         'arrivalDate' => 'arrivalDate',
         'departureDate' => 'departureDate',
-        'origin' => 'origin'
+        'origin' => 'origin',
+        'bookingTags' => 'bookingTags'
     ];
 
     /**
@@ -222,9 +238,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'totalCost' => 'setTotalCost',
         'netCost' => 'setNetCost',
         'createdAt' => 'setCreatedAt',
+        'centre' => 'setCentre',
+        'billingAddress' => 'setBillingAddress',
+        'deliveryAddress' => 'setDeliveryAddress',
         'arrivalDate' => 'setArrivalDate',
         'departureDate' => 'setDepartureDate',
-        'origin' => 'setOrigin'
+        'origin' => 'setOrigin',
+        'bookingTags' => 'setBookingTags'
     ];
 
     /**
@@ -241,9 +261,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         'totalCost' => 'getTotalCost',
         'netCost' => 'getNetCost',
         'createdAt' => 'getCreatedAt',
+        'centre' => 'getCentre',
+        'billingAddress' => 'getBillingAddress',
+        'deliveryAddress' => 'getDeliveryAddress',
         'arrivalDate' => 'getArrivalDate',
         'departureDate' => 'getDepartureDate',
-        'origin' => 'getOrigin'
+        'origin' => 'getOrigin',
+        'bookingTags' => 'getBookingTags'
     ];
 
     /**
@@ -329,9 +353,13 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('totalCost', $data ?? [], null);
         $this->setIfExists('netCost', $data ?? [], null);
         $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('centre', $data ?? [], null);
+        $this->setIfExists('billingAddress', $data ?? [], null);
+        $this->setIfExists('deliveryAddress', $data ?? [], null);
         $this->setIfExists('arrivalDate', $data ?? [], null);
         $this->setIfExists('departureDate', $data ?? [], null);
         $this->setIfExists('origin', $data ?? [], null);
+        $this->setIfExists('bookingTags', $data ?? [], null);
     }
 
     /**
@@ -373,6 +401,9 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
             );
         }
 
+        if ($this->container['bookingTags'] === null) {
+            $invalidProperties[] = "'bookingTags' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -459,9 +490,9 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets contact
      *
-     * @return \SynergiTech\Cinolla\Model\InvoicedBookingContact|null
+     * @return \SynergiTech\Cinolla\Model\BookingContact|null
      */
-    public function getContact(): ?\SynergiTech\Cinolla\Model\InvoicedBookingContact
+    public function getContact(): ?\SynergiTech\Cinolla\Model\BookingContact
     {
         return $this->container['contact'];
     }
@@ -469,11 +500,11 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets contact
      *
-     * @param \SynergiTech\Cinolla\Model\InvoicedBookingContact|null $contact contact
+     * @param \SynergiTech\Cinolla\Model\BookingContact|null $contact contact
      *
      * @return $this
      */
-    public function setContact(?\SynergiTech\Cinolla\Model\InvoicedBookingContact $contact): static
+    public function setContact(?\SynergiTech\Cinolla\Model\BookingContact $contact): static
     {
         if (is_null($contact)) {
             array_push($this->openAPINullablesSetToNull, 'contact');
@@ -493,9 +524,9 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets organisation
      *
-     * @return \SynergiTech\Cinolla\Model\InvoicedBookingOrganisation|null
+     * @return \SynergiTech\Cinolla\Model\BookingOrganisation|null
      */
-    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation
+    public function getOrganisation(): ?\SynergiTech\Cinolla\Model\BookingOrganisation
     {
         return $this->container['organisation'];
     }
@@ -503,11 +534,11 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets organisation
      *
-     * @param \SynergiTech\Cinolla\Model\InvoicedBookingOrganisation|null $organisation organisation
+     * @param \SynergiTech\Cinolla\Model\BookingOrganisation|null $organisation organisation
      *
      * @return $this
      */
-    public function setOrganisation(?\SynergiTech\Cinolla\Model\InvoicedBookingOrganisation $organisation): static
+    public function setOrganisation(?\SynergiTech\Cinolla\Model\BookingOrganisation $organisation): static
     {
         if (is_null($organisation)) {
             array_push($this->openAPINullablesSetToNull, 'organisation');
@@ -664,6 +695,108 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
+     * Gets centre
+     *
+     * @return \SynergiTech\Cinolla\Model\BookingCentre|null
+     */
+    public function getCentre(): ?\SynergiTech\Cinolla\Model\BookingCentre
+    {
+        return $this->container['centre'];
+    }
+
+    /**
+     * Sets centre
+     *
+     * @param \SynergiTech\Cinolla\Model\BookingCentre|null $centre centre
+     *
+     * @return $this
+     */
+    public function setCentre(?\SynergiTech\Cinolla\Model\BookingCentre $centre): static
+    {
+        if (is_null($centre)) {
+            array_push($this->openAPINullablesSetToNull, 'centre');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('centre', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['centre'] = $centre;
+
+        return $this;
+    }
+
+    /**
+     * Gets billingAddress
+     *
+     * @return \SynergiTech\Cinolla\Model\BookingBillingAddress|null
+     */
+    public function getBillingAddress(): ?\SynergiTech\Cinolla\Model\BookingBillingAddress
+    {
+        return $this->container['billingAddress'];
+    }
+
+    /**
+     * Sets billingAddress
+     *
+     * @param \SynergiTech\Cinolla\Model\BookingBillingAddress|null $billingAddress billingAddress
+     *
+     * @return $this
+     */
+    public function setBillingAddress(?\SynergiTech\Cinolla\Model\BookingBillingAddress $billingAddress): static
+    {
+        if (is_null($billingAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'billingAddress');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('billingAddress', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['billingAddress'] = $billingAddress;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveryAddress
+     *
+     * @return \SynergiTech\Cinolla\Model\BookingBillingAddress|null
+     */
+    public function getDeliveryAddress(): ?\SynergiTech\Cinolla\Model\BookingBillingAddress
+    {
+        return $this->container['deliveryAddress'];
+    }
+
+    /**
+     * Sets deliveryAddress
+     *
+     * @param \SynergiTech\Cinolla\Model\BookingBillingAddress|null $deliveryAddress deliveryAddress
+     *
+     * @return $this
+     */
+    public function setDeliveryAddress(?\SynergiTech\Cinolla\Model\BookingBillingAddress $deliveryAddress): static
+    {
+        if (is_null($deliveryAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveryAddress');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveryAddress', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveryAddress'] = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
      * Gets arrivalDate
      *
      * @return \DateTime|null
@@ -761,6 +894,33 @@ class Booking implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['origin'] = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Gets bookingTags
+     *
+     * @return \SynergiTech\Cinolla\Model\BookingType[]
+     */
+    public function getBookingTags(): array
+    {
+        return $this->container['bookingTags'];
+    }
+
+    /**
+     * Sets bookingTags
+     *
+     * @param \SynergiTech\Cinolla\Model\BookingType[] $bookingTags bookingTags
+     *
+     * @return $this
+     */
+    public function setBookingTags(array $bookingTags): static
+    {
+        if (is_null($bookingTags)) {
+            throw new InvalidArgumentException('non-nullable bookingTags cannot be null');
+        }
+        $this->container['bookingTags'] = $bookingTags;
 
         return $this;
     }

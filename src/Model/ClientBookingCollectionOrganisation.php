@@ -63,7 +63,7 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
         'name' => 'string',
         'shortName' => 'string',
         'alert' => 'string',
-        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager'
+        'accountManager' => '\SynergiTech\Cinolla\Model\ContactOrganisation10AccountManager'
     ];
 
     /**
@@ -484,9 +484,9 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     /**
      * Gets accountManager
      *
-     * @return \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null
+     * @return \SynergiTech\Cinolla\Model\ContactOrganisation10AccountManager|null
      */
-    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager
+    public function getAccountManager(): ?\SynergiTech\Cinolla\Model\ContactOrganisation10AccountManager
     {
         return $this->container['accountManager'];
     }
@@ -494,11 +494,11 @@ class ClientBookingCollectionOrganisation implements ModelInterface, ArrayAccess
     /**
      * Sets accountManager
      *
-     * @param \SynergiTech\Cinolla\Model\ContactOrganisationAccountManager|null $accountManager accountManager
+     * @param \SynergiTech\Cinolla\Model\ContactOrganisation10AccountManager|null $accountManager accountManager
      *
      * @return $this
      */
-    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisationAccountManager $accountManager): static
+    public function setAccountManager(?\SynergiTech\Cinolla\Model\ContactOrganisation10AccountManager $accountManager): static
     {
         if (is_null($accountManager)) {
             array_push($this->openAPINullablesSetToNull, 'accountManager');

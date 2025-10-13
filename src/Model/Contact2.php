@@ -75,7 +75,7 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
         'defaultDeliveryAddress' => '\SynergiTech\Cinolla\Model\ContactDefaultBillingAddress',
         'archivedAt' => '\DateTime',
         'archived' => 'int',
-        'addresses' => '\SynergiTech\Cinolla\Model\Address[]',
+        'addresses' => '\SynergiTech\Cinolla\Model\Address3[]',
         'belongsToOrganisations' => '\SynergiTech\Cinolla\Model\ContactBelongsToOrganisation2[]'
     ];
 
@@ -993,7 +993,7 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets addresses
      *
-     * @return \SynergiTech\Cinolla\Model\Address[]
+     * @return \SynergiTech\Cinolla\Model\Address3[]
      */
     public function getAddresses(): array
     {
@@ -1003,7 +1003,7 @@ class Contact2 implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets addresses
      *
-     * @param \SynergiTech\Cinolla\Model\Address[] $addresses addresses
+     * @param \SynergiTech\Cinolla\Model\Address3[] $addresses addresses
      *
      * @return $this
      */
