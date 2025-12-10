@@ -2736,6 +2736,10 @@
           "invoiceId": {
             "type": "integer",
             "nullable": true
+          },
+          "contactId": {
+            "type": "integer",
+            "nullable": true
           }
         },
         "type": "object"

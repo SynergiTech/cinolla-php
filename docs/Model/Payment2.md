@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **datePaid** | **\DateTime** |  |
 **paymentMethod** | **string** |  |
 **invoiceId** | **int** |  | [optional]
+**contactId** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

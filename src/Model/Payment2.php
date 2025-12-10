@@ -61,7 +61,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => 'string',
         'datePaid' => '\DateTime',
         'paymentMethod' => 'string',
-        'invoiceId' => 'int'
+        'invoiceId' => 'int',
+        'contactId' => 'int'
     ];
 
     /**
@@ -73,7 +74,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => null,
         'datePaid' => 'date-time',
         'paymentMethod' => null,
-        'invoiceId' => null
+        'invoiceId' => null,
+        'contactId' => null
     ];
 
     /**
@@ -85,7 +87,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => false,
         'datePaid' => false,
         'paymentMethod' => false,
-        'invoiceId' => true
+        'invoiceId' => true,
+        'contactId' => true
     ];
 
     /**
@@ -177,7 +180,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => 'amount',
         'datePaid' => 'datePaid',
         'paymentMethod' => 'paymentMethod',
-        'invoiceId' => 'invoiceId'
+        'invoiceId' => 'invoiceId',
+        'contactId' => 'contactId'
     ];
 
     /**
@@ -189,7 +193,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => 'setAmount',
         'datePaid' => 'setDatePaid',
         'paymentMethod' => 'setPaymentMethod',
-        'invoiceId' => 'setInvoiceId'
+        'invoiceId' => 'setInvoiceId',
+        'contactId' => 'setContactId'
     ];
 
     /**
@@ -201,7 +206,8 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         'amount' => 'getAmount',
         'datePaid' => 'getDatePaid',
         'paymentMethod' => 'getPaymentMethod',
-        'invoiceId' => 'getInvoiceId'
+        'invoiceId' => 'getInvoiceId',
+        'contactId' => 'getContactId'
     ];
 
     /**
@@ -264,6 +270,7 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('datePaid', $data ?? [], null);
         $this->setIfExists('paymentMethod', $data ?? [], null);
         $this->setIfExists('invoiceId', $data ?? [], null);
+        $this->setIfExists('contactId', $data ?? [], null);
     }
 
     /**
@@ -428,6 +435,40 @@ class Payment2 implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['invoiceId'] = $invoiceId;
+
+        return $this;
+    }
+
+    /**
+     * Gets contactId
+     *
+     * @return int|null
+     */
+    public function getContactId(): ?int
+    {
+        return $this->container['contactId'];
+    }
+
+    /**
+     * Sets contactId
+     *
+     * @param int|null $contactId contactId
+     *
+     * @return $this
+     */
+    public function setContactId(?int $contactId): static
+    {
+        if (is_null($contactId)) {
+            array_push($this->openAPINullablesSetToNull, 'contactId');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contactId', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contactId'] = $contactId;
 
         return $this;
     }
